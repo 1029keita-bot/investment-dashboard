@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>投資用語集 v1.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FDFAF6;--bg2:#F5EFE6;--bg3:#EDE3D6;--amber:#C4782A;--amber-l:#F9EDD8;--brown:#5C3A1E;--brown-d:#3A2410;--text:#2E1A0E;--text2:#7A5535;--text3:#A8845E;--border:rgba(92,58,30,0.15);--red-bg:#FAE8E4;--red:#A83222;--green-bg:#E8F0E0;--green:#3D6B2A;--blue-bg:#E4EDF8;--blue:#2A4D8A;--gold-bg:#FBF0D8;--gold:#8A6820;--purple-bg:#F0EAF8;--purple:#5C3A8A;--teal-bg:#E0EEE8;--teal:#2A6B58;--gray-bg:#F0ECE8;--gray:#6B5A4A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;font-size:14px;line-height:1.7;min-height:100vh}
+.header{background:var(--brown-d);padding:2rem 2rem 1.5rem;color:#fff}
+.header h1{font-size:22px;font-weight:700;letter-spacing:.05em;margin-bottom:.25rem}
+.header-meta{font-size:11px;color:rgba(255,255,255,.5);font-family:'DM Mono',monospace;display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:.75rem}
+.header-meta span{display:flex;align-items:center;gap:.35rem}
+.changelog{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:.75rem 1rem;margin-top:1rem;font-size:12px;color:rgba(255,255,255,.65)}
+.changelog strong{color:rgba(255,255,255,.9);font-weight:500}
+
+.toolbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:.875rem 1.5rem;position:sticky;top:0;z-index:100;display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+.search-box{flex:1;min-width:200px;position:relative}
+.search-box input{width:100%;padding:.55rem .75rem .55rem 2.25rem;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-size:13px;color:var(--text);font-family:'Noto Sans JP',sans-serif;outline:none}
+.search-box input:focus{border-color:var(--amber)}
+.search-icon{position:absolute;left:.65rem;top:50%;transform:translateY(-50%);color:var(--text3);font-size:14px}
+.cats{display:flex;gap:.375rem;flex-wrap:wrap}
+.cat-btn{padding:.4rem .875rem;border:1px solid var(--border);border-radius:99px;font-size:12px;cursor:pointer;background:var(--bg);color:var(--text2);white-space:nowrap;transition:all .15s}
+.cat-btn:hover{border-color:var(--amber);color:var(--amber)}
+.cat-btn.on{background:var(--amber);border-color:var(--amber);color:#fff}
+.count-label{font-size:12px;color:var(--text3);white-space:nowrap;font-family:'DM Mono',monospace}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem;padding:1.5rem}
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.25rem 1rem;transition:box-shadow .2s;cursor:pointer;position:relative}
+.card:hover{box-shadow:0 4px 20px rgba(92,58,30,.12)}
+.card-cat{font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;display:inline-block;margin-bottom:.625rem;letter-spacing:.06em}
+.c-基礎{background:var(--amber-l);color:var(--amber)}
+.c-バリュエーション{background:var(--gold-bg);color:var(--gold)}
+.c-マクロ{background:var(--blue-bg);color:var(--blue)}
+.c-テクニカル{background:var(--teal-bg);color:var(--teal)}
+.c-心理{background:var(--purple-bg);color:var(--purple)}
+.c-戦略{background:var(--green-bg);color:var(--green)}
+.c-リスク{background:var(--red-bg);color:var(--red)}
+.c-オプション{background:var(--gray-bg);color:var(--gray)}
+.c-BTC{background:#FFF3E0;color:#B45309}
+.term{font-size:16px;font-weight:700;color:var(--brown-d);margin-bottom:.25rem}
+.term-en{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:.625rem}
+.desc{font-size:13px;color:var(--text2);line-height:1.75}
+.formula{font-family:'DM Mono',monospace;font-size:11px;background:var(--bg2);border-left:3px solid var(--amber);padding:.5rem .75rem;border-radius:0 6px 6px 0;margin-top:.75rem;color:var(--brown)}
+.related{margin-top:.75rem;font-size:12px;color:var(--text3)}
+.related span{color:var(--amber);cursor:pointer}
+.related span:hover{text-decoration:underline}
+.level{display:inline-block;font-size:10px;padding:1px 7px;border-radius:4px;margin-left:.5rem;vertical-align:middle}
+.lv-基本{background:#E8F0E0;color:#3D6B2A}.lv-中級{background:#E4EDF8;color:#2A4D8A}.lv-上級{background:#F0EAF8;color:#5C3A8A}
+.empty{grid-column:1/-1;text-align:center;padding:3rem;color:var(--text3);font-size:14px}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📖 投資用語集</h1>
+  <div class="header-meta">
+    <span>📅 制定日：2026-05-11</span>
+    <span>🔄 最終改定：2026-05-11</span>
+    <span>📝 改定理由：初版作成</span>
+  </div>
+  <div class="changelog">
+    <strong>v1.0</strong> — 初版。過去会話から抽出した必須用語をカテゴリ別に整理。全9カテゴリ。
+  </div>
+</div>
+<div class="toolbar">
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input id="q" type="text" placeholder="用語・説明文で検索...">
+  </div>
+  <div class="cats" id="cats"></div>
+  <span class="count-label" id="cnt"></span>
+</div>
+<div class="grid" id="grid"></div>
+
+<script>
+const terms=[
+  // ── 基礎
+  {id:"dca",cat:"基礎",lv:"基本",term:"DCA（ドルコスト平均法）",en:"Dollar-Cost Averaging",desc:"一定金額を定期的に買い続ける手法。価格が高いときは少量、安いときは多く買えるため平均取得コストが平準化される。インデックス投資の基本戦略。",formula:"平均取得単価 = 総投資額 ÷ 総取得口数",related:["バリュー平均法","一括投資"]},
+  {id:"index",cat:"基礎",lv:"基本",term:"インデックス投資",en:"Index Investing",desc:"市場全体を丸ごと買う投資手法。S&P500・全世界株式など指数に連動するETF・投信を保有。個別銘柄選択リスクをゼロにし、市場平均を享受する。バフェットが個人投資家に推奨する唯一の手法。",related:["DCA","NISA"]},
+  {id:"nisa",cat:"基礎",lv:"基本",term:"新NISA（2024年〜）",en:"New NISA",desc:"年間360万円（成長投資枠240万＋積立投資枠120万）まで非課税で投資できる制度。生涯枠1,800万円。売却枠の再利用も可能。売却益・配当が非課税になる日本最強の節税ツール。"},
+  {id:"taa",cat:"基礎",lv:"中級",term:"TAA（戦術的資産配分）",en:"Tactical Asset Allocation",desc:"マクロ環境に応じて資産配分を機動的に変える手法。Buy&Holdをベースにしつつ、相場環境の変化に応じてリバランスを行う。コア積立＋TAA資金で分けて管理するのが実践的。",related:["DCA","ポートフォリオリバランス"]},
+  {id:"sp500",cat:"基礎",lv:"基本",term:"S&P500",en:"S&P 500 Index",desc:"アメリカの代表的な500社で構成される株価指数。世界最大の株式市場のベンチマーク。長期的な年平均リターンは約10%（インフレ調整後7%）。インデックス投資の主要対象。"},
+  {id:"etf",cat:"基礎",lv:"基本",term:"ETF（上場投資信託）",en:"Exchange-Traded Fund",desc:"株式市場に上場し、株のように売買できる投資信託。信託報酬が安く、分散効果が高い。VTI・1540・2244など銘柄コードで管理される。NISAでの活用が最も効率的。"},
+  // ── バリュエーション
+  {id:"cape",cat:"バリュエーション",lv:"中級",term:"CAPEレシオ（シラーPER）",en:"Cyclically Adjusted P/E Ratio",desc:"過去10年間の平均実質利益でPERを計算した指標。単年の利益変動を平滑化できるため、市場の割高・割安判断に使われる。歴史的平均は約17倍。30倍超で割高シグナル。2026年現在は約39〜41倍。",formula:"CAPE = 現在株価 ÷ 過去10年平均実質EPS",related:["バフェット指数","PER"]},
+  {id:"buffett_indicator",cat:"バリュエーション",lv:"中級",term:"バフェット指数",en:"Buffett Indicator",desc:"米国株式時価総額をGDPで割った比率。バフェットが「最良の単一指標」と評した。100%が適正、150%超で過熱、200%超は危険水域。2026年現在は約200%超。",formula:"バフェット指数(%) = 株式時価総額 ÷ GDP × 100",related:["CAPEレシオ"]},
+  {id:"per",cat:"バリュエーション",lv:"基本",term:"PER（株価収益率）",en:"Price-to-Earnings Ratio",desc:"株価が1株当たり利益の何倍かを示す指標。一般に15〜20倍が適正。高PERは成長期待が高い、または割高を意味する。CAPEは景気サイクルを平滑化した高精度版。",formula:"PER = 株価 ÷ EPS（1株当たり利益）"},
+  // ── マクロ
+  {id:"stagflation",cat:"マクロ",lv:"中級",term:"スタグフレーション",en:"Stagflation",desc:"景気後退（Stagnation）＋インフレ（Inflation）の造語。経済が停滞しているのに物価が上昇する最悪の状態。FRBが利下げも利上げもしにくくなり、株・債券ともに苦しい環境。1970年代の石油ショック後に発生。2026年のイラン紛争による原油高でリスクが高まっている。",related:["インフレ","FOMC"]},
+  {id:"carry_trade",cat:"マクロ",lv:"中級",term:"円キャリートレード",en:"JPY Carry Trade",desc:"低金利の円で借りて、高金利通貨建ての資産に投資する手法。日米金利差が縮小すると解消（巻き戻し）が起き、円高・株安が同時発生するリスクがある。2024年8月に一部巻き戻しが発生し大きな混乱を招いた。",related:["日米金利差","円高"]},
+  {id:"fomc",cat:"マクロ",lv:"基本",term:"FOMC",en:"Federal Open Market Committee",desc:"米国の金融政策を決定する連邦公開市場委員会。年8回開催。ここでの利上げ・利下げ決定が世界市場に最大の影響を与える。発表直後の相場変動は特に大きい。",related:["利上げ","FFレート"]},
+  {id:"ffrate",cat:"マクロ",lv:"基本",term:"FFレート（政策金利）",en:"Federal Funds Rate",desc:"FRBが設定する米国の短期政策金利。すべての金利のベース。利上げで株価下落・ドル高、利下げで株価上昇・ドル安の傾向。2026年現在は約4.25〜4.5%で高止まり中。"},
+  {id:"boj",cat:"マクロ",lv:"基本",term:"日銀（BOJ）の政策金利",en:"Bank of Japan Policy Rate",desc:"日本銀行が設定する短期政策金利。2024年3月にマイナス金利を解除し正常化へ。2026年現在は0.5%台。円キャリー解消・円高リスクと直結。利上げペースは米国スタグフレーションにより不透明。"},
+  {id:"gold",cat:"マクロ",lv:"中級",term:"金（ゴールド）の特性",en:"Gold as Safe Haven",desc:"有事・インフレ・ドル不安時に買われる実物資産。中央銀行も買い増し中。スタグフレーション環境で特に有効。株・債券と逆相関しやすくポートフォリオの分散効果が高い。円建てETF（1540）がNISA対応で使いやすい。",related:["インフレヘッジ","1540"]},
+  // ── テクニカル
+  {id:"ma",cat:"テクニカル",lv:"基本",term:"移動平均線（MA）",en:"Moving Average",desc:"一定期間の終値平均を結んだ線。トレンドの方向性を把握するための基礎ツール。短期（25日）・中期（75日）・長期（200日）が主要。200日MAを株価が上回れば強気、下回れば弱気のサイン。"},
+  {id:"gdc",cat:"テクニカル",lv:"中級",term:"ゴールデンクロス / デッドクロス",en:"Golden Cross / Dead Cross",desc:"短期MAが長期MAを上抜けるとゴールデンクロス（買いシグナル）、下抜けるとデッドクロス（売りシグナル）。相場のトレンド転換点の目安として使われる。",related:["移動平均線"]},
+  {id:"vix",cat:"テクニカル",lv:"中級",term:"VIX（恐怖指数）",en:"Volatility Index",desc:"S&P500オプションの価格から算出した市場の恐怖度。20以下は安定、30超で警戒、40超でパニック的な急落を示すことが多い。逆張り投資のタイミング把握に有用。",formula:"VIX 20以下：平穏｜30超：警戒｜40超：パニック"},
+  {id:"rsi",cat:"テクニカル",lv:"中級",term:"RSI（相対力指数）",en:"Relative Strength Index",desc:"0〜100で買われすぎ・売られすぎを示すオシレーター系指標。70超で買われすぎ（売りサイン）、30以下で売られすぎ（買いサイン）。短期的な逆張りに活用。長期投資ではあくまで参考程度。"},
+  // ── 心理・バイアス
+  {id:"fomo",cat:"心理",lv:"基本",term:"FOMO（乗り遅れ恐怖）",en:"Fear Of Missing Out",desc:"相場が上昇中に「自分だけ置いていかれる」という恐怖から冷静な判断ができなくなる心理。バブル相場で買いが加速する主因。DCAルール遵守で感情的売買を防ぐ。",related:["群集心理","パニック売り"]},
+  {id:"loss_aversion",cat:"心理",lv:"中級",term:"損失回避バイアス",en:"Loss Aversion",desc:"利益の喜びより損失の痛みを約2倍大きく感じる人間の本能的偏向（カーネマン＆トヴェルスキー）。これが「底値で売り・高値で買い」という逆張り行動の原因。長期投資家にとって最大の敵。",related:["プロスペクト理論"]},
+  {id:"survivorship_bias",cat:"心理",lv:"中級",term:"サバイバーシップバイアス",en:"Survivorship Bias",desc:"成功した企業・投資家だけが語られ、失敗した大多数が見えなくなる認知の歪み。「○○株で10倍になった」という話は、同じ戦略で損した大多数を無視している。インデックス投資が有効な理由の一つ。"},
+  {id:"anchoring",cat:"心理",lv:"中級",term:"アンカリング効果",en:"Anchoring Effect",desc:"最初に見た価格・数字が基準となり、その後の判断が歪む認知バイアス。「高値から〇%下落した」という表現が売買判断を歪める典型例。現在の本質的価値（CAPE・DCF等）で判断するのが正しい。"},
+  // ── 戦略・アノマリー
+  {id:"halving",cat:"戦略",lv:"中級",term:"ビットコイン半減期サイクル",en:"Bitcoin Halving Cycle",desc:"約4年ごとにマイナーへの報酬が半減するイベント。新規供給量が減少し、過去3回は半減期後12〜18ヶ月で大幅高騰。2024年4月が直近半減期。2025〜2026年が上昇フェーズ、2028年頃が次の半減期。",formula:"半減期：2012→2016→2020→2024（次は2028年頃）",related:["MVRV比率","BTC DCA"]},
+  {id:"sep_anomaly",cat:"戦略",lv:"中級",term:"9月アノマリー",en:"September Effect",desc:"S&P500の月別リターンで統計的に最弱の月。機関投資家の決算・ポジション調整が集中するため。歴史的には9〜10月が底値になりやすく、押し目買いの狙い目として活用できる。",related:["中間選挙サイクル","大統領選挙サイクル"]},
+  {id:"pec",cat:"戦略",lv:"中級",term:"大統領選挙サイクル",en:"Presidential Election Cycle",desc:"4年の選挙サイクルで相場にパターンがある。選挙年・翌年は政策期待で上昇、2年目・3年目は調整が多い傾向。中間選挙後の上昇アノマリー（中間選挙の翌年は歴史的にプラス）も有名。",related:["9月アノマリー","TAA"]},
+  {id:"buyhold",cat:"戦略",lv:"基本",term:"バイ＆ホールド",en:"Buy and Hold",desc:"一度購入したら長期保有を続ける投資手法。バフェットが信奉する手法で、短期の市場変動に動じない長期視点が必要。「相場に居続けること」がリターンを最大化する。頻繁な売買は税・手数料コストも増加させる。",related:["DCA","インデックス投資"]},
+  // ── リスク管理
+  {id:"drawdown",cat:"リスク",lv:"中級",term:"ドローダウン",en:"Drawdown",desc:"高値から現在までの下落幅。最大ドローダウン（Max DD）は運用期間中の最大下落率。S&P500の歴史的最大DDは約-57%（2009年）。自分の許容DDを事前に決めておくことがリスク管理の基本。",formula:"ドローダウン(%) = (現在価値 - 高値) ÷ 高値 × 100"},
+  {id:"rebalance",cat:"リスク",lv:"中級",term:"リバランス",en:"Rebalancing",desc:"ポートフォリオが当初の目標比率からズレた際に調整すること。上がった資産を売り、下がった資産を買う逆張り操作が自動的に行われる。年1〜2回か、比率が±10%ズレた時点で実施するのが一般的。",related:["TAA","ポートフォリオ"]},
+  {id:"hedge",cat:"リスク",lv:"中級",term:"ヘッジ",en:"Hedge",desc:"保有資産の下落リスクを相殺するポジションを取ること。株ポートフォリオに対して金・債券・逆相関資産を組み込む、またはオプションで保険をかける。ヘッジコストとリスク低減のトレードオフを考慮する必要がある。"},
+  // ── オプション
+  {id:"option",cat:"オプション",lv:"上級",term:"オプション取引の基礎",en:"Options Trading",desc:"将来の売買権利を売買する金融商品。コール（買う権利）・プット（売る権利）がある。ヘッジ手段としても投機手段としても使える。プレミアム（オプション料）を払って権利を買う側と、プレミアムを受け取って義務を負う側が存在。"},
+  {id:"dte_1",cat:"オプション",lv:"上級",term:"1DTE（当日期限切れオプション）",en:"1 Day to Expiration",desc:"満期まで残り1日のオプション。時間的価値の減衰（シータ崩壊）が最大化する局面。プレミアム売り戦略に利用されるが、ガンマリスク（価格変動に対する感度の急変）も最大。上級者向けの戦術。",formula:"残存時間価値 ≈ 0 → プレミアム = ほぼ本質的価値のみ",related:["オプション取引","ガンマリスク"]},
+  // ── BTC特有
+  {id:"mvrv",cat:"BTC",lv:"中級",term:"MVRV比率",en:"Market Value to Realized Value",desc:"ビットコインの時価総額を実現価格ベースの総額で割った指標。1以下で割安（歴史的買い場）、1〜2で適正、3以上で過熱。2026年3月時点では約1.55（適正水準）。Glassnodeで無料確認可能。",formula:"MVRV = 時価総額 ÷ 実現価格ベース総額\nMVRV=1の目安：$45,000前後（2026年3月時点）",related:["実現価格","半減期サイクル"]},
+  {id:"realized_price",cat:"BTC",lv:"中級",term:"実現価格（Realized Price）",en:"Realized Price",desc:"すべてのBTCが最後に動いた時の価格の加重平均。「平均的な保有者の取得コスト」を意味する。スポット価格が実現価格を下回ると大多数が含み損状態 = 底値圏のシグナル。",related:["MVRV比率"]},
+];
+
+let openId=null,activeCat="すべて";
+const cats=["すべて",...[...new Set(terms.map(t=>t.cat))]];
+
+function buildCats(){
+  const el=document.getElementById("cats");
+  cats.forEach(c=>{
+    const b=document.createElement("button");
+    b.className="cat-btn"+(c==="すべて"?" on":"");
+    b.textContent=c;
+    b.onclick=()=>{activeCat=c;document.querySelectorAll(".cat-btn").forEach(x=>x.classList.remove("on"));b.classList.add("on");openId=null;render();};
+    el.appendChild(b);
+  });
+}
+
+function render(){
+  const q=document.getElementById("q").value.toLowerCase();
+  const filtered=terms.filter(t=>{
+    const catOk=activeCat==="すべて"||t.cat===activeCat;
+    const qOk=!q||t.term.toLowerCase().includes(q)||t.en.toLowerCase().includes(q)||(t.desc||"").toLowerCase().includes(q);
+    return catOk&&qOk;
+  });
+  document.getElementById("cnt").textContent=filtered.length+"語";
+  const grid=document.getElementById("grid");
+  grid.innerHTML="";
+  if(!filtered.length){grid.innerHTML='<div class="empty">🔍 該当する用語が見つかりません</div>';return;}
+  filtered.forEach(t=>{
+    const card=document.createElement("div");
+    card.className="card";
+    card.id="card-"+t.id;
+    const relHtml=t.related?.length?`<div class="related">関連：${t.related.map(r=>`<span onclick="searchRel('${r}')">${r}</span>`).join("・")}</div>`:"";
+    const fHtml=t.formula?`<div class="formula">${t.formula}</div>`:"";
+    card.innerHTML=`<div class="card-cat c-${t.cat}">${t.cat}</div>
+<div class="term">${t.term}<span class="level lv-${t.lv}">${t.lv}</span></div>
+<div class="term-en">${t.en}</div>
+<div class="desc">${t.desc}</div>${fHtml}${relHtml}`;
+    grid.appendChild(card);
+  });
+}
+
+function searchRel(name){
+  document.getElementById("q").value=name;activeCat="すべて";
+  document.querySelectorAll(".cat-btn").forEach((b,i)=>{b.classList.toggle("on",i===0);});
+  openId=null;render();window.scrollTo({top:0,behavior:"smooth"});
+}
+
+document.getElementById("q").addEventListener("input",render);
+buildCats();render();
+</script>
+</body>
+</html>
