@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>米国K字型経済・構造的脆弱性レポート 2026年上半期</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #f2ede4;
+  --surface:  #ffffff;
+  --panel:    #f8f5ef;
+  --border:   #b8b0a0;
+  --border2:  #d0c8b8;
+  --ink:      #16140d;
+  --dim:      #38342a;
+  --muted:    #6a6050;
+  --red:      #aa2518;
+  --red-bg:   #fdf0ee;
+  --red-bd:   #d89088;
+  --amber:    #9a5000;
+  --amber-bg: #fdf4e6;
+  --amber-bd: #d4a040;
+  --green:    #175828;
+  --green-bg: #ebf5ef;
+  --green-bd: #78be94;
+  --blue:     #183c6e;
+  --blue-bg:  #eaf0f8;
+  --blue-bd:  #80aad0;
+  --teal:     #0d5c5c;
+  --teal-bg:  #e6f5f5;
+  --teal-bd:  #5aaeae;
+  --pink:     #7c1d5e;
+  --pink-bg:  #fce8f4;
+  --pink-bd:  #c87ab0;
+  --serif: 'Noto Serif JP', serif;
+  --sans:  'Noto Sans JP', sans-serif;
+  --mono:  'DM Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 1.9;
+  font-weight: 400;
+}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(242,237,228,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--border);
+  height: 54px; display: flex; align-items: center;
+  padding: 0 1.5rem; overflow-x: auto; gap: 0;
+  scrollbar-width: none;
+}
+nav::-webkit-scrollbar { display: none; }
+.nav-logo {
+  font-family: var(--serif); font-weight: 700; font-size: 15px;
+  white-space: nowrap; padding-right: 1.5rem; margin-right: 0.5rem;
+  border-right: 2px solid var(--border);
+}
+nav a {
+  color: var(--muted); text-decoration: none;
+  font-size: 13px; font-family: var(--mono); letter-spacing: 0.04em;
+  padding: 0 0.85rem; height: 54px; display: flex; align-items: center;
+  white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s;
+}
+nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+main { padding-top: 54px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 80px 2.5rem; }
+hr.div { border: none; border-top: 2px solid var(--border); }
+.hero {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 100px 2.5rem 80px;
+}
+.hero-in { max-width: 980px; margin: 0 auto; }
+.hero-tag {
+  font-family: var(--mono); font-size: 13px; letter-spacing: 0.2em;
+  color: var(--muted); text-transform: uppercase; margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 900; line-height: 1.2; margin-bottom: 1.25rem;
+}
+.hero-lead {
+  font-size: 19px; color: var(--dim); max-width: 660px;
+  line-height: 2; margin-bottom: 2.5rem;
+}
+.hero-stats {
+  display: flex; flex-wrap: wrap;
+  border: 2px solid var(--border); background: var(--panel);
+}
+.hs {
+  padding: 1.25rem 1.75rem; border-right: 2px solid var(--border);
+  flex: 1; min-width: 170px;
+}
+.hs:last-child { border-right: none; }
+.hs .sl { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
+.hs .sv { font-family: var(--serif); font-weight: 700; font-size: 1.2rem; }
+.hs.r .sv { color: var(--red); }
+.hs.a .sv { color: var(--amber); }
+.hs.g .sv { color: var(--green); }
+.hs.t .sv { color: var(--teal); }
+.stag {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em;
+  color: var(--muted); text-transform: uppercase; margin-bottom: 0.6rem;
+}
+.stitle {
+  font-family: var(--serif); font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+  font-weight: 900; line-height: 1.25; margin-bottom: 1rem;
+}
+.slead {
+  font-size: 18px; color: var(--dim); max-width: 700px; line-height: 2;
+  margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border);
+}
+.co {
+  padding: 1.6rem 2rem; margin: 2rem 0;
+  border-left: 4px solid; font-size: 17px; line-height: 2;
+}
+.co h4 { font-family: var(--serif); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
+.co.r  { border-color: var(--red);   background: var(--red-bg);   }
+.co.a  { border-color: var(--amber); background: var(--amber-bg); }
+.co.g  { border-color: var(--green); background: var(--green-bg); }
+.co.b  { border-color: var(--blue);  background: var(--blue-bg);  }
+.co.t  { border-color: var(--teal);  background: var(--teal-bg);  }
+.co.p  { border-color: var(--pink);  background: var(--pink-bg);  }
+.co.r h4 { color: var(--red);   }
+.co.a h4 { color: var(--amber); }
+.co.g h4 { color: var(--green); }
+.co.b h4 { color: var(--blue);  }
+.co.t h4 { color: var(--teal);  }
+.co.p h4 { color: var(--pink);  }
+.mstrip {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border: 2px solid var(--border); margin: 2rem 0;
+}
+.mstrip4 {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  border: 2px solid var(--border); margin: 2rem 0;
+}
+.mc { padding: 1.75rem; border-right: 2px solid var(--border); background: var(--surface); }
+.mc:last-child { border-right: none; }
+.mc.panel { background: var(--panel); }
+.mc .ml { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.5rem; }
+.mc .mn { font-family: var(--serif); font-weight: 900; font-size: 2.2rem; line-height: 1.1; margin-bottom: 0.25rem; }
+.mc .mn.red   { color: var(--red);   }
+.mc .mn.amber { color: var(--amber); }
+.mc .mn.green { color: var(--green); }
+.mc .mn.blue  { color: var(--blue);  }
+.mc .mn.teal  { color: var(--teal);  }
+.mc .mb { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-bottom: 0.75rem; }
+.mc .md { font-size: 16px; color: var(--dim); line-height: 1.9; }
+.brow {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border: 2px solid var(--border); margin: 2rem 0;
+}
+.bcol { padding: 1.75rem; border-right: 2px solid var(--border); background: var(--surface); }
+.bcol:last-child { border-right: none; }
+.bcol.cur { background: var(--panel); }
+.bcol .bera { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-bottom: 0.4rem; }
+.bcol h3 {
+  font-family: var(--serif); font-weight: 700; font-size: 1.05rem;
+  margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border2);
+}
+.bcol ul { list-style: none; }
+.bcol ul li {
+  font-size: 16px; color: var(--dim);
+  padding: 0.35rem 0 0.35rem 1.25rem; position: relative;
+  border-bottom: 1px solid var(--border2); line-height: 1.8;
+}
+.bcol ul li:last-child { border-bottom: none; }
+.bcol ul li::before { content: '–'; position: absolute; left: 0; color: var(--muted); }
+.blag {
+  margin-top: 1rem; padding: 0.5rem 0.8rem;
+  font-family: var(--mono); font-size: 13px;
+}
+.blag.r { background: var(--red-bg);   color: var(--red);   border: 1px solid var(--red-bd);   }
+.blag.a { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-bd); }
+.blag.g { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-bd); }
+.bb-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border: 2px solid var(--border); margin: 2rem 0;
+}
+.bb-col { padding: 1.75rem; }
+.bb-col:first-child { border-right: 2px solid var(--border); }
+.bb-col .bc-head {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.15em;
+  margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border2);
+}
+.bb-col.bull .bc-head { color: var(--green); }
+.bb-col.bear .bc-head { color: var(--red);   }
+.bb-item { padding: 0.6rem 0; border-bottom: 1px solid var(--border2); font-size: 16px; color: var(--dim); line-height: 1.8; }
+.bb-item:last-child { border-bottom: none; }
+.bb-item .bi-name { font-weight: 700; color: var(--ink); font-size: 15px; }
+.stable { width: 100%; border-collapse: collapse; border: 2px solid var(--border); margin: 2rem 0; }
+.stable th {
+  padding: 0.9rem 1.1rem; background: var(--panel);
+  text-align: left; font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em;
+  color: var(--dim); border-bottom: 2px solid var(--border); border-right: 2px solid var(--border);
+}
+.stable th:last-child { border-right: none; }
+.stable td {
+  padding: 0.9rem 1.1rem; border-bottom: 2px solid var(--border2);
+  border-right: 2px solid var(--border2);
+  font-size: 16px; color: var(--dim); line-height: 1.8; vertical-align: top;
+}
+.stable td:last-child { border-right: none; }
+.stable td:first-child { color: var(--ink); font-weight: 700; font-size: 15px; white-space: nowrap; }
+.stable tbody tr { background: var(--surface); }
+.stable tbody tr:nth-child(even) { background: var(--panel); }
+.stable tr:last-child td { border-bottom: none; }
+.tr { color: var(--red)   !important; font-weight: 700; }
+.ta { color: var(--amber) !important; font-weight: 700; }
+.tg { color: var(--green) !important; font-weight: 700; }
+.tb { color: var(--blue)  !important; font-weight: 700; }
+.sigboard { border: 2px solid var(--border); margin: 2rem 0; }
+.sigrow {
+  display: flex; align-items: center; gap: 1.25rem;
+  padding: 1rem 1.5rem; border-bottom: 1px solid var(--border2);
+}
+.sigrow:last-child { border-bottom: none; }
+.sigrow:nth-child(even) { background: var(--panel); }
+.sigdot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.sigdot.red   { background: var(--red);   box-shadow: 0 0 0 3px rgba(170,37,24,0.15); }
+.sigdot.amber { background: var(--amber); box-shadow: 0 0 0 3px rgba(154,80,0,0.15); }
+.sigdot.green { background: var(--green); box-shadow: 0 0 0 3px rgba(23,88,40,0.15); }
+.sig-name { font-family: var(--mono); font-size: 13px; color: var(--muted); min-width: 180px; letter-spacing: 0.04em; }
+.sig-val { font-size: 16px; color: var(--dim); flex: 1; line-height: 1.8; }
+.sig-badge { font-family: var(--mono); font-size: 11px; padding: 2px 8px; border: 1px solid; white-space: nowrap; }
+.sig-badge.red   { color: var(--red);   border-color: var(--red-bd);   background: var(--red-bg);   }
+.sig-badge.amber { color: var(--amber); border-color: var(--amber-bd); background: var(--amber-bg); }
+.sig-badge.green { color: var(--green); border-color: var(--green-bd); background: var(--green-bg); }
+.hbanner {
+  background: var(--red-bg); border: 2px solid var(--red-bd);
+  padding: 1.25rem 1.75rem; margin: 2rem 0;
+  display: flex; align-items: center; gap: 1.25rem;
+}
+.hdot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--red); flex-shrink: 0;
+  box-shadow: 0 0 0 4px rgba(170,37,24,0.2);
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 4px rgba(170,37,24,0.2); }
+  50%      { box-shadow: 0 0 0 8px rgba(170,37,24,0.05); }
+}
+.hbl { font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; color: var(--red); margin-bottom: 3px; }
+.hbv { font-family: var(--serif); font-weight: 700; font-size: 1.1rem; }
+.jco {
+  padding: 1.6rem 2rem; margin: 2.5rem 0;
+  border-left: 4px solid var(--pink); background: var(--pink-bg);
+  font-size: 17px; line-height: 2;
+}
+.jco h4 { font-family: var(--serif); font-weight: 700; font-size: 1rem; color: var(--pink); margin-bottom: 0.5rem; }
+.scgrid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border: 2px solid var(--border); margin: 2rem 0;
+}
+.sccard { padding: 1.75rem; }
+.sccard:first-child { border-right: 2px solid var(--border); }
+.sctag {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em;
+  margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border2);
+}
+.sctag.base { color: var(--amber); }
+.sctag.bear { color: var(--red);   }
+.sccard h4 { font-family: var(--serif); font-weight: 700; font-size: 1.05rem; margin-bottom: 1rem; }
+.sccard ul { list-style: none; }
+.sccard ul li {
+  font-size: 16px; color: var(--dim);
+  padding: 0.35rem 0 0.35rem 1.25rem; position: relative;
+  border-bottom: 1px solid var(--border2); line-height: 1.8;
+}
+.sccard ul li:last-child { border-bottom: none; }
+.sccard ul li::before { content: '→'; position: absolute; left: 0; color: var(--muted); font-family: var(--mono); font-size: 13px; }
+.bfbox {
+  border: 2px solid var(--border); background: var(--surface);
+  display: grid; grid-template-columns: 200px 1fr; margin: 2rem 0;
+}
+.bfnum {
+  padding: 2rem 1.5rem; border-right: 2px solid var(--border);
+  background: var(--panel); text-align: center;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+.bfnum .bn { font-family: var(--serif); font-weight: 900; font-size: 2.6rem; line-height: 1; }
+.bfnum .bn.red   { color: var(--red); }
+.bfnum .bn.amber { color: var(--amber); }
+.bfnum .bu { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 6px; text-align: center; line-height: 1.6; }
+.bftxt { padding: 1.75rem 2rem; }
+.bftxt h4 { font-family: var(--serif); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
+.bftxt p { font-size: 17px; color: var(--dim); line-height: 1.9; }
+.checklist { margin: 2rem 0; border: 2px solid var(--border); background: var(--surface); }
+.cl-head {
+  padding: 1rem 1.5rem; background: var(--panel);
+  font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; color: var(--muted);
+  border-bottom: 2px solid var(--border);
+}
+.cl-item {
+  display: flex; gap: 1.25rem; align-items: flex-start;
+  padding: 0.85rem 1.5rem; border-bottom: 1px solid var(--border2);
+  font-size: 16px; color: var(--dim); line-height: 1.8;
+}
+.cl-item:last-child { border-bottom: none; }
+.cl-cat { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; min-width: 72px; padding-top: 3px; color: var(--muted); }
+.disc {
+  max-width: 980px; margin: 0 auto 4rem;
+  padding: 1.5rem 2rem; border: 2px solid var(--border2);
+  background: var(--panel); font-size: 14px; color: var(--muted);
+  line-height: 1.9; font-family: var(--mono);
+}
+.sub-h { font-family: var(--serif); font-weight: 700; font-size: 1.3rem; margin: 2.5rem 0 1rem; }
+.fade { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.fade.on { opacity: 1; transform: none; }
+@media (max-width: 740px) {
+  .wrap { padding: 56px 1.25rem; }
+  .hero { padding: 80px 1.25rem 60px; }
+  .mstrip, .mstrip4, .brow, .bb-grid, .scgrid { grid-template-columns: 1fr; }
+  .mc, .bcol { border-right: none; border-bottom: 2px solid var(--border2); }
+  .bfbox { grid-template-columns: 1fr; }
+  .bfnum { border-right: none; border-bottom: 2px solid var(--border); }
+  .sccard:first-child { border-right: none; border-bottom: 2px solid var(--border); }
+  .bb-col:first-child { border-right: none; border-bottom: 2px solid var(--border); }
+  .sigrow { flex-wrap: wrap; }
+  .sig-name { min-width: unset; }
+  .stable { font-size: 14px; }
+  .stable td, .stable th { padding: 0.65rem 0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">K字型経済 2026H1</span>
+  <a href="#exec">総合判定</a>
+  <a href="#employment">雇用</a>
+  <a href="#household">家計</a>
+  <a href="#fiscal">財政</a>
+  <a href="#monetary">金融</a>
+  <a href="#ai">AIバブル</a>
+  <a href="#hormuz">ホルムズ</a>
+  <a href="#kshape">K字脆弱性</a>
+  <a href="#signals">投資シグナル</a>
+</nav>
+
+<main>
+
+<div class="hero">
+<div class="hero-in">
+  <div class="hero-tag">半年次定点観測レポート ／ 2026年上半期 ／ 対日本比較あり</div>
+  <h1>K字の上に<br>3つのリスクが<br>重なっている</h1>
+  <p class="hero-lead">
+    分断が進む米国経済（K字型）の構造を半年ごとに定点観測し、投資判断の地図とする。2026年上半期は、ホルムズ海峡の閉鎖という史上最大の供給ショックが走り、AIバブルの膨張が続き、財政の限界が迫る──三つが同時進行している。
+  </p>
+  <div class="hero-stats">
+    <div class="hs r"><div class="sl">家計全債務延滞率（Q1）</div><div class="sv">4.8%（2017年来最高）</div></div>
+    <div class="hs r"><div class="sl">国債利払い費（FY2026）</div><div class="sv">$1.0兆（歳出第2位）</div></div>
+    <div class="hs r"><div class="sl">ホルムズ遮断規模</div><div class="sv">世界石油供給の20%</div></div>
+    <div class="hs a"><div class="sl">AIハイパースケーラーCapEx（2026）</div><div class="sv">$650〜725B</div></div>
+    <div class="hs a"><div class="sl">U-6 広義失業率（2026年4月）</div><div class="sv">8.2%</div></div>
+    <div class="hs a"><div class="sl">BOJ政策金利（4月）</div><div class="sv">0.75%（30年ぶり）</div></div>
+  </div>
+</div>
+</div>
+
+<hr class="div">
+
+<!-- 序章 -->
+<section id="exec">
+<div class="wrap">
+  <div class="stag">序章 / Executive Summary</div>
+  <h2 class="stitle">総合判定：<br>リスクオフ継続、防衛的ポジション</h2>
+  <p class="slead">平均値（公式失業率4.3%・S&P500高値圏）が現実を隠している。その下で起きていることを正確に把握することが、このレポートの目的。</p>
+
+  <div class="co r fade">
+    <h4>判定：防衛的ポジション継続</h4>
+    2026年上半期は複数の構造的脆弱性が抱え込まれたまま、ホルムズ海峡の閉鎖という外部ショックに直撃された局面。K字型経済の表面は「平均失業率4.3%」「S&P500高値圏」という数字で覆われているが、その下で家計信用の劣化・財政利払い急増・AIバブルの膨張が同時進行中。スタグフレーション圧力がFRBの政策余地を著しく制約しており、<strong>S&P500への新規フルエクスポージャーは避けるべき局面</strong>と判断する。
+  </div>
+
+  <div class="brow fade">
+    <div class="bcol cur">
+      <div class="bera">前回比の変化 ①</div>
+      <h3>ホルムズ危機（新規）</h3>
+      <ul>
+        <li>2026年2月28日より実質閉鎖状態</li>
+        <li>世界石油供給の20%が遮断</li>
+        <li>史上最大の供給ショックとIEAが認定</li>
+        <li>停戦（4月8日）後も通行回復は未達</li>
+      </ul>
+      <div class="blag r">⚠ スタグフレーション圧力を増幅</div>
+    </div>
+    <div class="bcol cur">
+      <div class="bera">前回比の変化 ②</div>
+      <h3>財政限界の加速</h3>
+      <ul>
+        <li>利払い費が歳出第2位に浮上</li>
+        <li>対歳入比18.5%（過去最高）</li>
+        <li>公的債務がGDPを初超過</li>
+        <li>財政余地はGDP比6%のみ</li>
+      </ul>
+      <div class="blag r">⚠ 次の危機対応能力が喪失しつつある</div>
+    </div>
+    <div class="bcol cur">
+      <div class="bera">前回比の変化 ③</div>
+      <h3>下層家計の信用劣化</h3>
+      <ul>
+        <li>全債務延滞率4.8%（2017年来最高）</li>
+        <li>クレカ残高$1.25兆（前年比+5.9%）</li>
+        <li>低所得層・若年層の延滞が主導</li>
+        <li>ガソリン高が実質購買力を追撃</li>
+      </ul>
+      <div class="blag r">⚠ K字崩壊の第一フェーズが進行中</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第1章 雇用 -->
+<section id="employment">
+<div class="wrap">
+  <div class="stag">第1章 / Employment</div>
+  <h2 class="stitle">雇用・労働市場の実態</h2>
+  <p class="slead">公式失業率が隠す「質の劣化」。数字が良く見えるほど、その下の現実との乖離を疑う必要がある。</p>
+
+  <div class="mstrip4 fade">
+    <div class="mc">
+      <div class="ml">U-3 公式失業率（2026年4月）</div>
+      <div class="mn amber">4.3%</div>
+      <div class="mb">横ばい / 失業者数は増加</div>
+      <div class="md">失業者の絶対数は134,000人増加して737万人。表面上は「良好」だが内実は悪化。</div>
+    </div>
+    <div class="mc panel">
+      <div class="ml">U-6 広義失業率（2026年4月）</div>
+      <div class="mn red">8.2%</div>
+      <div class="mb">前月8.0%から悪化</div>
+      <div class="md">パート就業者でフルタイム希望者・求職諦め者を含む。U-3との乖離3.9ポイント。</div>
+    </div>
+    <div class="mc">
+      <div class="ml">労働参加率（2026年4月）</div>
+      <div class="mn red">61.8%</div>
+      <div class="mb">2021年10月以来の最低水準</div>
+      <div class="md">「失業していない」のではなく「労働市場から退出している」人が増えている。</div>
+    </div>
+    <div class="mc panel">
+      <div class="ml">週次新規失業申請（5月7日）</div>
+      <div class="mn green">200,000</div>
+      <div class="mb">歴史的低水準を維持</div>
+      <div class="md">フロー（解雇件数）は低いが、ストック（失業者総数）は増加傾向。</div>
+    </div>
+  </div>
+
+  <div class="co a fade">
+    <h4>U-3とU-6の乖離が示すもの</h4>
+    本質は<strong>フルタイム就業者が2026年4月に226,000人減少し、参加率が4年ぶりの低水準に落ちたこと</strong>。ホルムズ危機による不確実性が企業の採用抑制につながれば、年内に失業率4.5〜4.8%への上昇シナリオが現実味を持つ。
+  </div>
+
+  <div class="jco fade">
+    <h4>▎ 日本との比較</h4>
+    日本の公式失業率は約2.5%と米国より遥かに低い。しかし問題の性質が異なる。日本はL字型（全体の低水準での停滞）、米国はK字型（上下の格差拡大）。日本の実質賃金は2026年3月に+1.0%と3ヶ月連続プラスとなったが、政府の価格抑制措置の効果を除くと依然マイナス圏。春闘での5%超賃上げの中小企業への波及が2026年後半の焦点。
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第2章 家計 -->
+<section id="household">
+<div class="wrap">
+  <div class="stag">第2章 / Household &amp; Consumer Credit</div>
+  <h2 class="stitle">家計・消費の持続可能性</h2>
+  <p class="slead">消費が「持ちこたえている理由」と「崩れる条件」を分けて理解する。下層の劣化は既に進行中。</p>
+
+  <div class="mstrip fade">
+    <div class="mc">
+      <div class="ml">家計総債務残高（Q1 2026）</div>
+      <div class="mn red">$18.8兆</div>
+      <div class="mb">NY連銀 ／ 過去最高水準</div>
+      <div class="md">内訳：住宅ローン$13.2兆、クレカ$1.25兆、自動車ローン$1.67兆、学生ローン$1.66兆。</div>
+    </div>
+    <div class="mc panel">
+      <div class="ml">クレジットカード残高（Q1 2026）</div>
+      <div class="mn amber">$1.25兆</div>
+      <div class="mb">前年比 +5.9%</div>
+      <div class="md">2021年のコロナ底値（$770B）から62%増。パンデミック前の記録を$325B上回る。</div>
+    </div>
+    <div class="mc">
+      <div class="ml">全債務延滞率（Q1 2026）</div>
+      <div class="mn red">4.8%</div>
+      <div class="mb">2017年以来の最高水準</div>
+      <div class="md">低所得層・若年層の延滞が主導。プライム借り手の劣化は軽微という二極化が鮮明。</div>
+    </div>
+  </div>
+
+  <div class="brow fade">
+    <div class="bcol">
+      <div class="bera">クレカ早期延滞移行率（年率）</div>
+      <h3>8.6%</h3>
+      <ul>
+        <li>Q4 2025の8.7%からわずかに改善</li>
+        <li>高止まり状態が継続</li>
+        <li>ガソリン高が追加的な押し上げ要因</li>
+      </ul>
+      <div class="blag a">注視：改善は一時的の可能性</div>
+    </div>
+    <div class="bcol">
+      <div class="bera">住宅ローン深刻延滞移行率</div>
+      <h3>1.5%</h3>
+      <ul>
+        <li>Q4 2025の1.4%から悪化</li>
+        <li>低所得地域・価格下落地域に集中</li>
+        <li>金利ロックイン問題で市場流動性が低下</li>
+      </ul>
+      <div class="blag r">悪化継続中</div>
+    </div>
+    <div class="bcol">
+      <div class="bera">学生ローン深刻延滞率（4Q移動）</div>
+      <h3>10.9%</h3>
+      <ul>
+        <li>Q4 2025の16.2%から大幅改善</li>
+        <li>返済猶予措置解除の影響が一巡</li>
+        <li>他債務への波及継続を監視</li>
+      </ul>
+      <div class="blag a">改善も要継続監視</div>
+    </div>
+  </div>
+
+  <div class="co r fade">
+    <h4>消費崩壊のトリガー条件</h4>
+    現在の消費持続の最大の支えは<strong>K字上層（資産保有者）の株高・資産効果による消費維持</strong>。米国では上位10%が株式資産の約93%を保有しており、S&P500が30〜40%調整した場合、上層の消費も急収縮する。現在進行中の「下層の信用崩壊」と「上層の資産効果消滅」が重なったとき、全体の消費が崩れる。TransUnion自身が「米国消費者信用はK字型に分断されている」と明言しており、この分断は2026年時点でより深まっている。
+  </div>
+
+  <div class="jco fade">
+    <h4>▎ 日本との比較</h4>
+    日本の家計は「低債務・高貯蓄」という真逆の構造。米国の「過剰消費（負債でファイナンス）」に対し、日本の問題は「過剰貯蓄（将来不安から消費しない）」。消費の脆弱性は「崩れる」よりも「上がらない」という性格。インフレが続くほど実質購買力が低下し、消費意欲がさらに低下するという悪循環が慢性化している。
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第3章 財政 -->
+<section id="fiscal">
+<div class="wrap">
+  <div class="stag">第3章 / Fiscal Risk</div>
+  <h2 class="stitle">財政・債務リスク</h2>
+  <p class="slead">利払い費の「自己増殖」と財政余地の消滅。次の危機への対応能力が構造的に失われつつある。</p>
+
+  <div class="mstrip4 fade">
+    <div class="mc">
+      <div class="ml">国債利払い費（FY2026 CBO推計）</div>
+      <div class="mn red">$1.0兆</div>
+      <div class="mb">週あたり$110億以上</div>
+      <div class="md">歳出第2位（Social Securityに次ぐ）。国防費・メディケアを上回った。</div>
+    </div>
+    <div class="mc panel">
+      <div class="ml">対歳入比（利払い費）</div>
+      <div class="mn red">18.5%</div>
+      <div class="mb">1991年以来の過去最高</div>
+      <div class="md">2036年には25.8%に達する見通し。50年平均は2.1%に対し現在3.3%（GDP比）。</div>
+    </div>
+    <div class="mc">
+      <div class="ml">公的債務残高（対公衆）</div>
+      <div class="mn red">$31.3兆</div>
+      <div class="mb">GDPを初めて超過</div>
+      <div class="md">第二次世界大戦直後以来、初めて公的債務がGDP（$31.2兆）を超えた。</div>
+    </div>
+    <div class="mc panel">
+      <div class="ml">利用可能な財政余地</div>
+      <div class="mn red">GDP比6%</div>
+      <div class="mb">2029年には1%以下に縮小</div>
+      <div class="md">リーマン時71%・コロナ時27%だった余地がほぼ消滅。2008年型対応は不可能。</div>
+    </div>
+  </div>
+
+  <div class="bfbox fade">
+    <div class="bfnum">
+      <div class="bn amber">$16.2兆</div>
+      <div class="bu">今後10年間の<br>累積利払い費（CBO推計）</div>
+    </div>
+    <div class="bftxt">
+      <h4>財政の「自己増殖」サイクルとOBBBAリスク</h4>
+      <p>高金利下で債務残高が増えるほど利払い費が増加し、それが赤字を拡大し、さらに債務を増やすという悪循環。CBO推計では2036年に利払い費が$2.1兆（GDP比4.6%）となり、50年平均の2倍超に達する。One Big Beautiful Bill Act（OBBBA）が施行された場合、2054年の債務対GDP比は183%に達する可能性。2025年5月にはムーディーズが米国格付けをAAAからAa1に引き下げ、S&P・フィッチに続き3社揃って格下げが完成した。</p>
+    </div>
+  </div>
+
+  <div class="co r fade">
+    <h4>「財政余地の消滅」が意味すること</h4>
+    次の景気後退・金融危機・パンデミックが来たとき、2008年型の大規模財政出動（$700Bのバンク救済＋景気刺激策）を繰り返す選択肢が事実上ない。これが今回のバブル崩壊が過去2回と質的に異なる最大の理由。財政赤字の削減には「永続的な歳出削減か増税でGDP比2.9%相当」が必要というNBERの試算は、政治的にほぼ不可能に近い。
+  </div>
+
+  <div class="jco fade">
+    <h4>▎ 日本との比較</h4>
+    日本のGDP比債務は約230%と米国の2倍近いが、構造が根本的に異なる。①円建て自国通貨建てで為替リスクなし、②約90%が国内保有（日銀・銀行・生保）で海外売圧がない、③経常収支黒字で資金調達を海外依存しない。しかしこの「安全弁」は侵食されつつある。10年JGB利回りは2.5%付近（1997年以来最高）まで上昇。高市政権の財政拡張路線がJGB利回りをさらに3%方向へ押し上げるリスクがある。
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第4章 金融 -->
+<section id="monetary">
+<div class="wrap">
+  <div class="stag">第4章 / Monetary Policy</div>
+  <h2 class="stitle">金融環境・金利・<br>スタグフレーションのジレンマ</h2>
+  <p class="slead">FRBは「利下げしたくてもできない」構造に入った。日本ではホルムズ危機がBOJの利上げを封じ込めている。</p>
+
+  <div class="mstrip4 fade">
+    <div class="mc">
+      <div class="ml">FF金利（2026年現在）</div>
+      <div class="mn amber">据え置き</div>
+      <div class="mb">1月・3月・4月と3回連続</div>
+      <div class="md">ホルムズ危機によるインフレ上振れで利下げ実施不可能。Goldman：景気後退確率25%に引き上げ。</div>
+    </div>
+    <div class="mc panel">
+      <div class="ml">米CPI（Goldman 2026年予測）</div>
+      <div class="mn red">2.9%</div>
+      <div class="mb">ホルムズ危機後の修正値</div>
+      <div class="md">従来予測から0.8pt上方修正。原油$140シナリオでは3.3%超の可能性。</div>
+    </div>
+    <div class="mc">
+      <div class="ml">BOJ政策金利（4月）</div>
+      <div class="mn teal">0.75%</div>
+      <div class="mb">30年ぶり高水準・6対3で据え置き</div>
+      <div class="md">FY2026コアインフレ予測を1.9%→2.8%に大幅上方修正。成長予測は1.0%→0.5%に下方修正。</div>
+    </div>
+    <div class="mc panel">
+      <div class="ml">10年JGB利回り（4月）</div>
+      <div class="mn red">2.50%付近</div>
+      <div class="mb">1997年以来の最高水準</div>
+      <div class="md">ING予測では年末に向けて3%接近の可能性。円キャリー解消トレードの引き金になりうる。</div>
+    </div>
+  </div>
+
+  <div class="co a fade">
+    <h4>スタグフレーションのジレンマ</h4>
+    FRBが直面するのは古典的なスタグフレーション構造。物価は上昇（利下げできない）、成長は鈍化（利下げしたい）という矛盾。Oxford Economicsの極端シナリオ（原油$140/バレル・2ヶ月継続）では米国でも「経済的膠着状態」が発生しうる。過去の利下げサイクルと異なり、ホルムズ危機という「供給側の要因」が加わることで、FRBの政策余地は著しく制約されている。
+  </div>
+
+  <div class="co b fade">
+    <h4>円キャリーリスク</h4>
+    USD/JPY（2026年5月）は157円付近で推移。しかしBOJが6月以降に利上げを実施した場合（ING予測：2026年に合計50bp）、円キャリー解消トレードが加速し、ドル円が150円方向へ急転換するリスクがある。これは日本株・米株の同時調整要因となり、特に円建て資産比率の高い投資家には最大の注目点。
+  </div>
+
+  <div class="jco fade">
+    <h4>▎ 日本との比較</h4>
+    日本の実質賃金は3ヶ月連続プラスで「賃金と物価の好循環」に向かうシグナルが出始めているが、エネルギー価格高で実質可処分所得はマイナス圧力下。BOJは「中東情勢由来の一時的インフレ」として利上げを一時保留しているが、タカ派3名が異論を示しており、情勢が落ち着けば7月以降の利上げ再開が焦点。高市政権の財政拡張とBOJの正常化路線の摩擦が2026年後半の最大の政治的リスク。
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第5章 AIバブル -->
+<section id="ai">
+<div class="wrap">
+  <div class="stag">第5章 / AI Bubble</div>
+  <h2 class="stitle">AIバブルの現在地と<br>崩壊シナリオ</h2>
+  <p class="slead">まだ膨張中だが天井圏に近づきつつある。崩壊したとき何が露呈するかを今のうちに整理しておく。</p>
+
+  <div class="mstrip4 fade">
+    <div class="mc">
+      <div class="ml">ハイパースケーラーCapEx（2026）</div>
+      <div class="mn amber">$650〜725B</div>
+      <div class="mb">前年比 +60〜67%</div>
+      <div class="md">Amazon $200B・Google $175B・Microsoft $145B・Meta $115〜135B</div>
+    </div>
+    <div class="mc panel">
+      <div class="ml">NVIDIA 株価（2026年5月12日）</div>
+      <div class="mn amber">$219.44</div>
+      <div class="mb">FY2026年収 $215.9B（+65% YoY）</div>
+      <div class="md">先行P/E 41〜56倍。純利益率約53%・粗利率約71%という異常な収益性。</div>
+    </div>
+    <div class="mc">
+      <div class="ml">S&P500上位10社集中度</div>
+      <div class="mn red">40%超</div>
+      <div class="mb">指数の「偽装多様化」</div>
+      <div class="md">一部大型株の崩壊が指数全体に波及する構造的リスク。</div>
+    </div>
+    <div class="mc panel">
+      <div class="ml">OpenAI 収益 vs 損失</div>
+      <div class="mn red">赤字継続</div>
+      <div class="mb">収益$13B / Q3損失推定$12B</div>
+      <div class="md">バリュエーション$730B（収益の56倍）。2030年まで黒字化なし見通し。</div>
+    </div>
+  </div>
+
+  <div class="co a fade">
+    <h4>Jevons効果と崩壊の境界線</h4>
+    AI推論コスト低下がかえって需要を拡大する「Jevons効果」が続く限り、CapEx膨張は合理化される。しかしこれは「AIが実際に生産性を向上させている」ことが前提。<strong>MITの2025年8月研究では、$30〜40Bの企業AI投資に対し95%の組織が測定可能なROIを得られていない</strong>という結果が出ている。ROIの証明失敗がJevons効果の終焉を招き、それがバブル崩壊のトリガーになる。
+  </div>
+
+  <div class="co b fade">
+    <h4>今回と過去バブルの最大の違い</h4>
+    ITバブル崩壊（2000）はFF金利を6.5%→1%に引き下げられた。住宅バブル崩壊（2008）はQE・ゼロ金利・$700Bの財政出動が使えた。今回は<strong>財政余地ほぼゼロ・スタグフレーション下での金融緩和困難</strong>という条件で崩壊を迎える可能性がある。これが「同じバブルではない」理由。
+  </div>
+
+  <div class="sub-h">過去バブルとの構造比較</div>
+
+  <table class="stable fade">
+    <thead>
+      <tr>
+        <th>比較軸</th>
+        <th>ITバブル崩壊（2000）</th>
+        <th>住宅バブル崩壊（2008）</th>
+        <th>AIバブル（2026年現在）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>バブルの核</td>
+        <td>ドットコム株・ナスダック</td>
+        <td>住宅・MBS・デリバティブ</td>
+        <td>AI株・CapEx・半導体</td>
+      </tr>
+      <tr>
+        <td>主要企業の黒字性</td>
+        <td><span class="tr">赤字多数</span></td>
+        <td><span class="ta">表面上は黒字</span></td>
+        <td><span class="tg">大手は黒字</span>、スタートアップは赤字</td>
+      </tr>
+      <tr>
+        <td>レバレッジの所在</td>
+        <td>株式（信用取引）</td>
+        <td>家計・金融機関</td>
+        <td><span class="tg">企業利益（負債依存は低い）</span></td>
+      </tr>
+      <tr>
+        <td>実体経済の状態</td>
+        <td>雇用好調・家計健全</td>
+        <td>雇用好調（崩壊直前まで）</td>
+        <td><span class="tr">下層家計は既に劣化中</span></td>
+      </tr>
+      <tr>
+        <td>崩壊トリガー</td>
+        <td>収益化失敗・ロック解除</td>
+        <td>サブプライム延滞連鎖</td>
+        <td>ROI証明失敗 / 供給ショック</td>
+      </tr>
+      <tr>
+        <td>政策対応余地</td>
+        <td><span class="tg">FF金利 6.5%→1%</span></td>
+        <td><span class="tg">QE・ゼロ金利投入</span></td>
+        <td><span class="tr">財政余地ほぼゼロ・高インフレ</span></td>
+      </tr>
+      <tr>
+        <td>崩壊後の雇用破壊</td>
+        <td>IT・通信セクター集中</td>
+        <td>金融・建設・小売全般</td>
+        <td><span class="ta">ホワイトカラー全般の可能性</span></td>
+      </tr>
+      <tr>
+        <td>高リスク期間</td>
+        <td>2000〜2002年</td>
+        <td>2007〜2009年</td>
+        <td><span class="tr">2026〜2028年（推定）</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sub-h">崩壊時に露呈する4つの脆弱性</div>
+
+  <div class="brow fade">
+    <div class="bcol">
+      <div class="bera">露呈リスク ①</div>
+      <h3>CapEx過剰投資の不良資産化</h3>
+      <ul>
+        <li>データセンター・GPU在庫が過剰化</li>
+        <li>テック企業の設備廃棄損・大量解雇が連鎖</li>
+        <li>2001年の光ファイバー過剰と同じ構図</li>
+        <li>NVIDIA株急落がS&P500全体を連鎖的に下押し</li>
+      </ul>
+    </div>
+    <div class="bcol cur">
+      <div class="bera">露呈リスク ②</div>
+      <h3>K字上層の資産効果消滅</h3>
+      <ul>
+        <li>株式の93%保有する上位10%の消費が急収縮</li>
+        <li>下層は既に劣化中→全体崩壊の連鎖が発動</li>
+        <li>S&P500が30〜40%調整で発動するシナリオ</li>
+        <li>K字を支えていた最後の柱が折れる</li>
+      </ul>
+    </div>
+    <div class="bcol">
+      <div class="bera">露呈リスク ③④</div>
+      <h3>政策手詰まり ＋ ドル信認</h3>
+      <ul>
+        <li>財政余地消滅→2008年型出動が不可</li>
+        <li>スタグフレーション下の利下げはインフレ再燃</li>
+        <li>財政悪化＋停滞＋緩和の三重苦でドル信認に圧力</li>
+        <li>BRICS決済・金購入加速・外貨準備多様化</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="co t fade">
+    <h4>崩壊タイムラインの想定</h4>
+    <strong>アーリーケース（2026年）：</strong>ホルムズ危機の長期化→スタグフレーション→企業収益悪化→AICapEx縮小判断が重なった場合、今年内の大規模調整もありうる。ただし現時点では停戦後の「余震フェーズ」で大崩壊は回避中。<br><br>
+    <strong>ベースケース（2027〜2028年）：</strong>ROIの証明がずれ込み、CapExが「成果なき投資」と市場に認定された時点が最もリスクの高いウィンドウ。ハイパースケーラーの決算で「AI投資の回収目途立たず」が開示されるタイミングがトリガーになる。アナリストも2026〜2028年を最高リスク期間と特定。
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第6章 ホルムズ -->
+<section id="hormuz">
+<div class="wrap">
+  <div class="stag">第6章 / Hormuz Crisis</div>
+  <h2 class="stitle">ホルムズ危機：<br>史上最大の供給ショック</h2>
+  <p class="slead">2026年2月28日に始まったこの危機は、K字経済のすべての脆弱性を同時に悪化させる触媒として機能している。</p>
+
+  <div class="hbanner fade">
+    <div class="hdot"></div>
+    <div>
+      <div class="hbl">ACTIVE RISK ／ 2026年2月28日〜現在進行中</div>
+      <div class="hbv">停戦（4月8日）後も通行量は戦前比大幅減少が継続中。完全回復は未達。</div>
+    </div>
+  </div>
+
+  <div class="mstrip4 fade">
+    <div class="mc">
+      <div class="ml">世界石油供給の遮断規模</div>
+      <div class="mn red">20%</div>
+      <div class="mb">IEA「史上最大の供給危機」</div>
+      <div class="md">1973年・1979年のショックの2〜3倍の規模。</div>
+    </div>
+    <div class="mc panel">
+      <div class="ml">ブレント原油ピーク価格（3月）</div>
+      <div class="mn red">$126</div>
+      <div class="mb">4年ぶりの$100超えを記録</div>
+      <div class="md">月間上昇率として史上最大。停戦後も$90〜100圏で高止まり。</div>
+    </div>
+    <div class="mc">
+      <div class="ml">世界GDP押し下げ効果（Q2）</div>
+      <div class="mn red">−2.9%</div>
+      <div class="mb">ダラスFED推計・年率換算</div>
+      <div class="md">WTI価格を$98/バレルに押し上げ。Oxford：$140で世界経済に「限界点」。</div>
+    </div>
+    <div class="mc panel">
+      <div class="ml">米ガソリン価格上昇（全土平均）</div>
+      <div class="mn red">+$1.16</div>
+      <div class="mb">/ガロン・開戦以来の上昇幅</div>
+      <div class="md">低所得層の実質購買力を直撃。Goldman：米CPI予測を+0.8ptに上方修正。</div>
+    </div>
+  </div>
+
+  <div class="co r fade">
+    <h4>投資への示唆</h4>
+    ホルムズ危機は米国経済において「スタグフレーションの触媒」として機能する。FRBの利下げを封じ込めながら実体経済を冷やすという最悪の組み合わせ。日本はエネルギーの95%を中東から輸入する構造上、より直接的なダメージを受ける。<strong>エネルギー関連株（米国産油企業・カナダオイルサンド）は逆張り有望。</strong>戦争の継続・再発リスクが残る限り、この「スタグフレーション触媒」リスクはサブシナリオとして保持する。
+  </div>
+
+  <div class="jco fade">
+    <h4>▎ 日本への影響</h4>
+    日本の原油輸入の約95%が中東産で、そのほぼすべてがホルムズ海峡を経由。日本は1次的ショックを備蓄で緩和できるが、長期化すれば製造業・運輸・農業（肥料）への広範な影響が顕在化する。BOJが「エネルギー由来インフレ」を見過ごす判断を続ける限り、円安継続→輸入インフレという二重苦が家計を圧迫する。
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第7章 K字脆弱性 -->
+<section id="kshape">
+<div class="wrap">
+  <div class="stag">第7章 / K-Shaped Vulnerability</div>
+  <h2 class="stitle">K字構造の脆弱性マップと<br>崩壊経路</h2>
+  <p class="slead">K字型経済の本質は「平均値が現実を隠す」こと。崩壊は連鎖する──下層から始まり上層へ波及する経路を把握する。</p>
+
+  <div class="bb-grid fade">
+    <div class="bb-col bull">
+      <div class="bc-head">▲ 上昇する上層（資産保有者）</div>
+      <div class="bb-item"><div class="bi-name">資産効果</div>株式・不動産の含み益が消費を支える。上位10%が株式の93%を保有。</div>
+      <div class="bb-item"><div class="bi-name">高収入職</div>テック・金融・医療系のホワイトカラーは現時点でAIの恩恵を受ける側。</div>
+      <div class="bb-item"><div class="bi-name">信用優位</div>プライム借り手は延滞率の悪化が軽微。金融アクセスも良好。</div>
+      <div class="bb-item"><div class="bi-name">インフレ耐性</div>資産保有者はインフレに対して相対的に耐性が高い（実物資産・株式が盾になる）。</div>
+    </div>
+    <div class="bb-col bear">
+      <div class="bc-head">▼ 下降する下層（債務依存層）</div>
+      <div class="bb-item"><div class="bi-name">信用劣化進行中</div>サブプライム層の延滞率が急上昇。クレカ・自動車ローンの支払い困難が増加。</div>
+      <div class="bb-item"><div class="bi-name">ガソリン高の直撃</div>低所得層ほど可処分所得に占めるガソリン比率が高く、ホルムズ危機の影響を直接受ける。</div>
+      <div class="bb-item"><div class="bi-name">BNPL・多重債務</div>後払いサービスの残高拡大が「見えない負債」として潜在。信用スコアに反映されにくい。</div>
+      <div class="bb-item"><div class="bi-name">フルタイム減少</div>フルタイム就業者数の減少とパート化・複数就業の増加が進行。実質所得が低下。</div>
+    </div>
+  </div>
+
+  <div class="co r fade">
+    <h4>崩壊の連鎖シナリオ</h4>
+    最も蓋然性の高い崩壊経路：①下層の信用崩壊（現在進行中）→ ②消費の縮小 → ③企業収益の悪化 → ④上層の資産価格調整 → ⑤資産効果消滅 → ⑥上層の消費も崩壊 → ⑦全体的な消費不況へ。<br><br>
+    現在は①が進行し②の入口にいる段階。③〜④に至るトリガーはAIバブル調整・ホルムズ再閉鎖・信用スプレッド拡大のいずれか、またはその複合。
+  </div>
+
+  <div class="scgrid fade">
+    <div class="sccard">
+      <div class="sctag base">▌ ベースケース（確率 約60%）</div>
+      <h4>緩やかな劣化・軟着陸失敗</h4>
+      <ul>
+        <li>2027〜28年にかけて失業率5%超に上昇</li>
+        <li>AICapExの縮小→企業収益の下方修正</li>
+        <li>S&P500が20〜30%調整（緩やかに）</li>
+        <li>FRBが利下げ開始もインフレ再燃で制約</li>
+        <li>BTC：2028〜29年の半減期後サイクルで回復</li>
+      </ul>
+    </div>
+    <div class="sccard">
+      <div class="sctag bear">▌ 悲観ケース（確率 約25%）</div>
+      <h4>複合ショックによる急崩壊</h4>
+      <ul>
+        <li>ホルムズ再閉鎖＋AI失望決算が同時発生</li>
+        <li>信用スプレッドが急拡大→金融機能に障害</li>
+        <li>S&P500が40〜50%調整（2008年級）</li>
+        <li>財政余地なし→政策対応が後手に回る</li>
+        <li>ドル信認低下・金/BTC急騰局面</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 終章 投資シグナル -->
+<section id="signals">
+<div class="wrap">
+  <div class="stag">終章 / Investment Signals</div>
+  <h2 class="stitle">投資判断シグナルボード<br>2026年上半期</h2>
+  <p class="slead">赤・橙・緑の3段階で現状を整理する。次の6ヶ月で注視すべきトリガーも明記。</p>
+
+  <div class="sigboard fade">
+    <div class="sigrow">
+      <div class="sigdot red"></div>
+      <div class="sig-name">財政持続可能性</div>
+      <div class="sig-val">利払い対歳入比18.5%・財政余地GDP比6%・公的債務がGDP超え</div>
+      <span class="sig-badge red">危険水域</span>
+    </div>
+    <div class="sigrow">
+      <div class="sigdot red"></div>
+      <div class="sig-name">ホルムズ地政学</div>
+      <div class="sig-val">停戦後も通行回復未達・戦争継続・再閉鎖リスク潜在</div>
+      <span class="sig-badge red">警戒継続</span>
+    </div>
+    <div class="sigrow">
+      <div class="sigdot red"></div>
+      <div class="sig-name">下層家計信用</div>
+      <div class="sig-val">全債務延滞4.8%（2017年来最高）・低所得層に集中</div>
+      <span class="sig-badge red">劣化進行中</span>
+    </div>
+    <div class="sigrow">
+      <div class="sigdot amber"></div>
+      <div class="sig-name">AIバブル成熟度</div>
+      <div class="sig-val">CapEx$650〜725B・ROI証明未達・S&P500集中度40%超</div>
+      <span class="sig-badge amber">膨張継続・天井圏接近</span>
+    </div>
+    <div class="sigrow">
+      <div class="sigdot amber"></div>
+      <div class="sig-name">米国雇用市場</div>
+      <div class="sig-val">U-6 8.2%・参加率4年ぶり低水準・フルタイム226K減</div>
+      <span class="sig-badge amber">質の劣化継続</span>
+    </div>
+    <div class="sigrow">
+      <div class="sigdot amber"></div>
+      <div class="sig-name">FRB政策余地</div>
+      <div class="sig-val">スタグフレーション下で3回連続据え置き・利下げ凍結状態</div>
+      <span class="sig-badge amber">手詰まり</span>
+    </div>
+    <div class="sigrow">
+      <div class="sigdot amber"></div>
+      <div class="sig-name">日本BOJ正常化</div>
+      <div class="sig-val">0.75%据え置き・JGB利回り2.5%（1997年以来）・6月利上げ観測</div>
+      <span class="sig-badge amber">正常化継続</span>
+    </div>
+    <div class="sigrow">
+      <div class="sigdot amber"></div>
+      <div class="sig-name">円キャリーリスク</div>
+      <div class="sig-val">USD/JPY 157付近・日米金利差縮小遅延・急転換リスク潜在</div>
+      <span class="sig-badge amber">注視</span>
+    </div>
+    <div class="sigrow">
+      <div class="sigdot green"></div>
+      <div class="sig-name">公式失業率・申請件数</div>
+      <div class="sig-val">U-3 4.3%・週次新規申請200K（歴史的低水準）</div>
+      <span class="sig-badge green">表面上は安定</span>
+    </div>
+  </div>
+
+  <div class="co a fade">
+    <h4>次の6ヶ月で注視すべきトリガー（2026年6〜12月）</h4>
+    ① ハイパースケーラー各社Q2・Q3決算における「AI CapEx ROI」への言及変化<br>
+    ② ホルムズ海峡の実質的な通航回復状況と原油価格の方向性<br>
+    ③ FRBの次の政策変更タイミングと理由（インフレ優先か雇用悪化優先か）<br>
+    ④ BOJ利上げ判断（7月が焦点）と円キャリーへの影響<br>
+    ⑤ クレカ・自動車ローンのQ2 2026延滞率データ（NY連銀、8月発表予定）
+  </div>
+
+  <div class="co t fade">
+    <h4>BTCサブ戦略との接続</h4>
+    2026年9月からのDCA開始計画は現在のリスク環境において引き続き合理的。ただし「悲観ケース」（ホルムズ再閉鎖＋AI失望決算の同時発生）が発生した場合は、DCA開始を遅らせ「クラッシュ後の底打ち確認」を待つ選択肢も持っておくこと。ドル信認低下フェーズ到来はBTCにとって最も強力な追い風シナリオ。
+  </div>
+
+  <div class="sub-h">次回2026年12月レポート 確認リスト</div>
+
+  <div class="checklist fade">
+    <div class="cl-head">CHECKLIST ／ 2026年12月定点観測</div>
+    <div class="cl-item"><div class="cl-cat">雇用</div>U-3・U-6・複数就業者比率・フルタイム比率・労働参加率</div>
+    <div class="cl-item"><div class="cl-cat">家計</div>クレカ延滞率・NY連銀Q3報告・超過貯蓄残・自動車ローン延滞</div>
+    <div class="cl-item"><div class="cl-cat">財政</div>利払い対歳入比・TGA残高・外国保有米国債・格付け動向</div>
+    <div class="cl-item"><div class="cl-cat">市場</div>HYスプレッド・MAG7集中度・CAPE・信用スプレッド</div>
+    <div class="cl-item"><div class="cl-cat">AI</div>各社決算でのCapEx ROI言及・NVIDIA売上成長率・スタートアップ倒産数</div>
+    <div class="cl-item"><div class="cl-cat">ホルムズ</div>通行量回復度・原油価格・イラン情勢・戦争の継続状況</div>
+    <div class="cl-item"><div class="cl-cat">日本</div>BOJ政策金利・10年JGB・実質賃金・USD/JPY・高市政権の財政方針</div>
+  </div>
+</div>
+</section>
+
+</main>
+
+<div class="disc">
+  米国K字型経済・構造的脆弱性レポート 2026年上半期版　／　次回更新：2026年12月<br>
+  主要データソース：BLS・NY連銀・ダラスFED・CBO・BOJ・TransUnion・PGPF・Goldman Sachs・Oxford Economics<br>
+  本レポートは個人的な投資分析目的であり、投資助言ではありません。投資判断はご自身の責任で行ってください。
+</div>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

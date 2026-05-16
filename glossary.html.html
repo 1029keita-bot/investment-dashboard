@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>投資用語集 — プロ水準辞典</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FDF6EE;--cream2:#F7EDE0;--cream3:#EFE0CC;
+  --amber-light:#FAE5C4;--amber:#E8A055;--amber-dark:#C4782A;
+  --brown:#7A4F2D;--brown-dark:#4A2E18;
+  --rust:#C25A2A;--rust-light:#F5E4D8;
+  --gold-light:#FBF0D8;
+  --red-soft:#C24A3A;--red-bg:#FAE8E4;
+  --green-warm:#6B8A4E;--green-bg:#EAF0E2;
+  --teal-warm:#4A7A6D;--teal-bg:#E2EDE9;
+  --text-main:#3A2510;--text-sub:#7A5A3A;--text-hint:#A8845E;
+  --border:rgba(122,79,45,0.15);--border-med:rgba(122,79,45,0.28);
+  --shadow-hover:0 6px 24px rgba(122,79,45,0.15);
+  --radius:10px;--radius-lg:14px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--text-main);min-height:100vh;line-height:1.7;-webkit-text-size-adjust:100%;}
+
+/* Header */
+.header{background:var(--brown-dark);padding:1.75rem 1.25rem 1.5rem;text-align:center;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,0.02) 20px,rgba(255,255,255,0.02) 21px);}
+.header-title{font-family:'Noto Serif JP',serif;font-size:22px;font-weight:600;color:#FBF0D8;letter-spacing:.05em;position:relative;}
+.header-sub{font-size:11px;color:var(--amber);margin-top:5px;letter-spacing:.1em;position:relative;}
+.header-count{font-size:11px;color:rgba(251,240,216,0.45);margin-top:3px;position:relative;}
+
+/* Sticky bar */
+.bar{background:var(--cream2);border-bottom:1px solid var(--border);padding:.75rem 1rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(122,79,45,0.08);}
+
+/* Search */
+.search-wrap{display:flex;align-items:center;gap:8px;background:white;border:1px solid var(--border-med);border-radius:var(--radius);padding:0 12px;margin-bottom:8px;}
+.search-wrap svg{color:var(--text-hint);flex-shrink:0;width:15px;height:15px;}
+.search-wrap input{flex:1;border:none;outline:none;background:none;font-family:'Noto Sans JP',sans-serif;font-size:14px;color:var(--text-main);padding:9px 0;min-width:0;}
+.search-wrap input::placeholder{color:var(--text-hint);}
+.result-count{font-size:11px;color:var(--text-hint);flex-shrink:0;white-space:nowrap;}
+
+/* Sort row */
+.sort-row{display:flex;align-items:center;gap:6px;margin-bottom:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.sort-row::-webkit-scrollbar{display:none;}
+.sort-label{font-size:11px;color:var(--text-hint);flex-shrink:0;}
+.sort-btn{flex-shrink:0;padding:4px 11px;font-family:'Noto Sans JP',sans-serif;font-size:11px;border:1px solid var(--border-med);border-radius:20px;background:white;color:var(--text-sub);cursor:pointer;transition:all .15s;white-space:nowrap;}
+.sort-btn:hover{background:var(--amber-light);border-color:var(--amber);}
+.sort-btn.on{background:var(--amber-dark);color:white;border-color:var(--amber-dark);}
+
+/* Category scroll */
+.cat-scroll{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:1px;-webkit-overflow-scrolling:touch;}
+.cat-scroll::-webkit-scrollbar{display:none;}
+.cat-btn{flex-shrink:0;padding:4px 11px;font-family:'Noto Sans JP',sans-serif;font-size:11px;border:1px solid var(--border-med);border-radius:20px;background:white;color:var(--text-sub);cursor:pointer;transition:all .15s;white-space:nowrap;}
+.cat-btn:hover{background:var(--amber-light);border-color:var(--amber);}
+.cat-btn.on{background:var(--brown);color:white;border-color:var(--brown);}
+
+/* Main content */
+.main{max-width:820px;margin:0 auto;padding:1.25rem .875rem 4rem;}
+.term-list{display:flex;flex-direction:column;gap:7px;}
+
+/* Group header */
+.grp-hdr{font-size:10px;font-weight:500;color:var(--text-hint);letter-spacing:.1em;padding:10px 4px 4px;border-bottom:1px solid var(--border);margin-bottom:3px;}
+
+/* Card */
+.card{background:white;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:box-shadow .2s;}
+.card.open{border-color:var(--amber);}
+.card-head{display:flex;align-items:flex-start;gap:8px;padding:11px 13px;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;}
+.card-head:active{background:var(--cream);}
+.card-names{flex:1;min-width:0;}
+.card-name{font-size:13.5px;font-weight:500;color:var(--text-main);line-height:1.4;}
+.card-en{font-size:10.5px;color:var(--text-hint);margin-top:1px;font-family:'DM Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.badges{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;flex-shrink:0;max-width:160px;margin-top:1px;}
+.badge{font-size:10px;padding:2px 6px;border-radius:9px;white-space:nowrap;font-weight:500;line-height:1.4;}
+.b-must{background:#FAE8E4;color:#8A2A1A;}
+.b-imp{background:var(--amber-light);color:var(--amber-dark);}
+.b-mid{background:var(--cream3);color:var(--brown);}
+.b-adv{background:#EDE8FA;color:#4A3A7A;}
+.b-new{background:var(--green-bg);color:var(--green-warm);}
+.bc-積立{background:var(--green-bg);color:#3A6030;}
+.bc-バリュ{background:#E8F0FA;color:#2A4A7A;}
+.bc-企業{background:var(--teal-bg);color:var(--teal-warm);}
+.bc-マクロ{background:#EDE8FA;color:#4A3A7A;}
+.bc-デリバ{background:var(--rust-light);color:var(--rust);}
+.bc-テクニ{background:#E8F0FA;color:#2A4A7A;}
+.bc-為替{background:var(--teal-bg);color:var(--teal-warm);}
+.bc-暗号{background:var(--gold-light);color:#7A5A10;}
+.bc-心理{background:var(--cream3);color:var(--brown);}
+.bc-リスク{background:var(--red-bg);color:var(--red-soft);}
+.bc-オルタ{background:var(--amber-light);color:var(--amber-dark);}
+.bc-アノ{background:#FBF0D8;color:#7A5A10;}
+.bc-格言{background:#F5E8FA;color:#5A2A7A;}
+.bc-トレ{background:#E4F5F0;color:#1A6050;}
+.chevron{width:16px;height:16px;flex-shrink:0;color:var(--text-hint);transition:transform .2s;margin-top:3px;}
+.card.open .chevron{transform:rotate(180deg);}
+
+/* Card body */
+.card-body{display:none;border-top:1px solid var(--border);padding:0 13px 13px;}
+.card.open .card-body{display:block;}
+.sec{margin-top:12px;}
+.sec-label{font-size:10px;font-weight:500;color:var(--text-hint);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;}
+.sec-text{font-size:13px;color:var(--text-sub);line-height:1.8;}
+.formula{font-family:'DM Mono',monospace;font-size:11.5px;background:var(--cream2);border:1px solid var(--border);border-radius:var(--radius);padding:9px 11px;color:var(--text-main);line-height:1.7;white-space:pre-wrap;margin-top:5px;overflow-x:auto;}
+.vs-box{background:var(--teal-bg);border-radius:var(--radius);padding:8px 11px;margin-top:9px;font-size:12px;color:#2A5A4A;line-height:1.75;}
+.vs-box strong{color:var(--teal-warm);}
+.warn-box{background:var(--amber-light);border-radius:var(--radius);padding:8px 11px;margin-top:9px;font-size:12px;color:#6A3A10;line-height:1.75;}
+.warn-box strong{color:var(--amber-dark);}
+.limit-box{background:var(--red-bg);border-radius:var(--radius);padding:8px 11px;margin-top:9px;font-size:12px;color:#6A1A10;line-height:1.75;}
+.limit-box strong{color:var(--red-soft);}
+.quote-box{background:var(--gold-light);border-left:3px solid var(--amber);border-radius:0 var(--radius) var(--radius) 0;padding:10px 12px;margin-top:10px;font-size:13px;color:var(--brown-dark);line-height:1.8;font-style:italic;}
+.related-row{margin-top:9px;font-size:12px;color:var(--text-hint);}
+.rel-link{color:var(--amber-dark);cursor:pointer;text-decoration:underline;text-decoration-color:rgba(196,120,42,0.35);margin-right:7px;display:inline-block;line-height:1.8;}
+
+.empty{text-align:center;padding:3rem 1rem;color:var(--text-hint);font-size:14px;}
+.footer{text-align:center;padding:1.25rem;font-size:11px;color:var(--text-hint);border-top:1px solid var(--border);}
+
+@media(min-width:600px){
+  .header-title{font-size:26px;}
+  .card-name{font-size:14px;}
+  .card-head{padding:13px 16px;}
+  .card-body{padding:0 16px 16px;}
+  .main{padding:1.5rem 1rem 4rem;}
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-title">投資用語集</div>
+  <div class="header-sub">PRO-LEVEL INVESTMENT GLOSSARY</div>
+  <div class="header-count" id="total-count"></div>
+</div>
+<div class="bar">
+  <div class="search-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="q" placeholder="用語を検索（PER、格言、アノマリーなど）">
+    <span class="result-count" id="cnt"></span>
+  </div>
+  <div class="sort-row">
+    <span class="sort-label">並び順：</span>
+    <button class="sort-btn on" id="s-imp" onclick="setSort('imp')">重要度</button>
+    <button class="sort-btn" id="s-kana" onclick="setSort('kana')">あいうえお</button>
+    <button class="sort-btn" id="s-cat" onclick="setSort('cat')">カテゴリ</button>
+  </div>
+  <div class="cat-scroll" id="cats"></div>
+</div>
+<div class="main">
+  <div class="term-list" id="list"></div>
+  <div class="empty" id="empty" style="display:none;">一致する用語が見つかりませんでした。</div>
+</div>
+<div class="footer" id="footer-txt"></div>
+<script>
+const TERMS=[
+/* ========== 基礎 ========== */
+{id:"inflation",name:"インフレ（インフレーション）",en:"Inflation",cat:"マクロ経済",imp:"基礎",impN:1,kana:"いんふれ",
+def:"物価が継続的に上昇する現象。通貨の実質的な購買力が下がる。需要超過（ディマンドプル）と供給不足・コスト上昇（コストプッシュ）の2種類があり、対処法が異なる。エネルギー価格上昇は典型的なコストプッシュ型。",
+formula:"インフレ率 = (今年のCPI − 前年のCPI) ÷ 前年のCPI × 100\nFRBのターゲット：2%前後",
+warn:"名目リターンとインフレ率の差が「実質リターン」。インフレ5%の環境で株が年3%上昇しても実質マイナス2%になる。",
+vs:"【ディマンドプル vs コストプッシュ】ディマンドプル＝需要過多が原因（金利引き上げで抑制できる）/ コストプッシュ＝供給側が原因（金利引き上げでは解決しにくく景気を冷やすだけになるリスク）",
+related:["デフレ","スタグフレーション","CPI","金利","PCEデフレーター"]},
+
+{id:"deflation",name:"デフレ（デフレーション）",en:"Deflation",cat:"マクロ経済",imp:"基礎",impN:1,kana:"でふれ",
+def:"物価が継続的に下落する現象。「今買わず待てば安くなる」という心理が需要を抑制し、企業収益悪化→賃下げ→さらに需要減というデフレスパイラルに陥るリスクがある。日本が1990年代〜2010年代に経験した構造問題。",
+warn:"デフレ期は現金の実質価値が上昇するため株・不動産より現金保有が有利になりやすい。",
+vs:"【インフレ vs デフレ vs スタグフレーション】インフレ＝景気過熱・物価上昇 / デフレ＝景気停滞・物価下落 / スタグフレーション＝景気停滞+物価上昇（最悪の組み合わせ）",
+related:["インフレ","スタグフレーション","金利"]},
+
+{id:"gdp",name:"GDP（国内総生産）",en:"Gross Domestic Product",cat:"マクロ経済",imp:"基礎",impN:1,kana:"じーでぃーぴー",
+def:"一定期間内に国内で生産されたすべての財・サービスの付加価値の合計。経済規模を表す最も基本的な指標。2四半期連続マイナスが景気後退の定義として使われることが多い。",
+formula:"GDP = 消費 + 投資 + 政府支出 + 純輸出\n年率2%以上：良好 / 0〜2%：停滞 / マイナス：景気後退",
+related:["インフレ","バフェット指数","スタグフレーション"]},
+
+{id:"interest_rate",name:"金利（政策金利・長短金利）",en:"Interest Rate / Fed Funds Rate",cat:"マクロ経済",imp:"基礎",impN:1,kana:"きんり",
+def:"お金を貸す対価として支払われる利率。FRBが設定する政策金利（FF金利）は短期金利の基準。長期金利（10年国債利回り）は市場が決定し、将来のインフレ・成長期待を反映する。株式のバリュエーションに直接影響する。",
+formula:"DCF理論：将来利益 ÷ 金利（割引率） = 現在価値\n金利↑ → 割引率↑ → 理論株価↓（特に高PER・成長株に影響大）",
+warn:"短期金利＞長期金利（逆イールド）は景気後退のシグナルとして知られる。過去の逆イールドから平均12〜18ヶ月後に景気後退が訪れている。",
+related:["インフレ","ERP","逆イールド","デュレーション","TIPS"]},
+
+{id:"per",name:"PER（株価収益率）",en:"Price-to-Earnings Ratio",cat:"バリュエーション",imp:"基礎",impN:1,kana:"ぴーいーあーる",
+def:"株価がEPSの何倍かを示す指標。「今の利益水準が続くとすれば何年で株価を回収できるか」を表す。過去12ヶ月実績EPSを使うものをトレーリングPER、予測EPSを使うものをフォワードPERと呼ぶ。S&P500の歴史的平均は約16〜17倍。",
+formula:"PER = 株価 ÷ EPS（過去12ヶ月実績）\n歴史的平均：16〜17倍 / 現在S&P500：約24〜27倍",
+warn:"景気後退期はEPSが急落してPERが急上昇する「不況高PER」現象が起きる。",
+vs:"【トレーリングPER vs フォワードPER vs CAPE】トレーリング＝過去実績（客観的だが遅行）/ フォワード＝将来予測（先行するが楽観バイアスあり）/ CAPE＝10年平均（最も信頼性高い長期指標）",
+related:["フォワードPER","CAPE","EPS","益利回り","PBR","PEGレシオ"]},
+
+{id:"eps",name:"EPS（1株あたり利益）",en:"Earnings Per Share",cat:"バリュエーション",imp:"基礎",impN:1,kana:"いーぴーえす",
+def:"企業の純利益を発行済み株式数で割った数値。単体では意味が薄く、PER（倍率）や益利回り（%）に変換して初めて割高割安の判断材料になる。",
+formula:"EPS = 純利益 ÷ 発行済み株式数\n例：純利益1,000億円、株式1億株 → EPS 1,000円",
+warn:"GAAPとNon-GAAP（調整後）の2種類がある。Non-GAAPは実態より20〜30%水増しになりやすい。自社株買いでも分母が減りEPSが上昇する。",
+related:["EPS成長率","益利回り","PER","フォワードPER","FCF"]},
+
+{id:"dca",name:"DCA（ドルコスト平均法）",en:"Dollar Cost Averaging",cat:"積立・購入戦術",imp:"基礎",impN:1,kana:"どるこすとへいきんほう",
+def:"一定期間ごとに一定金額を機械的に購入し続ける積立手法。価格が高い時は少量、安い時は多量を自動的に購入するため平均取得コストを平準化できる。感情的な売買を排除できる点が最大の利点。",
+formula:"平均取得コスト = 投資総額 ÷ 累計購入株数\n例：毎月5万円 × 12ヶ月 = 60万円を12回に分割",
+warn:"上昇トレンドでは一括投資の方がリターンが高い。DCAは「下落への保険」であり、期待リターン最大化手法ではない。",
+vs:"【DCA vs 一括投資 vs VA】Vanguard調査では3分の2の局面で一括投資がDCAに勝る。ただしリスク許容度が低い場合・高値圏で買う場合はDCAが心理的に合理的。",
+related:["バリュー平均法","一括投資","200DMA乖離率戦略","TAA"]},
+
+{id:"risk_on",name:"リスクオン / リスクオフ",en:"Risk-on / Risk-off",cat:"市場心理・アノマリー",imp:"基礎",impN:1,kana:"りすくおん",
+def:"市場全体の「空気感」を表す概念。リスクオンは株・コモディティ・新興国資産を積極的に買う局面。リスクオフは不安・恐怖が高まり、金・国債・円などの安全資産に逃避する局面。",
+warn:"リスクオフ時は通常は無相関の資産が同時下落する「相関の収束」が起きる。分散投資が機能しにくくなる局面。",
+related:["VIX","キャリートレード・巻き戻し","金","分散投資・相関係数"]},
+
+{id:"drawdown",name:"ドローダウン / 最大ドローダウン",en:"Drawdown / Maximum Drawdown",cat:"リスク管理",imp:"基礎",impN:1,kana:"どろーだうん",
+def:"高値から現在価格までの下落幅（%）。最大ドローダウン（MDD）は特定期間中の最悪の下落幅。「この投資戦略に自分が耐えられるか」を事前に確認するための最重要リスク指標。",
+formula:"ドローダウン = (現在価格 − 直近高値) ÷ 直近高値 × 100\n例：高値100万円 → 現在70万円 → ドローダウン −30%",
+warn:"「自分が耐えられる最大ドローダウン」を先に決め、そこから逆算して投資額を設計することが重要。狼狽売りが最もリターンを損ねるパターン。",
+related:["シャープレシオ","レバレッジ","DCA","分散投資・相関係数"]},
+
+{id:"diversification",name:"分散投資 / 相関係数",en:"Diversification / Correlation",cat:"リスク管理",imp:"基礎",impN:1,kana:"ぶんさんとうし",
+def:"複数の資産に分けて投資することでリスクを軽減する手法。相関係数が低い資産を組み合わせることで全体の変動を抑えられる。",
+formula:"相関係数：−1（逆の動き）〜0（無相関）〜+1（同じ動き）\n株＋金：比較的低相関 / 株＋BTC：高相関（リスクオフ時は特に）",
+warn:"平時は無相関でも危機時は株・BTC・コモディティが同時下落する「相関の収束」が起きる。",
+related:["リスクオン/オフ","ドローダウン","シャープレシオ","金"]},
+
+/* ========== 重要 ========== */
+{id:"cape",name:"CAPE（シラーPER）",en:"Cyclically Adjusted P/E",cat:"バリュエーション",imp:"重要",impN:2,kana:"けいぷ",
+def:"過去10年の実質（インフレ調整済み）平均EPSで割ったPER。景気サイクルの波を均すことで長期の割高割安を判断できる。ノーベル賞経済学者シラーが考案。現在約39〜41倍は1929年・2000年と同水準。",
+formula:"CAPE = 現在株価 ÷ 過去10年インフレ調整済みEPS平均\n歴史的平均：約17倍 / 1929年ピーク：32倍 / 2000年ピーク：44倍",
+limit:"タイミングを教えてくれない。1990年代後半はCAPE30倍超でも4年間上昇が続いた。「割高かどうか」は示すが「いつ下がるか」は不明。",
+related:["PER","フォワードPER","バフェット指数","ERP","益利回り"]},
+
+{id:"erp",name:"ERP（株式リスクプレミアム）",en:"Equity Risk Premium",cat:"バリュエーション",imp:"重要",impN:2,kana:"いーあーるぴー",
+def:"株式投資の期待リターンから無リスク金利（国債利回り）を引いた「リスクを取る見返り」。ERPがマイナスは「リスクを取っても国債より期待リターンが低い」という異常事態。",
+formula:"ERP = 益利回り(1÷CAPE) − 10年国債利回り\n現在（2026年5月）：2.5% − 4.3% ≈ −1.8%（異常なマイナス）",
+warn:"ERPマイナスは「今すぐ売れ」のシグナルではない。「他に行く場所がない」資金が株に残留し続けることもある。",
+related:["CAPE","益利回り","バフェット指数","金利"]},
+
+{id:"buffett",name:"バフェット指数",en:"Buffett Indicator",cat:"バリュエーション",imp:"重要",impN:2,kana:"ばふぇっとしすう",
+def:"株式市場全体の時価総額をGDPで割った指標。バフェット自身が「200%超は火遊び」と発言したことで有名。現在は200〜228%と史上最高水準。",
+formula:"バフェット指数 = 株式時価総額 ÷ GDP × 100\n100%：中立 / 150%超：割高 / 200%超：極端な割高",
+limit:"大企業の売上の多くが海外であるためGDP比較の有効性が低下しているという反論がある。",
+related:["CAPE","ERP","益利回り"]},
+
+{id:"yield",name:"益利回り（株式益回り）",en:"Earnings Yield",cat:"バリュエーション",imp:"重要",impN:2,kana:"えきりまわり",
+def:"EPSを株価で割り%で表したもの。「株式投資で期待できるリターン」の目安。国債利回りと比較してERPを計算することで株式投資の相対的な魅力度を判断できる。PERの逆数。",
+formula:"益利回り(%) = 1 ÷ PER × 100\nS&P500（2026年5月）：PER約40倍 → 益利回り約2.5%",
+limit:"インフレ調整されていない名目値。インフレ高進時は名目益利回りが高く見えても実質リターンは低下する。",
+related:["EPS","PER","ERP","CAPE","配当利回り"]},
+
+{id:"stagflation",name:"スタグフレーション",en:"Stagflation",cat:"マクロ経済",imp:"重要",impN:2,kana:"すたぐふれーしょん",
+def:"景気停滞（Stagnation）＋インフレ（Inflation）の合成語。不況なのに物価が上がる最悪の組み合わせ。エネルギーショックなど供給側の問題が原因となることが多い。1970年代の石油危機が典型例で、株・債券ともに長期低迷した。",
+warn:"通常の金融政策が機能しない。金利を上げればインフレは抑えられるが景気がさらに悪化、金利を下げれば景気は支えられるがインフレが悪化。金・コモディティ・TIPS が有利になる。",
+related:["インフレ","デフレ","CPI","金利","TIPS"]},
+
+{id:"roe",name:"ROE（自己資本利益率）",en:"Return on Equity",cat:"企業分析",imp:"重要",impN:2,kana:"あーるおーいー",
+def:"株主から預かった資本でどれだけ効率よく利益を生んだかを示す指標。日本の平均約8〜10%、米国約18〜20%。東証の資本効率改善要請の文脈でも注目される。",
+formula:"ROE = 当期純利益 ÷ 自己資本 × 100\n10%未満：低い / 15%以上：優秀 / 20%超：非常に高い",
+warn:"自社株買いで自己資本が減少するとROEが上昇する。実質的な収益改善なしに「ROE改善」が演出できる。",
+vs:"【ROE vs ROA】ROE＝株主視点の効率（負債を多く使えば上昇）/ ROA＝総資産視点の効率（負債構造に左右されない純粋な経営効率）",
+related:["ROA","PBR","EPS","FCF"]},
+
+{id:"fcf",name:"FCF（フリーキャッシュフロー）",en:"Free Cash Flow",cat:"企業分析",imp:"重要",impN:2,kana:"えふしーえふ",
+def:"営業活動から得た現金から設備投資を引いた「企業が自由に使える現金」。会計上の利益は操作できるがキャッシュは操作しにくいため、「本当に稼いでいるか」の信頼性の高い指標。",
+formula:"FCF = 営業キャッシュフロー − 設備投資（CAPEX）\nFCFがマイナス → 投資が利益を超えている（成長投資か過剰投資かの判断が必要）",
+warn:"AI大手はCAPEXが急増しFCFが圧迫されている。成長投資なのか過剰投資なのかは文脈判断が必要。",
+related:["EPS","ROE","EBITDA"]},
+
+{id:"pbr",name:"PBR（株価純資産倍率）",en:"Price-to-Book Ratio",cat:"バリュエーション",imp:"重要",impN:2,kana:"ぴーびーあーる",
+def:"株価が1株あたりの純資産の何倍かを示す指標。1倍以下は「理論上は株を買って会社を解散した方が儲かる」水準。東証の資本効率改善要請で日本株でも注目度が上昇。",
+formula:"PBR = 株価 ÷ 1株あたり純資産（BPS）\n1倍以下 → 解散価値割れ / 日本株平均：約1.3倍 / 米国株：約4倍",
+warn:"IT・プラットフォーム企業は知的財産が帳簿に載らないためPBRが非常に高くなりやすく、業種間比較に適さない。",
+vs:"【PBR vs PER】PBR＝資産価値ベース（解散価値）/ PER＝収益力ベース（稼ぐ力）。両方低い銘柄が「バリュー株」の典型。",
+related:["ROE","PER","EPS"]},
+
+{id:"dividend_yield",name:"配当利回り",en:"Dividend Yield",cat:"バリュエーション",imp:"重要",impN:2,kana:"はいとうりまわり",isNew:true,
+def:"1株あたり年間配当金を株価で割った割合。「株を持っているだけで毎年何%のキャッシュが入るか」を示す。高配当株投資の基本指標。ただし株価下落で分母が下がると利回りが上昇する「罠の高配当」に注意。",
+formula:"配当利回り(%) = 年間配当金 ÷ 株価 × 100\n例：株価2,000円・年間配当60円 → 配当利回り3%",
+warn:"配当利回りが突然高くなった場合は株価急落が原因のことが多い。業績悪化による減配リスクを必ず確認すること。",
+vs:"【益利回り vs 配当利回り】益利回り=稼ぐ力全体（配当+内部留保）/ 配当利回り=実際に受け取るキャッシュ。",
+related:["EPS","益利回り","PER","配当性向"]},
+
+{id:"cpi",name:"CPI（消費者物価指数）",en:"Consumer Price Index",cat:"マクロ経済",imp:"重要",impN:2,kana:"しーぴーあい",
+def:"消費者が購入する財・サービスの価格変動を数値化した指数。コアCPI（食料・エネルギーを除く）とヘッドラインCPI（全品目）の2種類がある。FRBがインフレ判断に使用する主要指標のひとつ。",
+formula:"インフレ率 = 今月CPI ÷ 前年同月CPI − 1 × 100\nコアCPI＝エネルギー・食料を除く（政策判断に使いやすい）",
+warn:"住居費（OER：帰属家賃）の反映が遅れる構造的問題がある。実感インフレとCPIが乖離しやすい。",
+vs:"【CPI vs PCEデフレーター】CPIは家計調査ベース / PCEはGDP統計ベースで範囲が広い。FRBは実はPCEをより重視している。",
+related:["インフレ","PCEデフレーター","金利","スタグフレーション"]},
+
+{id:"vix",name:"VIX（恐怖指数）",en:"VIX / CBOE Volatility Index",cat:"デリバティブ",imp:"重要",impN:2,kana:"びっくす",
+def:"S&P500のオプション価格から算出される「今後30日間の予想変動率」。数値が高いほど市場が恐怖・不安定な状態。逆張り的に「VIXが高い＝市場の底値圏」のシグナルとして使われることがある。",
+formula:"目安：10〜20＝平常 / 20〜30＝警戒 / 30〜40＝恐怖 / 40超＝パニック\nコロナショック時：85.47（史上最高水準）",
+warn:"VIXは「方向」ではなく「変動の大きさ」を示す。VIXが高くてもさらに下落することはある。",
+related:["オプション取引","GEX","デルタ・ガンマ・セータ・ベガ","ドローダウン"]},
+
+{id:"sharpe",name:"シャープレシオ",en:"Sharpe Ratio",cat:"リスク管理",imp:"重要",impN:2,kana:"しゃーぷれしお",
+def:"「リスク1単位あたりのリターン」を測る指標。リターンが高くてもリスク（標準偏差）が高ければシャープレシオは低くなる。投資戦略の「質」を比較するための指標。",
+formula:"シャープレシオ = (ポートフォリオリターン − 無リスク金利) ÷ 標準偏差\n目安：1.0以上：良好 / 2.0以上：優秀 / マイナス：論外",
+vs:"【シャープレシオ vs ソルティノレシオ】シャープ＝上下両方のボラティリティをリスクとみなす / ソルティノ＝下落方向のみをリスクとみなす",
+related:["ドローダウン","TAA","分散投資・相関係数"]},
+
+{id:"rebalance",name:"リバランス",en:"Rebalancing",cat:"リスク管理",imp:"重要",impN:2,kana:"りばらんす",
+def:"ポートフォリオの資産配分が目標から乖離した際に、売買して元の配分に戻す作業。規律ある「高いものを売り安いものを買う」を自動的に実現できる。",
+formula:"目標配分との乖離が5〜10%を超えたらリバランスの目安\n定期（例：年1回）か閾値リバランスを選択する",
+warn:"リバランスには売却益課税が発生する。追加資金投入で比率を調整する「追加購入リバランス」の方が税効率が良い場合がある。",
+related:["TAA","分散投資・相関係数","DCA"]},
+
+{id:"gold",name:"金（ゴールド）",en:"Gold",cat:"オルタナティブ",imp:"重要",impN:2,kana:"きん",
+def:"インフレヘッジ・安全資産として機能する実物資産。株式との相関が低く、地政学リスクや通貨不安時に上昇しやすい。実質金利がマイナスの局面では特に輝く。",
+formula:"実質金利 = 名目金利 − インフレ率\n実質金利↓（マイナスに近づく）→ 金の魅力↑",
+warn:"金は配当・利息を生まない。長期の複利効果がないため、ポートフォリオの中心ではなくヘッジ的に一部保有する位置付けが合理的。",
+related:["インフレ","リスクオン/オフ","分散投資・相関係数","TIPS"]},
+
+{id:"lump",name:"一括投資（Lump Sum）",en:"Lump Sum Investing",cat:"積立・購入戦術",imp:"重要",impN:2,kana:"いっかつとうし",
+def:"手元資金を一度にまとめて投資する手法。統計的には3分の2の局面でDCAより高いリターンを示す。市場が長期上昇トレンドにある場合に有利。",
+formula:"期待リターン差（Vanguard研究）：一括投資 > DCA を上回る確率 約67%",
+warn:"高値圏や不確実性が高い局面で一括購入すると精神的・財務的ダメージが大きい。狼狽売りしない確信がある場合にのみ選択すべき。",
+vs:"【一括 vs DCA vs VA】上昇相場：一括 > VA > DCA / 下落相場：VA > DCA > 一括",
+related:["DCA","バリュー平均法","ドローダウン"]},
+
+{id:"midterm",name:"中間選挙アノマリー（米国）",en:"Midterm Election Cycle Anomaly",cat:"市場心理・アノマリー",imp:"重要",impN:2,kana:"ちゅうかんせんきょあのまりー",
+def:"米国では大統領就任2年後の中間選挙年に株価が低迷し、10月前後に底を打つ歴史的パターン。翌年は平均+30%超の回復が多い。次の中間選挙年は2026年。",
+formula:"歴史的統計：中間選挙年の平均下落幅 約−18%\n底打ちタイミング：9〜10月が最多",
+limit:"2018年は米中貿易戦争とFRB利上げが重なり12月末まで下落が続いた。アノマリーはあくまで確率論。",
+related:["夏枯れ相場","DCA","TAA","大統領選挙サイクル"]},
+
+{id:"carry_trade",name:"キャリートレード・巻き戻し",en:"Carry Trade / Unwind",cat:"為替・債券",imp:"重要",impN:2,kana:"きゃりーとれーど",
+def:"低金利通貨（例：円）を借りて高金利・高リターン資産（米国株・新興国債券等）に投資する手法。金利差がリターンになる。巻き戻し（アンワインド）は円高急騰と株価急落が同時発生する。",
+warn:"2024年8月の日銀利上げ示唆時、円キャリー巻き戻しで日経平均が1日約4,000円暴落した。日米金利差が縮小する局面では特に注意。",
+related:["逆イールド","金利","デュレーション","リスクオン/オフ"]},
+
+{id:"duration",name:"デュレーション",en:"Duration",cat:"為替・債券",imp:"重要",impN:2,kana:"でゅれーしょん",
+def:"債券の「金利感応度」。金利が1%変化した際に債券価格が何%変動するかを示す。デュレーションが長いほど金利変動の影響が大きくなる。",
+formula:"債券価格変化 ≈ −デュレーション × 金利変化率\n例：デュレーション10年の債券、金利1%上昇 → 約−10%の価格下落",
+warn:"2022年の急速な利上げで長期国債ETFが30〜40%下落した事例がある。",
+related:["金利","逆イールド","ゼロクーポン債","TIPS"]},
+
+{id:"mvrv",name:"MVRV比率",en:"Market Value to Realized Value",cat:"暗号資産",imp:"重要",impN:2,kana:"えむぶいあーるぶい",
+def:"ビットコインの時価総額を「実現価格ベースの総額」で割った指標。1.0以下は歴史的な強い買い場。3.7以上は過熱・天井圏。",
+formula:"MVRV = 時価総額 ÷ 実現価格ベース総額\n1.0以下：割安（強い買い場）/ 3.7以上：過熱（天井圏）",
+related:["実現価格","半減期","S2F"]},
+
+{id:"halving",name:"半減期（ハービング）",en:"Bitcoin Halving",cat:"暗号資産",imp:"重要",impN:2,kana:"はんげんき",
+def:"約4年（21万ブロック）ごとにビットコインのマイニング報酬が半減するイベント。新規供給量が減少することで需給が引き締まり、過去3回すべてで半減期後に大幅な価格上昇が発生した。直近は2024年4月。",
+formula:"マイニング報酬推移：50→25→12.5→6.25→3.125 BTC/ブロック（現在）\n次回半減期：2028年頃",
+related:["MVRV比率","実現価格","S2F"]},
+
+{id:"taa",name:"TAA（戦術的アセットアロケーション）",en:"Tactical Asset Allocation",cat:"市場心理・アノマリー",imp:"重要",impN:2,kana:"てぃーえーえー",
+def:"長期の基本資産配分（戦略的AA）を維持しながら、市場環境の変化に応じて短期的に配分を調整する手法。単純なバイ&ホールドより柔軟だが判断ミスのコストも伴う。",
+vs:"【TAA vs 戦略的AA（SAA）】SAA＝長期目標配分を決めてリバランスするだけ（シンプル・低コスト）/ TAA＝環境に応じて配分を動かす（柔軟だが判断力が必要）",
+related:["DCA","バリュー平均法","200DMA乖離率戦略","リスクオン/オフ"]},
+
+/* 有名投資家格言 */
+{id:"quote_buffett1",name:"バフェット「他人が強欲な時に…」",en:"Buffett — Be Fearful / Greedy",cat:"有名投資家の格言",imp:"重要",impN:2,kana:"ばふぇっとかくげん1",
+def:"「他人が強欲な時は恐れ、他人が恐れている時は強欲であれ」。ウォーレン・バフェットの代表的な格言。市場が過熱している時は慎重に、暴落・パニック時こそ積極的に買うという逆張り投資哲学を端的に表している。",
+quote:"Be fearful when others are greedy, and greedy when others are fearful.\n— Warren Buffett",
+warn:"実践は難しい。VIXが急騰しニュースが「経済崩壊」で埋まる時こそ買い場であることは頭では分かっていても、感情的に買えない投資家がほとんど。",
+related:["ドローダウン","VIX","DCA","バフェット指数"]},
+
+{id:"quote_buffett2",name:"バフェット「10年持てないなら…」",en:"Buffett — 10-Year Rule",cat:"有名投資家の格言",imp:"重要",impN:2,kana:"ばふぇっとかくげん2",
+def:"「10年間保有するつもりがないなら、10分間も保有するな」。長期投資の本質を表すバフェットの格言。短期的な株価の上下に一喜一憂せず、事業の本質的な価値で判断することを説いている。",
+quote:"If you aren't willing to own a stock for 10 years, don't even think about owning it for 10 minutes.\n— Warren Buffett",
+related:["DCA","ドローダウン","バフェット指数"]},
+
+{id:"quote_lynch",name:"リンチ「テンバガーを狙え」",en:"Peter Lynch — Tenbagger",cat:"有名投資家の格言",imp:"重要",impN:2,kana:"りんちかくげん",
+def:"「テンバガー（tenbagger）」はピーター・リンチが広めた言葉で、10倍になる株のこと。リンチは「素人投資家は大企業アナリストより早く身近な優良銘柄を発見できる」と主張した。「知っているものに投資せよ（Invest in what you know）」がその哲学。",
+quote:"Invest in what you know.\n— Peter Lynch\n（知っているものに投資せよ）",
+warn:"「知っているから好き」と「ビジネスとして優秀」は別物。消費者としての知識と投資家としての分析は切り離して考える必要がある。",
+related:["EPS成長率","PEGレシオ","FCF"]},
+
+{id:"quote_templeton",name:"テンプルトン「最大の悲観の時こそ」",en:"Templeton — Maximum Pessimism",cat:"有名投資家の格言",imp:"重要",impN:2,kana:"てんぷるとんかくげん",
+def:"「強気相場は悲観の中に生まれ、懐疑の中に育ち、楽観の中で成熟し、陶酔の中で消えていく」。ジョン・テンプルトン卿の格言。市場参加者の心理サイクルと株価の関係を示した言葉で、逆張り投資の本質を突いている。",
+quote:"Bull markets are born on pessimism, grow on skepticism, mature on optimism, and die on euphoria.\n— Sir John Templeton",
+related:["リスクオン/オフ","VIX","ドローダウン","バフェット指数"]},
+
+{id:"quote_graham",name:"グレアム「ミスター・マーケット」",en:"Graham — Mr. Market",cat:"有名投資家の格言",imp:"重要",impN:2,kana:"ぐれあむかくげん",
+def:"「ミスター・マーケット」はベンジャミン・グレアムのたとえ話。市場は毎日気まぐれに株の売買価格を提示してくる「感情的なビジネスパートナー」のようなもので、投資家はその気まぐれに振り回されず、本質的な価値を判断して取引すべきだと説いた。バフェットの師匠。",
+quote:"The intelligent investor is a realist who sells to optimists and buys from pessimists.\n— Benjamin Graham",
+related:["PBR","PER","CAPE","益利回り"]},
+
+{id:"quote_keynes",name:"ケインズ「市場は支払い能力より…」",en:"Keynes — Market Irrationality",cat:"有名投資家の格言",imp:"重要",impN:2,kana:"けいんずかくげん",
+def:"「市場は、あなたが支払い能力を持ち続けられるよりも、より長く非合理でいられる」。ジョン・メイナード・ケインズの言葉。合理的な分析をしていても市場が非合理な動きを続ける間に資金が尽きてしまう「流動性リスク」の危険を指摘している。",
+quote:"Markets can remain irrational longer than you can remain solvent.\n— John Maynard Keynes",
+warn:"空売りやレバレッジ投資でこのリスクが特に顕在化する。「正しい分析」と「正しいタイミング」は別物。",
+related:["ドローダウン","レバレッジ","CAPE"]},
+
+/* ========== 中級 ========== */
+{id:"forward_per",name:"フォワードPER（予想PER）",en:"Forward P/E Ratio",cat:"バリュエーション",imp:"中級",impN:3,kana:"ふぉわーどぴーいーあーる",
+def:"今期または来期のEPS予測値で割ったPER。市場参加者が「将来の利益成長を織り込んでいるか」を判断できる。実績PERより低く出るため市場が割安に見えやすい。",
+formula:"フォワードPER = 株価 ÷ 今期EPS予測\n実績PER − フォワードPERの差が大きい → 高い成長期待を織り込んでいる",
+warn:"アナリスト予測は平均して3〜5%の楽観バイアスがある。Non-GAAPベースの予測が多く、さらに水増しされやすい。",
+related:["PER","CAPE","EPS成長率","EPS"]},
+
+{id:"eps_growth",name:"EPS成長率",en:"EPS Growth Rate",cat:"バリュエーション",imp:"中級",impN:3,kana:"いーぴーえすせいちょうりつ",
+def:"前年同期比でEPSがどれだけ増えたかを示す成長指標。PEGレシオの分母になる。「高PERでも高成長なら正当化できる」という議論の根拠として使われるが、Non-GAAP調整・自社株買いの影響を受けやすい。",
+formula:"EPS成長率(%) = (今期EPS − 前期EPS) ÷ 前期EPS × 100\nPEGレシオ = PER ÷ EPS成長率（1倍以下が割安の目安）",
+warn:"アナリストのEPS予測は楽観バイアスがかかりやすく、決算直前に下方修正されることが多い。",
+related:["EPS","PER","フォワードPER","PEGレシオ"]},
+
+{id:"yield_curve",name:"逆イールド（イールドカーブ）",en:"Inverted Yield Curve",cat:"マクロ経済",imp:"中級",impN:3,kana:"ぎゃくいーるど",
+def:"通常は長期金利＞短期金利だが、景気後退懸念が高まると逆転（逆イールド）が起きる。2年国債利回りが10年国債利回りを上回る状態が代表的な指標。過去8回の景気後退前にすべて発生している。",
+formula:"スプレッド = 10年国債利回り − 2年国債利回り\nマイナスになると「逆イールド」発生",
+limit:"景気後退を「予告」するがタイミングは6ヶ月〜2年と幅が広い。逆イールド発生後に株が上昇し続けることも多く、即座の売りシグナルにはならない。",
+related:["金利","インフレ","キャリートレード・巻き戻し"]},
+
+{id:"option",name:"オプション取引（コール・プット）",en:"Options — Call / Put",cat:"デリバティブ",imp:"中級",impN:3,kana:"おぷしょんとりひき",
+def:"「将来のある時点で特定の価格で資産を売買する権利」を売買する取引。買う権利（コール）と売る権利（プット）がある。ヘッジ（保険）としても投機にも使えるが、仕組みの理解なしに使うと大損リスクがある。",
+formula:"コール：原資産を行使価格で「買う権利」\nプット：原資産を行使価格で「売る権利」\nオプション料（プレミアム）= 本質的価値 + 時間的価値",
+warn:"買い手は損失がプレミアムに限定されるが、売り手は理論上無限の損失リスクを負う。",
+vs:"【コール vs プット】コールを買う＝上昇に賭ける / プットを買う＝下落に賭ける（または保有株のヘッジ）/ コールを売る＝緩やかな上昇・横ばいで稼ぐ",
+related:["VIX","GEX","デルタ・ガンマ・セータ・ベガ","DTE / 1DTE","先物取引"]},
+
+{id:"dma200_str",name:"200DMA乖離率戦略",en:"200-Day MA Deviation Strategy",cat:"積立・購入戦術",imp:"中級",impN:3,kana:"にひゃくでぃーえむえーかいりりつ",
+def:"200日移動平均線からの乖離率に応じて購入比率を変える逆張り積立手法。乖離率が大きいほど多く買う。純粋なDCAよりシャープレシオが高いと言われる。",
+formula:"乖離 0〜−5%: 資金の10% / −5〜−10%: 15%\n−10〜−15%: 20% / −15〜−20%: 25% / −20%超: 30%",
+warn:"乖離率が大きくなった時に「さらに下がるのでは」という心理的プレッシャーがかかる。機械的に実行できる精神的耐性が必要。",
+related:["DCA","バリュー平均法","200DMA","TAA"]},
+
+{id:"va",name:"バリュー平均法（VA）",en:"Value Averaging",cat:"積立・購入戦術",imp:"中級",impN:3,kana:"ばりゅーへいきんほう",
+def:"毎期末に「ポートフォリオの評価額が目標額に達するよう」購入額を調整する積立手法。価格が下落した月は多く買い、上昇した月は少なく買う（場合によっては売る）。DCAより高い期待リターンが統計的に示されているが管理が複雑。",
+formula:"目標評価額 = 初期投資 × (1 + 目標成長率)^期数\n例：目標が毎月10万円増加なら、評価額30万のところ40万目標なら10万追加購入",
+warn:"上昇相場では「売り」が発生するため機会損失になる場合がある。まとまったキャッシュの準備が必要。",
+vs:"【VA vs DCA】理論上はVAがリターン優位だが、実践の難しさを考えると多くの個人投資家にはDCAの方が継続しやすい。",
+related:["DCA","一括投資","200DMA乖離率戦略"]},
+
+{id:"leverage",name:"レバレッジ / ボラティリティディケイ",en:"Leverage / Volatility Decay",cat:"リスク管理",imp:"中級",impN:3,kana:"ればれっじ",
+def:"自己資金を超えた金額で取引する仕組み。信用取引・FX・先物・レバレッジETFなどで使われる。ボラティリティディケイ（Volatility Decay）は、横ばい相場でも毎日リセットされるレバレッジETFが長期で資産が目減りする現象。",
+formula:"レバレッジ2倍：+10%→+20% / −10%→−20%\nVolatility Decay：+10%→−10%を繰り返すと2倍ETFは元本割れになる",
+warn:"日次リセット型のレバレッジETFは長期保有に適さない。短期トレード専用と理解した上で使うこと。",
+related:["ドローダウン","オプション取引","先物取引"]},
+
+{id:"zero_coupon",name:"ゼロクーポン債（割引債）",en:"Zero Coupon Bond / STRIPS",cat:"為替・債券",imp:"中級",impN:3,kana:"ぜろくーぽんさい",
+def:"利息（クーポン）の支払いがなく、額面より安い価格で購入し満期に額面金額が戻ってくる債券。購入時点でリターンが確定するため、満期まで保有すれば途中の価格変動は無関係。米国ではSTRIPS債として知られる。",
+formula:"購入価格 × (1 + 利回り)^年数 = 額面金額\n例：$60で購入 → 10年後$100受取（利回り約5.24%）",
+warn:"満期前に売却する場合、金利上昇局面では大幅な含み損が発生する。",
+related:["デュレーション","金利","TIPS"]},
+
+{id:"dma200_ind",name:"200DMA（200日移動平均線）",en:"200-Day Moving Average",cat:"テクニカル",imp:"中級",impN:3,kana:"にひゃくにちいどうへいきんせん",
+def:"過去200営業日の終値の平均。長期トレンドの方向性を確認するための基準線として世界中のトレーダーが参照する。株価が200DMAを割り込むと「弱気相場入り」のシグナルとなることが多い。",
+formula:"乖離率 = (現在価格 − 200DMA) ÷ 200DMA × 100\n200DMAより上：上昇トレンド / 200DMAより下：下降トレンド",
+related:["200DMA乖離率戦略","RSI","ゴールデンクロス・デッドクロス"]},
+
+{id:"rsi",name:"RSI（相対力指数）",en:"Relative Strength Index",cat:"テクニカル",imp:"中級",impN:3,kana:"あーるえすあい",
+def:"一定期間の値上がり幅と値下がり幅の比率から0〜100で表す指標。70以上で「買われすぎ」、30以下で「売られすぎ」の目安。",
+formula:"RSI = 100 − 100 ÷ (1 + RS)\nRS = 平均上昇幅 ÷ 平均下落幅（通常14日間）",
+limit:"強いトレンドが続く際はRSIが70以上の「買われすぎ」状態を長期間維持することがある。RSI単体での逆張りは危険。",
+related:["200DMA","ゴールデンクロス・デッドクロス","MACD","VIX"]},
+
+{id:"realized_price",name:"実現価格（Realized Price）",en:"Realized Price",cat:"暗号資産",imp:"中級",impN:3,kana:"じつげんかかく",
+def:"すべてのビットコインが最後に動いた時点の価格の加重平均。「市場全体の平均取得コスト」を表す。スポット価格が実現価格を下回ると「平均保有者が含み損」の状態で、歴史的に底値に近い局面だった。",
+formula:"確認先：Glassnode / LookIntoBitcoin（無料）\n現在の実現価格目安：$45,000〜$55,000（時期により変動）",
+related:["MVRV比率","半減期"]},
+
+{id:"roa",name:"ROA（総資産利益率）",en:"Return on Assets",cat:"企業分析",imp:"中級",impN:3,kana:"あーるおーえー",
+def:"企業が保有する全資産でどれだけ利益を生んだかを示す指標。ROEは財務レバレッジの影響を受けるが、ROAは受けにくいため経営効率の純粋な比較に使いやすい。",
+formula:"ROA = 当期純利益 ÷ 総資産 × 100\nROE − ROA の差が大きい → 負債（レバレッジ）への依存度が高い",
+related:["ROE","FCF"]},
+
+{id:"sell_may",name:"夏枯れ相場 / Sell in May（米国）",en:"Sell in May and Go Away",cat:"市場心理・アノマリー",imp:"中級",impN:3,kana:"なつがれそうば",
+def:"「5月に売れ、10月に戻ってこい」という相場格言。5〜9月は機関投資家の夏休みや決算の谷間で取引量が減少し、株価が低迷しやすい季節的パターン。",
+limit:"強いトレンドがある年は夏も上昇する。格言として参考程度。",
+related:["中間選挙アノマリー","DCA","TAA"]},
+
+{id:"payout",name:"配当性向 / DOE（純資産配当率）",en:"Payout Ratio / DOE",cat:"バリュエーション",imp:"中級",impN:3,kana:"はいとうせいこう",
+def:"配当性向は純利益のうち配当として支払う割合。DOE（Dividend on Equity）は純資産に対する配当の割合。配当性向が100%超は「利益以上に配当を払っている」状態で持続性に疑問が生じる。",
+formula:"配当性向(%) = 年間配当金 ÷ EPS × 100\nDOE(%) = 年間配当金 ÷ 1株あたり純資産 × 100\n安定的な配当には配当性向30〜60%が目安",
+related:["配当利回り","EPS","ROE"]},
+
+{id:"pce",name:"PCEデフレーター",en:"PCE Deflator",cat:"マクロ経済",imp:"中級",impN:3,kana:"ぴーしーいーでふれーたー",
+def:"FRBが実際に政策判断に使うインフレ指標。CPIより広い範囲の消費を捉え、消費者の行動変化を反映しやすい。コアPCEが2%をFRBのターゲットとしている。",
+formula:"FRBのターゲット：コアPCE 2%前後\nコアPCE＝食料・エネルギーを除くPCE（最重視）",
+related:["CPI","インフレ","金利"]},
+
+/* アノマリー追加 */
+{id:"anomaly_pres",name:"大統領選挙サイクル（米国）",en:"Presidential Election Cycle",cat:"市場心理・アノマリー",imp:"中級",impN:3,kana:"だいとうりょうせんきょさいくる",isNew:true,
+def:"米国の4年ごとの大統領選挙に連動した株式市場のパターン。1年目・2年目は政策の痛みが出やすく低迷しやすい。3年目・4年目は選挙対策で景気刺激策が打たれ上昇しやすい。過去70年以上のデータで一定の規則性がある。",
+formula:"統計的傾向：1年目＋5.3% / 2年目＋4.5% / 3年目＋16.4% / 4年目＋6.6%\n（S&P500平均、1950年〜）",
+limit:"トランプ政権1期目（2017〜）など例外も多い。あくまで「確率が高い傾向」であって保証ではない。",
+related:["中間選挙アノマリー","夏枯れ相場","TAA"]},
+
+{id:"anomaly_jan",name:"1月効果（January Effect）",en:"January Effect",cat:"市場心理・アノマリー",imp:"中級",impN:3,kana:"いちがつこうか",isNew:true,
+def:"1月、特に月初に小型株・出遅れ株が上昇しやすいという季節的アノマリー。前年12月に税務対策で損切りされた銘柄が翌1月に買い戻される需要と、新年の新規投資資金の流入が重なるとされる。日本でも同様の傾向が観測されている。",
+formula:"歴史的傾向：1月は小型株が大型株をアウトパフォームしやすい\n特に前年に大きく下落した銘柄に顕著",
+limit:"近年はETFの普及や機関投資家のプログラム取引により効果が薄れているという見方もある。",
+related:["夏枯れ相場","中間選挙アノマリー","大統領選挙サイクル"]},
+
+{id:"anomaly_jp_spring",name:"日本株・春の需給イベント",en:"Japan Spring Seasonal Effect",cat:"市場心理・アノマリー",imp:"中級",impN:3,kana:"にほんかぶはるのじゅきゅう",isNew:true,
+def:"日本株特有の季節的需給パターン。3〜4月に企業の決算・配当・株主優待の権利確定が集中する。また年度末（3月末）に向けて機関投資家のリバランス売りが出やすく、4月以降に新年度資金が流入するパターンがある。NISAの制度的な需給も春に集中しやすい。",
+formula:"3月末：権利確定→配当・優待目的の売り圧力\n4月〜：新年度資金流入→上昇しやすい",
+limit:"年によって大きく異なり、海外ショックがあれば国内の季節要因は掻き消される。",
+related:["1月効果","夏枯れ相場","大統領選挙サイクル"]},
+
+{id:"anomaly_halloween",name:"ハロウィン戦略（Halloween Strategy）",en:"Halloween Strategy / Best Six Months",cat:"市場心理・アノマリー",imp:"中級",impN:3,kana:"はろうぃんせんりゃく",isNew:true,
+def:"「Sell in May」と対になる戦略。10月末〜4月末の6ヶ月間は株式を保有し、5月〜10月末の6ヶ月間は現金か債券に切り替えるという季節的戦略。米国・欧州・日本の株式市場で一定の有効性が統計的に示されている。",
+formula:"「Best 6 Months」（11月〜4月）の平均リターン：約+7.5%\n「Worst 6 Months」（5月〜10月）の平均リターン：約+0.3%\n（S&P500、1950年〜）",
+limit:"毎年必ず機能するわけではなく、強い上昇相場では夏も大きく上昇する。取引コストと税金を考慮すると優位性が薄れる場合がある。",
+related:["夏枯れ相場","中間選挙アノマリー","Sell in May"]},
+
+/* ========== 専門・トレンド ========== */
+{id:"tips",name:"TIPS（インフレ連動国債）",en:"Treasury Inflation-Protected Securities",cat:"為替・債券",imp:"専門",impN:4,kana:"てぃっぷす",
+def:"元本がインフレ率（CPI）に連動して増減する米国国債。インフレが進んでも実質的な購買力が守られる。スタグフレーションや高インフレ局面でのヘッジ手段として機能する。",
+formula:"実質利回り = 名目利回り − 期待インフレ率\nTIPSの実質利回りがプラスの時は実質的な利益が保証される",
+related:["インフレ","スタグフレーション","金利","デュレーション"]},
+
+{id:"peg",name:"PEGレシオ",en:"Price/Earnings-to-Growth Ratio",cat:"バリュエーション",imp:"専門",impN:4,kana:"ぺぐれしお",
+def:"PERをEPS成長率で割った指標。「成長性を加味した割安割高」を測る。1倍以下が割安の目安とされる。高PERを「高成長で正当化できる」かどうかを判断するための補助ツール。",
+formula:"PEGレシオ = PER ÷ EPS成長率(%)\n例：PER 30倍 ÷ 成長率30% = PEG 1.0（フェアバリュー）",
+limit:"成長率予測が外れると意味をなさない。景気後退期の成長率低下を過小評価しやすい。",
+related:["PER","EPS成長率","フォワードPER"]},
+
+{id:"psr",name:"PSR（株価売上高倍率）",en:"Price-to-Sales Ratio",cat:"バリュエーション",imp:"専門",impN:4,kana:"ぴーえすあーる",
+def:"株価を1株あたり売上高で割った指標。赤字企業など利益がないためPERが計算できない成長企業の評価に使われる。ITバブル時に「PSRで見れば割安」と正当化された指標として有名。",
+formula:"PSR = 時価総額 ÷ 年間売上高\n目安：1倍以下は割安 / 10倍超は高成長への期待が大きい",
+limit:"利益率の違いを無視するため低利益率企業を高く評価しすぎる危険がある。",
+related:["PER","PBR","EPS成長率"]},
+
+{id:"ebitda",name:"EBITDA / EV/EBITDA",en:"EBITDA / Enterprise Value to EBITDA",cat:"企業分析",imp:"専門",impN:4,kana:"いーびっとだー",
+def:"EBITDA（イービットダー）は「利払い・税引き・減価償却前利益」。国際間の企業比較や企業買収の際に用いられる。EV/EBITDAは企業の「実質的な買収コストの回収年数」を示す。",
+formula:"EBITDA = 営業利益 + 減価償却費\nEV = 時価総額 + 有利子負債 − 現金\nEV/EBITDA = EV ÷ EBITDA（10倍以下が割安の目安）",
+related:["FCF","ROA","PER"]},
+
+{id:"gex",name:"GEX（ガンマエクスポージャー）",en:"Gamma Exposure",cat:"デリバティブ",imp:"専門",impN:4,kana:"じーいーえっくす",
+def:"市場全体のオプションポジションから算出される指標。GEXプラスはマーケットメーカーが相場の動きを抑える方向に動く（ピンニング効果）。マイナスは動きが増幅される。",
+formula:"GEX > 0 → ボラティリティ低下（相場が落ち着く）\nGEX < 0 → ボラティリティ増大（相場が荒れやすい）",
+warn:"主に短期トレーダー・機関投資家が使う指標。長期投資家には参考程度で十分。",
+related:["オプション取引","VIX","デルタ・ガンマ・セータ・ベガ"]},
+
+{id:"greeks",name:"デルタ・ガンマ・セータ・ベガ（グリーク）",en:"Options Greeks",cat:"デリバティブ",imp:"専門",impN:4,kana:"でるたがんませーたべが",
+def:"オプション価格の各要素への感応度を表す指標群。デルタ（原資産価格への感応度）・ガンマ（デルタの変化速度）・セータ（時間経過による価値減少）・ベガ（ボラティリティへの感応度）の4つが主要。",
+formula:"デルタ：0〜1（コール）/ −1〜0（プット）\nセータ：マイナス（毎日少しずつオプション料が減る「時間的損耗」）\nベガ：VIXが上昇するとオプション料が上昇する",
+warn:"セータ（時間的損耗）はオプション買い手に不利に働く。保有し続けるだけで毎日価値が目減りする性質がある。",
+related:["オプション取引","VIX","GEX"]},
+
+{id:"futures",name:"先物取引",en:"Futures",cat:"デリバティブ",imp:"専門",impN:4,kana:"さきものとりひき",
+def:"将来の特定日に、特定の価格で資産を売買する契約。オプションと違い「権利」ではなく「義務」。株価指数先物・原油先物・金先物など様々な資産に存在する。",
+formula:"コンタンゴ：期先価格 > 現物価格（通常の状態）\nバックワーデーション：期先価格 < 現物価格（需給逼迫時に発生）",
+warn:"証拠金取引のためレバレッジが効く。反対方向に動くと証拠金追加（追証）が発生し、最悪の場合は強制決済になる。",
+related:["オプション取引","レバレッジ","VIX"]},
+
+{id:"dte",name:"DTE / 1DTE（残存日数）",en:"Days to Expiration / 0DTE / 1DTE",cat:"デリバティブ",imp:"専門",impN:4,kana:"でぃーてぃーいー",isNew:true,
+def:"DTE（Days to Expiration）はオプションの満期までの残り日数。1DTEは「あと1日で満期を迎えるオプション」のこと。近年、S&P500やSPYのウィークリーオプション・デイリーオプションが普及したことで1DTE・0DTEが機関投資家・個人投資家双方に急激に普及した。満期直前のオプションはセータ（時間的価値の減少）が加速するため、動きが非常に激しい。",
+formula:"0DTE：当日満期（today's expiration）\n1DTE：翌日満期\n満期が近いほど：時間的価値（セータ）が急減少 / ガンマが急上昇（原資産の動きに対する感応度が爆発的に増大）",
+warn:"0DTE・1DTEオプションは「宝くじ」に近い性質を持つ。原資産が動いた方向に大きく勝てる反面、動かなければプレミアムがほぼゼロになる。GEXへの影響が大きく、機関投資家のマーケットメーキングコストを押し上げ、市場のイントラデイ（日中）ボラティリティを増幅させるという研究もある。",
+vs:"【DTE別の特性】長期（30DTE以上）：時間的価値が大きく、方向感の予測が重要 / 短期（7DTE以下）：セータ売り戦略に使われることが多い / 1DTE・0DTE：ガンマリスクが極大、投機的性格が強い",
+related:["オプション取引","デルタ・ガンマ・セータ・ベガ","GEX","VIX"]},
+
+{id:"theta_spread",name:"セータ売り戦略（オプション売り）",en:"Theta Decay / Premium Selling",cat:"デリバティブ",imp:"専門",impN:4,kana:"せーたうりせんりゃく",isNew:true,
+def:"オプションの時間的価値（セータ）が満期に向けて自然に減少する性質を利用した戦略。オプションを「売る」ことでプレミアムを受け取り、満期までに価値がゼロになることで利益を得る。カバードコール・キャッシュセキュアードプット・クレジットスプレッドなどが代表的な手法。",
+formula:"セータ：1日経過するごとにオプション料が減少する金額\n例：セータ−$5のオプションは毎日$5ずつ価値が減少\nプレミアム売り戦略の勝率：65〜80%（ただし負けた時の損失が大きい）",
+warn:"「高勝率」だが「低リスクリワード」。10回勝っても1回の大損で全て吹き飛ぶことがある。裸の売り（naked short）は理論上無限の損失リスクを持つため、スプレッド（損失限定型）と組み合わせることが多い。",
+vs:"【オプション買い vs 売り】買い＝損失限定・利益無限大・低勝率・時間的損耗が不利 / 売り＝利益限定・損失大・高勝率・時間的減衰が有利",
+related:["オプション取引","DTE / 1DTE","デルタ・ガンマ・セータ・ベガ","GEX"]},
+
+{id:"iv_rv",name:"IV（インプライドボラティリティ）/ IVR",en:"Implied Volatility / IV Rank",cat:"デリバティブ",imp:"専門",impN:4,kana:"いんぷらいどぼらてぃりてぃ",isNew:true,
+def:"IV（Implied Volatility：インプライドボラティリティ）はオプション価格に織り込まれた「市場が予想する将来の変動率」。VIXはS&P500のIVの加重平均。IVR（IV Rank）はIVが過去1年の高低に対して今どのくらいの位置にあるかを0〜100で示す指標。IVRが高い時はオプション料が割高＝売り有利、低い時は割安＝買い有利とされる。",
+formula:"IVR = (現在のIV − 過去1年の最低IV) ÷ (過去1年の最高IV − 最低IV) × 100\nIVR 50以上 → オプション売り（プレミアム収集）有利\nIVR 20以下 → オプション買い（方向性ベット）有利",
+warn:"IVはイベント（決算・FOMC・選挙）前に急上昇し、イベント通過後に急低下する（IVクラッシュ）。イベント直前にオプションを「買う」と、方向が合っていてもIVクラッシュで損失になることがある。",
+related:["オプション取引","VIX","DTE / 1DTE","セータ売り戦略"]},
+
+{id:"cross",name:"ゴールデンクロス・デッドクロス",en:"Golden Cross / Death Cross",cat:"テクニカル",imp:"専門",impN:4,kana:"ごーるでんくろす",
+def:"短期移動平均線（50DMA）が長期移動平均線（200DMA）を上抜けすることを「ゴールデンクロス」（買いシグナル）、下抜けを「デッドクロス」（売りシグナル）と呼ぶ。",
+formula:"ゴールデンクロス：50DMAが200DMAを上抜け → 強気シグナル\nデッドクロス：50DMAが200DMAを下抜け → 弱気シグナル",
+limit:"シグナルが発生した時点ですでに相当程度動いていることが多い「遅行指標」。",
+related:["200DMA","RSI","MACD"]},
+
+{id:"macd",name:"MACD（移動平均収束拡散法）",en:"MACD",cat:"テクニカル",imp:"専門",impN:4,kana:"まっくでぃー",
+def:"短期EMA（12日）と長期EMA（26日）の差がシグナル線（9日EMA）を上抜けすると買いシグナル、下抜けると売りシグナルとなるトレンドフォロー系指標。",
+formula:"MACD = 12日EMA − 26日EMA\nシグナル線 = MACDの9日EMA\nヒストグラム = MACD − シグナル線",
+limit:"トレンドが弱い横ばい相場では「だまし」が多くなる。強いトレンドがある環境で機能しやすい。",
+related:["RSI","ゴールデンクロス・デッドクロス","200DMA"]},
+
+{id:"s2f",name:"S2F（ストック・トゥ・フロー）",en:"Stock-to-Flow",cat:"暗号資産",imp:"専門",impN:4,kana:"えすつーえふ",
+def:"採掘残量（Stock）を年間新規発行量（Flow）で割った希少性指標。高いほど希少。半減期ごとに倍増する。価格予測モデルとして有名だが近年は精度が低下。",
+formula:"S2F = 流通量 ÷ 年間新規発行量\n現在のBTC S2F：約120（2024年半減期後）/ 金：約60",
+related:["半減期","MVRV比率"]},
+
+{id:"reit",name:"REIT（不動産投資信託）",en:"Real Estate Investment Trust",cat:"オルタナティブ",imp:"専門",impN:4,kana:"りーと",
+def:"多数の投資家から集めた資金で不動産を購入・運用し、賃料収入や売却益を分配する投資信託。不動産に小口で投資でき、高い配当利回りが特徴。利益の90%以上を分配することが条件で、法人税が免除される。",
+formula:"NAV（純資産価値）= 保有不動産の時価 − 負債\nPremium/Discount to NAV = (市場価格 − NAV) ÷ NAV × 100",
+warn:"金利上昇局面では借入コスト増加と利回り比較から売られやすい。",
+related:["配当利回り","インフレ","金利"]},
+
+/* ========== 現代トレンド用語 ========== */
+{id:"index_invest",name:"インデックス投資",en:"Index Fund Investing / Passive Investing",cat:"現代トレンド・戦略",imp:"基礎",impN:1,kana:"いんでっくすとうし",isNew:true,
+def:"S&P500・全世界株（MSCI ACWI）・日経225などの株価指数に連動する投資信託やETFに投資する手法。個別銘柄を選ばず市場全体を買う。低コスト・分散・長期保有の三拍子が揃っており、アクティブファンドの8割以上が長期でインデックスに勝てないというデータがある。",
+formula:"市場平均リターン ≈ インデックスリターン − 信託報酬\nS&P500の過去30年平均リターン：約10%/年（名目）",
+warn:"市場全体が下がれば一緒に下がる。「安全」ではなく「市場平均」を取る手法。集中リスクは避けられるが、市場リスクは避けられない。",
+vs:"【インデックス vs アクティブファンド】コスト：インデックスが圧倒的有利（信託報酬0.03〜0.2% vs 1〜2%）/ リターン：長期では8割以上のアクティブがインデックスに負ける",
+related:["DCA","TAA","分散投資・相関係数","リバランス"]},
+
+{id:"headline_market",name:"ヘッドライン相場",en:"Headline-Driven Market",cat:"現代トレンド・戦略",imp:"重要",impN:2,kana:"へっどらいんそうば",isNew:true,
+def:"ニュースのヘッドライン（見出し）1本で株価が大きく動く市場状態。特にトランプ政権期の関税・制裁・停戦報道など、アルゴリズムがSNSや報道を即座にスキャンして取引を執行するため、人間が反応する前に数%動くことがある。ファンダメンタルズより「次のヘッドライン」が価格を決める状態。",
+warn:"ヘッドライン直後に逆方向に動く「だまし」も頻発する。速報をベースに売買することはプロのアルゴリズムと競争することを意味する。",
+related:["アルゴリズム取引","TACOトレード・NACHOトレード","リスクオン/オフ","VIX"]},
+
+{id:"algo_trading",name:"アルゴリズム取引 / 高頻度取引（HFT）",en:"Algorithmic Trading / HFT",cat:"現代トレンド・戦略",imp:"重要",impN:2,kana:"あるごりずむとりひき",isNew:true,
+def:"コンピューターが自動でルールに基づいて売買を執行するシステム。高頻度取引（HFT）は1秒間に数千〜数百万回の売買を行う。現在の米国株式市場の約60〜70%がアルゴリズム取引によるとされ、価格形成・流動性・ボラティリティに大きな影響を与えている。",
+warn:"アルゴが同じシグナルに反応することでフラッシュクラッシュ（瞬間的な急落）が発生することがある。個人投資家はアルゴとの短期売買競争を避け、長期投資に徹するのが合理的。",
+vs:"【アルゴ vs 人間】アルゴ＝ミリ秒単位の反応速度・感情なし / 人間＝遅い・感情的だが長期的な文脈理解に優れる",
+related:["ヘッドライン相場","VIX","GEX","インデックス投資"]},
+
+{id:"nacho_taco",name:"TACOトレード / NACHOトレード",en:"TACO Trade / NACHO Trade",cat:"現代トレンド・戦略",imp:"重要",impN:2,kana:"たこなちょとれーど",isNew:true,
+def:"特定の政治・地政学的見方に基づく市場スラング。TACO＝「Trump Always Chickens Out（トランプは最終的に引く）」という読みに基づく取引スタンス。強硬な姿勢でも最終的に妥協するという過去のパターンを根拠とする。NACHO＝「Not A Chance Hormuz Opens（ホルムズ海峡は簡単に開かない）」という2025〜2026年のホルムズ危機を受けた用語。原油高・インフレ継続・金利高止まりを前提とするポジション。",
+warn:"TACOはNACHO（ホルムズ危機）の登場により部分的に否定された。「市場のスラング」は市場の空気感を把握する参考にはなるが、それ自体を投資根拠にするのは危険。",
+related:["ヘッドライン相場","リスクオン/オフ","スタグフレーション","GEX"]},
+
+{id:"passive_active",name:"パッシブ vs アクティブ運用",en:"Passive vs Active Management",cat:"現代トレンド・戦略",imp:"重要",impN:2,kana:"ぱっしぶあくてぃぶ",isNew:true,
+def:"パッシブ運用はインデックスに連動させるだけ。アクティブ運用はファンドマネージャーが銘柄選択・タイミングで市場平均を上回ることを目指す。長期では8割超のアクティブファンドがインデックスに負け、残り2割も「次も勝てるか」の予測が難しい。",
+formula:"パッシブ：信託報酬0.03〜0.2%、市場平均リターン\nアクティブ：信託報酬1〜2%+成功報酬、市場平均の±α",
+warn:"「過去に勝ったアクティブファンド」への投資が将来の超過リターンを保証しない。サバイバーシップバイアス（成績の悪いファンドは廃止されるため、残ったファンドは良く見える）に注意。",
+related:["インデックス投資","TAA","DCA","シャープレシオ"]},
+
+{id:"factor_invest",name:"ファクター投資 / スマートベータ",en:"Factor Investing / Smart Beta",cat:"現代トレンド・戦略",imp:"中級",impN:3,kana:"ふぁくたーとうし",isNew:true,
+def:"バリュー・モメンタム・低ボラティリティ・クオリティなどの「ファクター（特性）」に基づいて銘柄を選ぶ投資手法。インデックスより賢く、アクティブより低コストという位置づけで「スマートベータ」とも呼ばれる。",
+formula:"主要ファクター：バリュー（割安）/ モメンタム（上昇トレンド）/ 低ボラ（変動が小さい）/ クオリティ（ROE高・財務健全）/ サイズ（小型株）",
+warn:"ファクターの有効性は時期によって異なる。特定のファクターが「過剰に注目されると」その優位性が薄れる（クラウデッドトレード）。",
+related:["インデックス投資","パッシブ vs アクティブ運用","シャープレシオ"]},
+
+{id:"ai_bubble",name:"AIバブル・テーマ株投資",en:"AI Bubble / Thematic Investing",cat:"現代トレンド・戦略",imp:"中級",impN:3,kana:"えーあいばぶる",isNew:true,
+def:"AIなど特定のテーマ・技術革新に投資する手法。2023〜2026年にかけてNVIDIA・Microsoft・Google等のAI関連株が急騰。革命的な技術革新は本物であっても、「バブル的に評価されているかどうか」は別問題。1990年代のインターネット革命と今のAI革命が比較されることが多い。",
+formula:"NVIDIA（NVDA）PER推移：50倍→100倍超（2023〜2024年）\nMAGNIFICENT 7の時価総額：S&P500の30%超を占める（2024年）",
+warn:"テーマ投資は「革命が本物かどうか」と「今の株価が割高かどうか」を分けて考える必要がある。ITバブルでもインターネットの革命性は本物だったが、2000年に100倍PERで買った投資家は20年間元本を取り戻せなかった。",
+related:["CAPE","ERP","バフェット指数","インデックス投資"]},
+
+{id:"nisa",name:"NISA / 新NISA（日本固有）",en:"NISA — Nippon Individual Savings Account",cat:"現代トレンド・戦略",imp:"重要",impN:2,kana:"にーさ",isNew:true,
+def:"日本の少額投資非課税制度。2024年から「新NISA」として大幅拡充。つみたて投資枠（年120万円）と成長投資枠（年240万円）の2枠で合計年360万円・生涯1,800万円まで非課税で投資できる。通常は配当・売却益に約20%の税金がかかるところ、NISA口座内では非課税になる。",
+formula:"課税口座：利益100万円 × 20.315% = 税金約20万円\nNISA：利益100万円 → 税金0円\n年360万円 × 5年 = 生涯上限1,800万円",
+warn:"損失が出てもNISA口座内では他の利益と損益通算できない。長期保有の優良銘柄・インデックスファンドとの相性が良い。",
+related:["インデックス投資","DCA","配当利回り","リバランス"]},
+
+{id:"macro_hedge",name:"グローバルマクロ投資",en:"Global Macro Investing",cat:"現代トレンド・戦略",imp:"専門",impN:4,kana:"ぐろーばるまくろとうし",isNew:true,
+def:"金利・為替・コモディティ・株式など複数の資産クラスにまたがり、マクロ経済の見通しに基づいてポジションを取る投資手法。ジョージ・ソロスの「イングランド銀行を破った取引」（1992年）やレイ・ダリオのブリッジウォーターが代表例。",
+warn:"個人投資家には難易度が高い。複数市場の複雑な相互作用を理解し、タイミングも合わせる必要がある。「大局観が正しくてもタイミングが早すぎると損失になる」（ケインズの格言参照）。",
+related:["キャリートレード・巻き戻し","スタグフレーション","TAA","逆イールド"]},
+];
+
+const CATS=["すべて","現代トレンド・戦略","積立・購入戦術","バリュエーション","企業分析","マクロ経済","デリバティブ","テクニカル","為替・債券","暗号資産","市場心理・アノマリー","有名投資家の格言","リスク管理","オルタナティブ"];
+const CAT_PREFIX={"現代トレンド・戦略":"bc-トレ","積立・購入戦術":"bc-積立","バリュエーション":"bc-バリュ","企業分析":"bc-企業","マクロ経済":"bc-マクロ","デリバティブ":"bc-デリバ","テクニカル":"bc-テクニ","為替・債券":"bc-為替","暗号資産":"bc-暗号","市場心理・アノマリー":"bc-アノ","有名投資家の格言":"bc-格言","リスク管理":"bc-リスク","オルタナティブ":"bc-オルタ"};
+const IMP_CLS={"基礎":"b-must","重要":"b-imp","中級":"b-mid","専門":"b-adv"};
+const IMP_LABELS={"基礎":"基礎 — まず覚える","重要":"重要 — 実践で使う","中級":"中級 — 深く理解する","専門":"専門 — プロ水準"};
+
+let activeCat="すべて", activeSort="imp", openId=null;
+
+document.getElementById("total-count").textContent="全"+TERMS.length+"用語 · "+(CATS.length-1)+"カテゴリ収録";
+document.getElementById("footer-txt").textContent="全"+TERMS.length+"用語 · 14カテゴリ · アノマリー・格言・トレンド用語収録";
+
+function buildCats(){
+  const el=document.getElementById("cats");
+  CATS.forEach(c=>{
+    const cnt=c==="すべて"?TERMS.length:TERMS.filter(t=>t.cat===c).length;
+    const btn=document.createElement("button");
+    btn.className="cat-btn"+(c==="すべて"?" on":"");
+    btn.textContent=c+" "+cnt;
+    btn.onclick=()=>{
+      activeCat=c;
+      document.querySelectorAll(".cat-btn").forEach(b=>b.classList.remove("on"));
+      btn.classList.add("on");
+      openId=null; render();
+    };
+    el.appendChild(btn);
+  });
+}
+
+function setSort(s){
+  activeSort=s;
+  ["imp","kana","cat"].forEach(k=>{
+    document.getElementById("s-"+k).classList.toggle("on",k===s);
+  });
+  openId=null; render();
+}
+
+function sortTerms(terms){
+  if(activeSort==="imp") return terms.sort((a,b)=>a.impN!==b.impN?a.impN-b.impN:a.name.localeCompare(b.name,"ja"));
+  if(activeSort==="kana") return terms.sort((a,b)=>a.kana.localeCompare(b.kana,"ja"));
+  if(activeSort==="cat") return terms.sort((a,b)=>{
+    const ci=CATS.indexOf(a.cat)-CATS.indexOf(b.cat);
+    return ci!==0?ci:a.impN-b.impN;
+  });
+  return terms;
+}
+
+function render(){
+  const q=(document.getElementById("q").value||"").trim().toLowerCase();
+  let terms=[...TERMS];
+  if(activeCat!=="すべて") terms=terms.filter(t=>t.cat===activeCat);
+  if(q) terms=terms.filter(t=>(t.name+t.en+(t.def||"")+(t.formula||"")+(t.vs||"")+(t.quote||"")).toLowerCase().includes(q));
+  terms=sortTerms(terms);
+  document.getElementById("cnt").textContent=terms.length+"件";
+  const list=document.getElementById("list");
+  list.innerHTML="";
+  document.getElementById("empty").style.display=terms.length?"none":"block";
+
+  let lastGrp=null;
+  terms.forEach(t=>{
+    if(activeSort==="imp"&&!q){
+      const grp=t.imp;
+      if(grp!==lastGrp){
+        lastGrp=grp;
+        const gh=document.createElement("div");
+        gh.className="grp-hdr";
+        gh.textContent=IMP_LABELS[grp]||grp;
+        list.appendChild(gh);
+      }
+    }
+    const card=document.createElement("div");
+    card.className="card"+(openId===t.id?" open":"");
+    card.id="card-"+t.id;
+    const newBadge=t.isNew?`<span class="badge b-new">NEW</span>`:"";
+    const catCls=CAT_PREFIX[t.cat]||"";
+
+    let body="";
+    if(t.def) body+=`<div class="sec"><div class="sec-label">定義・概要</div><div class="sec-text">${t.def}</div></div>`;
+    if(t.quote) body+=`<div class="quote-box">${t.quote.replace(/\n/g,"<br>")}</div>`;
+    if(t.formula) body+=`<div class="sec"><div class="sec-label">計算式・数値目安</div><div class="formula">${t.formula}</div></div>`;
+    if(t.vs) body+=`<div class="vs-box"><strong>類似用語との違い：</strong>${t.vs}</div>`;
+    if(t.warn) body+=`<div class="warn-box"><strong>注意点：</strong>${t.warn}</div>`;
+    if(t.limit) body+=`<div class="limit-box"><strong>限界・誤解されやすい点：</strong>${t.limit}</div>`;
+    if(t.related) body+=`<div class="related-row">関連用語：${t.related.map(r=>`<span class="rel-link" onclick="searchRel('${r}')">${r}</span>`).join("")}</div>`;
+
+    card.innerHTML=`
+      <div class="card-head" onclick="toggle('${t.id}')">
+        <div class="card-names">
+          <div class="card-name">${t.name}${newBadge}</div>
+          <div class="card-en">${t.en}</div>
+        </div>
+        <div class="badges">
+          <span class="badge ${IMP_CLS[t.imp]}">${t.imp}</span>
+          <span class="badge ${catCls}">${t.cat}</span>
+        </div>
+        <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="card-body">${body}</div>`;
+    list.appendChild(card);
+  });
+}
+
+function toggle(id){
+  openId=(openId===id)?null:id;
+  document.querySelectorAll(".card").forEach(c=>{
+    c.classList.toggle("open",c.id==="card-"+openId);
+  });
+}
+
+function searchRel(name){
+  document.getElementById("q").value=name;
+  activeCat="すべて";
+  document.querySelectorAll(".cat-btn").forEach(b=>b.classList.remove("on"));
+  document.querySelector(".cat-btn").classList.add("on");
+  openId=null; render();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+document.getElementById("q").addEventListener("input",render);
+buildCats();
+render();
+</script>
+</body>
+</html>

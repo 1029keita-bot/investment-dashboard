@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年 相場を読む v5</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #f2ede4;
+  --surface:  #ffffff;
+  --panel:    #f8f5ef;
+  --border:   #b8b0a0;
+  --border2:  #d0c8b8;
+  --ink:      #16140d;
+  --dim:      #38342a;
+  --muted:    #6a6050;
+  --red:      #aa2518;
+  --red-bg:   #fdf0ee;
+  --red-bd:   #d89088;
+  --amber:    #9a5000;
+  --amber-bg: #fdf4e6;
+  --amber-bd: #d4a040;
+  --green:    #175828;
+  --green-bg: #ebf5ef;
+  --green-bd: #78be94;
+  --blue:     #183c6e;
+  --blue-bg:  #eaf0f8;
+  --blue-bd:  #80aad0;
+  --teal:     #0d5c5c;
+  --teal-bg:  #e6f5f5;
+  --teal-bd:  #5aaeae;
+  --serif: 'Noto Serif JP', serif;
+  --sans:  'Noto Sans JP', sans-serif;
+  --mono:  'DM Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 1.9;
+  font-weight: 400;
+}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(242,237,228,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--border);
+  height: 54px; display: flex; align-items: center;
+  padding: 0 1.5rem; overflow-x: auto; gap: 0;
+}
+.nav-logo {
+  font-family: var(--serif); font-weight: 700; font-size: 15px;
+  white-space: nowrap; padding-right: 1.5rem; margin-right: 0.5rem;
+  border-right: 2px solid var(--border);
+}
+nav a {
+  color: var(--muted); text-decoration: none;
+  font-size: 13px; font-family: var(--mono); letter-spacing: 0.04em;
+  padding: 0 0.85rem; height: 54px; display: flex; align-items: center;
+  white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s;
+}
+nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+main { padding-top: 74px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 80px 2.5rem; }
+hr.div { border: none; border-top: 2px solid var(--border); }
+.hero {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 100px 2.5rem 80px;
+}
+.hero-in { max-width: 980px; margin: 0 auto; }
+.hero-tag {
+  font-family: var(--mono); font-size: 13px; letter-spacing: 0.2em;
+  color: var(--muted); text-transform: uppercase; margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 900; line-height: 1.2; margin-bottom: 1.25rem;
+}
+.hero-lead {
+  font-size: 19px; color: var(--dim); max-width: 600px;
+  line-height: 2; margin-bottom: 2.5rem;
+}
+.hero-stats {
+  display: flex; flex-wrap: wrap;
+  border: 2px solid var(--border); background: var(--panel);
+}
+.hs {
+  padding: 1.25rem 1.75rem; border-right: 2px solid var(--border);
+  flex: 1; min-width: 170px;
+}
+.hs:last-child { border-right: none; }
+.hs .sl {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em;
+  color: var(--muted); margin-bottom: 4px;
+}
+.hs .sv { font-family: var(--serif); font-weight: 700; font-size: 1.2rem; }
+.hs.r .sv { color: var(--red); }
+.hs.a .sv { color: var(--amber); }
+.hs.t .sv { color: var(--teal); }
+.stag {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em;
+  color: var(--muted); text-transform: uppercase; margin-bottom: 0.6rem;
+}
+.stitle {
+  font-family: var(--serif); font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+  font-weight: 900; line-height: 1.25; margin-bottom: 1rem;
+}
+.slead {
+  font-size: 18px; color: var(--dim); max-width: 680px; line-height: 2;
+  margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border);
+}
+.co {
+  padding: 1.6rem 2rem; margin: 2rem 0;
+  border-left: 4px solid; font-size: 17px; line-height: 2;
+}
+.co h4 {
+  font-family: var(--serif); font-weight: 700; font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.co.r  { border-color: var(--red);   background: var(--red-bg);   }
+.co.a  { border-color: var(--amber); background: var(--amber-bg); }
+.co.g  { border-color: var(--green); background: var(--green-bg); }
+.co.b  { border-color: var(--blue);  background: var(--blue-bg);  }
+.co.t  { border-color: var(--teal);  background: var(--teal-bg);  }
+.co.r h4 { color: var(--red);   }
+.co.a h4 { color: var(--amber); }
+.co.g h4 { color: var(--green); }
+.co.b h4 { color: var(--blue);  }
+.co.t h4 { color: var(--teal);  }
+.brow {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border: 2px solid var(--border); margin: 2rem 0;
+}
+.bcol { padding: 1.75rem; border-right: 2px solid var(--border); background: var(--surface); }
+.bcol:last-child { border-right: none; }
+.bcol.cur { background: var(--panel); }
+.bcol .bera {
+  font-family: var(--mono); font-size: 12px; color: var(--muted); margin-bottom: 0.4rem;
+}
+.bcol h3 {
+  font-family: var(--serif); font-weight: 700; font-size: 1.05rem;
+  margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border2);
+}
+.bcol ul { list-style: none; }
+.bcol ul li {
+  font-size: 16px; color: var(--dim);
+  padding: 0.35rem 0 0.35rem 1.25rem; position: relative;
+  border-bottom: 1px solid var(--border2); line-height: 1.8;
+}
+.bcol ul li:last-child { border-bottom: none; }
+.bcol ul li::before { content: '–'; position: absolute; left: 0; color: var(--muted); }
+.bcol .blag {
+  margin-top: 1rem; padding: 0.5rem 0.8rem;
+  font-family: var(--mono); font-size: 13px;
+  background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-bd);
+}
+.bcol.cur .blag {
+  background: var(--red-bg); color: var(--red); border-color: var(--red-bd);
+}
+.mstrip {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border: 2px solid var(--border); margin: 2rem 0;
+}
+.mc { padding: 1.75rem; border-right: 2px solid var(--border); background: var(--surface); }
+.mc:last-child { border-right: none; }
+.mc .ml {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em;
+  color: var(--muted); margin-bottom: 0.5rem;
+}
+.mc .mn {
+  font-family: var(--serif); font-weight: 900;
+  font-size: 2.6rem; color: var(--red); line-height: 1.1; margin-bottom: 0.25rem;
+}
+.mc .mn.amber { color: var(--amber); }
+.mc .mb {
+  font-family: var(--mono); font-size: 13px; color: var(--muted); margin-bottom: 0.75rem;
+}
+.mc .md { font-size: 16px; color: var(--dim); line-height: 1.9; }
+.bfbox {
+  border: 2px solid var(--border); background: var(--surface);
+  display: grid; grid-template-columns: 210px 1fr; margin: 2rem 0;
+}
+.bfnum {
+  padding: 2rem 1.5rem; border-right: 2px solid var(--border);
+  background: var(--panel); text-align: center;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.bfnum .bn {
+  font-family: var(--serif); font-weight: 900;
+  font-size: 2.8rem; color: var(--amber); line-height: 1;
+}
+.bfnum .bu { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 6px; }
+.bftxt { padding: 1.75rem 2rem; }
+.bftxt h4 { font-family: var(--serif); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
+.bftxt p { font-size: 17px; color: var(--dim); line-height: 1.9; }
+.bfq {
+  margin-top: 1rem; padding: 1rem 1.25rem;
+  border-left: 3px solid var(--border); background: var(--panel);
+  font-style: italic; font-size: 16px; color: var(--muted);
+}
+/* ERP visual bar */
+.erp-bar-wrap {
+  border: 2px solid var(--border); background: var(--surface); margin: 2rem 0; padding: 1.75rem 2rem;
+}
+.erp-bar-wrap h4 { font-family: var(--serif); font-weight: 700; font-size: 1.1rem; margin-bottom: 1.25rem; }
+.erp-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem; }
+.erp-item .ei-label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
+.erp-item .ei-val { font-family: var(--serif); font-weight: 900; font-size: 2rem; margin-bottom: 0.4rem; }
+.erp-item .ei-val.red { color: var(--red); }
+.erp-item .ei-val.green { color: var(--green); }
+.erp-item .ei-desc { font-size: 15px; color: var(--dim); line-height: 1.8; }
+.erp-result {
+  padding: 1rem 1.25rem; background: var(--red-bg); border: 1px solid var(--red-bd);
+  font-family: var(--mono); font-size: 15px; color: var(--red);
+}
+/* inflation timeline */
+.inf-strip {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  border: 2px solid var(--border); margin: 2rem 0;
+}
+.inf-col { padding: 1.5rem 1.25rem; border-right: 2px solid var(--border); background: var(--surface); }
+.inf-col:last-child { border-right: none; }
+.inf-col:nth-child(even) { background: var(--panel); }
+.inf-col .ic-tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.3rem; }
+.inf-col .ic-val { font-family: var(--serif); font-weight: 900; font-size: 1.8rem; color: var(--red); line-height: 1.1; margin-bottom: 0.2rem; }
+.inf-col .ic-sub { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-bottom: 0.6rem; }
+.inf-col .ic-note { font-size: 15px; color: var(--dim); line-height: 1.8; }
+/* private credit */
+.pc-flow {
+  display: flex; gap: 0; border: 2px solid var(--border); margin: 2rem 0; overflow: hidden;
+}
+.pc-step { flex: 1; padding: 1.5rem 1.25rem; border-right: 2px solid var(--border); position: relative; }
+.pc-step:last-child { border-right: none; }
+.pc-step .ps-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 0.3rem; }
+.pc-step h5 { font-family: var(--serif); font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+.pc-step p { font-size: 15px; color: var(--dim); line-height: 1.8; }
+.pc-step.danger { background: var(--red-bg); }
+.pc-step.danger h5 { color: var(--red); }
+/* bull bear */
+.bb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 2px solid var(--border); margin: 2rem 0; }
+.bb-col { padding: 1.75rem; }
+.bb-col:first-child { border-right: 2px solid var(--border); }
+.bb-col:first-child.no-right-border { border-right: none; }
+.bb-col .bc-head { font-family: var(--mono); font-size: 12px; letter-spacing: 0.15em; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border2); }
+.bb-col.bull .bc-head { color: var(--green); }
+.bb-col.bear .bc-head { color: var(--red); }
+.bb-item { padding: 0.6rem 0; border-bottom: 1px solid var(--border2); font-size: 16px; color: var(--dim); line-height: 1.8; }
+.bb-item:last-child { border-bottom: none; }
+.bb-item .bi-name { font-weight: 700; color: var(--ink); font-size: 15px; }
+/* voices */
+.voice-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; margin: 2rem 0; }
+.voice-card { border: 2px solid var(--border); background: var(--surface); padding: 1.5rem; }
+.vc-name { font-family: var(--serif); font-weight: 700; font-size: 1.05rem; margin-bottom: 0.2rem; }
+.vc-role { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-bottom: 0.75rem; }
+.vc-verdict { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; padding: 3px 8px; border: 1px solid; display: inline-block; margin-bottom: 0.75rem; }
+.vc-verdict.bull { color: var(--green); border-color: var(--green-bd); background: var(--green-bg); }
+.vc-verdict.bear { color: var(--red); border-color: var(--red-bd); background: var(--red-bg); }
+.vc-verdict.mid  { color: var(--amber); border-color: var(--amber-bd); background: var(--amber-bg); }
+.vc-body { font-size: 16px; color: var(--dim); line-height: 1.9; }
+/* asset table */
+.atable {
+  width: 100%; border-collapse: collapse;
+  border: 2px solid var(--border); margin: 2rem 0;
+}
+.atable thead tr { background: var(--panel); }
+.atable th {
+  padding: 1rem 1.1rem; text-align: left;
+  font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; color: var(--dim);
+  border-bottom: 2px solid var(--border); border-right: 2px solid var(--border);
+  line-height: 1.5;
+}
+.atable th:last-child { border-right: none; }
+.atable td {
+  padding: 1.1rem 1.1rem; border-bottom: 2px solid var(--border2);
+  border-right: 2px solid var(--border2);
+  font-size: 16px; color: var(--dim); line-height: 1.85; vertical-align: top;
+}
+.atable td:last-child { border-right: none; }
+.atable td:first-child { color: var(--ink); font-weight: 700; font-size: 16px; white-space: nowrap; }
+.atable tr:last-child td { border-bottom: none; }
+.atable tbody tr { background: var(--surface); }
+.atable tbody tr:nth-child(even) { background: var(--panel); }
+.atable tbody tr.highlight-row { background: var(--green-bg) !important; }
+.tr { color: var(--red)   !important; font-weight: 700; }
+.ta { color: var(--amber) !important; font-weight: 700; }
+.tg { color: var(--green) !important; font-weight: 700; }
+.tb { color: var(--blue)  !important; font-weight: 700; }
+.tt { color: var(--teal)  !important; font-weight: 700; }
+.tsm { font-size: 14px !important; color: var(--muted) !important; font-weight: 400 !important; display: block; margin-top: 3px; }
+.rec-badge {
+  display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  padding: 2px 7px; background: var(--green-bg); color: var(--green); border: 1px solid var(--green-bd);
+  margin-left: 6px; vertical-align: middle;
+}
+/* hormuz */
+.hbanner {
+  background: var(--red-bg); border: 2px solid var(--red-bd);
+  padding: 1.25rem 1.75rem; margin: 2rem 0;
+  display: flex; align-items: center; gap: 1.25rem;
+}
+.hdot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--red); flex-shrink: 0;
+  box-shadow: 0 0 0 4px rgba(170,37,24,0.2);
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 4px rgba(170,37,24,0.2); }
+  50%      { box-shadow: 0 0 0 8px rgba(170,37,24,0.05); }
+}
+.hbl { font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; color: var(--red); margin-bottom: 3px; }
+.hbv { font-family: var(--serif); font-weight: 700; font-size: 1.15rem; }
+.stable {
+  width: 100%; border-collapse: collapse;
+  border: 2px solid var(--border); margin: 2rem 0;
+}
+.stable th {
+  padding: 0.9rem 1.1rem; background: var(--panel);
+  text-align: left; font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em;
+  color: var(--dim); border-bottom: 2px solid var(--border); border-right: 2px solid var(--border);
+}
+.stable th:last-child { border-right: none; }
+.stable td {
+  padding: 0.9rem 1.1rem; border-bottom: 2px solid var(--border2);
+  border-right: 2px solid var(--border2);
+  font-size: 16px; color: var(--dim); line-height: 1.8;
+}
+.stable td:last-child { border-right: none; }
+.stable td:first-child { color: var(--ink); font-weight: 700; }
+.stable tbody tr { background: var(--surface); }
+.stable tbody tr:nth-child(even) { background: var(--panel); }
+.stable tr:last-child td { border-bottom: none; }
+.crit { color: var(--red)   !important; font-weight: 700; }
+.warn { color: var(--amber) !important; font-weight: 700; }
+/* lag timeline */
+.lagtl { margin: 2rem 0; }
+.lagi  { display: grid; grid-template-columns: 120px 1fr; }
+.lagt  {
+  font-family: var(--mono); font-size: 13px; color: var(--muted);
+  text-align: right; padding: 1.1rem 1.5rem 1.1rem 0;
+  border-right: 3px solid var(--border2);
+  display: flex; align-items: flex-start; justify-content: flex-end;
+  padding-top: 1.3rem;
+}
+.lagb { padding: 1rem 0 1rem 1.75rem; position: relative; }
+.lagb::before {
+  content: ''; position: absolute; left: -7px; top: 1.3rem;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--border); border: 3px solid var(--bg);
+}
+.lagi.hi   .lagb::before { background: var(--amber); }
+.lagi.trap .lagb::before { background: var(--red);   }
+.lagb h5 { font-size: 17px; font-weight: 700; margin-bottom: 0.2rem; }
+.lagb p  { font-size: 16px; color: var(--muted); line-height: 1.8; }
+.lagi.trap .lagb h5 { color: var(--red);   }
+.lagi.hi   .lagb h5 { color: var(--amber); }
+/* calendar */
+.cg {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border: 2px solid var(--border); margin: 2rem 0;
+}
+.cc { border-right: 2px solid var(--border); padding: 1.5rem 1.75rem; background: var(--surface); }
+.cc:nth-child(even) { background: var(--panel); }
+.cc:last-child { border-right: none; }
+.cc.fw {
+  grid-column: 1 / -1; border-right: none;
+  border-top: 2px solid var(--border); background: var(--surface);
+}
+.cc .cm {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.15em;
+  color: var(--muted); margin-bottom: 0.4rem;
+}
+.cc h3 {
+  font-family: var(--serif); font-weight: 700; font-size: 1.05rem;
+  margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 2px solid var(--border2);
+}
+.cev {
+  padding: 0.55rem 0; border-bottom: 1px solid var(--border2);
+  font-size: 16px; color: var(--dim); line-height: 1.75;
+}
+.cev:last-child { border-bottom: none; }
+.etag {
+  display: inline-block; font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.08em; padding: 2px 7px; border: 1px solid;
+  border-radius: 1px; margin-bottom: 4px;
+}
+.er { color: var(--red);   border-color: var(--red-bd);   background: var(--red-bg);   }
+.ea { color: var(--amber); border-color: var(--amber-bd); background: var(--amber-bg); }
+.eg { color: var(--green); border-color: var(--green-bd); background: var(--green-bg); }
+.eb { color: var(--blue);  border-color: var(--blue-bd);  background: var(--blue-bg);  }
+/* pressure bars */
+.prow {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.85rem 0; border-bottom: 1px solid var(--border2);
+}
+.prow:last-child { border-bottom: none; }
+.plabel  { width: 110px; flex-shrink: 0; font-weight: 700; font-size: 16px; }
+.pdir    { width: 42px;  flex-shrink: 0; font-family: var(--mono); font-size: 16px; font-weight: 700; }
+.pdir.up { color: var(--green); }
+.pdir.dn { color: var(--red);   }
+.pbar-w  { flex: 1; }
+.pbar    { height: 7px; border-radius: 1px; }
+.pbar.red   { background: var(--red);   }
+.pbar.amber { background: var(--amber); }
+.pbar.green { background: var(--green); }
+.pnote { font-size: 15px; color: var(--muted); flex: 1; min-width: 120px; }
+/* principles */
+.plist { margin: 2rem 0; }
+.prin {
+  display: grid; grid-template-columns: 48px 1fr; gap: 1rem;
+  padding: 1.5rem 0; border-bottom: 2px solid var(--border2); align-items: start;
+}
+.prin:last-child { border-bottom: none; }
+.pnum { font-family: var(--serif); font-size: 1.5rem; font-weight: 900; color: var(--border); line-height: 1.3; }
+.prin h4 { font-weight: 700; font-size: 18px; margin-bottom: 0.3rem; }
+.prin p  { font-size: 17px; color: var(--dim); line-height: 1.9; }
+/* disclaimer */
+.disc {
+  max-width: 980px; margin: 0 auto 4rem;
+  padding: 1.5rem 2rem; border: 2px solid var(--border2);
+  background: var(--panel); font-size: 14px; color: var(--muted);
+  line-height: 1.9; font-family: var(--mono);
+}
+/* fade */
+.fade { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.fade.on { opacity: 1; transform: none; }
+/* responsive */
+@media (max-width: 740px) {
+  .wrap { padding: 56px 1.25rem; }
+  .hero { padding: 80px 1.25rem 60px; }
+  .brow, .mstrip, .cg, .inf-strip, .bb-grid, .voice-grid { grid-template-columns: 1fr; }
+  .bcol, .cc, .inf-col { border-right: none; border-bottom: 2px solid var(--border2); }
+  .bfbox { grid-template-columns: 1fr; }
+  .bfnum { border-right: none; border-bottom: 2px solid var(--border); }
+  .pc-flow { flex-direction: column; }
+  .pc-step { border-right: none; border-bottom: 2px solid var(--border); }
+  .atable { font-size: 14px; }
+  .atable td, .atable th { padding: 0.75rem 0.75rem; }
+  .bb-col:first-child { border-right: none; border-bottom: 2px solid var(--border); }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">2026年 相場を読む</span>
+  <a href="#intro">序章</a>
+  <a href="#valuation">割高度</a>
+  <a href="#bubble">AIバブル</a>
+  <a href="#hormuz">ホルムズ</a>
+  <a href="#inflation">インフレ</a>
+  <a href="#private-credit">信用リスク</a>
+  <a href="#assets">資産比較</a>
+  <a href="#forces">強気vs弱気</a>
+  <a href="#schedule">スケジュール</a>
+  <a href="#principles">原則</a>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-in">
+  <div class="hero-tag">2026年 投資判断のための解説資料 v5.0</div>
+  <h1>3つの力が<br>同時に動いている</h1>
+  <p class="hero-lead">
+    AIバブルによる株式の歴史的割高、ホルムズ海峡封鎖によるインフレ圧力、そして金利再上昇という3つが同時進行している。
+    SP500は年末予想にほぼ到達し、上値余地は消えた。完璧な逃避先が存在しない中で、「何が起きているのか」を理解するための地図。
+  </p>
+  <div class="hero-stats">
+    <div class="hs r"><div class="sl">シラーPER（2026年5月15日）</div><div class="sv">42.18×</div></div>
+    <div class="hs r"><div class="sl">株式リスクプレミアム（ERP）</div><div class="sv">−2.1%</div></div>
+    <div class="hs r"><div class="sl">米国CPI（4月）</div><div class="sv">+3.8%</div></div>
+    <div class="hs a"><div class="sl">SP500 vs 年末予想平均</div><div class="sv">7,500 vs 7,600</div></div>
+    <div class="hs r"><div class="sl">ホルムズ通過 vs 戦前</div><div class="sv">約 −95%</div></div>
+    <div class="hs a"><div class="sl">バークシャー現金保有</div><div class="sv">3,973億ドル</div></div>
+  </div>
+</div>
+</div>
+
+<hr class="div">
+
+<!-- 序章 -->
+<section id="intro">
+<div class="wrap">
+  <div class="stag">序章 / Prologue</div>
+  <h2 class="stitle">なぜリスクがわかっていても<br>市場は上がり続けるのか</h2>
+  <p class="slead">
+    現在の市場を理解するための最重要概念から始める。
+    「誰もが危ないと言っているのに株価が上がる」という疑問への答えがここにある。
+  </p>
+
+  <div class="co b fade">
+    <h4>大馬鹿理論（Greater Fool Theory）</h4>
+    過大評価された資産を高値で買っても、<strong>さらに高い値段で買う「もっと大馬鹿」が現れる限り、価格は上がり続ける</strong>という論理。問題は連鎖がいつか終わること——そして最後に買った人が「最大の大馬鹿」になること。
+  </div>
+
+  <div class="brow fade">
+    <div class="bcol">
+      <div class="bera">1996〜2000年</div>
+      <h3>ドットコムバブル</h3>
+      <ul>
+        <li>1996年：グリーンスパンが「根拠なき熱狂」と警告</li>
+        <li>その後、株価はさらに約2倍以上上昇</li>
+        <li>NASDAQはピークから約80%下落</li>
+      </ul>
+      <div class="blag">⚠ 警告から崩壊まで：約4年</div>
+    </div>
+    <div class="bcol">
+      <div class="bera">2004〜2008年</div>
+      <h3>サブプライムバブル</h3>
+      <ul>
+        <li>2005〜06年：多数のエコノミストが警告</li>
+        <li>シラーが住宅価格の過熱を指摘</li>
+        <li>実際の崩壊は2008年（警告から2〜3年後）</li>
+      </ul>
+      <div class="blag">⚠ 警告から崩壊まで：2〜3年</div>
+    </div>
+    <div class="bcol cur">
+      <div class="bera">2023〜現在</div>
+      <h3>AIバブル（進行中）</h3>
+      <ul>
+        <li>バークシャー：12四半期以上連続で純売り越し</li>
+        <li>バフェット：市場を「カジノ隣接の教会」と表現</li>
+        <li>それでも市場は上昇を続けている</li>
+      </ul>
+      <div class="blag">● 現在：警告フェーズ継続中</div>
+    </div>
+  </div>
+
+  <div class="co a fade">
+    <h4>なぜ今はバブルが維持されやすいか</h4>
+    <strong>① インデックス投資の普及</strong>——割高・割安を考えずに機械的に買い続ける「S&P500信仰」<br>
+    <strong>② アルゴリズム取引</strong>——ヘッドラインに瞬時に反応、ファンダメンタルズは無関係<br>
+    <strong>③ 0DTE（当日満期）オプションの急増</strong>——短期投機が市場全体を動かす<br>
+    <strong>④ FOMO（取り残される恐怖）</strong>——「みんな儲かってるのに自分だけ」という感情的な買い<br>
+    <strong>⑤ トランプのヘッドライン相場</strong>——米中会談・イラン交渉報道ひとつで株価が乱高下する構造<br><br>
+    <em>バブルは「いつ崩れるかわからない」のではなく、「なぜまだ崩れていないかは説明できる」。しかし崩れた後の下落は急速で容赦ない。</em>
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第1章：割高度 -->
+<section id="valuation">
+<div class="wrap">
+  <div class="stag">第1章 / Valuation</div>
+  <h2 class="stitle">株は今、どれだけ割高なのか<br>——そして上値余地は消えた</h2>
+  <p class="slead">
+    3つの指標に絞って確認する。どれも「現在の株価が歴史的に見て高すぎる」ことを示している。
+    さらに5月15日時点でSP500が7,500を突破し、ストラテジスト平均の年末予想7,600にほぼ到達した。
+    上値余地は残り1〜2%しかない。
+  </p>
+
+  <div class="co r fade">
+    <h4>【速報】SP500が7,500を突破——年末予想まで残り1〜2%</h4>
+    直接の引き金は米中首脳会談（中国が200機のボーイング機を発注）。しかしホルムズ封鎖は継続中でインフレは加速している。
+    ヘッドライン1本で動く相場の脆さを、今日の上昇が象徴している。
+  </div>
+
+  <div class="mstrip fade">
+    <div class="mc">
+      <div class="ml">シラーPER（CAPE）</div>
+      <div class="mn">42.18×</div>
+      <div class="mb">歴史的中央値 16× ／ 史上最高値 44.2×（2000年）</div>
+      <div class="md">5月15日現在42.18倍。HTMLのv4記載値40.1から約2ポイント上昇。史上最高値まであと約2ポイント。シラー自身は今後10年の年平均リターンを+1.5%と予測。</div>
+    </div>
+    <div class="mc">
+      <div class="ml">バフェット指数（時価総額/GDP）</div>
+      <div class="mn">〜200%</div>
+      <div class="mb">歴史的平均 約100% ／ 危険域 150%以上</div>
+      <div class="md">国の経済規模に対して株式市場がどれだけ大きいか。バフェット自身が「最も良い割高度の指標」と述べた。現在は過去最高水準付近。</div>
+    </div>
+    <div class="mc">
+      <div class="ml">ERP（株式リスクプレミアム）</div>
+      <div class="mn">−2.1%</div>
+      <div class="mb">正常値 +2〜4% ／ 現在 マイナス転落</div>
+      <div class="md">株の期待利回り（1÷CAPE＝2.37%）から10年債利回り（4.5%）を引いた値。マイナスは「株はTビルより低いリターンしか期待できない」ことを意味する。2000年以来の異常事態。</div>
+    </div>
+  </div>
+
+  <div class="erp-bar-wrap fade">
+    <h4>ERPのマイナス転落——何が起きているか</h4>
+    <div class="erp-compare">
+      <div class="erp-item">
+        <div class="ei-label">株の期待利回り（1÷CAPE）</div>
+        <div class="ei-val red">2.37%</div>
+        <div class="ei-desc">CAPE 42.18倍の逆数。株を持って得られるはずの年間リターンの推定値。</div>
+      </div>
+      <div class="erp-item">
+        <div class="ei-label">米国10年債利回り（無リスク）</div>
+        <div class="ei-val green">4.50%</div>
+        <div class="ei-desc">国債を持てばほぼ確実に得られるリターン。株よりリスクがはるかに低い。</div>
+      </div>
+    </div>
+    <div class="erp-result">
+      ERP ＝ 2.37% − 4.50% ＝ <strong>−2.13%</strong>　／　「株を持つリスクに対して、国債より低いリターンしか期待できない」という異常な状態。2000年のドットコムバブル直後以来ほぼ見られなかった水準。
+    </div>
+  </div>
+
+  <div class="bfbox fade">
+    <div class="bfnum">
+      <div class="bn">3,973億</div>
+      <div class="bu">ドル（2026年3月末）</div>
+    </div>
+    <div class="bftxt">
+      <h4>バークシャー・ハサウェイの現金保有額——過去最高を更新</h4>
+      <p>
+        12四半期以上連続で純売り越し。2023年の約1,000億ドルから約4倍に増加。
+        総資産の30%以上が現金という少なくとも過去30年で最高の比率。
+        直近の株価下落局面でも、この現金を動かさなかった。
+        ERPがマイナスの環境では株を買う合理性がない——それがバフェットの判断だ。
+      </p>
+      <div class="bfq">
+        「今の市場はカジノが隣接した教会のようだ。1日物オプションや予測市場の爆発的増加は、
+        投資より投機が市場を支配している証拠だ。」<br>
+        <span style="font-size:15px;">— バフェット、2026年バークシャー年次総会</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第2章：AIバブル -->
+<section id="bubble">
+<div class="wrap">
+  <div class="stag">第2章 / AI Bubble</div>
+  <h2 class="stitle">AIバブルの実態と<br>2026年＝ROI試験年という構造問題</h2>
+  <p class="slead">
+    AIが生産性を向上させることは事実だ。しかし「どれだけ」「いつまでに」という問いに対して、
+    現時点の答えは株価が織り込んだ期待に全く追いついていない。
+    2026年はその答えが初めて決算数字として出てくる年だ。
+  </p>
+
+  <div class="co r fade">
+    <h4>投資規模と収益の乖離——そして2026年がROI試験年になる理由</h4>
+    Amazon・Alphabet・Meta・Microsoftの4社だけで2025年のAI設備投資は約300億ドル規模。
+    一方、AI全体の年間売上は現時点で推計5兆円（約500億ドル）未満。
+    OpenAIは2026年の損失が約1.7兆円（170億ドル）と予測されており、2027年にはさらに拡大する見通しだ。<br><br>
+    大手テック企業が「将来への投資」という説明でROIの開示を先送りしてきた。その答えが初めて決算数字として出るのが<strong>2Q決算（7月）と3Q決算（11月）</strong>だ。
+    さらにホルムズ危機によるエネルギーコスト上昇・半導体素材調達コスト急騰が、AIのROI証明を構造的に難しくしている。<br><br>
+    <strong>「本物の技術」でも株価は壊滅する——NASDAQはドットコムバブルのピークから約80%下落するまで約2年半かかった。</strong>
+  </div>
+
+  <div class="co b fade">
+    <h4>「バブルだとしても、いつ崩れるかは誰にもわからない」</h4>
+    これが最も重要な真実だ。ドットコムバブルでは、アマゾン・グーグルのような「本物」も存在した。
+    問題は「価格が正しいかどうか」ではなく、<strong>「価格がいつ現実に追いつくか」</strong>。
+    DeepSeekを含む中国勢の台頭により「AIは独占ではなくコモディティ化する」というシナリオも現実味を帯びている。
+    ハイパースケーラーは「投資しなければ競合に負ける」というジレンマで過剰投資を続けており、
+    集団的な過剰投資が最終的に収益を圧迫する。
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第3章：ホルムズ -->
+<section id="hormuz">
+<div class="wrap">
+  <div class="stag">第3章 / Hormuz Crisis</div>
+  <h2 class="stitle">ホルムズ海峡危機が<br>世界経済に与える影響</h2>
+  <p class="slead">
+    2026年2月28日、米・イスラエルのイラン攻撃を受け、イランはホルムズ海峡を事実上封鎖した。
+    世界の石油・LNG貿易の約20%が通過するこの海峡がほぼ機能停止することの意味を整理する。
+    原油だけでなく、農業と半導体という現代経済の根幹にも不可逆な影響が及んでいる。
+  </p>
+
+  <div class="hbanner fade">
+    <div class="hdot"></div>
+    <div>
+      <div class="hbl">現在の状況（2026年5月15日）— インフレへの影響はすでに数字として確定</div>
+      <div class="hbv">戦前：1日平均 約120隻通過 → 現在：1〜2隻／日（約95〜99%減）／ 4月CPI +3.8%・PPI +6.0% に直撃反映済み</div>
+    </div>
+  </div>
+
+  <table class="stable fade">
+    <thead>
+      <tr>
+        <th>品目</th>
+        <th>ホルムズへの依存度</th>
+        <th>備蓄の特性</th>
+        <th>影響の深刻度</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>原油・石油製品</td>
+        <td>世界貿易の約20%</td>
+        <td>IEA戦略備蓄あり（数十〜90日分）</td>
+        <td class="warn">高（数か月で顕在化）</td>
+      </tr>
+      <tr>
+        <td>LNG（液化天然ガス）</td>
+        <td>世界貿易の約20%（カタール産）</td>
+        <td>代替供給あり・切り替えに時間</td>
+        <td class="warn">高（欧州・アジアに影響）</td>
+      </tr>
+      <tr>
+        <td>尿素・窒素肥料</td>
+        <td>世界輸出の約30〜35%</td>
+        <td style="color:var(--red);font-weight:700;">戦略備蓄なし</td>
+        <td class="crit">最大（農業への不可逆影響）</td>
+      </tr>
+      <tr>
+        <td>ジェット燃料・ナフサ</td>
+        <td>アジア向け精製品の主要ルート</td>
+        <td>備蓄少・代替輸送に時間</td>
+        <td class="warn">高（輸送コスト上昇）</td>
+      </tr>
+      <tr>
+        <td>ヘリウム</td>
+        <td>カタール産が主要供給源</td>
+        <td style="color:var(--red);font-weight:700;">代替ほぼなし</td>
+        <td class="crit">高（半導体製造に直結）</td>
+      </tr>
+      <tr>
+        <td>フッ素・フッ化物</td>
+        <td>中東・湾岸産の一部が影響</td>
+        <td style="color:var(--red);font-weight:700;">調達先が限定的</td>
+        <td class="crit">高（半導体エッチング・洗浄に必須）</td>
+      </tr>
+      <tr>
+        <td>アンモニア・リン酸肥料</td>
+        <td>世界輸出の約20〜30%</td>
+        <td style="color:var(--red);font-weight:700;">戦略備蓄なし</td>
+        <td class="crit">最大（食料安全保障）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="co r fade">
+    <h4>半導体素材への波及——日本でいま問題になっていること</h4>
+    ヘリウムとフッ素はどちらも半導体製造に不可欠な素材だ。
+    ヘリウムはウェハー冷却・MRI・光ファイバー製造に使われ、カタール産が世界供給の主要部分を占める。
+    フッ素（フッ化水素・フッ化アンモニウム等）はウェハーのエッチング・洗浄工程に不可欠で、
+    代替が利かない。<strong>これらの調達コストは現在急騰しており、長引けば長引くほど半導体製造コストへの影響は不可逆的に拡大する。</strong>
+    日本の半導体・電子部品業界で今まさに話題になっている現実の問題だ。
+  </div>
+
+  <h3 style="font-family:var(--serif);font-weight:700;margin:2.5rem 0 0.75rem;font-size:1.2rem;">
+    ホルムズ再開から価格反映まで——「再開 ≠ 即回復」
+  </h3>
+  <p style="color:var(--dim);font-size:17px;line-height:2;margin-bottom:1.5rem;">
+    合意・再開のニュースで株価は急騰する。しかし実態の回復はずっと遅い。
+    この「タイムラグ」を理解しないと、急騰した瞬間が最も危険な罠になる。
+  </p>
+
+  <div class="lagtl fade">
+    <div class="lagi hi">
+      <div class="lagt">Day 0（2月末）</div>
+      <div class="lagb">
+        <h5>封鎖開始・ホルムズ事実上停止</h5>
+        <p>市場は最初「一時的」と判断。株価への即時影響は限定的だった。</p>
+      </div>
+    </div>
+    <div class="lagi hi">
+      <div class="lagt">1〜2か月後（3〜4月）</div>
+      <div class="lagb">
+        <h5>原油・LNG価格が上昇開始</h5>
+        <p>ガソリン価格が急騰（前年比+28%）。3月CPI+3.3%、4月CPI+3.8%として数字に現れた。エネルギーが全体インフレの40%超を占めた。</p>
+      </div>
+    </div>
+    <div class="lagi trap">
+      <div class="lagt">現在（5月）</div>
+      <div class="lagb">
+        <h5>⚠ インフレはすでに「リスク」から「現実」へ</h5>
+        <p>PPI+6.0%は今後数か月かけてさらにCPIへ転嫁される。生産者コストの上昇が消費者に届くのにさらに1〜3か月かかる。<strong>インフレ加速の第2波はこれからだ。</strong></p>
+      </div>
+    </div>
+    <div class="lagi trap">
+      <div class="lagt">3〜6か月後</div>
+      <div class="lagb">
+        <h5>食料インフレの本格化・企業収益直撃</h5>
+        <p>「再開したのになぜインフレが続くのか」という失望が来る。食料価格は春作の不作が秋〜冬に出る。半導体素材コストの上昇が企業決算に反映。</p>
+      </div>
+    </div>
+    <div class="lagi trap">
+      <div class="lagt">不可逆</div>
+      <div class="lagb">
+        <h5>春作・秋作の収量被害は回復しない</h5>
+        <p>肥料は播種時に必要。再開後に届いても手遅れ。食料インフレは2026年末〜2027年まで継続する可能性。半導体素材コストの高止まりも同様。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="co a fade">
+    <h4>交渉の現状（2026年5月）</h4>
+    現在、米・イラン間で14項目の覚書（MOU）が交渉中。合意すれば30日以内に段階的封鎖解除という内容。
+    しかしイラン議会は核問題での妥協を拒否、指導部は分裂している。<br><br>
+    <strong>楽観シナリオ：</strong>部分合意→段階的改善（〜8月）→株価急騰。ただし「再開≠即回復」の罠に注意。インフレはすぐには収まらない。<br>
+    <strong>悲観シナリオ：</strong>交渉膠着が続き封鎖長期化→備蓄限界・食料インフレが秋〜冬に顕在化。半導体素材コストが不可逆的に上昇。<br><br>
+    現時点では交渉の行方を確実に予測できる専門家はいない。どちらのシナリオも「ありうる」前提で備えることが重要だ。
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第4章：インフレと金利 -->
+<section id="inflation">
+<div class="wrap">
+  <div class="stag">第4章 / Inflation &amp; Rates — 新設</div>
+  <h2 class="stitle">インフレ再燃と金利の罠<br>——ウォーシュ就任の逆説</h2>
+  <p class="slead">
+    2026年5月12〜13日に発表されたCPIとPPIは、いずれも市場予想を大幅に超え、
+    2022年〜2023年のインフレ最悪期に匹敵する水準に戻った。
+    利下げを期待して就任したウォーシュ新Fed議長は、就任直後に利上げの可能性を突きつけられた。
+  </p>
+
+  <div class="inf-strip fade">
+    <div class="inf-col">
+      <div class="ic-tag">CPI（消費者物価）4月</div>
+      <div class="ic-val">+3.8%</div>
+      <div class="ic-sub">前年比 ／ 2023年5月以来最高</div>
+      <div class="ic-note">市場予想+3.7%を上回った。エネルギーが前年比+17.9%、食料が+3.2%。実質賃金は3年ぶりにマイナス転落。</div>
+    </div>
+    <div class="inf-col">
+      <div class="ic-tag">コアCPI 4月</div>
+      <div class="ic-val">+2.8%</div>
+      <div class="ic-sub">前年比 ／ 月次は+0.4%（2025年1月以来最大）</div>
+      <div class="ic-note">食品・エネルギーを除いても加速。住居費が月次+0.6%と急騰。インフレはエネルギー以外にも広がっている。</div>
+    </div>
+    <div class="inf-col">
+      <div class="ic-tag">PPI（生産者物価）4月</div>
+      <div class="ic-val">+6.0%</div>
+      <div class="ic-sub">前年比 ／ 2022年12月以来最高</div>
+      <div class="ic-note">月次+1.4%は市場予想+0.5%の約3倍。コアPPIも月次+1.0%と予想の2.5倍。企業のコスト上昇がこれから消費者価格に転嫁される。</div>
+    </div>
+    <div class="inf-col">
+      <div class="ic-tag">中間財PPI（ステージ2）</div>
+      <div class="ic-val">+11.1%</div>
+      <div class="ic-sub">前年比 ／ 2022年9月以来最大</div>
+      <div class="ic-note">川上から川下へのコスト転嫁が連鎖している。PPIはCPIの先行指標。PPI上昇はこれからもCPI上昇として出てくる。</div>
+    </div>
+  </div>
+
+  <div class="co r fade">
+    <h4>ウォーシュ就任の逆説——「利下げのために選ばれた人物が利上げを迫られる」</h4>
+    トランプはウォーシュをFed議長に指名した理由の一つが「利下げ派」だったからだ。
+    しかし就任直後の現実は逆だった。<br><br>
+    CPI・PPIの急加速を受け、CMEのFedWatchツールによれば<strong>2026年末までに利上げが行われる確率が約40%</strong>に上昇。
+    2027年1月までの利上げ確率は51%を超えた。<strong>利下げ確率は事実上ゼロ</strong>に消えた。<br><br>
+    「ウォーシュが就任しても、データがインフレ方向に動いていれば利上げを避けられない」（Moody's・ザンディ）
+  </div>
+
+  <div class="co a fade">
+    <h4>長期金利の世界的上昇——企業にとっての死活問題</h4>
+    米国10年債：約4.5%　／　30年債：5%超（ともに約1年ぶりの高水準）<br><br>
+    金利が高止まりまたは上昇する環境では：<br>
+    ① 企業の借入コストが上昇→設備投資・株式買い戻しが縮小<br>
+    ② 割引率が上がる→特に遠い将来のキャッシュフローが多いAI・グロース株の理論価値が低下<br>
+    ③ 住宅ローン・消費者ローン金利も上昇→消費が冷える<br><br>
+    CAPE42倍の割高株価は「将来の高成長」を織り込んでいるが、金利上昇はその前提を崩す。
+    <strong>長期金利5%超の環境でCAPE42倍は、二重に異常な状態だ。</strong>
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第5章：プライベートクレジット -->
+<section id="private-credit">
+<div class="wrap">
+  <div class="stag">第5章 / Private Credit — 新設</div>
+  <h2 class="stitle">プライベートクレジット<br>——見えないところで膨らむリスク</h2>
+  <p class="slead">
+    リーマンショックは「住宅ローンの信用崩壊」だった。次の信用危機の火種として多くの専門家が注目しているのが
+    プライベートクレジット（私募融資）だ。銀行の審査を通らない融資が、見えないところで膨らんでいる。
+  </p>
+
+  <div class="co r fade">
+    <h4>なぜ今これが危険なのか</h4>
+    プライベートクレジット市場は過去10年で急拡大し、現在の世界全体の規模は<strong>約2.1兆ドル（約310兆円）</strong>に達している（2024年末時点）。
+    銀行の審査を通らない企業への直接融資で、市場で毎日値段がつかないため不良債権が隠れやすい構造だ。<br><br>
+    金利が低い時代に積み上がった変動金利融資が4〜5%の高金利環境でじわじわと圧迫されており、
+    特にレバレッジを効かせた買収案件（LBO）のデフォルトリスクが高まっている。
+    大規模なデフォルトが表面化した瞬間、金融機関全体の信用が収縮する——<strong>「突然」起きるという点がリーマンショックと同じ構造だ。</strong>
+  </div>
+
+  <div class="co a fade">
+    <h4>投資家として知っておくべきこと</h4>
+    ① プライベートクレジットに直接投資していなくても、年金・保険を通じて間接的にエクスポージャーを持っている可能性がある<br>
+    ② 信用危機が表面化すると、株・社債・REITなど複数の資産クラスが同時に下落する<br>
+    ③ 「いつ起きるか」は不明だが「なぜ起きうるか」は明確。備えのポイントは流動性の高い安全資産を手元に置くこと
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第6章：日本株 -->
+<section id="japan" style="display:none;"><!-- 統合済み：第7章強気vs弱気に統合 --></section>
+
+<!-- 第6章：資産比較（旧7章） -->
+<section id="assets">
+<div class="wrap">
+  <div class="stag">第6章 / Asset Comparison</div>
+  <h2 class="stitle">「完璧な逃避先がない」時代の<br>資産クラス比較</h2>
+  <p class="slead">
+    現在の環境は「キャッシュもインフレに負け、長期債は金利リスク、株は割高、金は高値圏」という
+    四重苦の状態だ。それでも<strong>相対的に最も合理的な待機場所</strong>は存在する。
+    日本人投資家と米国籍投資家で最適解は異なる。
+  </p>
+
+  <div class="co t fade">
+    <h4>【結論】ERPがマイナスの環境で株式を4割以上保有するリスク</h4>
+    現在、株の期待利回り（2.37%）は国債利回り（4.5%）を下回っている（ERP = −2.13%）。
+    これはリスクを取らずにTビル・高金利預金を持つだけで、株の期待リターンを上回れることを意味する。<br><br>
+    CAPE42倍の市場でポートフォリオの4割以上を株式で持つことは、
+    <strong>「最悪の場合、10年間塩漬けになるリスク」を引き受けることだ。</strong>
+    CAPE42倍から始まった場合の歴史的パターンでは、向こう10年の年率リターンは+1〜2%程度にとどまる。
+    バークシャーが3,973億ドルをTビルで待機させているのは（第1章参照）、まさにこれが理由だ。
+  </div>
+
+  <table class="atable fade">
+    <thead>
+      <tr>
+        <th>資産クラス</th>
+        <th>期待リターン（年率）</th>
+        <th>インフレ耐性</th>
+        <th>株暴落時</th>
+        <th>日本人の為替リスク</th>
+        <th>現状評価・コメント</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>米国株（S&P500）</td>
+        <td>
+          <span class="tr">名目 +1〜2%／年</span>
+          <span class="tsm">CAPE42倍・ERP −2.1%からの試算</span>
+        </td>
+        <td><span class="ta">中（企業収益次第）</span></td>
+        <td><span class="tr">大幅下落</span></td>
+        <td><span class="ta">円高なら損失拡大</span></td>
+        <td>CAPE42倍、ERP −2.1%、SP500が年末予想に到達済み。AIバブル崩壊時はドットコム並みの暴落リスク。現時点でのコア保有は非推奨。</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>Tビル・SGOV<br><span style="font-size:14px;font-weight:400;">（〜3か月）</span><span class="rec-badge">米国籍向け推奨</span></td>
+        <td>
+          <span class="tg">約3.6%／年（ドル建て）</span>
+          <span class="tsm">ERPがマイナスの今、株の期待値を上回る</span>
+        </td>
+        <td><span class="ta">△（インフレには負けるが株より合理的）</span></td>
+        <td><span class="tg">元本ほぼ安定</span></td>
+        <td><span class="tr">円高リスクで損失も（日本人には注意）</span></td>
+        <td>IB証券等でSGOV等のETFとして購入可能。バフェットが3,973億ドルを寝かせている場所。ERP −2.1%の環境ではリスクゼロで株の期待値を上回る。「本物の割安」が来たときに即動ける待機資金として最適。</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>SBIハイパー預金・円MMF<span class="rec-badge">日本人向け推奨</span></td>
+        <td>
+          <span class="tg">個人向け国債と同水準</span>
+          <span class="tsm">流動性は最高（個人向け国債より優位）</span>
+        </td>
+        <td><span class="ta">△（インフレに一部追随）</span></td>
+        <td><span class="tg">影響なし（円建て・元本保証）</span></td>
+        <td><span class="tg">為替リスクなし（円建て）</span></td>
+        <td>日本人投資家の「最安牌の待機資金」。個人向け国債と同水準の金利で流動性が最も高い。ドル建てTビルと違い円高リスクがゼロ。待機資金として最もシンプルな選択。</td>
+      </tr>
+      <tr>
+        <td>個人向け国債（変動10年）<br><span style="font-size:14px;font-weight:400;">※日本人のみ</span></td>
+        <td>
+          <span class="ta">約0.5〜0.8%（現在）</span>
+          <span class="tsm">変動金利でインフレに一部追随</span>
+        </td>
+        <td><span class="ta">△（変動金利で追随）</span></td>
+        <td><span class="tg">影響なし（円建て・元本保証）</span></td>
+        <td><span class="tg">なし（円建て）</span></td>
+        <td>元本保証・為替リスクなし。流動性はSBIハイパー預金より低い（1年間換金不可）。中長期の円建て安全資産として機能。</td>
+      </tr>
+      <tr>
+        <td>米国中期国債・IEF<br><span style="font-size:14px;font-weight:400;">（7〜10年）</span></td>
+        <td>
+          <span class="ta">約4.3%／年（ドル建て）</span>
+          <span class="tsm">金利+1%で約▲2%のリスク</span>
+        </td>
+        <td><span class="tr">弱い（インフレで価格下落）</span></td>
+        <td><span class="tg">上昇しやすい</span></td>
+        <td><span class="tr">円高リスク＋金利リスク</span></td>
+        <td>利上げ観測が高まっている現環境では金利リスクに注意。満期保有なら確定利回りだが資金が固定される。Tビルより不確実性が高い。</td>
+      </tr>
+      <tr>
+        <td>米国長期債ETF・TLT<br><span style="font-size:14px;font-weight:400;">（20年超）</span></td>
+        <td>
+          <span class="ta">約5%（ドル建て）</span>
+          <span class="tsm">金利+1%で約▲8%。過去5年で▲26%</span>
+        </td>
+        <td><span class="tr">非常に弱い</span></td>
+        <td><span class="tg">大幅上昇（利下げ時のみ）</span></td>
+        <td><span class="tr">円高＋金利リスク二重</span></td>
+        <td>利下げが2027年後半以降に遠のいた現環境では最悪の選択肢。スタグフレーション局面で最も打撃を受ける資産クラス。現時点では推奨しにくい。</td>
+      </tr>
+      <tr>
+        <td>金（ゴールド）</td>
+        <td>
+          <span class="tg">過去50年 年率+8%</span>
+          <span class="tsm">現在 約4,715ドル／oz（高値圏）<br>JPM 2026年末予測：5,000〜6,300ドル</span>
+        </td>
+        <td><span class="tg">強い（実物資産）</span></td>
+        <td><span class="tg">上昇（有事・株安に強い）</span></td>
+        <td><span class="ta">円高で目減りするが価格上昇がカバーも</span></td>
+        <td>インフレ×有事×ドル安という現在の環境は金にとって理想的。ただし既に高値圏で短期変動リスクあり。分散の一部として保有する価値はある。</td>
+      </tr>
+      <tr>
+        <td>ビットコイン（BTC）</td>
+        <td>
+          <span class="tb">半減期サイクル実績では数倍〜</span>
+          <span class="tsm">▲80%超の暴落も経験あり</span>
+        </td>
+        <td><span class="ta">中（長期的には希少性）</span></td>
+        <td><span class="tr">連動して下落しやすい</span></td>
+        <td><span class="tr">円高リスク＋価格変動リスク</span></td>
+        <td>株との相関が高く株安時に同時に下落。半減期サイクル（4年周期）で動く独自の値動き。損失許容額の範囲内で分散として位置づける。2029年の半減期サイクル終盤を見据えた戦略的保有のみ。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="co b fade">
+    <h4>日本人投資家への注記：為替リスクを忘れずに</h4>
+    SGOVや米国債・金ETFは<strong>ドル建て商品</strong>のため、円高になると円換算リターンが目減りする。
+    例えば1ドル150円→140円（6.7%の円高）になると、年率3.6%のTビル利回りを全て消してしまう。
+    <strong>待機資金の最安牌は円建て（SBIハイパー預金・円MMF）、米国籍ならTビル（SGOV）。ドル建て商品はあくまでも為替リスクを理解した上での選択。</strong>
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第7章：強気vs弱気 -->
+<section id="forces">
+<div class="wrap">
+  <div class="stag">第7章 / Bull vs Bear — 新設</div>
+  <h2 class="stitle">相場を動かす力学の全整理<br>——強気派と弱気派は何を根拠にしているか</h2>
+  <p class="slead">
+    著名投資家の間で「崩壊するかどうか」ではすでに合意がある。「いつか」だけで意見が割れている。
+    上値支えと下落リスクを数字で整理し、強気派・弱気派それぞれの根拠を示す。
+  </p>
+
+  <div class="bb-grid fade">
+    <div class="bb-col bull">
+      <div class="bc-head">▲ 上値を支えている力</div>
+      <div class="bb-item">
+        <div class="bi-name">トランプのヘッドライン相場操作</div>
+        米中会談・ホルムズ交渉・関税緩和など、トランプ発言1本で株価が動く。今日の7,500突破も米中首脳会談が直接のトリガー。実態とは無関係に相場が動く。
+      </div>
+      <div class="bb-item">
+        <div class="bi-name">強い企業決算（Q1）——ただし要注意</div>
+        Q1決算はウォール街予想を平均27%超上回った。ただし、この「好決算」には構造的な理由がある。①アナリストが年初に予想を大幅に下方修正しすぎた（ハードルが低くなっていた）、②AI設備投資がGDP成長を下支えした。Q2以降はインフレコスト・調達コスト上昇が企業収益に本格的に乗ってくる。「Q1が良かった」は「Q2以降も良い」を意味しない。
+      </div>
+      <div class="bb-item">
+        <div class="bi-name">AIバブルの熱狂とFOMO</div>
+        半導体株は今年だけで+65%超上昇。「AI革命が続く」という期待が資金を引きつけ続けている。上昇相場は自己実現する側面がある。
+      </div>
+      <div class="bb-item">
+        <div class="bi-name">インデックス投資・自動買い</div>
+        毎月の積立投資・ETFリバランスが機械的に株を買い続ける。ファンダメンタルズとは無関係の構造的な買い圧力。
+      </div>
+    </div>
+    <div class="bb-col bear">
+      <div class="bc-head">▼ 下落リスクとなる力</div>
+      <div class="bb-item">
+        <div class="bi-name">ERP −2.13%・CAPE 42倍</div>
+        株の期待利回りが国債を下回るという2000年以来の異常事態。上値余地はSP500 7,600（年末予想平均）まであと1〜2%のみ。
+      </div>
+      <div class="bb-item">
+        <div class="bi-name">インフレ再燃と利上げリスク</div>
+        CPI3.8%・PPI6.0%。Fed利上げ確率40%。長期金利5%超。高金利環境でCAPE42倍という二重の異常が株価を圧迫する。
+      </div>
+      <div class="bb-item">
+        <div class="bi-name">AIのROI未証明（7月・11月決算）</div>
+        2026年は「AIが本当に儲かるのか」が問われる年。投資対収益の乖離が明確になれば期待剥落リスクが最大化する。
+      </div>
+      <div class="bb-item">
+        <div class="bi-name">プライベートクレジット崩壊リスク</div>
+        高金利×インフレで変動金利融資のデフォルトが蓄積。表面化すれば信用収縮がリーマン型の連鎖を引き起こしうる。
+      </div>
+      <div class="bb-item">
+        <div class="bi-name">新興国・日本・欧州のスタグフレーション</div>
+        日本のGDP成長率0.5%・実質賃金マイナス・エネルギー依存度世界最高水準。Nikkei上昇の50%はAI半導体株であり、実体経済は既に打撃を受けている（トヨタ営業利益−22%）。
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--serif);font-weight:700;margin:2.5rem 0 0.75rem;font-size:1.2rem;">著名投資家の見立て</h3>
+
+  <div class="voice-grid fade">
+    <div class="voice-card">
+      <div class="vc-name">ポール・チューダー・ジョーンズ</div>
+      <div class="vc-role">Tudor Investment（$100B超運用）</div>
+      <div class="vc-verdict mid">強気しながら崩壊を警告</div>
+      <div class="vc-body">「今は1999年のようだ——ドットコムピークの約1年前の感覚。あと1〜2年は走る可能性がある」と言いながらAI株を買い増し。しかし同時に「崩壊した場合は−35%以上の調整。株式時価総額対GDPが300〜350%になれば"breathtaking correction"が来る」と警告。<strong>「最大の利益は常にバブルのピーク前12か月に集中する。乗るなら脱出タイミングが死活問題」</strong>と述べており、乗ることを選択しながら崩壊も確信している。</div>
+    </div>
+    <div class="voice-card">
+      <div class="vc-name">マイケル・バリー</div>
+      <div class="vc-role">Scion Asset Management（ビッグショートの人）</div>
+      <div class="vc-verdict bear">今がバブルの最終局面</div>
+      <div class="vc-body">5月8日のSubstackに「1999〜2000年バブルの最後の数か月のような感覚」と投稿。言葉だけでなく<strong>実際にSOXX（半導体ETF）の2027年1月限プットオプションを購入済み</strong>——約30%下落を想定した実弾を撃っている。半導体株インデックスが今年だけで+65%超上昇していることを具体的な根拠として挙げている。</div>
+    </div>
+    <div class="voice-card">
+      <div class="vc-name">ジェレミー・グランサム</div>
+      <div class="vc-role">GMO（バブル研究の第一人者）</div>
+      <div class="vc-verdict bear">「崩壊しない確率はほぼゼロ」</div>
+      <div class="vc-body">「AIバブルが崩壊しないシナリオは限りなくゼロに近い」と断言。「NvidiaがAIバブルを先導して下落し、他のAI株が追随する」と予測。<strong>AI投資の合計1兆ドル超に対し、年間売上は5兆円未満（5%以下）という数字</strong>を根拠に提示。ただしタイミングは「いつか」とのみ言う。</div>
+    </div>
+    <div class="voice-card">
+      <div class="vc-name">トム・リー</div>
+      <div class="vc-role">Fundstrat（ウォール街の著名強気派）</div>
+      <div class="vc-verdict bull">年末7,700〜8,000目標</div>
+      <div class="vc-body">年初に「年末SP500目標7,700」を発表。別のストラテジストは8,000目標も掲げている。根拠はAIマージン効果の過小評価。ただし<strong>年初の強気論の前提だった「ウォーシュ＝利下げ」という柱がCPI・PPIの急加速で崩壊しかけている。</strong>目標値はすでに現在値7,500に対してわずか1〜7%上。強気論の射程がほぼ消えた。</div>
+    </div>
+  </div>
+
+  <div class="co a fade">
+    <h4>結論：「崩壊するか」ではなく「いつか」だけで割れている</h4>
+    強気派・弱気派を問わず、現在の株式市場が歴史的に割高であることは全員が認めている。
+    唯一の論点は「まだ走るか、もう終わりか」だ。<br><br>
+    バリー「今が1999年の最後の数か月」 vs ジョーンズ「まだ1〜2年ある可能性」——同じ1999年アナロジーを使いながら結論が真逆だ。<br><br>
+    <strong>SP500が7,500で年末予想の97%に達した現時点では、強気論の上値余地は消えつつある。「まだ上がる」と確信しながら乗ることは、脱出タイミングを完璧に当てる前提でのみ成立する賭けだ。</strong>
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 第8章：スケジュール -->
+<section id="schedule">
+<div class="wrap">
+  <div class="stag">第8章 / Schedule</div>
+  <h2 class="stitle">2026年 株価が動きやすい<br>時期と要因</h2>
+  <p class="slead">
+    「いつ何が起きるか」ではなく、「その時期に上昇・下落を引き起こしやすい要因が多いか少ないか」を整理する。
+    株価の方向は予測できないが、リスクが集中する時期は事前に把握できる。
+  </p>
+
+  <div class="cg fade">
+    <div class="cc">
+      <div class="cm">MAY 2026 ← 現在</div>
+      <h3>5月：インフレ顕在化・急騰の罠</h3>
+      <div class="cev"><div><span class="etag er">物価↑ 確認済</span></div>CPI+3.8%（2023年5月以来最高）・PPI+6.0%（2022年12月以来最高）が発表。インフレ再燃は「リスク」ではなく<strong>現実の数字</strong>として確定した。実質賃金3年ぶりマイナス転落。</div>
+      <div class="cev"><div><span class="etag er">金利 確認済</span></div>ウォーシュ就任直後に利上げ観測40%に急上昇。10年債4.5%・30年債5%超。「ハト派のはずが利上げを迫られる」逆説が現実化。</div>
+      <div class="cev"><div><span class="etag ea">急騰 要注意</span></div>米中首脳会談でSP500が7,500突破。年末予想平均7,600まであと1〜2%。インフレ加速・金利上昇の最中のヘッドライン相場——実態との乖離が最大化している。</div>
+    </div>
+
+    <div class="cc">
+      <div class="cm">JUN 2026</div>
+      <h3>6月：インフレ第2波と備蓄限界</h3>
+      <div class="cev"><div><span class="etag er">物価↑</span></div>5月CPIが発表される（6月10日予定）。4月3.8%からさらに加速するか注目。ホルムズ封鎖の影響が追加的にCPIへ転嫁され、<strong>4%超えの可能性</strong>がある。</div>
+      <div class="cev"><div><span class="etag er">需給</span></div>石油・ディーゼル・ナフサの備蓄が臨界域に近づく。実需不足が価格に出始める。半導体素材（フッ素・ヘリウム）のコスト上昇が企業決算に初反映される時期。</div>
+      <div class="cev"><div><span class="etag eb">政策</span></div>6月FOMCでFedが「引き締めバイアス」に転換するかどうかの分岐。転換すれば株安が加速する可能性。</div>
+    </div>
+
+    <div class="cc">
+      <div class="cm">JUL 2026</div>
+      <h3>7月：最大の分岐点</h3>
+      <div class="cev"><div><span class="etag er">決算</span></div>2Q決算。AIのROIと戦争コストが初めて数字で出る。期待剥落リスク最大。バリーが賭けているSOXXのプットが対象とするタイムゾーン。</div>
+      <div class="cev"><div><span class="etag er">農業</span></div>秋作用肥料のデッドライン。この時期を過ぎると秋の収量被害が不可逆。</div>
+      <div class="cev"><div><span class="etag ea">交渉</span></div>イランの経済的限界。合意に動くか、決裂して再激化するか。最大の分岐点。</div>
+    </div>
+
+    <div class="cc">
+      <div class="cm">JUL–AUG 2026</div>
+      <h3>7〜8月：急激な変動</h3>
+      <div class="cev"><div><span class="etag eg">急騰要因</span></div>ホルムズ部分合意→株価急騰（ショートカバー＋FOMO）。「再開≠即回復」——急騰した後3〜6か月で失望売りが来やすい罠。</div>
+      <div class="cev"><div><span class="etag er">急落要因</span></div>交渉決裂の場合、株価急落。備蓄限界・食料インフレが重なる複合危機。プライベートクレジットの最初の亀裂が表面化する可能性。</div>
+    </div>
+
+    <div class="cc">
+      <div class="cm">AUG–OCT 2026</div>
+      <h3>8〜10月：季節的弱気</h3>
+      <div class="cev"><div><span class="etag er">季節性</span></div>中間選挙前。歴史的に株価が最も下がりやすい時期。9月は特に弱いアノマリー。</div>
+      <div class="cev"><div><span class="etag er">物価</span></div>インフレが本格的に経済統計に現れる。食料価格・エネルギーのダブルパンチ。Fed利上げに踏み切るかどうかの判断時期。</div>
+    </div>
+
+    <div class="cc">
+      <div class="cm">NOV 2026 –</div>
+      <h3>11月〜：選挙と決算</h3>
+      <div class="cev"><div><span class="etag er">決算</span></div>3Q決算。インフレの本格影響が企業コストに出る。AI投資ROIへの懐疑が強まる。プライベートクレジットのデフォルト動向が注目される。</div>
+      <div class="cev"><div><span class="etag eg">サイクル</span></div>中間選挙後12か月は歴史的に株価が最も強い時期。ただし「通常でない年」の留保必須。</div>
+    </div>
+
+    <div class="cc fw">
+      <div class="cm">2026年 年間サマリー</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1rem;">
+        <div>
+          <div style="font-family:var(--mono);font-size:12px;color:var(--red);letter-spacing:0.12em;margin-bottom:0.75rem;">▼ 下落要因が集中する時期</div>
+          <div class="prow">
+            <span class="plabel">6〜8月</span>
+            <span class="pdir dn">↓↓</span>
+            <div class="pbar-w"><div class="pbar red" style="width:90%;"></div></div>
+            <span class="pnote">インフレ初出＋肥料デッドライン＋決算</span>
+          </div>
+          <div class="prow">
+            <span class="plabel">8〜10月</span>
+            <span class="pdir dn">↓↓</span>
+            <div class="pbar-w"><div class="pbar red" style="width:80%;"></div></div>
+            <span class="pnote">中間選挙前・季節的弱さ</span>
+          </div>
+          <div class="prow">
+            <span class="plabel">7月・11月</span>
+            <span class="pdir dn">↓</span>
+            <div class="pbar-w"><div class="pbar amber" style="width:60%;"></div></div>
+            <span class="pnote">2Q・3Q決算でROI問われる</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:var(--mono);font-size:12px;color:var(--green);letter-spacing:0.12em;margin-bottom:0.75rem;">▲ 上昇要因が出やすい時期</div>
+          <div class="prow">
+            <span class="plabel">7〜8月</span>
+            <span class="pdir up">↑↑</span>
+            <div class="pbar-w"><div class="pbar green" style="width:85%;"></div></div>
+            <span class="pnote">ホルムズ合意なら急騰（罠に注意）</span>
+          </div>
+          <div class="prow">
+            <span class="plabel">11月〜</span>
+            <span class="pdir up">↑</span>
+            <div class="pbar-w"><div class="pbar green" style="width:58%;"></div></div>
+            <span class="pnote">中間選挙後サイクル</span>
+          </div>
+          <div class="prow">
+            <span class="plabel">5〜6月</span>
+            <span class="pdir up">↑?</span>
+            <div class="pbar-w"><div class="pbar amber" style="width:35%;"></div></div>
+            <span class="pnote">交渉期待で断続的上昇（実態なし）</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<hr class="div">
+
+<!-- 終章：原則 -->
+<section id="principles">
+<div class="wrap">
+  <div class="stag">終章 / Principles</div>
+  <h2 class="stitle">どの局面でも変わらない<br>5つの原則</h2>
+  <p class="slead">
+    相場は予測できない。底値で買い、高値で売ることは理想だが、プロでも毎回は成功しない。
+    目標は「完璧なタイミング」ではなく、「大きな失敗を避け、チャンスに備え続けること」だ。
+  </p>
+
+  <div class="plist fade">
+    <div class="prin">
+      <div class="pnum">01</div>
+      <div>
+        <h4>急騰した瞬間に飛びつかない</h4>
+        <p>FOMOは最も高値をつかみやすいタイミングを作る。「みんなが買っている」ときが最も危険。
+        今日SP500が7,500を突破したのは米中会談のヘッドライン1本。ホルムズは続いており、インフレは加速している。急騰の中身を必ず確認する。</p>
+      </div>
+    </div>
+    <div class="prin">
+      <div class="pnum">02</div>
+      <div>
+        <h4>「底値で買う・高値で売る」という理想を捨てる</h4>
+        <p>バフェットでさえ底値と高値を毎回当てることはしない。目標は「明らかに割安な時に買い、明らかに割高な時に多く持たない」こと。
+        CAPE42倍・ERP−2%の今は、少なくとも「明らかに割高」なフェーズだ。
+        完璧なタイミングを狙うより、<strong>株式比率を段階的に下げて待機資金を増やすことの方が合理的</strong>だ。</p>
+      </div>
+    </div>
+    <div class="prin">
+      <div class="pnum">03</div>
+      <div>
+        <h4>損切りラインを感情が入る前に決める</h4>
+        <p>「−15〜20%になったら一部売る」など、判断基準は相場が動く前に設定する。
+        下落中に考えると必ず感情が入り、最悪のタイミングで売ることになる。
+        ルールは紙に書いて残しておく。</p>
+      </div>
+    </div>
+    <div class="prin">
+      <div class="pnum">04</div>
+      <div>
+        <h4>バークシャーが動いたら注目する</h4>
+        <p>3,973億ドルの現金を12四半期以上動かさなかったバークシャーが資金を展開するとき、
+        それは「本物の割安」が来た可能性が高いシグナル。このシグナルを見逃さない。
+        ERPがプラス2%以上に戻り、CAPEが25倍以下に戻るまでは、バフェットも動かない可能性が高い。</p>
+      </div>
+    </div>
+    <div class="prin">
+      <div class="pnum">05</div>
+      <div>
+        <h4>「最後の大馬鹿」にならない</h4>
+        <p>バブルは崩れる直前が最も熱狂的に見える。ジョーンズが「あと1〜2年走る可能性がある」と言いながら「崩壊したら−35%」と警告している意味を理解する。
+        乗るなら脱出ラインを決めてから。脱出できる自信がないなら、最初から乗らない選択が合理的だ。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- アクションガイド -->
+  <h3 style="font-family:var(--serif);font-weight:700;margin:3rem 0 0.75rem;font-size:1.3rem;">今すぐできること——読者属性別アクションガイド</h3>
+  <p style="color:var(--dim);font-size:17px;line-height:2;margin-bottom:1.5rem;">
+    「では自分は何をすればいいのか」への回答。これは「正解」ではなく、現在の情報に基づく「合理的な選択肢」だ。
+    投資判断は最終的に自分自身の責任で行う。
+  </p>
+
+  <div class="bb-grid fade" style="margin-bottom:2rem;">
+    <div class="bb-col" style="background:var(--teal-bg);border-color:var(--teal-bd);">
+      <div class="bc-head" style="color:var(--teal);">🇯🇵 日本人投資家の場合</div>
+      <div class="bb-item">
+        <div class="bi-name">待機資金の置き場</div>
+        <strong>SBIハイパー預金または円MMF</strong>が最安牌。個人向け国債と同水準の金利で流動性が最も高い。為替リスクがゼロという最大のメリット。ドル建て商品（Tビル・SGOV）は円高局面で実質損になりうるため、為替リスクを理解した上での選択。
+      </div>
+      <div class="bb-item">
+        <div class="bi-name">株式比率の目安</div>
+        CAPE42倍・ERP−2%の環境では、ポートフォリオの<strong>株式比率を20〜30%程度以下</strong>に抑えることが一つの考え方。残りを上記の待機資金と金（ゴールド）の分散で持つ。
+      </div>
+      <div class="bb-item">
+        <div class="bi-name">やってはいけないこと</div>
+        今の水準で一括で株を買い増すこと。ドル建て資産だけに全額を集中させること。FOMOで急騰した直後に飛びつくこと。
+      </div>
+    </div>
+    <div class="bb-col" style="background:var(--blue-bg);border-color:var(--blue-bd);">
+      <div class="bc-head" style="color:var(--blue);">🇺🇸 米国籍（またはIB証券利用者）の場合</div>
+      <div class="bb-item">
+        <div class="bi-name">待機資金の置き場</div>
+        <strong>Tビル（SGOV等のETF）またはMMF</strong>が最安牌。年率約3.6%のドル建てリターンで、CAPE42倍の株の期待利回り2.37%を上回る。IB証券（Interactive Brokers）で購入可能。
+      </div>
+      <div class="bb-item">
+        <div class="bi-name">株式比率の目安・NG行動</div>
+        <strong>20〜30%程度以下</strong>に抑えることが一つの考え方。残りをTビル・金ETF（GLD等）・BTC（リスク許容分のみ）で分散。TLT（長期債ETF）に大きく入ることとレバレッジをかけることは避ける。
+      </div>
+    </div>
+  </div>
+
+  <!-- 暴落はバーゲンセール -->
+  <div class="co g fade">
+    <h4>暴落が来たとき——それは20年に一度のバーゲンセールかもしれない</h4>
+    ここまでリスクの話を続けてきたが、最後に最も重要なことを伝えたい。<br><br>
+    暴落は「終わり」ではない。<strong>準備していた人にとっては、一生に数度しかない「本物の買い場」だ。</strong><br><br>
+    2008年リーマンショック後のS&P500最安値から10年で約4倍に回復した。2020年コロナショックで−34%下落したが、その後1年で+80%以上上昇した。
+    バフェットが3,973億ドルの現金を動かさずに待っているのは「怖いから」ではない。
+    <strong>「本物の割安が来たときに、躊躇なく大きく動けるように」備えているのだ。</strong><br><br>
+    CAPE42倍が歴史的中央値16倍に戻るとき——それがいつかはわからないが——S&P500は現在の水準から大きく下がっている可能性がある。
+    そのときに「現金がある」「パニックしない準備ができている」「バフェットが動いたことを知っている」という3つが揃っていれば、
+    あなたは「最後の大馬鹿」ではなく、<strong>次の相場サイクルの「最初の賢者」になれる。</strong><br><br>
+    今行うリスク管理は、未来の大きなチャンスへの準備だ。
+  </div>
+
+  <div class="co a fade" style="margin-top:2rem;">
+    <h4>この資料の限界</h4>
+    本資料はリスクと要因を整理したものであり、「いつ買えば儲かるか」を示すものではない。
+    相場は予測できない。記載の分析はあくまで現時点の情報に基づくものであり、
+    実際の市場は異なる動きをする可能性が常にある。断定的な表現を意図的に避けているのはそのためだ。
+    投資判断は必ずご自身の責任において行い、必要に応じて専門家（FP・証券会社等）にご相談を。
+  </div>
+</div>
+</section>
+
+<div class="disc" style="margin-bottom:0;border-bottom:none;">
+  <strong style="color:var(--dim);">改定履歴</strong>　制定日：2026年5月11日　／　最終改定：2026年5月15日（CPI/PPI急加速・SP500 7,500到達・CAPE 42×・ERP マイナス転落・ウォーシュ就任確認）<br>
+  <strong style="color:var(--dim);">次回確認</strong>　6月10日（5月CPI発表）／6月11日（5月PPI発表）／6月FOMCでFedの方針転換有無
+</div>
+<div class="disc" style="border-top:none;margin-top:0;">
+  免責事項：本資料は情報提供を目的としたものであり、特定の金融商品の購入・売却を推奨するものではありません。
+  投資にはリスクが伴い、元本が保証されるものではありません。
+  データ出典：BLS（CPI/PPI 2026年4月）、GuruFocus・Multpl.com（CAPE）、CME FedWatch（金利先物）、
+  GuruFocus（バフェット指数）、JPMorgan Global Research、World Gold Council、Bank of America、
+  CNBC・Bloomberg・Reuters各種報道（2026年5月15日時点）
+</div>
+
+</main>
+
+<script>
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.07 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+
+const secs = document.querySelectorAll('section');
+const links = document.querySelectorAll('nav a');
+const navObs = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => { l.style.color = ''; l.style.borderBottomColor = ''; });
+      const a = document.querySelector(`nav a[href="#${e.target.id}"]`);
+      if (a) { a.style.color = 'var(--ink)'; a.style.borderBottomColor = 'var(--ink)'; }
+    }
+  });
+}, { threshold: 0.3 });
+secs.forEach(s => navObs.observe(s));
+</script>
+</body>
+</html>
