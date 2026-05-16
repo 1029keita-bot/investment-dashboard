@@ -761,6 +761,198 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
       </div>
     </div>
 
+  <!-- 05b 暴落時緊急買いルール -->
+  <section class="sec">
+    <div class="sec-hd"><span class="sec-num">05b</span><h2 class="sec-title">暴落時緊急買いルール ── ERP回復を唯一の判断軸とする</h2></div>
+
+    <!-- 判断哲学 -->
+    <div style="background:var(--ink); border-radius:12px; padding:1.4rem 1.75rem; margin-bottom:1.25rem;">
+      <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#FFD4B2; margin-bottom:10px;">Philosophy</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem;">
+        <div>
+          <div style="font-size:15px; font-weight:700; color:#FFFFFF; margin-bottom:6px;">下落率は「入口」に過ぎない</div>
+          <div style="font-size:13px; color:#FFE8D6; line-height:1.75;">「何%下落したか」は結果の記述であって買いの根拠にはならない。下落率はERPを再計算しに行くトリガー。判断軸は常にERPの水準だけ。</div>
+        </div>
+        <div>
+          <div style="font-size:15px; font-weight:700; color:#FFFFFF; margin-bottom:6px;">感情が入る前にルールを作る</div>
+          <div style="font-size:13px; color:#FFE8D6; line-height:1.75;">暴落局面では恐怖・ニュースノイズ・さらなる下落への不安が重なり合理的判断が最も難しくなる。事前に機械的なルールを設定することがバフェット哲学の核心。</div>
+        </div>
+        <div>
+          <div style="font-size:15px; font-weight:700; color:#FFFFFF; margin-bottom:6px;">分割投入で「早すぎた」を防ぐ</div>
+          <div style="font-size:13px; color:#FFE8D6; line-height:1.75;">CAPE42倍からの暴落はリーマン型ダラ下げになりうる。一括投入ではなくERPの改善を確認しながら段階的に資金を投入し、底値を引き当てる必要性を排除する。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2段構えの仕組み -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:1.25rem;">
+      <div style="background:var(--rust-dark); padding:0.9rem 1.4rem; display:flex; align-items:baseline; gap:14px;">
+        <div style="font-size:16px; font-weight:700; color:#FFFFFF;">2段構えの発動ロジック</div>
+        <div style="font-family:var(--mono); font-size:12px; color:#FFD4B2;">下落率 → ERP確認 → 買い判断</div>
+      </div>
+      <div style="padding:1.25rem 1.4rem;">
+        <div style="display:grid; grid-template-columns:1fr 2px 1fr; gap:1.25rem; align-items:center; margin-bottom:1.25rem;">
+          <div style="background:var(--rust-bg); border:1px solid rgba(184,64,24,0.2); border-radius:10px; padding:1.1rem 1.25rem;">
+            <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin-bottom:6px;">Step 1 — トリガー（下落率）</div>
+            <div style="font-size:22px; font-weight:700; color:var(--rust-dark); font-family:var(--mono); margin-bottom:6px;">S&amp;P500 −20%以上</div>
+            <div style="font-size:13px; color:var(--ink2); line-height:1.7;">直近高値から20%以上下落したら<strong style="color:var(--ink);">即時ERPを再計算する</strong>。通常の6月・12月判断を待たず緊急計算を実行。以降は−10%ごとに再計算を繰り返す。</div>
+          </div>
+          <div style="background:var(--border); height:60px; border-radius:1px;"></div>
+          <div style="background:var(--teal-bg); border:1px solid rgba(22,104,90,0.2); border-radius:10px; padding:1.1rem 1.25rem;">
+            <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal); margin-bottom:6px;">Step 2 — 判断軸（ERP）</div>
+            <div style="font-size:22px; font-weight:700; color:var(--teal); font-family:var(--mono); margin-bottom:6px;">ERP +1%以上</div>
+            <div style="font-size:13px; color:var(--ink2); line-height:1.7;">ERPが+1%以上に回復していれば段階投入を開始。回復していなければ<strong style="color:var(--ink);">計算のみ記録して待機継続</strong>。ERP未回復の下落では動かない。</div>
+          </div>
+        </div>
+        <div style="background:var(--gold-bg); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:10px 14px; font-size:13px; color:var(--gold); font-weight:500; line-height:1.65;">
+          ⚠️ 下落率だけで動かない。CAPEが高いまま下落しているなら株はまだ割高。ERPがプラス転換するまで「ERP確認→記録→待機」を繰り返す。
+        </div>
+      </div>
+    </div>
+
+    <!-- 段階投入テーブル -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:1.25rem;">
+      <div style="background:var(--ink); padding:0.9rem 1.4rem; display:flex; align-items:baseline; gap:14px;">
+        <div style="font-size:16px; font-weight:700; color:#FFFFFF;">段階投入ルール</div>
+        <div style="font-family:var(--mono); font-size:12px; color:#FFD4B2;">ERP条件を満たした局面ごとに実行</div>
+      </div>
+      <div style="padding:1.25rem 1.4rem;">
+
+        <!-- ヘッダー行 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; margin-bottom:6px;">
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">フェーズ</div>
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">ERP条件</div>
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">投入量（待機現金比）</div>
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">性質・位置づけ</div>
+        </div>
+
+        <!-- フェーズ1 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; background:var(--surface2); border-radius:8px; padding:10px 12px; margin-bottom:6px; align-items:center;">
+          <div>
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--gold);">Phase 1</div>
+            <div style="font-size:13px; color:var(--ink2);">打診買い</div>
+          </div>
+          <div style="font-family:var(--mono); font-size:14px; font-weight:700; color:var(--teal);">ERP ≥ +1%</div>
+          <div style="font-family:var(--mono); font-size:18px; font-weight:700; color:var(--ink);">20%</div>
+          <div style="font-size:12px; color:var(--muted); line-height:1.6;">ERPがプラス転換。最初の打診。まだ下落継続の可能性あり。</div>
+        </div>
+
+        <!-- フェーズ2 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; background:var(--surface2); border-radius:8px; padding:10px 12px; margin-bottom:6px; align-items:center;">
+          <div>
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--gold);">Phase 2</div>
+            <div style="font-size:13px; color:var(--ink2);">本格打診</div>
+          </div>
+          <div style="font-family:var(--mono); font-size:14px; font-weight:700; color:var(--teal);">ERP ≥ +2%</div>
+          <div style="font-family:var(--mono); font-size:18px; font-weight:700; color:var(--ink);">25%</div>
+          <div style="font-size:12px; color:var(--muted); line-height:1.6;">バリュエーションが明確に改善。歴史的平均への収束が見えてきた局面。</div>
+        </div>
+
+        <!-- フェーズ3 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; background:rgba(22,104,90,0.1); border:1px solid rgba(22,104,90,0.2); border-radius:8px; padding:10px 12px; margin-bottom:6px; align-items:center;">
+          <div>
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--teal);">Phase 3 ★</div>
+            <div style="font-size:13px; color:var(--ink2);">本命買い</div>
+          </div>
+          <div style="font-family:var(--mono); font-size:14px; font-weight:700; color:var(--teal);">ERP ≥ +3%</div>
+          <div style="font-family:var(--mono); font-size:18px; font-weight:700; color:var(--teal);">30%</div>
+          <div style="font-size:12px; color:var(--ink2); line-height:1.6;">歴史的買い場水準。バフェットが2008〜2009年に動いたERPレンジ。重点投入フェーズ。</div>
+        </div>
+
+        <!-- フェーズ4 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; background:rgba(22,104,90,0.18); border:1px solid rgba(22,104,90,0.35); border-radius:8px; padding:10px 12px; margin-bottom:1rem; align-items:center;">
+          <div>
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--teal);">Phase 4 ★★</div>
+            <div style="font-size:13px; color:var(--ink2);">フルコア切替</div>
+          </div>
+          <div style="font-family:var(--mono); font-size:14px; font-weight:700; color:var(--teal);">ERP ≥ +4%</div>
+          <div style="font-family:var(--mono); font-size:18px; font-weight:700; color:var(--teal);">残り全額</div>
+          <div style="font-size:12px; color:var(--ink2); line-height:1.6;">コアポートフォリオへの完全切替。債券・金ヘッジ枠を維持しつつ株式を最大化。</div>
+        </div>
+
+        <!-- 参考：CAPE換算 -->
+        <div style="background:var(--bg); border-radius:8px; padding:12px 14px; margin-bottom:1rem;">
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">参考：FF金利4.5%時のERP → CAPE換算（おおよその目安）</div>
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:6px;">
+            <div style="text-align:center; padding:8px; background:var(--surface2); border-radius:6px;">
+              <div style="font-family:var(--mono); font-size:11px; color:var(--muted);">ERP +1%</div>
+              <div style="font-family:var(--mono); font-size:16px; font-weight:700; color:var(--gold);">CAPE ≈ 18倍</div>
+              <div style="font-size:11px; color:var(--muted);">現在比 −57%下落</div>
+            </div>
+            <div style="text-align:center; padding:8px; background:var(--surface2); border-radius:6px;">
+              <div style="font-family:var(--mono); font-size:11px; color:var(--muted);">ERP +2%</div>
+              <div style="font-family:var(--mono); font-size:16px; font-weight:700; color:var(--gold);">CAPE ≈ 15倍</div>
+              <div style="font-size:11px; color:var(--muted);">現在比 −64%下落</div>
+            </div>
+            <div style="text-align:center; padding:8px; background:rgba(22,104,90,0.1); border-radius:6px;">
+              <div style="font-family:var(--mono); font-size:11px; color:var(--muted);">ERP +3%</div>
+              <div style="font-family:var(--mono); font-size:16px; font-weight:700; color:var(--teal);">CAPE ≈ 13倍</div>
+              <div style="font-size:11px; color:var(--muted);">現在比 −69%下落</div>
+            </div>
+            <div style="text-align:center; padding:8px; background:rgba(22,104,90,0.18); border-radius:6px;">
+              <div style="font-family:var(--mono); font-size:11px; color:var(--muted);">ERP +4%</div>
+              <div style="font-family:var(--mono); font-size:16px; font-weight:700; color:var(--teal);">CAPE ≈ 11倍</div>
+              <div style="font-size:11px; color:var(--muted);">現在比 −74%下落</div>
+            </div>
+          </div>
+          <div style="font-size:11px; color:var(--muted); margin-top:8px; line-height:1.6;">※ CAPE自体も業績悪化で分子（利益）が下がれば株価下落以上に上昇しうる。下落率はあくまで参考。ERPの実計算値で判断すること。FF金利が下がればERP+1%に達する株価水準は上がる（より浅い下落で買い場になる）。</div>
+        </div>
+
+        <!-- 買い対象 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+          <div style="background:var(--teal-bg); border-radius:8px; padding:0.9rem 1rem;">
+            <div style="font-size:13px; font-weight:700; color:var(--teal); margin-bottom:5px;">Phase 1〜3 の投入対象</div>
+            <div style="font-size:13px; color:var(--ink2); line-height:1.7;">S&amp;P500インデックス（コア）を中心。ERPが改善してもまだ不確実性が高い局面のためコアのみに絞る。</div>
+          </div>
+          <div style="background:var(--teal-bg); border-radius:8px; padding:0.9rem 1rem;">
+            <div style="font-size:13px; font-weight:700; color:var(--teal); margin-bottom:5px;">Phase 4（フルコア切替）の対象</div>
+            <div style="font-size:13px; color:var(--ink2); line-height:1.7;">株式コア最大化。BTCはMVRV 1.5以下なら同時に追加DCA検討。債券ラダー・金ヘッジ枠は維持。</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 暴落タイプ別の注意 -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:1.25rem;">
+      <div style="background:var(--ink); padding:0.9rem 1.4rem;">
+        <div style="font-size:16px; font-weight:700; color:#FFFFFF;">暴落タイプ別の留意点</div>
+      </div>
+      <div style="padding:1.25rem 1.4rem; display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div style="background:var(--rust-bg); border:1px solid rgba(184,64,24,0.2); border-radius:10px; padding:1.1rem 1.25rem;">
+          <div style="font-size:14px; font-weight:700; color:var(--rust-dark); margin-bottom:8px;">⚡ 急落型（コロナ型）</div>
+          <div style="font-size:13px; color:var(--ink2); line-height:1.75;">
+            数週間〜数ヶ月で底打ちしERPが急速に改善。Phase 1〜2の段階で買い場が到来しやすい。ただし急落後の急回復でERPが再び悪化するケースに注意。<br><br>
+            <strong style="color:var(--rust-dark);">→ Phase 1・2に重点を置きつつ早期回復を想定して動く</strong>
+          </div>
+        </div>
+        <div style="background:var(--surface2); border-radius:10px; padding:1.1rem 1.25rem;">
+          <div style="font-size:14px; font-weight:700; color:var(--ink); margin-bottom:8px;">🐌 ダラ下げ型（リーマン型）</div>
+          <div style="font-size:13px; color:var(--ink2); line-height:1.75;">
+            1〜3年かけてじわじわ下落。ERPがプラス転換してもさらに下がるケースが多い。Phase 1で買っても翌年さらに下落という展開が現実的。レバレッジ解消が長期化しやすい現環境では特に注意。<br><br>
+            <strong style="color:var(--ink);">→ ERP確認を徹底し、Phase 3・4を本命とした設計を優先する</strong>
+          </div>
+        </div>
+      </div>
+      <div style="padding:0 1.4rem 1.25rem;">
+        <div style="background:var(--gold-bg); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:10px 14px; font-size:13px; color:var(--gold); font-weight:500; line-height:1.65;">
+          現在（CAPE42倍・レバレッジ過去最高）はダラ下げ型リスクが高い。9月アノマリーで短期底値をつけても、それが本格的な買い場かどうかはERPで確認すること。
+        </div>
+      </div>
+    </div>
+
+    <!-- 地政学イベント補足 -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+      <div class="taa-cal-note" style="background:var(--surface2);">
+        <strong>地政学イベント継続時の追加確認：</strong>VIX 35超 かつ 地政学リスクが顕在化している局面では、市場が「慣れ」に入ったかどうかを確認する。原油・コモディティが安定している場合は「織り込み済み」の可能性があり、ERPのみで判断してよい。
+      </div>
+      <div class="taa-cal-note" style="background:var(--rust-bg); border-color:rgba(184,64,24,0.2);">
+        <strong style="color:var(--rust-dark);">⚠ このルールは既存TAAの「例外買い介入」：</strong>例外介入条件（CPI＋FF金利）は売り側の緊急発動。このセクションは買い側の緊急発動。両者は独立して発動しうる。4年サイクルを待たず動いてよい唯一の例外。
+      </div>
+    </div>
+
+  </section>
+
   <!-- 06 BTC -->
   <section class="sec">
     <div class="sec-hd"><span class="sec-num">06</span><h2 class="sec-title">BTC戦略 ── 割安割高判断・出口戦略・リスク明示</h2></div>
