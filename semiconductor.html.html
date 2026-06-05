@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>半導体 参照資料</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:        #F2E6D4;
+  --surface:   #FBF5EC;
+  --surface2:  #EFE2CC;
+  --rust:      #B84018;
+  --rust-dark: #8C2E0E;
+  --rust-bg:   #FAEBE3;
+  --gold:      #9A6008;
+  --gold-bg:   #F5E9CC;
+  --teal:      #16685A;
+  --teal-bg:   #D5EDE8;
+  --blue:      #185FA5;
+  --blue-bg:   #E4EDF8;
+  --purple:    #3C3489;
+  --purple-bg: #EEEDFE;
+  --ink:       #1C1008;
+  --ink2:      #3D2410;
+  --muted:     #7A5838;
+  --border:    rgba(80,40,10,0.14);
+  --serif:     'Playfair Display', serif;
+  --sans:      'Noto Sans JP', sans-serif;
+  --mono:      'DM Mono', monospace;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.8; }
+.page { max-width: 1000px; margin: 0 auto; padding: 0 2rem 5rem; }
+
+/* ── Meta bar ── */
+.meta-bar { display: flex; background: var(--ink); border-radius: 12px 12px 0 0; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.08); margin: 0 -2rem 0; }
+.meta-cell { padding: 0.75rem 1.5rem; border-right: 1px solid rgba(255,255,255,0.08); }
+.meta-cell:last-child { border-right: none; flex: 1; }
+.meta-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #FFD4B2; margin-bottom: 3px; }
+.meta-val { font-family: var(--mono); font-size: 13px; font-weight: 500; color: #FFFFFF; }
+.meta-val.sm { font-family: var(--sans); font-size: 12px; }
+
+/* ── Hero ── */
+.hero { background: var(--rust); margin: 0 -2rem 2.5rem; padding: 2.5rem 3rem 2.25rem; position: relative; overflow: hidden; border-radius: 0 0 12px 12px; }
+.hero::after { content: ''; position: absolute; right: -60px; bottom: -60px; width: 280px; height: 280px; border-radius: 50%; background: rgba(255,255,255,0.05); pointer-events: none; }
+.hero-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,230,210,0.9); margin-bottom: 10px; }
+.hero-title { font-family: var(--serif); font-size: 46px; font-weight: 900; color: #FFFFFF; line-height: 1.05; margin-bottom: 12px; }
+.hero-desc { font-size: 14px; color: #FFE8D6; max-width: 600px; line-height: 1.75; margin-bottom: 2rem; }
+.hero-nav { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-nav a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,230,210,0.85); text-decoration: none; border: 1px solid rgba(255,230,210,0.3); border-radius: 5px; padding: 5px 12px; transition: background 0.15s; }
+.hero-nav a:hover { background: rgba(255,255,255,0.12); }
+
+/* ── Nav TOC ── */
+.toc { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
+.toc-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); flex-shrink: 0; }
+.toc a { font-size: 13px; font-weight: 500; color: var(--rust-dark); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+.toc a:hover { border-color: var(--rust); }
+
+/* ── Section ── */
+.sec { margin-bottom: 3rem; scroll-margin-top: 24px; }
+.sec-hd { display: flex; align-items: baseline; gap: 14px; margin-bottom: 1.25rem; padding-bottom: 10px; border-bottom: 2px solid var(--surface2); }
+.sec-num { font-family: var(--mono); font-size: 12px; color: var(--rust); letter-spacing: 0.1em; flex-shrink: 0; }
+.sec-title { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--ink); }
+
+/* ── Note / Alert ── */
+.note { background: var(--gold-bg); border: 1px solid rgba(154,96,8,0.2); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 13px; color: var(--gold); line-height: 1.7; font-weight: 500; margin: 10px 0; }
+.alert { background: var(--rust-bg); border: 1px solid rgba(184,64,24,0.2); border-left: 4px solid var(--rust); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 13px; color: var(--rust-dark); line-height: 1.7; font-weight: 500; margin: 10px 0; }
+.info { background: var(--blue-bg); border: 1px solid rgba(24,95,165,0.2); border-left: 4px solid var(--blue); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 13px; color: var(--blue); line-height: 1.7; font-weight: 500; margin: 10px 0; }
+
+/* ── Badge ── */
+.badge { display: inline-block; font-family: var(--mono); font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.06em; }
+.b-s    { background: var(--rust);    color: #FFF; }
+.b-a    { background: var(--gold-bg); color: var(--gold); border: 1px solid rgba(154,96,8,0.25); }
+.b-b    { background: var(--blue-bg); color: var(--blue); }
+.b-mem  { background: var(--purple-bg); color: var(--purple); }
+.b-logic { background: var(--rust-bg); color: var(--rust-dark); border: 1px solid rgba(184,64,24,0.2); }
+.b-equip { background: var(--teal-bg); color: var(--teal); }
+.b-mat  { background: var(--gold-bg); color: var(--gold); border: 1px solid rgba(154,96,8,0.25); }
+.b-warn { background: var(--ink); color: #FFD4B2; }
+.b-jp   { background: #E8F0FC; color: #1A4A8C; border: 1px solid rgba(26,74,140,0.2); }
+
+/* ═══════════════════════════════════════
+   SECTION 01 — エコシステム全体図
+═══════════════════════════════════════ */
+.ecosystem { display: flex; flex-direction: column; gap: 8px; }
+.eco-layer { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--surface); }
+.eco-layer-head { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.eco-layer-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; color: #FFF; padding: 3px 9px; border-radius: 4px; flex-shrink: 0; }
+.ll-demand { background: var(--ink); }
+.ll-logic  { background: var(--rust-dark); }
+.ll-found  { background: var(--teal); }
+.ll-mem    { background: var(--purple); }
+.ll-equip  { background: #3A6030; }
+.ll-mat    { background: var(--gold); }
+.eco-layer-title { font-size: 14px; font-weight: 700; color: var(--ink); }
+.eco-layer-role  { font-size: 12px; color: var(--muted); margin-left: auto; }
+.eco-companies { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 14px; }
+.eco-co { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; }
+.eco-co-name { font-size: 13px; font-weight: 700; color: var(--ink2); }
+.eco-co-note { font-size: 11px; color: var(--muted); margin-top: 1px; }
+.eco-co.jp { border-left: 3px solid var(--gold); }
+.eco-arrow { text-align: center; font-size: 18px; color: var(--muted); line-height: 1; padding: 2px 0; }
+
+/* ═══════════════════════════════════════
+   SECTION 02 — 過剰投資リスク
+═══════════════════════════════════════ */
+.timeline-table { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.tl-head-row { display: grid; grid-template-columns: 120px repeat(6, 1fr); background: var(--ink); }
+.tl-head-cell { font-family: var(--mono); font-size: 10px; color: #FFD4B2; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 6px; text-align: center; border-right: 1px solid rgba(255,255,255,0.06); }
+.tl-head-cell:first-child { text-align: left; padding-left: 14px; }
+.tl-body-row { display: grid; grid-template-columns: 120px repeat(6, 1fr); border-bottom: 1px solid var(--border); align-items: stretch; }
+.tl-body-row:last-child { border-bottom: none; }
+.tl-row-label { font-size: 12px; font-weight: 700; color: var(--ink); padding: 9px 6px 9px 14px; display: flex; flex-direction: column; gap: 3px; justify-content: center; border-right: 1px solid var(--border); }
+.tl-row-sub { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+.tl-cell { padding: 7px 5px; text-align: center; border-right: 1px solid rgba(80,40,10,0.06); font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; line-height: 1.3; }
+.tl-cell:last-child { border-right: none; }
+.tc-boom  { background: #D5EDE8; color: #0A4A38; }
+.tc-peak  { background: #F5E9CC; color: #6A3800; }
+.tc-risk  { background: #FAEBE3; color: #8C2E0E; }
+.tc-crash { background: #F9D8D0; color: #6A1A0A; }
+.tc-low   { background: #F2ECFF; color: #3C3489; }
+.tc-na    { background: var(--bg); color: var(--muted); }
+.tc-already { background: #EDD5E0; color: #6A2040; }
+
+/* ROI Deadline */
+.roi-timeline { display: flex; flex-direction: column; gap: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-top: 1rem; }
+.roi-row { display: grid; grid-template-columns: 100px 1fr; border-bottom: 1px solid var(--border); }
+.roi-row:last-child { border-bottom: none; }
+.roi-year { background: var(--ink2); color: #FFD4B2; font-family: var(--mono); font-size: 13px; font-weight: 500; display: flex; align-items: center; justify-content: center; padding: 10px; }
+.roi-content { padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; }
+.roi-title { font-size: 13px; font-weight: 700; color: var(--ink); }
+.roi-body  { font-size: 12px; color: var(--ink2); line-height: 1.65; }
+.roi-row.deadline .roi-year { background: var(--rust); color: #FFF; }
+.roi-row.deadline .roi-title { color: var(--rust-dark); }
+
+/* ═══════════════════════════════════════
+   SECTION 03 — 決算カレンダー
+═══════════════════════════════════════ */
+.cal-grid { display: flex; flex-direction: column; gap: 1.25rem; }
+.cal-month { }
+.cal-month-hd { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-bottom: 6px; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
+.cal-events { display: flex; flex-direction: column; gap: 6px; }
+.cal-event { display: grid; grid-template-columns: 64px 1fr auto; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; }
+.cal-event.rank-s { border-left: 3px solid var(--rust); }
+.cal-event.rank-a { border-left: 3px solid var(--gold); }
+.cal-event.rank-b { border-left: 3px solid var(--blue); }
+.cal-event.canary { border-left: 3px solid var(--purple); background: var(--purple-bg); }
+.cal-date { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--ink2); }
+.cal-name { font-size: 13px; font-weight: 700; color: var(--ink); }
+.cal-note { font-size: 11px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+.cal-status { font-family: var(--mono); font-size: 10px; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+.cs-confirmed { background: var(--teal-bg); color: var(--teal); }
+.cs-estimate  { background: var(--bg); color: var(--muted); border: 1px solid var(--border); }
+.canary-note { background: var(--purple-bg); border: 1px solid rgba(60,52,137,0.2); border-left: 4px solid var(--purple); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 12px; color: var(--purple); line-height: 1.7; font-weight: 500; margin-top: 8px; }
+
+/* ═══════════════════════════════════════
+   SECTION 04 — ホルムズ脆弱度
+═══════════════════════════════════════ */
+.hormuz-grid { display: flex; flex-direction: column; gap: 8px; }
+.hormuz-co { display: grid; grid-template-columns: 160px 1fr 80px; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; }
+.hormuz-co.rank1 { border-left: 4px solid #C03020; background: #FDF0EC; }
+.hormuz-co.rank2 { border-left: 4px solid #C05020; background: #FDF4EE; }
+.hormuz-co.rank3 { border-left: 4px solid var(--rust); }
+.hormuz-co.rank4 { border-left: 4px solid var(--gold); }
+.hormuz-co.rank5 { border-left: 4px solid var(--blue); }
+.hormuz-co.rank6 { border-left: 4px solid var(--teal); }
+.hz-name { font-size: 13px; font-weight: 700; color: var(--ink); }
+.hz-sub  { font-size: 11px; color: var(--muted); margin-top: 1px; }
+.hz-detail { font-size: 12px; color: var(--ink2); line-height: 1.55; }
+.hz-risk { text-align: right; }
+.hz-risk-num { font-family: var(--mono); font-size: 18px; font-weight: 700; }
+.hz-risk-label { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 1px; }
+.r1 { color: #C03020; }
+.r2 { color: #B84018; }
+.r3 { color: var(--rust); }
+.r4 { color: var(--gold); }
+.r5 { color: var(--blue); }
+.r6 { color: var(--teal); }
+
+.hormuz-inputs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 1rem; }
+.hz-input { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+.hz-input-name { font-size: 12px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.hz-input-body { font-size: 11px; color: var(--ink2); line-height: 1.55; }
+.hz-input-shelf { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); }
+.hz-input-shelf-label { font-size: 10px; color: var(--muted); font-family: var(--mono); }
+.hz-input-shelf-val { font-family: var(--mono); font-size: 12px; font-weight: 500; }
+
+/* ── Signal chain ── */
+.signal-chain { display: flex; flex-direction: column; gap: 6px; margin-top: 1rem; }
+.sig-row { display: grid; grid-template-columns: 36px 1fr; gap: 10px; align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 9px 12px; }
+.sig-num { font-family: var(--serif); font-size: 22px; font-weight: 900; color: var(--rust); line-height: 1; margin-top: 2px; }
+.sig-title { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+.sig-body  { font-size: 12px; color: var(--ink2); line-height: 1.55; }
+.sig-when  { font-size: 11px; color: var(--rust-dark); font-weight: 500; margin-top: 4px; }
+
+/* ── Tabs ── */
+.tab-row { display: flex; gap: 0; margin-bottom: 0; border-radius: 10px 10px 0 0; overflow: hidden; border: 1px solid var(--border); border-bottom: none; }
+.tab-btn { flex: 1; padding: 0.75rem 1rem; font-size: 12px; font-weight: 500; text-align: center; cursor: pointer; background: var(--surface2); color: var(--muted); border-right: 1px solid var(--border); transition: all 0.15s; font-family: var(--sans); border: none; }
+.tab-btn:last-child { border-right: none; }
+.tab-btn.active { background: var(--ink); color: #FFFFFF; }
+.tab-btn:hover:not(.active) { background: var(--surface); color: var(--ink); }
+.tab-panel { display: none; background: var(--surface); border: 1px solid var(--border); border-radius: 0 0 10px 10px; padding: 1.25rem; }
+.tab-panel.active { display: block; }
+
+/* ── Responsive ── */
+@media (max-width: 720px) {
+  .meta-bar { flex-direction: column; }
+  .hero { padding: 2rem 1.5rem 1.75rem; }
+  .hero-title { font-size: 32px; }
+  .tl-head-row, .tl-body-row { grid-template-columns: 90px repeat(6, 1fr); }
+  .hormuz-co { grid-template-columns: 1fr 80px; }
+  .hormuz-co .hz-detail { display: none; }
+  .hormuz-inputs { grid-template-columns: 1fr 1fr; }
+  .cal-event { grid-template-columns: 56px 1fr; }
+  .cal-status { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ── Meta Bar ── -->
+<div class="meta-bar">
+  <div class="meta-cell"><div class="meta-label">更新日</div><div class="meta-val">2026.06.05</div></div>
+  <div class="meta-cell"><div class="meta-label">KOSPIサーキットブレーカー</div><div class="meta-val">発動済（本日）</div></div>
+  <div class="meta-cell"><div class="meta-label">フェーズ</div><div class="meta-val">スーパーサイクル後半戦・警戒モード</div></div>
+  <div class="meta-cell"><div class="meta-label">次の重要決算</div><div class="meta-val sm">MU 6/24 → ASML 7/15 → TSMC 7/17 → NVDA 8/26</div></div>
+</div>
+
+<!-- ── Hero ── -->
+<div class="hero">
+  <div class="hero-eyebrow">Semiconductor Reference Guide</div>
+  <div class="hero-title">半導体 参照資料</div>
+  <div class="hero-desc">エコシステム全体図・過剰投資リスクのタイムライン・AIのROIデッドライン・注目決算カレンダー（カナリア含む）・ホルムズ供給ショック脆弱度ランキングを一枚で参照する。</div>
+  <div class="hero-nav">
+    <a href="#s01">01 エコシステム</a>
+    <a href="#s02">02 過剰投資リスク</a>
+    <a href="#s03">03 AIデッドライン</a>
+    <a href="#s04">04 決算カレンダー</a>
+    <a href="#s05">05 ホルムズ脆弱度</a>
+    <a href="#s06">06 シグナル連鎖</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+  01 エコシステム全体図
+════════════════════════════════════════ -->
+<section class="sec" id="s01">
+  <div class="sec-hd"><span class="sec-num">01</span><h2 class="sec-title">半導体エコシステム全体図</h2></div>
+  <div class="note" style="margin-bottom:1rem">🇯🇵 <strong>金枠</strong> = 日本企業。お金の流れは「需要元→設計→製造→材料・装置」の順。ただしリスクの波及は逆順（川上→川下）。</div>
+
+  <div class="ecosystem">
+
+    <div class="eco-layer">
+      <div class="eco-layer-head">
+        <span class="eco-layer-label ll-demand">需要元</span>
+        <span class="eco-layer-title">ハイパースケーラー / AI企業</span>
+        <span class="eco-layer-role">Capex発言が最上流の需要シグナル</span>
+      </div>
+      <div class="eco-companies">
+        <div class="eco-co"><div class="eco-co-name">Microsoft</div><div class="eco-co-note">Azure / OpenAI投資 $100B+</div></div>
+        <div class="eco-co"><div class="eco-co-name">Google (Alphabet)</div><div class="eco-co-note">GCP / TPU $91〜93B</div></div>
+        <div class="eco-co"><div class="eco-co-name">Meta</div><div class="eco-co-note">Llama / MTIA $70B</div></div>
+        <div class="eco-co"><div class="eco-co-name">Amazon (AWS)</div><div class="eco-co-note">Trainium $125B</div></div>
+        <div class="eco-co"><div class="eco-co-name">OpenAI</div><div class="eco-co-note">GPT / IPO準備中 $852B評価</div></div>
+        <div class="eco-co"><div class="eco-co-name">Anthropic</div><div class="eco-co-note">Claude / 2026秋IPO準備 $965B評価</div></div>
+      </div>
+    </div>
+
+    <div class="eco-arrow">↓ Capex → チップ注文</div>
+
+    <div class="eco-layer">
+      <div class="eco-layer-head">
+        <span class="eco-layer-label ll-logic">AIロジック設計</span>
+        <span class="eco-layer-title">GPU / ASIC / カスタムチップ（Fabless）</span>
+        <span class="eco-layer-role">AIチップ需要の最終バロメーター</span>
+      </div>
+      <div class="eco-companies">
+        <div class="eco-co"><div class="eco-co-name">NVIDIA <span class="badge b-s">S+</span></div><div class="eco-co-note">GPU。H100→Blackwell→Vera Rubin</div></div>
+        <div class="eco-co"><div class="eco-co-name">Broadcom <span class="badge b-s">S</span></div><div class="eco-co-note">カスタムASIC+ネットワーク。先週の主役</div></div>
+        <div class="eco-co"><div class="eco-co-name">AMD <span class="badge b-a">A</span></div><div class="eco-co-note">MI400。NVIDIAの対抗軸</div></div>
+        <div class="eco-co"><div class="eco-co-name">Qualcomm <span class="badge b-a">A</span></div><div class="eco-co-note">スマホSoC・エッジAI・車載</div></div>
+        <div class="eco-co"><div class="eco-co-name">Intel <span class="badge b-a">A</span></div><div class="eco-co-note">CPU再建中。ファウンドリ事業</div></div>
+        <div class="eco-co"><div class="eco-co-name">Marvell</div><div class="eco-co-note">カスタムASIC競合</div></div>
+      </div>
+    </div>
+
+    <div class="eco-arrow">↓ 設計図 → TSMC等に発注</div>
+
+    <div class="eco-layer">
+      <div class="eco-layer-head">
+        <span class="eco-layer-label ll-found">製造（Foundry）</span>
+        <span class="eco-layer-title">受託製造 — 月次売上が先行指標</span>
+        <span class="eco-layer-role">毎月10日前後にTSMCが月次売上公表 → 最上流の実需確認</span>
+      </div>
+      <div class="eco-companies">
+        <div class="eco-co"><div class="eco-co-name">TSMC <span class="badge b-s">S・月次あり</span></div><div class="eco-co-note">シェア72%。3/2/1nm。全AIチップの製造元</div></div>
+        <div class="eco-co"><div class="eco-co-name">Samsung Foundry</div><div class="eco-co-note">HBMも兼業。シェア約11%</div></div>
+        <div class="eco-co"><div class="eco-co-name">Intel Foundry</div><div class="eco-co-note">18A/14A。外部顧客獲得中</div></div>
+        <div class="eco-co jp"><div class="eco-co-name">JASM (TSMC熊本) 🇯🇵</div><div class="eco-co-note">2024年末稼働。ソニー・デンソー・トヨタ出資</div></div>
+        <div class="eco-co jp"><div class="eco-co-name">Rapidus 🇯🇵</div><div class="eco-co-note">2nm目標。2027年量産予定。政府支援2.9兆円</div></div>
+      </div>
+    </div>
+
+    <div class="eco-arrow">↓ 製造にはメモリ・材料・装置が必要</div>
+
+    <div class="eco-layer">
+      <div class="eco-layer-head">
+        <span class="eco-layer-label ll-mem">メモリ</span>
+        <span class="eco-layer-title">DRAM / HBM / NAND</span>
+        <span class="eco-layer-role">最もサイクルリスクが大きい</span>
+      </div>
+      <div class="eco-companies">
+        <div class="eco-co"><div class="eco-co-name">Micron <span class="badge b-s">S</span></div><div class="eco-co-note">米国HBM。2026年全量完売。次決算6/24</div></div>
+        <div class="eco-co"><div class="eco-co-name">SK Hynix <span class="badge b-warn">カナリア🐦</span></div><div class="eco-co-note">HBM世界1位。ヘリウム依存64.7%（Qatar）</div></div>
+        <div class="eco-co"><div class="eco-co-name">Samsung <span class="badge b-warn">カナリア🐦</span></div><div class="eco-co-note">DRAM+HBM+Foundry兼業。HBMはHynixに劣後</div></div>
+        <div class="eco-co jp"><div class="eco-co-name">キオクシア 🇯🇵<span class="badge b-warn" style="margin-left:4px">カナリア🐦</span></div><div class="eco-co-note">NAND世界3〜4位。元東芝メモリ。赤字→黒字転換</div></div>
+      </div>
+    </div>
+
+    <div class="eco-arrow">↓ 製造装置の需要</div>
+
+    <div class="eco-layer">
+      <div class="eco-layer-head">
+        <span class="eco-layer-label ll-equip">製造装置</span>
+        <span class="eco-layer-title">受注が6〜12ヶ月先行指標</span>
+        <span class="eco-layer-role">リスク到来は1〜2年遅れ</span>
+      </div>
+      <div class="eco-companies">
+        <div class="eco-co"><div class="eco-co-name">ASML <span class="badge b-a">A・受注が鍵</span></div><div class="eco-co-note">EUV独占。次決算7/15確定</div></div>
+        <div class="eco-co"><div class="eco-co-name">Applied Materials</div><div class="eco-co-note">成膜・エッチング。米国最大装置メーカー</div></div>
+        <div class="eco-co"><div class="eco-co-name">Lam Research</div><div class="eco-co-note">エッチング。HBM投資の恩恵大</div></div>
+        <div class="eco-co jp"><div class="eco-co-name">東京エレクトロン 🇯🇵</div><div class="eco-co-note">塗布・現像・エッチング。世界3〜4位</div></div>
+        <div class="eco-co jp"><div class="eco-co-name">アドバンテスト 🇯🇵</div><div class="eco-co-note">テスト装置世界最大手。AI高度化で単価↑</div></div>
+        <div class="eco-co jp"><div class="eco-co-name">レーザーテック 🇯🇵</div><div class="eco-co-note">EUVマスク検査はほぼ独占</div></div>
+        <div class="eco-co jp"><div class="eco-co-name">SCREENホールディングス 🇯🇵</div><div class="eco-co-note">洗浄装置</div></div>
+        <div class="eco-co jp"><div class="eco-co-name">ディスコ 🇯🇵</div><div class="eco-co-note">ダイシング装置</div></div>
+      </div>
+    </div>
+
+    <div class="eco-layer">
+      <div class="eco-layer-head">
+        <span class="eco-layer-label ll-mat">材料</span>
+        <span class="eco-layer-title">ウェハ・フォトレジスト・ガス（消耗品型 = 最もリスク小）</span>
+        <span class="eco-layer-role">日本が世界シェアを独占する分野</span>
+      </div>
+      <div class="eco-companies">
+        <div class="eco-co jp"><div class="eco-co-name">信越化学 🇯🇵</div><div class="eco-co-note">シリコンウェハ世界1位（31%）+フォトレジスト</div></div>
+        <div class="eco-co jp"><div class="eco-co-name">SUMCO 🇯🇵</div><div class="eco-co-note">シリコンウェハ世界2位（23%）。信越と2社で54%</div></div>
+        <div class="eco-co jp"><div class="eco-co-name">JSR 🇯🇵</div><div class="eco-co-note">フォトレジスト世界1位。政府が国策化・買収済</div></div>
+        <div class="eco-co jp"><div class="eco-co-name">東京応化 🇯🇵</div><div class="eco-co-note">フォトレジスト。日系5社で世界90%</div></div>
+        <div class="eco-co"><div class="eco-co-name">Air Products / Linde</div><div class="eco-co-note">ヘリウム等産業ガス。ホルムズで急騰中</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+  02 過剰投資・過剰供給リスク タイムライン
+════════════════════════════════════════ -->
+<section class="sec" id="s02">
+  <div class="sec-hd"><span class="sec-num">02</span><h2 class="sec-title">過剰投資・過剰供給リスク — セクター別タイムライン</h2></div>
+  <div class="alert" style="margin-bottom:1rem"><strong>重要：</strong>「全部同時には崩れない」。コモディティメモリが最初（2027〜28年）、装置が1〜2年遅れ、材料が最後。KOSPIが日経より先行して崩れる。</div>
+
+  <div class="timeline-table">
+    <div class="tl-head-row">
+      <div class="tl-head-cell">セクター</div>
+      <div class="tl-head-cell">2025〜26前半</div>
+      <div class="tl-head-cell">2026後半</div>
+      <div class="tl-head-cell">2027前半</div>
+      <div class="tl-head-cell">2027後半</div>
+      <div class="tl-head-cell">2028〜</div>
+      <div class="tl-head-cell">リスク度</div>
+    </div>
+
+    <div class="tl-body-row">
+      <div class="tl-row-label">コモディティ<br>DRAM/NAND<div class="tl-row-sub">キオクシア Samsung</div></div>
+      <div class="tl-cell tc-boom">価格急騰</div>
+      <div class="tl-cell tc-peak">ピーク付近</div>
+      <div class="tl-cell tc-risk">価格軟化？</div>
+      <div class="tl-cell tc-crash">急落リスク</div>
+      <div class="tl-cell tc-crash">過剰供給</div>
+      <div class="tl-cell" style="background:var(--rust-bg)"><span class="badge b-s">最高</span></div>
+    </div>
+
+    <div class="tl-body-row">
+      <div class="tl-row-label">HBM<div class="tl-row-sub">SK Hynix Micron</div></div>
+      <div class="tl-cell tc-boom">★完売中</div>
+      <div class="tl-cell tc-boom">タイト継続</div>
+      <div class="tl-cell tc-peak">新ライン稼働</div>
+      <div class="tl-cell tc-risk">供給増加</div>
+      <div class="tl-cell tc-risk">過剰リスク</div>
+      <div class="tl-cell" style="background:#FAEBE3"><span class="badge b-a">高</span></div>
+    </div>
+
+    <div class="tl-body-row">
+      <div class="tl-row-label">AIロジック<div class="tl-row-sub">NVIDIA Broadcom</div></div>
+      <div class="tl-cell tc-boom">★急騰中</div>
+      <div class="tl-cell tc-peak">警戒開始</div>
+      <div class="tl-cell tc-peak">ガイダンス注視</div>
+      <div class="tl-cell tc-risk">ROI判定</div>
+      <div class="tl-cell tc-na">不確定</div>
+      <div class="tl-cell" style="background:#FAEBE3"><span class="badge b-a">高</span></div>
+    </div>
+
+    <div class="tl-body-row">
+      <div class="tl-row-label">製造装置<div class="tl-row-sub">ASML TEL アドバンテスト</div></div>
+      <div class="tl-cell tc-boom">受注最大</div>
+      <div class="tl-cell tc-boom">売上ピーク</div>
+      <div class="tl-cell tc-peak">受注減兆候？</div>
+      <div class="tl-cell tc-risk">売上鈍化</div>
+      <div class="tl-cell tc-risk">調整局面</div>
+      <div class="tl-cell" style="background:var(--gold-bg)"><span class="badge b-a" style="background:var(--gold-bg);color:var(--gold);border:1px solid rgba(154,96,8,0.25)">中〜高</span></div>
+    </div>
+
+    <div class="tl-body-row">
+      <div class="tl-row-label">半導体材料<div class="tl-row-sub">信越化学 SUMCO JSR</div></div>
+      <div class="tl-cell tc-boom">好調</div>
+      <div class="tl-cell tc-boom">堅調</div>
+      <div class="tl-cell tc-boom">堅調</div>
+      <div class="tl-cell tc-peak">鈍化？</div>
+      <div class="tl-cell tc-na">緩やか低下</div>
+      <div class="tl-cell" style="background:var(--teal-bg)"><span class="badge b-equip">低</span></div>
+    </div>
+
+    <div class="tl-body-row">
+      <div class="tl-row-label">車載・産業<div class="tl-row-sub">ルネサス TI ローム</div></div>
+      <div class="tl-cell tc-already">低迷中</div>
+      <div class="tl-cell tc-na">回復兆候？</div>
+      <div class="tl-cell tc-low">緩やか回復</div>
+      <div class="tl-cell tc-boom">回復局面</div>
+      <div class="tl-cell tc-boom">成長再開</div>
+      <div class="tl-cell" style="background:var(--blue-bg)"><span class="badge b-b">別サイクル</span></div>
+    </div>
+
+    <div class="tl-body-row">
+      <div class="tl-row-label">KOSPI<div class="tl-row-sub">Samsung+SK Hynix = 47〜50%</div></div>
+      <div class="tl-cell tc-boom">年初来+100%超</div>
+      <div class="tl-cell tc-peak">★本日CB発動</div>
+      <div class="tl-cell tc-risk">メモリ次第</div>
+      <div class="tl-cell tc-crash">暴落リスク</div>
+      <div class="tl-cell tc-na">再構築局面</div>
+      <div class="tl-cell" style="background:#F9D8D0"><span class="badge b-warn">極高</span></div>
+    </div>
+
+    <div class="tl-body-row">
+      <div class="tl-row-label">日経平均<div class="tl-row-sub">装置・材料中心</div></div>
+      <div class="tl-cell tc-boom">史上最高値圏</div>
+      <div class="tl-cell tc-boom">強気継続</div>
+      <div class="tl-cell tc-peak">装置受注注視</div>
+      <div class="tl-cell tc-risk">調整リスク</div>
+      <div class="tl-cell tc-risk">-20〜35%？</div>
+      <div class="tl-cell" style="background:var(--gold-bg)"><span class="badge b-a" style="background:var(--gold-bg);color:var(--gold);border:1px solid rgba(154,96,8,0.25)">中</span></div>
+    </div>
+
+  </div>
+
+  <div class="note" style="margin-top:0.75rem">★「現在地」は2026年6月。KOSPIの崩れは日経より1〜2年先行する傾向。材料株（信越化学等）は最後まで崩れにくい。</div>
+</section>
+
+<!-- ══════════════════════════════════════
+  03 AI ROI デッドライン
+════════════════════════════════════════ -->
+<section class="sec" id="s03">
+  <div class="sec-hd"><span class="sec-num">03</span><h2 class="sec-title">AI ROI デッドライン — 「収益化の証明期限」</h2></div>
+
+  <div class="alert">Goldman Sachs Jim Covello：「2年前よりも今のほうがAIの経済性はむしろ疑問が増している。半導体だけが恩恵を受ける構造は前例がなく持続不可能」（2026年6月）</div>
+
+  <div class="roi-timeline">
+
+    <div class="roi-row">
+      <div class="roi-year">現在<br>2026前半</div>
+      <div class="roi-content">
+        <div class="roi-title">投資フェーズ：GAFAMが$600B超を投じ続けている</div>
+        <div class="roi-body">4社合計Capexが売上の45〜57%という前例のない比率。現金不足で負債市場に依存し始めている。Oracleは総capex約1,560億ドル、RPO約5,230億ドルで売上の9倍超のコミットメント。<br>→ <strong>まだ収益化の証明は不要とされている時期</strong></div>
+      </div>
+    </div>
+
+    <div class="roi-row deadline">
+      <div class="roi-year">⚠<br>2026秋〜<br>2027前半</div>
+      <div class="roi-content">
+        <div class="roi-title">🔴 最初のデッドライン：Anthropic IPO（2026年10月目標）</div>
+        <div class="roi-body">AnthropicがSEC機密ファイリング済（2026年6月1日）。ランレート$47B/年、2026年Q2に初の営業黒字見込み。<strong>IPO投資家は「AIは本当に収益を生んでいるか」を公開市場で審判する。</strong> 非GAAP計上の問題（グロスvsネット）が精査される。PolymarketではんthropicがOpenAIより先に上場する確率76.5%。<br>OpenAI IPOも2026年Q4〜2027年を目標（Goldman主幹、21行シンジケート）。評価額$1.2T目標。</div>
+      </div>
+    </div>
+
+    <div class="roi-row deadline">
+      <div class="roi-year">🔴<br>2027</div>
+      <div class="roi-content">
+        <div class="roi-title">🔴 本当のデッドライン：GAFAMの「AI収益化」が証明されるか</div>
+        <div class="roi-body"><strong>ここが半導体需要の最大の分岐点。</strong><br>・Gartner：「2027年を超える長期契約の締結は慎重に」と明示的に警告<br>・BofA：AI capexが$700B超になれば「90年代末のテレコム投資サイクルのピーク」と同水準<br>・Goldman：「hyperscalerがAI以外の企業のためにROIを出していないのに、半導体が恩恵を受け続けるのはおかしい」<br>→ <strong>GAFAMの2027年Capexガイダンスが「増額 or 据え置き」か「削減・選別」に変わる瞬間が分岐点</strong></div>
+      </div>
+    </div>
+
+    <div class="roi-row">
+      <div class="roi-year">2028〜</div>
+      <div class="roi-content">
+        <div class="roi-title">ROI証明に成功した場合 vs 失敗した場合</div>
+        <div class="roi-body"><strong>成功：</strong>エージェントAIが本格普及。GAFAMのクラウドAI収益がCapexを正当化。半導体需要は2030年代も継続。<br><strong>失敗：</strong>「AIバブル」崩壊。GAFAM Capex急減→NVIDIA/Broadcomガイダンス下方修正→メモリ価格暴落→装置受注急減→日本半導体株調整。2019年型の連鎖下落。</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="note" style="margin-top:0.75rem"><strong>Keitaさんとの整合：</strong>Bitcoin出口2029H2・不動産購入2030という時間軸は、「2027年がROIデッドライン→2028〜2029年に何らかの決着」という半導体サイクルと整合的。</div>
+</section>
+
+<!-- ══════════════════════════════════════
+  04 注目決算カレンダー（カナリア含む）
+════════════════════════════════════════ -->
+<section class="sec" id="s04">
+  <div class="sec-hd"><span class="sec-num">04</span><h2 class="sec-title">注目決算カレンダー — カナリア銘柄含む</h2></div>
+
+  <div class="canary-note">🐦 <strong>カナリア銘柄</strong>（紫枠）：メモリサイクルの転換を最も早く業績に反映する企業。Samsung / SK Hynix / キオクシアの決算で「コモディティ価格ガイダンスの軟化」「在庫が消化されていない」発言が出たら要警戒。KOSPI全体の外国人売買動向も先行指標として有効。</div>
+
+  <div style="margin-top:1rem">
+    <div class="tab-row">
+      <button class="tab-btn active" onclick="showTab('cal','jun')">6月（今月）</button>
+      <button class="tab-btn" onclick="showTab('cal','jul')">7月</button>
+      <button class="tab-btn" onclick="showTab('cal','aug')">8月</button>
+      <button class="tab-btn" onclick="showTab('cal','sep')">9〜11月</button>
+    </div>
+
+    <div class="tab-panel active" id="cal-jun">
+      <div class="cal-events">
+        <div class="cal-event rank-s" style="border-left-color:#888;opacity:0.7">
+          <div class="cal-date">6/3<br><span style="font-size:10px;color:var(--muted)">発表済</span></div>
+          <div><div class="cal-name">Broadcom (AVGO) FY2026 Q2</div><div class="cal-note">AI半導体+48%・Q3ガイダンス$29.4B。株-12%。本日KOSPIサーキットブレーカー誘発。</div></div>
+          <div class="cal-status cs-confirmed">完了</div>
+        </div>
+        <div class="cal-event rank-s">
+          <div class="cal-date">6/24<br><span style="font-size:10px;color:var(--rust)">★今月末</span></div>
+          <div><div class="cal-name">Micron (MU) FQ3 2026 <span class="badge b-s">S</span></div><div class="cal-note">HBM需給の温度計。AI向けメモリの実態。価格ガイダンスに注目。コモディティメモリサイクルの転換シグナルになりうる。</div></div>
+          <div class="cal-status cs-confirmed">確定</div>
+        </div>
+        <div class="cal-event canary">
+          <div class="cal-date">6月<br>下旬</div>
+          <div><div class="cal-name">Samsung Electronics Q2 🐦カナリア</div><div class="cal-note">HBM・DRAM・ファウンドリの3事業。HBM競争でSK Hynixに劣後しているか確認。KOSPI50%の重し。</div></div>
+          <div class="cal-status cs-estimate">推定</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="cal-jul">
+      <div class="cal-events">
+        <div class="cal-event rank-a">
+          <div class="cal-date">7/15<br>確定</div>
+          <div><div class="cal-name">ASML Q2 <span class="badge b-a">A</span></div><div class="cal-note">EUV露光装置の新規受注額（ブックバリュー）が最重要。受注が2〜3四半期連続で減少したら装置サイクル転換の前兆。売上より受注が先行。</div></div>
+          <div class="cal-status cs-confirmed">確定</div>
+        </div>
+        <div class="cal-event rank-s">
+          <div class="cal-date">7/16〜17<br>推定</div>
+          <div><div class="cal-name">TSMC Q2 <span class="badge b-s">S</span></div><div class="cal-note">3nm/2nm比率・稼働率・Q3ガイダンス。稼働率が95%未満に落ちたら需要減少のシグナル。月次売上で事前に確認可能。</div></div>
+          <div class="cal-status cs-estimate">推定</div>
+        </div>
+        <div class="cal-event canary">
+          <div class="cal-date">7月</div>
+          <div><div class="cal-name">SK Hynix Q2 🐦カナリア</div><div class="cal-note">HBM世界1位の決算。HBM4の稼働状況・価格維持力・ヘリウム調達コスト増加の影響を確認。KOSPIの47%を占める2社の一角。</div></div>
+          <div class="cal-status cs-estimate">推定</div>
+        </div>
+        <div class="cal-event rank-a">
+          <div class="cal-date">7/23〜31<br>推定</div>
+          <div><div class="cal-name">Intel (INTC) Q2 <span class="badge b-a">A</span></div><div class="cal-note">DCサーバーCPU22%増が継続か。TSMC資本提携の進捗が最大の注目点。ファウンドリ再建の現実。</div></div>
+          <div class="cal-status cs-estimate">推定</div>
+        </div>
+        <div class="cal-event rank-a">
+          <div class="cal-date">7月末<br>推定</div>
+          <div><div class="cal-name">Qualcomm Q3 <span class="badge b-a">A</span></div><div class="cal-note">エッジAI・ByteDance向けAIチップ採用状況。車載AI50%増が継続か。スマホ市場の実態。</div></div>
+          <div class="cal-status cs-estimate">推定</div>
+        </div>
+        <div class="cal-event rank-s" style="background:var(--rust-bg);border-left-color:var(--rust)">
+          <div class="cal-date">7月末</div>
+          <div><div class="cal-name">GAFAM Q2 一斉発表 <span class="badge b-s">S+</span></div><div class="cal-note">4社のCapexガイダンス発表。<strong>「増額継続」か「選別的投資」か</strong>の一言が半導体セクター全体を動かす最大の材料。AI ROI証明の進捗も確認。</div></div>
+          <div class="cal-status cs-estimate">推定</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="cal-aug">
+      <div class="cal-events">
+        <div class="cal-event rank-a">
+          <div class="cal-date">8/上旬<br>推定</div>
+          <div><div class="cal-name">AMD Q2 <span class="badge b-a">A</span></div><div class="cal-note">MI400の採用状況。NVIDIAとの差がどれだけ縮まったか。データセンターGPUの実需確認。</div></div>
+          <div class="cal-status cs-estimate">推定</div>
+        </div>
+        <div class="cal-event rank-s" style="background:var(--rust-bg);border:1px solid rgba(184,64,24,0.3);border-left:3px solid var(--rust)">
+          <div class="cal-date">8/26<br>確定</div>
+          <div><div class="cal-name">NVIDIA (NVDA) FQ2 2027 <span class="badge b-s">S+</span></div><div class="cal-note"><strong>AIセクター最大の決算。</strong>Vera Rubinへの移行タイムライン・Q3ガイダンスが全て。次世代へのBlackwell→Rubin空白リスク。ガイダンス1語でセクター全体が動く。予想売上$91.6B。</div></div>
+          <div class="cal-status cs-confirmed">確定</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="cal-sep">
+      <div class="cal-events">
+        <div class="cal-event rank-s">
+          <div class="cal-date">9月中旬</div>
+          <div><div class="cal-name">Broadcom (AVGO) FY2026 Q3</div><div class="cal-note">今回の失望ガイダンス$29.4Bを達成できるか。AI半導体の連続成長が証明されるかの試金石。</div></div>
+          <div class="cal-status cs-estimate">推定</div>
+        </div>
+        <div class="cal-event canary">
+          <div class="cal-date">9月</div>
+          <div><div class="cal-name">キオクシア Q2 🐦カナリア</div><div class="cal-note">NAND価格が維持されているか。AI向けSSD・KV cache需要の実態。HBMシフトでNAND供給が逼迫しているかの確認。</div></div>
+          <div class="cal-status cs-estimate">推定</div>
+        </div>
+        <div class="cal-event rank-s">
+          <div class="cal-date">10月中旬</div>
+          <div><div class="cal-name">TSMC Q3 <span class="badge b-s">S</span></div><div class="cal-note">毎年10月第3週。2026年通期+30%以上の達成確認。HPC比率（現在61%）の変化を確認。</div></div>
+          <div class="cal-status cs-estimate">推定</div>
+        </div>
+        <div class="cal-event rank-s" style="background:var(--rust-bg);border:1px solid rgba(184,64,24,0.3);border-left:3px solid var(--rust)">
+          <div class="cal-date">11月下旬</div>
+          <div><div class="cal-name">NVIDIA FQ3 2027</div><div class="cal-note">Vera Rubin移行の状況。年末ガイダンスと2027年見通し。ここでの内容がAI ROIデッドライン（2027年）の地合いを形成する。</div></div>
+          <div class="cal-status cs-estimate">推定</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;border-left:3px solid var(--rust)"><div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:4px">Sランク</div><div style="font-size:12px;color:var(--ink2);line-height:1.5">NVDA・TSMC月次・AVGO・MU・GAFAM Capex。これだけ追えば需要の実態の90%が分かる。</div></div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;border-left:3px solid var(--gold)"><div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:4px">Aランク</div><div style="font-size:12px;color:var(--ink2);line-height:1.5">ASML受注・AMD・Intel・Qualcomm。特定テーマを深掘りするとき。</div></div>
+    <div style="background:var(--purple-bg);border:1px solid rgba(60,52,137,0.2);border-radius:8px;padding:10px 12px;border-left:3px solid var(--purple)"><div style="font-family:var(--mono);font-size:10px;color:var(--purple);margin-bottom:4px">カナリア🐦</div><div style="font-size:12px;color:var(--ink2);line-height:1.5">Samsung・SK Hynix・キオクシア。メモリサイクル転換の最初の警報機。</div></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+  05 ホルムズ海峡 供給ショック脆弱度
+════════════════════════════════════════ -->
+<section class="sec" id="s05">
+  <div class="sec-hd"><span class="sec-num">05</span><h2 class="sec-title">ホルムズ海峡 供給ショック脆弱度ランキング</h2></div>
+
+  <div class="alert" style="margin-bottom:1rem"><strong>現状（2026年3月〜）：</strong>ホルムズ海峡閉鎖によりQatarのRas Laffan施設が機能不全。世界ヘリウム供給の30〜38%が喪失。液体ヘリウムは35〜48日で蒸発するため備蓄不可。アジアの半導体メーカーは2〜3ヶ月分の在庫しか持っていない。</div>
+
+  <div class="hormuz-grid">
+
+    <div class="hormuz-co rank1">
+      <div><div class="hz-name">SK Hynix <span class="badge b-warn">最脆弱</span></div><div class="hz-sub">KOSPI 21%・HBM世界1位</div></div>
+      <div class="hz-detail">ヘリウム輸入の64.7%がQatarから。DRAM製造でヘリウムは代替不可。HBM製造ラインは通常のDRAMより複雑でヘリウム使用量が多い。稼働率低下でHBM供給に直撃。現在ヘリウム価格+70〜100%。</div>
+      <div class="hz-risk"><div class="hz-risk-num r1">★★★★★</div><div class="hz-risk-label">脆弱度 MAX</div></div>
+    </div>
+
+    <div class="hormuz-co rank2">
+      <div><div class="hz-name">Samsung Electronics</div><div class="hz-sub">KOSPI 26%・メモリ+Foundry兼業</div></div>
+      <div class="hz-detail">SK Hynixと同様のヘリウム依存構造。加えてエネルギー（油・LNG）もホルムズ経由。製造コスト上昇の二重苦。HBM品質でHynixに劣後しており、稼働率低下時のダメージが大きい。</div>
+      <div class="hz-risk"><div class="hz-risk-num r2">★★★★★</div><div class="hz-risk-label">脆弱度 MAX</div></div>
+    </div>
+
+    <div class="hormuz-co rank3">
+      <div><div class="hz-name">TSMC</div><div class="hz-sub">台湾。世界ロジック製造の72%</div></div>
+      <div class="hz-detail">台湾のヘリウム輸入の69%がGCC（湾岸）から。先端3nm/2nm製造でのEUV冷却は必須。在庫2〜3ヶ月。ただしQatarより他中東供給国の比率がやや高く、調達多様化が進んでいる。</div>
+      <div class="hz-risk"><div class="hz-risk-num r3">★★★★☆</div><div class="hz-risk-label">脆弱度 高</div></div>
+    </div>
+
+    <div class="hormuz-co rank4">
+      <div><div class="hz-name">キオクシア</div><div class="hz-sub">日本。NAND世界3〜4位</div></div>
+      <div class="hz-detail">日本のヘリウム調達もGCC依存。NAND製造でのヘリウム使用は先端ロジック比でやや少ないが代替不可。加えて日本は中東LNG依存度約70〜95%でエネルギーコスト上昇リスクも高い。</div>
+      <div class="hz-risk"><div class="hz-risk-num r4">★★★☆☆</div><div class="hz-risk-label">脆弱度 中〜高</div></div>
+    </div>
+
+    <div class="hormuz-co rank5">
+      <div><div class="hz-name">東京エレクトロン / アドバンテスト</div><div class="hz-sub">日本。装置メーカー</div></div>
+      <div class="hz-detail">装置メーカーはヘリウムを直接消費しない。ただし顧客（TSMC・Samsung）の稼働率が下がると装置の新規発注が止まる二次影響。ヘリウム危機の直接影響は小さいが、エネルギーコスト上昇で顧客のCapexが圧迫されるリスク。</div>
+      <div class="hz-risk"><div class="hz-risk-num r5">★★☆☆☆</div><div class="hz-risk-label">間接リスク</div></div>
+    </div>
+
+    <div class="hormuz-co rank6">
+      <div><div class="hz-name">信越化学 / SUMCO</div><div class="hz-sub">日本。シリコンウェハ</div></div>
+      <div class="hz-detail">ウェハ製造でのヘリウム使用量は少ない。エネルギーリスクはあるがウェハ需要自体は継続する。中東依存度が最も低い層。「最後まで崩れない材料株」の特性が維持される。</div>
+      <div class="hz-risk"><div class="hz-risk-num r6">★☆☆☆☆</div><div class="hz-risk-label">リスク低</div></div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:1rem">
+    <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">ホルムズ経由の主な調達物資と在庫日数</div>
+    <div class="hormuz-inputs">
+      <div class="hz-input">
+        <div class="hz-input-name">液体ヘリウム</div>
+        <div class="hz-input-body">Qatar産が世界の34%。EUV冷却・リソグラフィに必須。代替不可。価格+70〜100%（2026年3月〜）</div>
+        <div class="hz-input-shelf">
+          <span class="hz-input-shelf-label">在庫日数</span>
+          <span class="hz-input-shelf-val" style="color:var(--rust)">35〜48日（蒸発限界）</span>
+        </div>
+      </div>
+      <div class="hz-input">
+        <div class="hz-input-name">ナフサ（エチレン原料）</div>
+        <div class="hz-input-body">中東産ナフサ→エチレン→フォトレジスト原料。日本の化学産業が依存。コスト上昇で材料メーカーの利益率に影響。</div>
+        <div class="hz-input-shelf">
+          <span class="hz-input-shelf-label">在庫日数</span>
+          <span class="hz-input-shelf-val" style="color:var(--gold)">30〜60日</span>
+        </div>
+      </div>
+      <div class="hz-input">
+        <div class="hz-input-name">LNG・原油</div>
+        <div class="hz-input-body">日本の70〜95%、韓国・台湾の主要エネルギー源。製造コスト上昇→Capex計画に影響。半導体工場は電力多消費施設。</div>
+        <div class="hz-input-shelf">
+          <span class="hz-input-shelf-label">在庫日数</span>
+          <span class="hz-input-shelf-val" style="color:var(--gold)">2〜3週間</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:0.75rem">TSMCは「ヘリウムやガスは複数調達元を持ち、安全在庫を維持しているため近期影響はない」と表明（2026年4月）。ただし長期化すれば2〜3ヶ月後に影響が出始める。SK Hynix・SamsungはQatar依存度が高く最も脆弱。</div>
+</section>
+
+<!-- ══════════════════════════════════════
+  06 シグナル連鎖
+════════════════════════════════════════ -->
+<section class="sec" id="s06">
+  <div class="sec-hd"><span class="sec-num">06</span><h2 class="sec-title">シグナル連鎖 — 崩壊は川上から川下へ伝播する</h2></div>
+  <div class="info" style="margin-bottom:1rem">決算に「過剰供給の兆候」が現れる順番は固定している。最上流のGAFAMから始まり、約1〜2年かけて日本の装置株まで到達する。</div>
+
+  <div class="signal-chain">
+    <div class="sig-row">
+      <div class="sig-num">1</div>
+      <div>
+        <div class="sig-title">GAFAMのCapex発言が「積極的継続」→「選択的」に変わる</div>
+        <div class="sig-body">4社合計の四半期Capexガイダンスが前年比でフラット or 減少に転じる瞬間。「AI投資のROIが見えてきた/見えない」という発言のトーン変化も重要。</div>
+        <div class="sig-when">👀 次回確認：2026年7月末のGAFAM Q2決算</div>
+      </div>
+    </div>
+    <div class="sig-row">
+      <div class="sig-num">2</div>
+      <div>
+        <div class="sig-title">NVIDIAのガイダンス下方修正 or チャネル在庫増加発言</div>
+        <div class="sig-body">NVIDIAがガイダンスを予想以下で設定。または「顧客在庫が増えている」という言及。過去のパターンでは株価が業績の6〜12ヶ月前に動く。</div>
+        <div class="sig-when">👀 次回確認：2026年8月26日 NVIDIA FQ2</div>
+      </div>
+    </div>
+    <div class="sig-row">
+      <div class="sig-num">3</div>
+      <div>
+        <div class="sig-title">Micronのコモディティメモリ価格ガイダンス軟化</div>
+        <div class="sig-body">「DRAM/NAND価格が下落している」「在庫が消化されていない」発言が出た瞬間がコモディティメモリサイクルの転換点。Samsung・SK Hynix・キオクシアにも同時波及。</div>
+        <div class="sig-when">👀 次回確認：2026年6月24日 Micron FQ3（今月末！）</div>
+      </div>
+    </div>
+    <div class="sig-row">
+      <div class="sig-num">4</div>
+      <div>
+        <div class="sig-title">ASMLの受注残（ブックバリュー）の2〜3四半期連続減少</div>
+        <div class="sig-body">装置の受注は売上の6〜12ヶ月先行指標。四半期ごとに「新規受注額」を開示。受注が複数四半期連続で減少したら、その後必ず売上も落ちる。株価は受注発表前に先行して動く。</div>
+        <div class="sig-when">👀 次回確認：2026年7月15日 ASML Q2</div>
+      </div>
+    </div>
+    <div class="sig-row">
+      <div class="sig-num">5</div>
+      <div>
+        <div class="sig-title">TSMCの稼働率低下（95%未満）</div>
+        <div class="sig-body">TSMCが「稼働率が下がった」と発言したら、需要全体が落ちているサイン。2022〜23年は稼働率が70%台に落ちて株価が半値になった。月次売上で事前に先読みできる。</div>
+        <div class="sig-when">👀 次回月次確認：毎月10日前後（次回 2026年7月10日頃）</div>
+      </div>
+    </div>
+    <div class="sig-row">
+      <div class="sig-num">6</div>
+      <div>
+        <div class="sig-title">日本の装置株（東京エレクトロン・アドバンテスト）の受注残減少</div>
+        <div class="sig-body">四半期ごとに受注残を開示。これが減り始めたら1〜2四半期後に売上鈍化が確定する。株価はさらに先行して動く（市場はこれを最後の「利益確定タイミング」と見なす）。日経半導体株の最終シグナル。</div>
+        <div class="sig-when">⏱ 発現予測：2027〜2029年。KOSPI崩壊から1〜2年後。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:1rem"><strong>まとめ：</strong>GAFAM Capex（最上流）→ NVIDIA ガイダンス → Micron/Samsung/SK Hynix メモリ価格 → ASML 受注残 → TSMC 稼働率 → 日本装置株 受注残、の順番で崩れる。KOSPIは「Micron/Samsung/SK Hynix」の段階で日経の1〜2年前に先行して崩れる。</div>
+</section>
+
+</div><!-- /page -->
+
+<script>
+function showTab(group, id) {
+  document.querySelectorAll('[id^="' + group + '-"]').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('[id^="' + group + '-"]').forEach((_, i) => {
+    const btn = document.querySelectorAll('.tab-btn')[i];
+    if (btn) btn.classList.remove('active');
+  });
+  const panel = document.getElementById(group + '-' + id);
+  if (panel) panel.classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
