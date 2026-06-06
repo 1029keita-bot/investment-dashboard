@@ -10,7 +10,1702 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>個人投資ルール</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
+  --bg:        #F2E6D4;
+  --surface:   #FBF5EC;
+  --surface2:  #EFE2CC;
+  --rust:      #B84018;
+  --rust-dark: #8C2E0E;
+  --rust-bg:   #FAEBE3;
+  --gold:      #9A6008;
+  --gold-bg:   #F5E9CC;
+  --teal:      #16685A;
+  --teal-bg:   #D5EDE8;
+  --blue:      #185FA5;
+  --blue-bg:   #E4EDF8;
+  --purple:    #3C3489;
+  --purple-bg: #EEEDFE;
+  --ink:       #1C1008;
+  --ink2:      #3D2410;
+  --muted:     #7A5838;
+  --border:    rgba(80,40,10,0.14);
+  --serif:     'Playfair Display', serif;
+  --sans:      'Noto Sans JP', sans-serif;
+  --mono:      'DM Mono', monospace;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.85; }
+.page { max-width: 960px; margin: 0 auto; padding: 0 2rem 5rem; }
+
+/* Meta bar */
+.meta-bar { display: flex; background: var(--ink); border-radius: 12px 12px 0 0; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.08); margin: 0 -2rem 0; }
+.meta-cell { padding: 0.85rem 1.75rem; border-right: 1px solid rgba(255,255,255,0.08); }
+.meta-cell:last-child { border-right: none; flex: 1; }
+.meta-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #FFD4B2; margin-bottom: 4px; }
+.meta-val { font-family: var(--mono); font-size: 15px; font-weight: 500; color: #FFFFFF; }
+.meta-val.reason { font-family: var(--sans); }
+
+/* Hero */
+.hero { background: var(--rust); margin: 0 -2rem 3rem; padding: 3rem 3rem 2.75rem; position: relative; overflow: hidden; border-radius: 0 0 12px 12px; }
+.hero::after { content: ''; position: absolute; right: -80px; bottom: -80px; width: 320px; height: 320px; border-radius: 50%; background: rgba(255,255,255,0.05); pointer-events: none; }
+.hero-eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,230,210,0.9); margin-bottom: 12px; }
+.hero-title { font-family: var(--serif); font-size: 52px; font-weight: 900; color: #FFFFFF; line-height: 1.05; margin-bottom: 14px; }
+.hero-desc { font-size: 16px; color: #FFE8D6; max-width: 580px; line-height: 1.75; margin-bottom: 2.5rem; }
+.hero-stats { display: flex; gap: 2.5rem; border-top: 1px solid rgba(255,255,255,0.22); padding-top: 2rem; }
+.stat-num { font-family: var(--serif); font-size: 38px; font-weight: 900; color: #FFFFFF; line-height: 1; margin-bottom: 4px; }
+.stat-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #FFD4B2; }
+
+/* Section */
+.sec { margin-bottom: 3.5rem; }
+.sec-hd { display: flex; align-items: baseline; gap: 14px; margin-bottom: 1.25rem; padding-bottom: 10px; border-bottom: 2px solid var(--surface2); }
+.sec-num { font-family: var(--mono); font-size: 13px; color: var(--rust); letter-spacing: 0.1em; flex-shrink: 0; }
+.sec-title { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--ink); }
+
+/* Rule grid */
+.rule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.rule-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; border-top: 3px solid var(--rust); }
+.rule-card-title { font-size: 16px; font-weight: 700; color: var(--rust-dark); margin-bottom: 8px; }
+.rule-card-body { font-size: 15px; color: var(--ink2); line-height: 1.8; }
+
+/* Risk list */
+.risk-list { display: flex; flex-direction: column; gap: 10px; }
+.risk-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.4rem; display: flex; align-items: flex-start; gap: 1rem; }
+.risk-tag { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: var(--rust); color: #FFFFFF; padding: 4px 11px; border-radius: 5px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+.risk-text { font-size: 15px; color: var(--ink2); line-height: 1.8; }
+.risk-text strong { color: var(--ink); font-weight: 700; }
+
+/* Return */
+.return-wrap { display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem; align-items: stretch; }
+.return-big { background: var(--ink); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem 1rem; text-align: center; }
+.return-big-num { font-family: var(--serif); font-size: 80px; font-weight: 900; color: var(--rust); line-height: 1; }
+.return-big-unit { font-size: 36px; color: rgba(255,243,236,0.35); }
+.return-big-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,243,236,0.3); margin-top: 10px; }
+.return-right { display: flex; flex-direction: column; gap: 10px; }
+.return-row { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.4rem; display: flex; justify-content: space-between; align-items: center; }
+.return-label { font-size: 15px; color: var(--ink2); }
+.return-val { font-family: var(--mono); font-size: 17px; font-weight: 500; color: var(--rust); }
+.note { background: var(--gold-bg); border: 1px solid rgba(154,96,8,0.2); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: 12px 16px; font-size: 14px; color: var(--gold); line-height: 1.7; font-weight: 500; }
+
+/* Asset grid */
+.asset-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.ac { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.25rem; border-top: 3px solid var(--surface2); transition: border-top-color 0.18s; }
+.ac:hover { border-top-color: var(--rust); }
+.ac.btc { grid-column: 1 / -1; background: var(--rust-bg); border: 1px solid rgba(184,64,24,0.25); border-top: 3px solid var(--rust); }
+.ac-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+.ac-name { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.badge { display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 5px; }
+.b-core  { background: var(--rust);    color: #FFFFFF; }
+.b-sat   { background: var(--gold-bg); color: var(--gold); border: 1px solid rgba(154,96,8,0.25); }
+.b-hedge { background: var(--teal-bg); color: var(--teal); }
+.b-liq   { background: var(--blue-bg); color: var(--blue); }
+.b-div   { background: var(--purple-bg); color: var(--purple); }
+.b-risk  { background: var(--ink);     color: #FFD4B2; }
+
+/* TAA */
+.taa-principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1.25rem; }
+.taa-p { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.4rem; border-top: 3px solid var(--rust); }
+.taa-p-title { font-size: 15px; font-weight: 700; color: var(--rust-dark); margin-bottom: 6px; }
+.taa-p-body { font-size: 14px; color: var(--ink2); line-height: 1.75; }
+
+.taa-cal { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 1.25rem; }
+.taa-cal-head { background: var(--ink); padding: 1rem 1.5rem; display: flex; align-items: baseline; gap: 14px; }
+.taa-cal-head-title { font-size: 16px; font-weight: 700; color: #FFFFFF; }
+.taa-cal-head-sub { font-family: var(--mono); font-size: 12px; color: #FFD4B2; }
+.taa-cal-body { padding: 1.25rem 1.4rem; }
+.taa-phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+.taa-phase { border-radius: 8px; padding: 1.1rem 1.2rem; }
+.taa-phase.sell { background: var(--rust-bg); border: 1px solid rgba(184,64,24,0.2); }
+.taa-phase.buy  { background: var(--teal-bg); border: 1px solid rgba(22,104,90,0.2); }
+.taa-phase.eval { background: var(--gold-bg); border: 1px solid rgba(154,96,8,0.2); }
+.taa-phase-period { font-family: var(--mono); font-size: 13px; font-weight: 500; margin-bottom: 5px; }
+.taa-phase.sell .taa-phase-period { color: var(--rust-dark); }
+.taa-phase.buy  .taa-phase-period { color: var(--teal); }
+.taa-phase.eval .taa-phase-period { color: var(--gold); }
+.taa-phase-label { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.taa-phase.sell .taa-phase-label { color: var(--rust-dark); }
+.taa-phase.buy  .taa-phase-label { color: var(--teal); }
+.taa-phase.eval .taa-phase-label { color: var(--gold); }
+.taa-phase-desc { font-size: 14px; color: var(--ink2); line-height: 1.7; }
+.taa-cal-note { font-size: 14px; color: var(--ink2); background: var(--bg); border-radius: 8px; padding: 12px 16px; line-height: 1.7; }
+.taa-cal-note strong { color: var(--ink); font-weight: 700; }
+
+/* ── インタラクティブフレームワーク ── */
+.fw-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 1.25rem; }
+.fw-head { background: var(--ink); padding: 1rem 1.5rem; display: flex; align-items: baseline; gap: 14px; }
+.fw-head-title { font-size: 16px; font-weight: 700; color: #FFFFFF; }
+.fw-head-sub { font-family: var(--mono); font-size: 12px; color: #FFD4B2; }
+.fw-body { padding: 1.5rem; }
+
+.preset-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.preset-btn { font-size: 13px; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg); color: var(--ink); cursor: pointer; font-family: var(--sans); transition: all 0.15s; }
+.preset-btn:hover { background: var(--surface2); }
+.preset-btn.active { background: var(--ink); color: #FFFFFF; border-color: var(--ink); font-weight: 500; }
+
+.meter-block { display: flex; flex-direction: column; gap: 1.1rem; margin-bottom: 1.5rem; }
+.meter { display: grid; grid-template-columns: 140px 1fr 90px; align-items: center; gap: 16px; }
+.meter-label { font-size: 15px; font-weight: 700; color: var(--ink); }
+.meter-track { height: 10px; border-radius: 5px; position: relative; border: 1px solid var(--border); }
+.meter-thumb { position: absolute; top: 50%; transform: translate(-50%,-50%); width: 20px; height: 20px; border-radius: 50%; background: var(--surface); border: 2.5px solid var(--ink); transition: left 0.4s cubic-bezier(.4,0,.2,1); }
+.meter-val { font-family: var(--mono); font-size: 16px; font-weight: 500; text-align: right; }
+.v-green { color: #085041; }
+.v-amber { color: #854F0B; }
+.v-red   { color: #791F1F; }
+.meter-sub { grid-column: 2 / 4; font-size: 12px; color: var(--muted); margin-top: -6px; }
+
+.erp-bar { display: flex; align-items: center; gap: 16px; background: var(--surface2); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+.erp-left { flex: 1; }
+.erp-name { font-size: 12px; font-family: var(--mono); color: var(--muted); margin-bottom: 4px; }
+.erp-formula { font-family: var(--mono); font-size: 14px; color: var(--ink2); }
+.erp-num { font-family: var(--mono); font-size: 28px; font-weight: 700; }
+.erp-annot { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+.verdict { border-radius: 10px; overflow: hidden; }
+.verdict-head { padding: 1rem 1.25rem; display: flex; align-items: center; gap: 10px; }
+.verdict-head-icon { font-size: 20px; }
+.verdict-head-text { font-size: 16px; font-weight: 700; }
+.verdict-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 1rem; background: var(--surface); }
+.va { border-radius: 8px; padding: 0.9rem 1rem; }
+.va-label { font-size: 11px; font-family: var(--mono); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+.va-body { font-size: 13px; line-height: 1.65; }
+
+/* ── ケーススタディ ── */
+.cs-tabs { display: flex; gap: 0; margin-bottom: 0; border-radius: 12px 12px 0 0; overflow: hidden; border: 1px solid var(--border); border-bottom: none; }
+.cs-tab { flex: 1; padding: 0.85rem 1rem; font-size: 13px; font-weight: 500; text-align: center; cursor: pointer; background: var(--surface2); color: var(--muted); border-right: 1px solid var(--border); transition: all 0.15s; font-family: var(--sans); border: none; }
+.cs-tab:last-child { border-right: none; }
+.cs-tab.active { background: var(--ink); color: #FFFFFF; }
+.cs-tab:hover:not(.active) { background: var(--surface); color: var(--ink); }
+
+.cs-panel { display: none; background: var(--surface); border: 1px solid var(--border); border-radius: 0 0 12px 12px; padding: 1.5rem; }
+.cs-panel.active { display: block; }
+
+.cs-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
+.cs-year { font-family: var(--serif); font-size: 36px; font-weight: 900; color: var(--rust); line-height: 1; }
+.cs-title { font-size: 15px; font-weight: 700; color: var(--ink); margin-top: 4px; }
+.cs-verdict-badge { font-family: var(--mono); font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 5px; white-space: nowrap; margin-top: 4px; display: inline-block; }
+
+.cs-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 1.25rem; }
+.cs-metric { background: var(--bg); border-radius: 8px; padding: 0.8rem 1rem; }
+.cs-metric-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.cs-metric-val { font-family: var(--mono); font-size: 18px; font-weight: 700; }
+.cs-metric-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+.cs-body { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.cs-col-title { font-size: 13px; font-family: var(--mono); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; }
+.cs-situation { font-size: 14px; color: var(--ink2); line-height: 1.75; }
+.cs-situation strong { color: var(--ink); font-weight: 700; }
+.cs-actions { display: flex; flex-direction: column; gap: 6px; }
+.cs-action { border-radius: 8px; padding: 0.75rem 1rem; font-size: 13px; line-height: 1.6; }
+.cs-action-label { font-size: 11px; font-family: var(--mono); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; }
+.cs-lesson { grid-column: 1 / -1; background: var(--gold-bg); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 13px; color: var(--gold); font-weight: 500; line-height: 1.65; margin-top: 4px; }
+
+/* BTC */
+.btc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.btc-branch { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+.btc-head { padding: 1rem 1.4rem; font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.btc-branch.hot  .btc-head { background: var(--rust); color: #FFFFFF; }
+.btc-branch.cool .btc-head { background: var(--teal); color: #FFFFFF; }
+.btc-body { background: var(--surface); padding: 1.4rem; font-size: 15px; color: var(--ink2); line-height: 1.85; }
+.btc-body strong { color: var(--rust-dark); font-weight: 700; }
+.btc-branch.cool .btc-body strong { color: var(--teal); }
+.btc-note-full { grid-column: 1 / -1; background: var(--gold-bg); border: 1px solid rgba(154,96,8,0.2); border-left: 4px solid var(--gold); border-radius: 0 10px 10px 0; padding: 14px 18px; font-size: 15px; color: var(--gold); font-weight: 500; line-height: 1.7; }
+
+/* Timeline */
+.tl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.tl-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.4rem; display: flex; gap: 1rem; align-items: flex-start; }
+.tl-item.full { grid-column: 1 / -1; }
+.tl-badge { font-family: var(--mono); font-size: 12px; font-weight: 500; background: var(--ink); color: #FFD4B2; padding: 4px 10px; border-radius: 5px; white-space: nowrap; flex-shrink: 0; margin-top: 3px; }
+.tl-desc { font-size: 15px; color: var(--ink2); line-height: 1.75; }
+.tl-desc strong { color: var(--ink); font-weight: 700; }
+
+/* Indicators */
+.ind-table { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.ind-group-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); }
+.ind-group-row:last-child { border-bottom: none; }
+.ind-group-label { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg); color: #FFFFFF; background: var(--rust-dark); padding: 12px 8px; display: flex; align-items: center; justify-content: center; min-width: 34px; flex-shrink: 0; }
+.ind-group-label.gl-btc   { background: #1A4A3A; }
+.ind-group-label.gl-ai    { background: #6B2A0A; }
+.ind-group-label.gl-macro { background: #3A2A10; }
+.ind-group-label.gl-cycle { background: #2A3A1A; }
+.ind-items { flex: 1; }
+.ind-row { display: grid; grid-template-columns: 190px 1fr auto; align-items: center; gap: 1rem; padding: 12px 18px; border-bottom: 1px solid var(--border); }
+.ind-row:last-child { border-bottom: none; }
+.ind-name { font-size: 15px; font-weight: 700; color: var(--ink); }
+.ind-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.ind-alert { font-family: var(--mono); font-size: 12px; font-weight: 500; background: var(--rust-bg); color: var(--rust-dark); border: 1px solid rgba(184,64,24,0.18); padding: 4px 10px; border-radius: 5px; white-space: nowrap; flex-shrink: 0; }
+
+@media (max-width: 760px) {
+  .meta-bar { flex-direction: column; }
+  .hero { padding: 2.5rem 1.5rem 2rem; }
+  .hero-title { font-size: 34px; }
+  .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+  .rule-grid, .taa-principles, .taa-phases, .btc-grid, .tl-grid { grid-template-columns: 1fr; }
+  .asset-grid, .cs-metrics { grid-template-columns: 1fr 1fr; }
+  .return-wrap, .cs-body, .verdict-grid { grid-template-columns: 1fr; }
+  .btc-note-full, .tl-item.full, .cs-lesson { grid-column: auto; }
+  .meter { grid-template-columns: 110px 1fr 70px; }
+  .ind-row { grid-template-columns: 1fr; gap: 4px; }
+  .ind-group-label { writing-mode: horizontal-tb; transform: none; min-width: auto; padding: 6px 12px; }
+  .ind-group-row { flex-direction: column; }
+  .cs-tabs { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="meta-bar">
+    <div class="meta-cell"><div class="meta-label">制定日</div><div class="meta-val">2026.05.11</div></div>
+    <div class="meta-cell"><div class="meta-label">最終改定日</div><div class="meta-val">2026.06.06</div></div>
+    <div class="meta-cell"><div class="meta-label">改定理由</div><div class="meta-val reason">v17：押し目買い判断チェックリスト（補助ツール）への参照リンクを追加。</div></div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-eyebrow">Personal Investment Policy</div>
+    <div class="hero-title">個人投資ルール</div>
+    <div class="hero-desc">バフェット哲学を軸に、CAPE×ERP×FF金利の判断フレームワークと大統領選挙サイクルに基づくTAAで長期資産形成を図る。</div>
+    <div class="hero-stats">
+      <div><div class="stat-num">6<span style="font-size:20px;opacity:.4">%</span></div><div class="stat-label">Core Target</div></div>
+      <div><div class="stat-num">4<span style="font-size:20px;opacity:.4">%</span></div><div class="stat-label">Min Floor</div></div>
+      <div><div class="stat-num">4<span style="font-size:20px;opacity:.4">年</span></div><div class="stat-label">TAA Cycle</div></div>
+      <div><div class="stat-num">2030</div><div class="stat-label">Real Estate</div></div>
+    </div>
+  </div>
+
+  <!-- 01 -->
+  <section class="sec">
+    <div class="sec-hd"><span class="sec-num">01</span><h2 class="sec-title">投資哲学 ── バフェット原則</h2></div>
+    <div class="rule-grid">
+      <div class="rule-card"><div class="rule-card-title">🛡 第一原則：損をしない</div><div class="rule-card-body">第二原則：第一原則を忘れない。元本毀損を最大のリスクと捉え、あらゆる投資判断の根幹に置く。</div></div>
+      <div class="rule-card"><div class="rule-card-title">⏳ 10年保有できないものは10分も持つな</div><div class="rule-card-body">短期の値動きではなく事業・資産の本質的価値に投資する。時間を味方につけることが最大の優位性。</div></div>
+      <div class="rule-card"><div class="rule-card-title">🌡 相場の体温を常に把握する</div><div class="rule-card-body">CAPEレシオ・バフェット指数・MVRVを定期確認し、過熱感に応じて現金保有率を調整する。</div></div>
+      <div class="rule-card"><div class="rule-card-title">📈 年齢・フェーズに応じてリスクを取る</div><div class="rule-card-body">若い時期には合理的な範囲で積極的にリスクを取る。恐怖時に買い、熱狂時に売る逆張り姿勢を維持する。</div></div>
+    </div>
+  </section>
+
+  <!-- DIP BUYING LINK -->
+  <div style="background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--rust); border-radius:0 10px 10px 0; padding:0.85rem 1.25rem; margin-bottom:2.5rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+    <i class="ti ti-trending-down" style="font-size:22px; color:var(--rust); flex-shrink:0;"></i>
+    <div style="flex:1; min-width:180px;">
+      <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:3px;">Supplemental Tool</div>
+      <div style="font-size:15px; font-weight:700; color:var(--ink);">押し目買い判断チェックリスト</div>
+      <div style="font-size:13px; color:var(--muted); margin-top:2px;">ショック発生時に使う3ゲート判断ツール。Gate 1（質）→ Gate 2（タイミング）→ Gate 3（感情）</div>
+    </div>
+    <a href="https://1029keita-bot.github.io/investment-dashboard/dip_buying_checklist.html" target="_blank" style="font-family:var(--mono); font-size:12px; font-weight:500; color:var(--rust); text-decoration:none; border:1.5px solid var(--rust); border-radius:20px; padding:6px 16px; white-space:nowrap; transition:all 0.15s;" onmouseover="this.style.background='var(--rust)';this.style.color='#fff';" onmouseout="this.style.background='transparent';this.style.color='var(--rust)';">開く →</a>
+  </div>
+
+  <!-- 02 -->
+  <section class="sec">
+    <div class="sec-hd"><span class="sec-num">02</span><h2 class="sec-title">日本人特有リスクへの対応</h2></div>
+    <div class="risk-list">
+      <div class="risk-item"><span class="risk-tag">為替</span><div class="risk-text"><strong>円安・為替リスク：</strong>資産の一定割合を外貨建て（主に米ドル）で保有し、円の実質価値低下をヘッジする。</div></div>
+      <div class="risk-item"><span class="risk-tag">物価</span><div class="risk-text"><strong>低金利・インフレリスク：</strong>スタグフレーション局面では実物資産・コモディティ・短期債を厚くする。</div></div>
+      <div class="risk-item"><span class="risk-tag">税務</span><div class="risk-text"><strong>法人活用：</strong>法人口座・役員社宅スキームを活用し税引き後リターンを最大化する。</div></div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="sec">
+    <div class="sec-hd"><span class="sec-num">03</span><h2 class="sec-title">目標リターン設定</h2></div>
+    <div class="return-wrap">
+      <div class="return-big"><div class="return-big-num">6<span class="return-big-unit">%</span></div><div class="return-big-label">Core Target / Year</div></div>
+      <div class="return-right">
+        <div class="return-row"><span class="return-label">コアターゲット（年率）</span><span class="return-val">6%</span></div>
+        <div class="return-row"><span class="return-label">最低フロア（許容下限）</span><span class="return-val">4%</span></div>
+        <div class="return-row"><span class="return-label">許容レンジ</span><span class="return-val">4〜8%</span></div>
+        <div class="return-row"><span class="return-label">ベンチマーク</span><span class="return-val">S&amp;P500 長期実質リターン</span></div>
+        <div class="note">📌 BTCや個別戦略のαはコア6%の上乗せ。4%を下回る局面は現金・MMFで待機し次の買い場に備える。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="sec">
+    <div class="sec-hd"><span class="sec-num">04</span><h2 class="sec-title">資産クラス一覧 ── 日本人特有リスクを考慮した設計</h2></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
+      <div style="background:var(--surface2); border-radius:10px; padding:1rem 1.25rem; border-left:3px solid var(--rust);">
+        <div style="font-size:12px; font-family:var(--mono); letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">選定の4軸</div>
+        <div style="font-size:13px; color:var(--ink2); line-height:1.85;">
+          <strong style="color:var(--ink);">① 流動性</strong>　いつでも売れるか<br>
+          <strong style="color:var(--ink);">② 株との相関</strong>　暴落時に一緒に下がるか<br>
+          <strong style="color:var(--ink);">③ 為替リスク</strong>　円高で損するか<br>
+          <strong style="color:var(--ink);">④ 税・管理コスト</strong>　確定申告の複雑さ
+        </div>
+      </div>
+      <div style="background:var(--gold-bg); border-radius:10px; padding:1rem 1.25rem; border-left:3px solid var(--gold);">
+        <div style="font-size:12px; font-family:var(--mono); letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">NISAの使い方</div>
+        <div style="font-size:13px; color:var(--ink2); line-height:1.85;">
+          非課税メリットはあるが「とにかく株を買え」という<strong style="color:var(--rust);">思考停止を招くリスク</strong>がある。ERPがマイナスの局面では株以外の選択肢も有効。<br>
+          <strong style="color:var(--gold);">成長投資枠（年240万）→ 金ETFも購入できる</strong>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size:13px; font-family:var(--mono); letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); font-weight:700; margin-bottom:8px; padding-bottom:4px; border-bottom:2px solid var(--surface2);">コア（長期保有の主軸）</div>
+    <div class="asset-grid" style="margin-bottom:10px;">
+      <div class="ac">
+        <div class="ac-cat">株式　流動性◎　為替あり</div>
+        <div class="ac-name">米国株インデックス</div>
+        <div style="font-size:12px; color:var(--muted); margin-bottom:6px;">S&P500。長期保有でほぼすべてのアクティブ運用に勝る唯一の資産クラス。バフェット本人が「個人にはインデックスが最善」と明言。</div>
+        <span class="badge b-core">コア</span>
+      </div>
+    </div>
+
+    <div style="font-size:13px; font-family:var(--mono); letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); font-weight:700; margin-bottom:8px; padding-bottom:4px; border-bottom:2px solid var(--surface2);">インカム枠（配当収入・円＋ドルで分散）</div>
+    <div style="font-size:12px; color:var(--muted); margin-bottom:8px;">60代以降にコアの一部を置き換えてキャッシュフロー重視に移行するためのライフステージ移行枠。現在は小さく保つ（5〜10%）か、入れなくてもよい。</div>
+    <div class="asset-grid" style="margin-bottom:10px;">
+      <div class="ac">
+        <div class="ac-cat">不動産　流動性◎　為替なし　円建て配当</div>
+        <div class="ac-name">J-REIT（国内不動産投資信託）</div>
+        <div style="font-size:12px; color:var(--muted); margin-bottom:6px;">円建て・配当3〜4%。金利低下・不動産価格上昇局面で優れる。金利上昇局面では下落しやすい弱点あり。</div>
+        <span class="badge b-div">インカム・円建て</span>
+      </div>
+      <div class="ac">
+        <div class="ac-cat">株式　流動性◎　為替あり　ドル建て配当</div>
+        <div class="ac-name">米国高配当株ETF（VYM・HDV等）</div>
+        <div style="font-size:12px; color:var(--muted); margin-bottom:6px;">配当3〜4%・S&amp;P500より低ボラ。景気後退局面でコアより下落幅が小さい。ドル建てインカムをJ-REITと合わせて円・ドルで分散。</div>
+        <span class="badge b-div">インカム・ドル建て</span>
+      </div>
+    </div>
+
+    <div style="font-size:13px; font-family:var(--mono); letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); font-weight:700; margin-bottom:8px; padding-bottom:4px; border-bottom:2px solid var(--surface2);">ヘッジ枠（金ETFのみ）</div>
+    <div class="asset-grid" style="margin-bottom:10px;">
+      <div class="ac">
+        <div class="ac-cat">コモディティ　流動性◎　為替なし（円建て）</div>
+        <div class="ac-name">金ETF（円建て・国内）</div>
+        <div style="font-size:12px; color:var(--muted); margin-bottom:6px;">インフレ・地政学リスク・通貨危機に対して株債券と異なる動きをする。実質金利マイナス局面で特に強い。円建てETFで為替リスクなし。</div>
+        <span class="badge b-hedge">固定ヘッジ枠</span>
+      </div>
+
+    </div>
+
+    <div style="font-size:13px; font-family:var(--mono); letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); font-weight:700; margin-bottom:8px; padding-bottom:4px; border-bottom:2px solid var(--surface2);">ドル建て運用枠（利回り確保）</div>
+    <div class="asset-grid" style="margin-bottom:10px;">
+      <div class="ac">
+        <div class="ac-cat">流動性◎　為替あり　FF金利連動</div>
+        <div class="ac-name">外貨建てMMF（ドル建て）</div>
+        <div style="font-size:12px; color:var(--muted); margin-bottom:6px;">FF金利連動・翌日換金可能。高金利局面でT-Bill相当の利回りを得ながら暴落時の即時投資資金にもなる。</div>
+        <span class="badge b-liq">待機資金</span>
+      </div>
+      <div class="ac" style="grid-column: span 2;">
+        <div class="ac-cat">流動性△　為替あり　満期まで保有前提　2年間隔ラダー</div>
+        <div class="ac-name">米国債券ラダー（国債＋投資適格社債）</div>
+        <div style="font-size:12px; color:var(--muted); margin-bottom:8px;">2年間隔で満期を並べ、償還後はドルのまま再投資する。高金利をロックしつつ円転しないことで為替リスクを構造的に軽減。</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+          <div style="background:var(--teal-bg); border-radius:6px; padding:8px 10px;">
+            <div style="font-size:11px; font-weight:700; color:var(--teal); margin-bottom:3px;">安全側：米国国債</div>
+            <div style="font-size:12px; color:var(--ink2); line-height:1.6;">短期側（2027・2029年満期）に使用。約4.2〜4.5%固定。信用リスクゼロ。SBI・マネックスで購入可。</div>
+          </div>
+          <div style="background:var(--gold-bg); border-radius:6px; padding:8px 10px;">
+            <div style="font-size:11px; font-weight:700; color:var(--gold); margin-bottom:3px;">利回り側：投資適格社債（BBB以上）</div>
+            <div style="font-size:12px; color:var(--ink2); line-height:1.6;">長期側（2031・2033年満期）に使用。約5〜6%固定。3〜5社以上・セクター分散必須。</div>
+          </div>
+        </div>
+        <span class="badge b-liq">ラダー戦略（2年間隔・大統領サイクル連動）</span>
+      </div>
+    </div>
+
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:10px;">
+      <div style="background:var(--gold); padding:0.85rem 1.25rem; display:flex; align-items:baseline; gap:12px;">
+        <div style="font-size:15px; font-weight:700; color:#FFFFFF;">ラダー戦略の仕組み ── ドル建て債券を2年間隔で保有・再投資</div>
+        <div style="font-family:var(--mono); font-size:12px; color:rgba(255,255,255,0.75);">満期をドルのまま最長期間へ再投資</div>
+      </div>
+      <div style="padding:1.1rem 1.25rem;">
+        <div style="font-size:13px; color:var(--ink2); line-height:1.7; margin-bottom:1rem;">
+          満期の異なる債券を2年間隔で並べて保有。償還が来るたびにドルのまま新たな最長期間の債券に再投資する。<strong style="color:var(--ink);">円に戻さない限り為替リスクが発生しない</strong>構造で「常にドル建てで運用する枠」を維持する。大統領サイクルの2年ごとの判断タイミングと満期が自然に一致するため管理コストが低い。
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:1rem;">
+          <div style="border-radius:8px; overflow:hidden; border:1px solid var(--border);">
+            <div style="background:var(--teal); padding:6px 10px;">
+              <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:#FFFFFF;">①　2027年満期</div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.75);">2年後　約4.0%</div>
+            </div>
+            <div style="padding:9px 10px; background:var(--surface2);">
+              <div style="font-size:12px; font-weight:700; color:var(--teal); margin-bottom:4px;">米国国債（2年）</div>
+              <div style="font-size:12px; color:var(--ink2); line-height:1.6;">中間選挙後の株買い増し弾薬。確実性重視で国債を選択。</div>
+            </div>
+          </div>
+          <div style="border-radius:8px; overflow:hidden; border:1px solid var(--border);">
+            <div style="background:var(--teal); padding:6px 10px;">
+              <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:#FFFFFF;">②　2029年満期</div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.75);">4年後　約4.3〜5.0%</div>
+            </div>
+            <div style="padding:9px 10px; background:var(--surface2);">
+              <div style="font-size:12px; font-weight:700; color:var(--teal); margin-bottom:4px;">米国国債 or 投資適格社債</div>
+              <div style="font-size:12px; color:var(--ink2); line-height:1.6;">BTC出口後・不動産購入前の資金。確実性重視なら国債。</div>
+            </div>
+          </div>
+          <div style="border-radius:8px; overflow:hidden; border:1px solid var(--border);">
+            <div style="background:#5A7A30; padding:6px 10px;">
+              <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:#FFFFFF;">③　2031年満期</div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.75);">6年後　約4.4〜5.2%</div>
+            </div>
+            <div style="padding:9px 10px; background:var(--surface2);">
+              <div style="font-size:12px; font-weight:700; color:#3B6D11; margin-bottom:4px;">投資適格社債（BBB以上）</div>
+              <div style="font-size:12px; color:var(--ink2); line-height:1.6;">次の中間選挙後の弾薬。利回り強化のため社債を選択。</div>
+            </div>
+          </div>
+          <div style="border-radius:8px; overflow:hidden; border:1px solid var(--border);">
+            <div style="background:#5A7A30; padding:6px 10px;">
+              <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:#FFFFFF;">④　2033年満期</div>
+              <div style="font-size:11px; color:rgba(255,255,255,0.75);">8年後　約4.5〜5.3%</div>
+            </div>
+            <div style="padding:9px 10px; background:var(--surface2);">
+              <div style="font-size:12px; font-weight:700; color:#3B6D11; margin-bottom:4px;">投資適格社債（BBB以上）</div>
+              <div style="font-size:12px; color:var(--ink2); line-height:1.6;">次の大統領選前の待機資金。長期保有で利回り最大化。</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+          <div style="background:var(--teal-bg); border-radius:8px; padding:0.85rem 1rem;">
+            <div style="font-size:12px; font-weight:700; color:var(--teal); margin-bottom:5px;">国債を選ぶ場面（①②）</div>
+            <div style="font-size:12px; color:var(--ink2); line-height:1.65;">確実に使う予定がある弾薬・短期側。信用リスクゼロ。利回りはやや低め（4.0〜4.3%）。</div>
+          </div>
+          <div style="background:var(--green-light, #EAF3DE); border-radius:8px; padding:0.85rem 1rem;">
+            <div style="font-size:12px; font-weight:700; color:#3B6D11; margin-bottom:5px;">社債を選ぶ場面（③④）</div>
+            <div style="font-size:12px; color:var(--ink2); line-height:1.65;">長期保有でいい分・利回りを取りたい側。BBB以上・3〜5社に分散必須。信用リスクあり。</div>
+          </div>
+        </div>
+
+        <div style="margin-top:10px; font-size:12px; color:var(--muted); line-height:1.65;">
+          📌 満期ごとにドルのまま新たな「最長期間の債券」へ再投資し、常に4本のラダーを維持する。円転が必要な時は最短満期の債券が来るまで最大2年の待機で対応できる。<br>
+          📌 <strong style="color:var(--ink2);">全本を社債にしても問題ない。</strong>条件はBBB以上・最低5社以上・セクター分散。短期側を国債にするのは「確実に使う予定がある資金への保険」であり、分散が十分なら社債で統一して利回りを高める選択も合理的。
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size:13px; font-family:var(--mono); letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); font-weight:700; margin-bottom:8px; padding-bottom:4px; border-bottom:2px solid var(--surface2);">現金</div>
+    <div class="asset-grid" style="margin-bottom:10px;">
+      <div class="ac">
+        <div class="ac-cat">流動性◎　為替なし　元本保証　即日換金</div>
+        <div class="ac-name">現金（高金利普通預金）</div>
+        <div style="font-size:12px; color:var(--muted); margin-bottom:6px;">元本保証・即日換金・為替ゼロ。すべての投資の土台。個人向け国債は1年解約不可で流動性が死ぬため対象外。目安は月支出の3〜6ヶ月分。</div>
+        <span class="badge b-liq">安全枠</span>
+      </div>
+    </div>
+    <div style="font-size:13px; font-family:var(--mono); letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); font-weight:700; margin-bottom:8px; padding-bottom:4px; border-bottom:2px solid var(--surface2);">高リスク・サテライト枠</div>
+    <div class="asset-grid" style="margin-bottom:10px;">
+      <div class="ac btc">
+        <div class="ac-cat">暗号資産　流動性◎　為替あり　高リスク</div>
+        <div class="ac-name">Bitcoin ── MVRV・ハービングサイクルで独立管理（詳細はセクション06）</div>
+        <div style="font-size:12px; color:var(--muted); margin-bottom:6px;">約4年ごとのハービングサイクルで動く。株式との相関が高く「S&P500の3〜5倍レバレッジ版」。現在総合課税（最大55%）・2028年1月から分離課税20%へ移行が最有力。</div>
+        <span class="badge b-risk">高リスク・サテライト</span>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:10px;">📌 ドル建て債券運用枠は「円に戻さず常にドルで回転」を原則とし為替リスクを構造的に軽減。米国株はコアとして別枠管理。金・BTCは期待利回り計算の対象外。法人口座でドル建て債券・MMFを保有すると個人の確定申告が簡素化される。</div>
+  </section>
+
+  <!-- 05 TAA -->
+  <section class="sec">
+    <div class="sec-hd"><span class="sec-num">05</span><h2 class="sec-title">TAAルール ── 大統領サイクル戦略</h2></div>
+
+    <div class="taa-principles">
+      <div class="taa-p"><div class="taa-p-title">📌 長期 Buy &amp; Hold が基本</div><div class="taa-p-body">TAAは「学習と心理的安定」のための補助ツール。過度な売買は行わない。バフェット原則に従い売買回数を最小化する。</div></div>
+      <div class="taa-p"><div class="taa-p-title">🔁 4年ごとにリバランス実行</div><div class="taa-p-body">売買・リバランスは中間選挙年（4年サイクル）のみ実行。原則として売買しない。観察・記録は6月と12月の年2回実施。ただしBTCは出口戦略の条件に従い例外的に売買を行う。</div></div>
+      <div class="taa-p"><div class="taa-p-title">📊 期待利回りがトリガー</div><div class="taa-p-body">CAPEレシオ・ERP・FF金利の組み合わせで各局面を判断し相対的割安資産へ傾ける。目標6%・フロア4%。</div></div>
+    </div>
+
+    <div class="taa-cal">
+      <div class="taa-cal-head"><div class="taa-cal-head-title">年間リバランスカレンダー</div><div class="taa-cal-head-sub">中間選挙年・大統領選挙年ともに共通 ／ 売買は4年サイクル年のみ実行</div></div>
+      <div class="taa-cal-body">
+
+        <!-- 12ヶ月バー -->
+        <div style="display:grid; grid-template-columns:repeat(12,1fr); gap:3px; margin-bottom:6px;">
+          <div style="font-family:var(--mono);font-size:11px;text-align:center;color:var(--rust-dark);font-weight:500;">1月</div>
+          <div style="font-family:var(--mono);font-size:11px;text-align:center;color:var(--rust-dark);font-weight:500;">2月</div>
+          <div style="font-family:var(--mono);font-size:11px;text-align:center;color:var(--rust-dark);font-weight:500;">3月</div>
+          <div style="font-family:var(--mono);font-size:11px;text-align:center;color:var(--rust-dark);font-weight:500;">4月</div>
+          <div style="font-family:var(--mono);font-size:11px;text-align:center;color:var(--rust-dark);font-weight:500;">5月</div>
+          <div style="font-family:var(--mono);font-size:11px;text-align:center;color:var(--purple);font-weight:700;">6月</div>
+          <div style="font-family:var(--mono);font-size:11px;text-align:center;color:var(--teal);font-weight:500;">7月</div>
+          <div style="font-family:var(--mono);font-size:11px;text-align:center;color:var(--teal);font-weight:500;">8月</div>
+          <div style="font-family:var(--mono);font-size:11px;text-align:center;color:#085041;font-weight:700;">9月★</div>
+          <div style="font-family:var(--mono);font-size:11px;text-align:center;color:#085041;font-weight:700;">10月★</div>
+          <div style="font-family:var(--mono);font-size:11px;text-align:center;color:var(--teal);font-weight:500;">11月</div>
+          <div style="font-family:var(--mono);font-size:11px;text-align:center;color:var(--gold);font-weight:700;">12月</div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(12,1fr); gap:3px; margin-bottom:18px;">
+          <div style="background:var(--rust-bg);border-radius:4px;height:26px;"></div>
+          <div style="background:var(--rust-bg);border-radius:4px;height:26px;"></div>
+          <div style="background:var(--rust-bg);border-radius:4px;height:26px;"></div>
+          <div style="background:var(--rust-bg);border-radius:4px;height:26px;"></div>
+          <div style="background:var(--rust-bg);border-radius:4px;height:26px;"></div>
+          <div style="background:var(--purple-bg);border-radius:4px;height:26px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--purple);">判断A</div>
+          <div style="background:var(--teal-bg);border-radius:4px;height:26px;"></div>
+          <div style="background:var(--teal-bg);border-radius:4px;height:26px;"></div>
+          <div style="background:#1D9E75;border-radius:4px;height:26px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#FFFFFF;">★</div>
+          <div style="background:#1D9E75;border-radius:4px;height:26px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#FFFFFF;">★</div>
+          <div style="background:var(--teal-bg);border-radius:4px;height:26px;"></div>
+          <div style="background:var(--gold-bg);border-radius:4px;height:26px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--gold);">判断B</div>
+        </div>
+
+        <!-- 4フェーズ詳細 -->
+        <div class="taa-phases" style="grid-template-columns:repeat(4,1fr);">
+          <div class="taa-phase sell">
+            <div class="taa-phase-period">1月 → 5月</div>
+            <div class="taa-phase-label">🔴 売却フェーズ</div>
+            <div class="taa-phase-desc">割高資産を月20%ずつ5分割で売却。ドル建て運用（短期米国債ラダー）の比率を高める。<br><br><strong style="color:var(--rust-dark);">4年サイクル年のみ実行</strong></div>
+          </div>
+          <div class="taa-phase" style="background:var(--purple-bg);border:1px solid rgba(60,52,137,0.2);">
+            <div class="taa-phase-period" style="color:var(--purple);">6月</div>
+            <div class="taa-phase-label" style="color:var(--purple);">🔵 判断フェーズA</div>
+            <div class="taa-phase-desc" style="color:var(--ink2);">ERP・CPI・FF金利を確認し購入可否を判断。例外条件発動→待機延長。<br><br><strong style="color:var(--purple);">毎年実施・記録必須</strong></div>
+          </div>
+          <div class="taa-phase buy">
+            <div class="taa-phase-period">7月 → 11月</div>
+            <div class="taa-phase-label">🟢 購入フェーズ</div>
+            <div class="taa-phase-desc">月20%ずつ5分割DCA。9〜10月は株の最強アノマリー期のため重点配分。<br><br><strong style="color:var(--teal);">★資産別配分→下表参照</strong></div>
+          </div>
+          <div class="taa-phase eval">
+            <div class="taa-phase-period">12月</div>
+            <div class="taa-phase-label">🟡 判断フェーズB</div>
+            <div class="taa-phase-desc">選挙結果・ERP・FF金利を確認。翌年売却フェーズの実行 or 見送りを決定。<br><br><strong style="color:var(--gold);">毎年実施・記録必須</strong></div>
+          </div>
+        </div>
+
+        <!-- 購入タイミングヒートマップ -->
+        <div style="margin-top:14px; background:var(--bg); border-radius:10px; overflow:hidden; border:1px solid var(--border);">
+          <div style="background:var(--teal); padding:0.7rem 1.25rem; font-size:14px; font-weight:700; color:#FFFFFF;">購入フェーズ（7〜11月）資産別タイミングガイド</div>
+          <div style="padding:1rem 1.25rem;">
+            <div style="display:grid; grid-template-columns:150px repeat(5,1fr); gap:5px; margin-bottom:8px;">
+              <div></div>
+              <div style="text-align:center;font-family:var(--mono);font-size:12px;color:var(--muted);">7月</div>
+              <div style="text-align:center;font-family:var(--mono);font-size:12px;color:var(--muted);">8月</div>
+              <div style="text-align:center;font-family:var(--mono);font-size:13px;font-weight:700;color:#085041;">9月 ★</div>
+              <div style="text-align:center;font-family:var(--mono);font-size:13px;font-weight:700;color:#085041;">10月 ★</div>
+              <div style="text-align:center;font-family:var(--mono);font-size:12px;color:var(--muted);">11月</div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:150px repeat(5,1fr); gap:5px; margin-bottom:5px; align-items:center;">
+              <div style="font-size:14px;font-weight:700;color:var(--ink);">米国株・日本株</div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:#E1F5EE;"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:#085041;">10%</div></div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:#9FE1CB;"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:#085041;">20%</div></div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:#1D9E75;"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:#FFFFFF;">30%</div></div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:#1D9E75;"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:#FFFFFF;">30%</div></div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:#E1F5EE;"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:#085041;">10%</div></div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:150px repeat(5,1fr); gap:5px; margin-bottom:5px; align-items:center;">
+              <div style="font-size:14px;font-weight:700;color:var(--ink);">外貨建てMMF・米国中期債</div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:#E4EDF8;"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:#1A4A80;">20%</div></div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:#E4EDF8;"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:#1A4A80;">20%</div></div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:#E4EDF8;"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:#1A4A80;">20%</div></div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:#E4EDF8;"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:#1A4A80;">20%</div></div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:#E4EDF8;"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:#1A4A80;">20%</div></div>
+            </div>
+
+
+
+            <div style="display:grid; grid-template-columns:150px repeat(5,1fr); gap:5px; margin-bottom:5px; align-items:center;">
+              <div><div style="font-size:14px;font-weight:700;color:var(--ink);">金ETF</div><div style="font-size:11px;color:var(--muted);">実質金利連動・均等</div></div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:var(--gold-bg);"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:var(--gold);">20%</div></div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:var(--gold-bg);"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:var(--gold);">20%</div></div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:var(--gold-bg);"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:var(--gold);">20%</div></div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:var(--gold-bg);"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:var(--gold);">20%</div></div>
+              <div style="border-radius:6px;padding:9px 4px;text-align:center;background:var(--gold-bg);"><div style="font-family:var(--mono);font-size:14px;font-weight:700;color:var(--gold);">20%</div></div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:150px 1fr; gap:5px; align-items:center;">
+              <div><div style="font-size:14px;font-weight:700;color:var(--ink);">BTC</div><div style="font-size:11px;color:var(--muted);">ハービング独立管理</div></div>
+              <div style="border-radius:6px;padding:9px 12px;background:var(--rust-bg);font-size:13px;color:var(--muted);">大統領サイクルとは独立してMVRV・NUPLとハービングサイクルで管理。このDCAスケジュールとは別枠。</div>
+            </div>
+
+            <div style="margin-top:10px; font-size:13px; color:var(--muted); line-height:1.65; border-top:1px solid var(--border); padding-top:10px;">
+              ★ 9〜10月は株のアノマリー最強期間（9月最弱→10月急回復）。全体の60%をここに集中。外貨建てMMF・米国中期債は均等配分（20%×5）。金ETFは固定ヘッジ枠として常時保有。
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;">
+          <div class="taa-cal-note">
+            <strong>毎年の記録ルール：</strong>売買しない年も6月・12月にERPを計算して記録する。4年後のリバランスの根拠になる。判断精度を高めるためのトレーニング。
+          </div>
+          <div class="taa-cal-note" style="background:var(--rust-bg); border-color:rgba(184,64,24,0.2);">
+            <strong style="color:var(--rust-dark);">⚠ 例外介入条件（2022年型・随時）：</strong>以下を<strong>両方</strong>満たす場合のみ4年サイクルを待たず現金比率を引き上げる。<br>①CPI前月比がピークアウトしていない<br>②FF金利が直近3ヶ月で1%以上上昇
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- インタラクティブフレームワーク -->
+    <div class="fw-wrap">
+      <div class="fw-head">
+        <div class="fw-head-title">判断フレームワーク ── ERP計算と局面判定</div>
+        <div class="fw-head-sub">CAPE × FF金利 → ERP → 現金比率を決める</div>
+      </div>
+      <div class="fw-body">
+
+        <div style="font-size:12px; font-family:var(--mono); letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">歴史的局面をプリセットで確認</div>
+        <div class="preset-row" style="margin-bottom:1rem;">
+          <button class="preset-btn active" onclick="setPreset('now')"  id="pb-now">2026年6月（現在）</button>
+          <button class="preset-btn" onclick="setPreset('2022mid')"     id="pb-2022mid">2022年6月（最悪局面）</button>
+          <button class="preset-btn" onclick="setPreset('2018')"        id="pb-2018">2018年12月（急落）</button>
+          <button class="preset-btn" onclick="setPreset('2008')"        id="pb-2008">2008年9月（リーマン）</button>
+          <button class="preset-btn" onclick="setPreset('2000')"        id="pb-2000">2000年3月（バブルピーク）</button>
+          <button class="preset-btn" onclick="setPreset('2009')"        id="pb-2009">2009年3月（底値）</button>
+        </div>
+
+        <div class="meter-block">
+          <div class="meter">
+            <div class="meter-label">CAPEレシオ</div>
+            <div class="meter-track" style="background: linear-gradient(to right,#5DCAA5,#FAC775,#E24B4A); position:relative;">
+              <div class="meter-thumb" id="th-cape"></div>
+              <!-- 基準線：17倍（全期間平均・シラー本人の基準）= (17-10)/50 = 14% -->
+              <div style="position:absolute; top:-6px; left:14%; width:2px; height:22px; background:var(--ink); opacity:0.6; border-radius:1px;"></div>
+              <div style="position:absolute; top:-20px; left:14%; transform:translateX(-50%); font-size:10px; font-family:var(--mono); color:var(--ink2); white-space:nowrap; font-weight:500;">17倍 avg</div>
+              <!-- 警戒ライン：30倍（シラー本人が警戒水準と明言）= (30-10)/50 = 40% -->
+              <div style="position:absolute; top:-6px; left:40%; width:2px; height:22px; background:var(--rust); opacity:0.7; border-radius:1px;"></div>
+              <div style="position:absolute; top:-20px; left:40%; transform:translateX(-50%); font-size:10px; font-family:var(--mono); color:var(--rust-dark); white-space:nowrap; font-weight:500;">30倍 警戒</div>
+            </div>
+            <div class="meta-val" id="mv-cape">42倍</div>
+            <div class="meter-sub" id="ms-cape"></div>
+          </div>
+          <div class="meter">
+            <div class="meter-label">FF金利</div>
+            <div class="meter-track" style="background: linear-gradient(to right,#E24B4A,#FAC775,#5DCAA5); position:relative;">
+              <div class="meter-thumb" id="th-ff"></div>
+              <!-- 基準線：2.5%（1990年以降の平均）= 2.5/7 = 36% -->
+              <div style="position:absolute; top:-6px; left:36%; width:2px; height:22px; background:var(--ink); opacity:0.6; border-radius:1px;"></div>
+              <div style="position:absolute; top:-20px; left:36%; transform:translateX(-50%); font-size:10px; font-family:var(--mono); color:var(--ink2); white-space:nowrap; font-weight:500;">2.5% avg</div>
+            </div>
+            <div class="meter-val" id="mv-ff">4.5%</div>
+            <div class="meter-sub" id="ms-ff"></div>
+          </div>
+        </div>
+
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:1.25rem;">
+          <div style="background:var(--rust); padding:0.85rem 1.25rem; display:flex; align-items:center; justify-content:space-between; gap:1rem;">
+            <div>
+              <div style="font-family:var(--serif); font-size:28px; font-weight:700; color:#FFFFFF; line-height:1; margin-bottom:5px;">ERP</div>
+              <div style="font-size:11px; font-family:var(--mono); letter-spacing:0.1em; color:rgba(255,255,255,0.7); margin-bottom:4px;">株式リスクプレミアム ＝ 1÷CAPE − FF金利</div>
+              <div style="font-size:13px; color:#FFE8D6;" id="erp-formula">1÷42 − 4.5% = ?</div>
+            </div>
+            <div style="text-align:right; flex-shrink:0;">
+              <div style="font-size:40px; font-weight:700; font-family:var(--mono); color:#FFFFFF; line-height:1;" id="erp-num">−2.1%</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.8); margin-top:4px;" id="erp-annot">株が割高・ドル建て運用・債券が相対的に有利</div>
+            </div>
+          </div>
+          <!-- ERPバー -->
+          <div style="padding:1rem 1.25rem; border-top:1px solid var(--border);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <div style="font-size:11px; font-family:var(--mono); color:var(--muted);">−5%</div>
+              <div style="font-size:11px; font-family:var(--mono); color:var(--muted);">0%</div>
+              <div style="font-size:11px; font-family:var(--mono); color:var(--muted);">+3%</div>
+              <div style="font-size:11px; font-family:var(--mono); color:var(--muted);">+6%</div>
+            </div>
+            <div style="position:relative; height:14px; border-radius:7px; background: linear-gradient(to right,#E24B4A,#FAC775 45%,#5DCAA5 73%,#085041); margin-bottom:6px;">
+              <!-- 0%基準線 = 5/11 = 45.5% -->
+              <div style="position:absolute; top:-4px; left:45.5%; width:2px; height:22px; background:var(--ink); opacity:0.6; border-radius:1px;"></div>
+              <!-- +3%基準線 = 8/11 = 72.7% -->
+              <div style="position:absolute; top:-4px; left:72.7%; width:2px; height:22px; background:var(--ink); opacity:0.6; border-radius:1px;"></div>
+              <!-- 現在値のサム -->
+              <div id="erp-thumb" style="position:absolute; top:50%; transform:translate(-50%,-50%); width:20px; height:20px; border-radius:50%; background:var(--surface); border:2.5px solid var(--ink); transition:left 0.4s cubic-bezier(.4,0,.2,1);"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <div style="font-size:11px; color:var(--rust-dark);">割高・現金保有</div>
+              <div style="font-size:11px; color:var(--muted); transform:translateX(-50%);">同等</div>
+              <div style="font-size:11px; color:var(--teal);">歴史的買い場水準</div>
+            </div>
+          </div>
+          <div style="padding:0.75rem 1.25rem; background:var(--surface2); border-top:1px solid var(--border); display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <div style="font-size:13px; color:var(--ink2);">株式期待リターン</div>
+            <div style="font-size:15px; font-weight:700; color:var(--teal); font-family:var(--mono);">1÷CAPE</div>
+            <div style="font-size:18px; color:var(--ink2); font-weight:500;">−</div>
+            <div style="font-size:13px; color:var(--ink2);">無リスク金利</div>
+            <div style="font-size:15px; font-weight:700; color:var(--rust); font-family:var(--mono);">FF金利</div>
+            <div style="font-size:18px; color:var(--ink2); font-weight:500;">=</div>
+            <div style="font-size:13px; color:var(--ink2);">株式リスクプレミアム</div>
+            <div style="font-size:18px; font-weight:700; font-family:var(--mono); color:var(--rust-dark);" id="erp-num-hero">−2.1%</div>
+            <div style="margin-left:auto; font-size:13px; font-weight:500; color:var(--ink2);" id="erp-annot-hero">株は割高。ドル建て運用・債券が相対的に有利</div>
+          </div>
+        </div>
+
+        <div style="background:var(--surface2); border-radius:10px; padding:1rem 1.25rem; margin-bottom:1.25rem;">
+          <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:10px;">ERP → 目標現金比率</div>
+          <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin-bottom:10px;" id="erp-scale">
+            <div id="es0" style="border-radius:6px; padding:8px 6px; text-align:center; border:1.5px solid transparent;">
+              <div style="font-family:var(--mono); font-size:11px; font-weight:500; color:var(--teal);">ERP &gt;+3%</div>
+              <div style="font-size:18px; font-weight:700; color:var(--teal); font-family:var(--mono);">10%</div>
+              <div style="font-size:11px; color:var(--muted);">現金最小</div>
+            </div>
+            <div id="es1" style="border-radius:6px; padding:8px 6px; text-align:center; border:1.5px solid transparent;">
+              <div style="font-family:var(--mono); font-size:11px; font-weight:500; color:#3B6D11;">+1〜3%</div>
+              <div style="font-size:18px; font-weight:700; color:#3B6D11; font-family:var(--mono);">20〜30%</div>
+              <div style="font-size:11px; color:var(--muted);">慎重に</div>
+            </div>
+            <div id="es2" style="border-radius:6px; padding:8px 6px; text-align:center; border:1.5px solid transparent;">
+              <div style="font-family:var(--mono); font-size:11px; font-weight:500; color:var(--gold);">0〜+1%</div>
+              <div style="font-size:18px; font-weight:700; color:var(--gold); font-family:var(--mono);">30〜40%</div>
+              <div style="font-size:11px; color:var(--muted);">TINA気味</div>
+            </div>
+            <div id="es3" style="border-radius:6px; padding:8px 6px; text-align:center; border:1.5px solid transparent;">
+              <div style="font-family:var(--mono); font-size:11px; font-weight:500; color:var(--rust);">0〜−2%</div>
+              <div style="font-size:18px; font-weight:700; color:var(--rust); font-family:var(--mono);">40〜60%</div>
+              <div style="font-size:11px; color:var(--muted);">ドル建て運用待機</div>
+            </div>
+            <div id="es4" style="border-radius:6px; padding:8px 6px; text-align:center; border:1.5px solid transparent;">
+              <div style="font-family:var(--mono); font-size:11px; font-weight:500; color:var(--rust-dark);">&lt;−2%</div>
+              <div style="font-size:18px; font-weight:700; color:var(--rust-dark); font-family:var(--mono);">60%超</div>
+              <div style="font-size:11px; color:var(--muted);">明確な割高</div>
+            </div>
+          </div>
+          <div style="font-size:12px; color:var(--muted); line-height:1.6;">
+            <strong style="color:var(--ink2);">注：</strong>現金＝外貨建てMMF・円預金等。金・BTCはこの比率と別枠で管理。残りを株・債券で配分。毎年6月・12月に計算・記録し、4年ごとのリバランス時に実際に比率を変更する。
+          </div>
+        </div>
+
+        <div class="verdict" id="verdict">
+          <div class="verdict-head" id="v-head">
+            <div class="verdict-head-text" id="v-text">④ 現状維持・弾薬蓄積 ── DCA＋ドル建て運用待機</div>
+          </div>
+          <div style="padding:1rem 1.25rem; background:var(--surface); border-top:1px solid var(--border);">
+            <div style="font-size:11px; font-family:var(--mono); letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">推奨ポートフォリオ配分</div>
+            <div id="pf-bar" style="display:flex; height:34px; border-radius:8px; overflow:hidden; width:100%; margin-bottom:10px;"></div>
+            <div id="pf-legend" style="display:flex; flex-wrap:wrap; gap:8px;"></div>
+          </div>
+        </div>
+
+        <!-- 局面別教訓 -->
+        <div style="margin-top:1.25rem;" id="lesson-box"></div>
+
+      </div>
+    </div>
+
+  <!-- 05b 暴落時緊急買いルール -->
+  <section class="sec">
+    <div class="sec-hd"><span class="sec-num">05b</span><h2 class="sec-title">暴落時緊急買いルール ── ERP回復を唯一の判断軸とする</h2></div>
+
+    <!-- 判断哲学 -->
+    <div style="background:var(--ink); border-radius:12px; padding:1.4rem 1.75rem; margin-bottom:1.25rem;">
+      <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#FFD4B2; margin-bottom:10px;">Philosophy</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem;">
+        <div>
+          <div style="font-size:15px; font-weight:700; color:#FFFFFF; margin-bottom:6px;">下落率は「入口」に過ぎない</div>
+          <div style="font-size:13px; color:#FFE8D6; line-height:1.75;">「何%下落したか」は結果の記述であって買いの根拠にはならない。下落率はERPを再計算しに行くトリガー。判断軸は常にERPの水準だけ。</div>
+        </div>
+        <div>
+          <div style="font-size:15px; font-weight:700; color:#FFFFFF; margin-bottom:6px;">感情が入る前にルールを作る</div>
+          <div style="font-size:13px; color:#FFE8D6; line-height:1.75;">暴落局面では恐怖・ニュースノイズ・さらなる下落への不安が重なり合理的判断が最も難しくなる。事前に機械的なルールを設定することがバフェット哲学の核心。</div>
+        </div>
+        <div>
+          <div style="font-size:15px; font-weight:700; color:#FFFFFF; margin-bottom:6px;">分割投入で「早すぎた」を防ぐ</div>
+          <div style="font-size:13px; color:#FFE8D6; line-height:1.75;">CAPE42倍からの暴落はリーマン型ダラ下げになりうる。一括投入ではなくERPの改善を確認しながら段階的に資金を投入し、底値を引き当てる必要性を排除する。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2段構えの仕組み -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:1.25rem;">
+      <div style="background:var(--rust-dark); padding:0.9rem 1.4rem; display:flex; align-items:baseline; gap:14px;">
+        <div style="font-size:16px; font-weight:700; color:#FFFFFF;">2段構えの発動ロジック</div>
+        <div style="font-family:var(--mono); font-size:12px; color:#FFD4B2;">下落率 → ERP確認 → 買い判断</div>
+      </div>
+      <div style="padding:1.25rem 1.4rem;">
+        <div style="display:grid; grid-template-columns:1fr 2px 1fr; gap:1.25rem; align-items:center; margin-bottom:1.25rem;">
+          <div style="background:var(--rust-bg); border:1px solid rgba(184,64,24,0.2); border-radius:10px; padding:1.1rem 1.25rem;">
+            <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin-bottom:6px;">Step 1 — トリガー（下落率）</div>
+            <div style="font-size:22px; font-weight:700; color:var(--rust-dark); font-family:var(--mono); margin-bottom:6px;">S&amp;P500 −20%以上</div>
+            <div style="font-size:13px; color:var(--ink2); line-height:1.7;">直近高値から20%以上下落したら<strong style="color:var(--ink);">即時ERPを再計算する</strong>。通常の6月・12月判断を待たず緊急計算を実行。以降は−10%ごとに再計算を繰り返す。</div>
+          </div>
+          <div style="background:var(--border); height:60px; border-radius:1px;"></div>
+          <div style="background:var(--teal-bg); border:1px solid rgba(22,104,90,0.2); border-radius:10px; padding:1.1rem 1.25rem;">
+            <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal); margin-bottom:6px;">Step 2 — 判断軸（ERP）</div>
+            <div style="font-size:22px; font-weight:700; color:var(--teal); font-family:var(--mono); margin-bottom:6px;">ERP +1%以上</div>
+            <div style="font-size:13px; color:var(--ink2); line-height:1.7;">ERPが+1%以上に回復していれば段階投入を開始。回復していなければ<strong style="color:var(--ink);">計算のみ記録して待機継続</strong>。ERP未回復の下落では動かない。</div>
+          </div>
+        </div>
+        <div style="background:var(--gold-bg); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:10px 14px; font-size:13px; color:var(--gold); font-weight:500; line-height:1.65;">
+          ⚠️ 下落率だけで動かない。CAPEが高いまま下落しているなら株はまだ割高。ERPがプラス転換するまで「ERP確認→記録→待機」を繰り返す。
+        </div>
+      </div>
+    </div>
+
+    <!-- 段階投入テーブル -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:1.25rem;">
+      <div style="background:var(--ink); padding:0.9rem 1.4rem; display:flex; align-items:baseline; gap:14px;">
+        <div style="font-size:16px; font-weight:700; color:#FFFFFF;">段階投入ルール</div>
+        <div style="font-family:var(--mono); font-size:12px; color:#FFD4B2;">ERP条件を満たした局面ごとに実行</div>
+      </div>
+      <div style="padding:1.25rem 1.4rem;">
+
+        <!-- ヘッダー行 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; margin-bottom:6px;">
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">フェーズ</div>
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">ERP条件</div>
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">投入量（待機現金比）</div>
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">性質・位置づけ</div>
+        </div>
+
+        <!-- フェーズ1 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; background:var(--surface2); border-radius:8px; padding:10px 12px; margin-bottom:6px; align-items:center;">
+          <div>
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--gold);">Phase 1</div>
+            <div style="font-size:13px; color:var(--ink2);">打診買い</div>
+          </div>
+          <div style="font-family:var(--mono); font-size:14px; font-weight:700; color:var(--teal);">ERP ≥ +1%</div>
+          <div style="font-family:var(--mono); font-size:18px; font-weight:700; color:var(--ink);">20%</div>
+          <div style="font-size:12px; color:var(--muted); line-height:1.6;">ERPがプラス転換。最初の打診。まだ下落継続の可能性あり。</div>
+        </div>
+
+        <!-- フェーズ2 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; background:var(--surface2); border-radius:8px; padding:10px 12px; margin-bottom:6px; align-items:center;">
+          <div>
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--gold);">Phase 2</div>
+            <div style="font-size:13px; color:var(--ink2);">本格打診</div>
+          </div>
+          <div style="font-family:var(--mono); font-size:14px; font-weight:700; color:var(--teal);">ERP ≥ +2%</div>
+          <div style="font-family:var(--mono); font-size:18px; font-weight:700; color:var(--ink);">25%</div>
+          <div style="font-size:12px; color:var(--muted); line-height:1.6;">バリュエーションが明確に改善。歴史的平均への収束が見えてきた局面。</div>
+        </div>
+
+        <!-- フェーズ3 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; background:rgba(22,104,90,0.1); border:1px solid rgba(22,104,90,0.2); border-radius:8px; padding:10px 12px; margin-bottom:6px; align-items:center;">
+          <div>
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--teal);">Phase 3 ★</div>
+            <div style="font-size:13px; color:var(--ink2);">本命買い</div>
+          </div>
+          <div style="font-family:var(--mono); font-size:14px; font-weight:700; color:var(--teal);">ERP ≥ +3%</div>
+          <div style="font-family:var(--mono); font-size:18px; font-weight:700; color:var(--teal);">30%</div>
+          <div style="font-size:12px; color:var(--ink2); line-height:1.6;">歴史的買い場水準。バフェットが2008〜2009年に動いたERPレンジ。重点投入フェーズ。</div>
+        </div>
+
+        <!-- フェーズ4 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; background:rgba(22,104,90,0.18); border:1px solid rgba(22,104,90,0.35); border-radius:8px; padding:10px 12px; margin-bottom:1rem; align-items:center;">
+          <div>
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--teal);">Phase 4 ★★</div>
+            <div style="font-size:13px; color:var(--ink2);">フルコア切替</div>
+          </div>
+          <div style="font-family:var(--mono); font-size:14px; font-weight:700; color:var(--teal);">ERP ≥ +4%</div>
+          <div style="font-family:var(--mono); font-size:18px; font-weight:700; color:var(--teal);">残り全額</div>
+          <div style="font-size:12px; color:var(--ink2); line-height:1.6;">コアポートフォリオへの完全切替。債券・金ヘッジ枠を維持しつつ株式を最大化。</div>
+        </div>
+
+        <!-- 参考：CAPE換算 -->
+        <div style="background:var(--bg); border-radius:8px; padding:12px 14px; margin-bottom:1rem;">
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">参考：FF金利4.5%時のERP → CAPE換算（おおよその目安）</div>
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:6px;">
+            <div style="text-align:center; padding:8px; background:var(--surface2); border-radius:6px;">
+              <div style="font-family:var(--mono); font-size:11px; color:var(--muted);">ERP +1%</div>
+              <div style="font-family:var(--mono); font-size:16px; font-weight:700; color:var(--gold);">CAPE ≈ 18倍</div>
+              <div style="font-size:11px; color:var(--muted);">現在比 −57%下落</div>
+            </div>
+            <div style="text-align:center; padding:8px; background:var(--surface2); border-radius:6px;">
+              <div style="font-family:var(--mono); font-size:11px; color:var(--muted);">ERP +2%</div>
+              <div style="font-family:var(--mono); font-size:16px; font-weight:700; color:var(--gold);">CAPE ≈ 15倍</div>
+              <div style="font-size:11px; color:var(--muted);">現在比 −64%下落</div>
+            </div>
+            <div style="text-align:center; padding:8px; background:rgba(22,104,90,0.1); border-radius:6px;">
+              <div style="font-family:var(--mono); font-size:11px; color:var(--muted);">ERP +3%</div>
+              <div style="font-family:var(--mono); font-size:16px; font-weight:700; color:var(--teal);">CAPE ≈ 13倍</div>
+              <div style="font-size:11px; color:var(--muted);">現在比 −69%下落</div>
+            </div>
+            <div style="text-align:center; padding:8px; background:rgba(22,104,90,0.18); border-radius:6px;">
+              <div style="font-family:var(--mono); font-size:11px; color:var(--muted);">ERP +4%</div>
+              <div style="font-family:var(--mono); font-size:16px; font-weight:700; color:var(--teal);">CAPE ≈ 11倍</div>
+              <div style="font-size:11px; color:var(--muted);">現在比 −74%下落</div>
+            </div>
+          </div>
+          <div style="font-size:11px; color:var(--muted); margin-top:8px; line-height:1.6;">※ CAPE自体も業績悪化で分子（利益）が下がれば株価下落以上に上昇しうる。下落率はあくまで参考。ERPの実計算値で判断すること。FF金利が下がればERP+1%に達する株価水準は上がる（より浅い下落で買い場になる）。</div>
+        </div>
+
+        <!-- 買い対象 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+          <div style="background:var(--teal-bg); border-radius:8px; padding:0.9rem 1rem;">
+            <div style="font-size:13px; font-weight:700; color:var(--teal); margin-bottom:5px;">Phase 1〜3 の投入対象</div>
+            <div style="font-size:13px; color:var(--ink2); line-height:1.7;">S&amp;P500インデックス（コア）を中心。ERPが改善してもまだ不確実性が高い局面のためコアのみに絞る。</div>
+          </div>
+          <div style="background:var(--teal-bg); border-radius:8px; padding:0.9rem 1rem;">
+            <div style="font-size:13px; font-weight:700; color:var(--teal); margin-bottom:5px;">Phase 4（フルコア切替）の対象</div>
+            <div style="font-size:13px; color:var(--ink2); line-height:1.7;">株式コア最大化。BTCはMVRV 1.5以下なら同時に追加DCA検討。債券ラダー・金ヘッジ枠は維持。</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 暴落タイプ別の注意 -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:1.25rem;">
+      <div style="background:var(--ink); padding:0.9rem 1.4rem;">
+        <div style="font-size:16px; font-weight:700; color:#FFFFFF;">暴落タイプ別の留意点</div>
+      </div>
+      <div style="padding:1.25rem 1.4rem; display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div style="background:var(--rust-bg); border:1px solid rgba(184,64,24,0.2); border-radius:10px; padding:1.1rem 1.25rem;">
+          <div style="font-size:14px; font-weight:700; color:var(--rust-dark); margin-bottom:8px;">⚡ 急落型（コロナ型）</div>
+          <div style="font-size:13px; color:var(--ink2); line-height:1.75;">
+            数週間〜数ヶ月で底打ちしERPが急速に改善。Phase 1〜2の段階で買い場が到来しやすい。ただし急落後の急回復でERPが再び悪化するケースに注意。<br><br>
+            <strong style="color:var(--rust-dark);">→ Phase 1・2に重点を置きつつ早期回復を想定して動く</strong>
+          </div>
+        </div>
+        <div style="background:var(--surface2); border-radius:10px; padding:1.1rem 1.25rem;">
+          <div style="font-size:14px; font-weight:700; color:var(--ink); margin-bottom:8px;">🐌 ダラ下げ型（リーマン型）</div>
+          <div style="font-size:13px; color:var(--ink2); line-height:1.75;">
+            1〜3年かけてじわじわ下落。ERPがプラス転換してもさらに下がるケースが多い。Phase 1で買っても翌年さらに下落という展開が現実的。レバレッジ解消が長期化しやすい現環境では特に注意。<br><br>
+            <strong style="color:var(--ink);">→ ERP確認を徹底し、Phase 3・4を本命とした設計を優先する</strong>
+          </div>
+        </div>
+      </div>
+      <div style="padding:0 1.4rem 1.25rem;">
+        <div style="background:var(--gold-bg); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:10px 14px; font-size:13px; color:var(--gold); font-weight:500; line-height:1.65;">
+          現在（CAPE42倍・レバレッジ過去最高）はダラ下げ型リスクが高い。9月アノマリーで短期底値をつけても、それが本格的な買い場かどうかはERPで確認すること。
+        </div>
+      </div>
+    </div>
+
+    <!-- 地政学イベント補足 -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+      <div class="taa-cal-note" style="background:var(--surface2);">
+        <strong>地政学イベント継続時の追加確認：</strong>VIX 35超 かつ 地政学リスクが顕在化している局面では、市場が「慣れ」に入ったかどうかを確認する。原油・コモディティが安定している場合は「織り込み済み」の可能性があり、ERPのみで判断してよい。
+      </div>
+      <div class="taa-cal-note" style="background:var(--rust-bg); border-color:rgba(184,64,24,0.2);">
+        <strong style="color:var(--rust-dark);">⚠ このルールは既存TAAの「例外買い介入」：</strong>例外介入条件（CPI＋FF金利）は売り側の緊急発動。このセクションは買い側の緊急発動。両者は独立して発動しうる。4年サイクルを待たず動いてよい唯一の例外。
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 06 BTC -->
+  <section class="sec">
+    <div class="sec-hd"><span class="sec-num">06</span><h2 class="sec-title">BTC戦略 ── DCAルール・出口戦略・リスク明示</h2></div>
+
+    <!-- 仮定とリスクの明示 -->
+    <div style="background:#3A1A08; border-radius:12px; overflow:hidden; margin-bottom:1.25rem;">
+      <div style="padding:0.9rem 1.4rem; background:#5A2A0A; display:flex; align-items:center; gap:10px;">
+        <span style="font-size:18px;">⚠️</span>
+        <div style="font-size:15px; font-weight:700; color:#FFFFFF;">このBTC戦略は複数の仮定に依存しており、リスクが高い</div>
+      </div>
+      <div style="padding:1.25rem 1.4rem; display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <div style="background:rgba(255,255,255,0.06); border-radius:8px; padding:0.9rem 1rem;">
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#FFD4B2; margin-bottom:6px;">確実に近い事実</div>
+          <div style="font-size:13px; color:#FFF3EC; line-height:1.75;">
+            ✅ 改正所得税法は2026年3月31日に成立済み<br>
+            ✅ 分離課税20%は2028年1月1日開始が最有力<br>
+            ✅ 中間選挙年はBTCが弱く底値をつける傾向（3/3）<br>
+            ✅ 底値コンセンサス：2026年9〜11月・$50,000〜$55,000圏<br>
+            ✅ ATH（$126,000）は2025年10月6日確定
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06); border-radius:8px; padding:0.9rem 1rem;">
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#FFD4B2; margin-bottom:6px;">不確実な仮定（リスク要因）</div>
+          <div style="font-size:13px; color:#FFF3EC; line-height:1.75;">
+            ❓ 次サイクルATHが2029年後半に来る（2030年延長の可能性あり）<br>
+            ❓ AIバブルが2028〜2029年まで崩壊しない<br>
+            ❓ 金商法改正が2026年通常国会で成立する<br>
+            ❓ ホルムズ海峡問題が2026年内に改善する<br>
+            ❓ 売り抜けのタイミングが正確に判断できる
+          </div>
+        </div>
+      </div>
+      <div style="padding:0 1.4rem 1.25rem; font-size:13px; color:rgba(255,200,150,0.85); line-height:1.7;">
+        📌 仮定が5つ以上連鎖している。投資額はすべて失っても許容できる金額に限定すること。BTCはあくまで「サテライト・高リスク枠」であり、コアポートフォリオには影響しない規模に抑える。
+      </div>
+    </div>
+
+    <!-- DCA基本ルール -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:1.25rem;">
+      <div style="background:var(--ink); padding:0.9rem 1.4rem; display:flex; align-items:baseline; gap:14px;">
+        <div style="font-size:16px; font-weight:700; color:#FFFFFF;">DCA基本ルール</div>
+        <div style="font-family:var(--mono); font-size:12px; color:#FFD4B2;">2026年9月〜 SBI VCトレード</div>
+      </div>
+      <div style="padding:1.25rem 1.4rem;">
+
+        <!-- 基本パラメータ -->
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:1.25rem;">
+          <div style="background:var(--surface2); border-radius:10px; padding:1.1rem 1rem; border-top:3px solid var(--purple);">
+            <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">開始時期</div>
+            <div style="font-family:var(--mono); font-size:17px; font-weight:700; color:var(--purple); margin-bottom:4px;">2026年9月</div>
+            <div style="font-family:var(--mono); font-size:11px; color:var(--muted);">15〜20日目安</div>
+          </div>
+          <div style="background:var(--surface2); border-radius:10px; padding:1.1rem 1rem; border-top:3px solid var(--purple);">
+            <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">期間</div>
+            <div style="font-family:var(--mono); font-size:17px; font-weight:700; color:var(--purple); margin-bottom:4px;">10ヶ月</div>
+            <div style="font-family:var(--mono); font-size:11px; color:var(--muted);">〜2027年6月</div>
+          </div>
+          <div style="background:var(--surface2); border-radius:10px; padding:1.1rem 1rem; border-top:3px solid var(--purple);">
+            <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">月額（通常）</div>
+            <div style="font-family:var(--mono); font-size:17px; font-weight:700; color:var(--purple); margin-bottom:4px;">¥5,000,000</div>
+            <div style="font-family:var(--mono); font-size:11px; color:var(--muted);">倍増時 ¥10,000,000</div>
+          </div>
+          <div style="background:var(--surface2); border-radius:10px; padding:1.1rem 1rem; border-top:3px solid var(--purple);">
+            <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">総額（通常）</div>
+            <div style="font-family:var(--mono); font-size:17px; font-weight:700; color:var(--purple); margin-bottom:4px;">¥50,000,000</div>
+            <div style="font-family:var(--mono); font-size:11px; color:var(--muted);">倍増発動時は追加</div>
+          </div>
+        </div>
+
+        <!-- 開始時期の判断ツリー + 倍増トリガー 横並び -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:1rem;">
+
+          <!-- 判断ツリー -->
+          <div style="background:var(--bg); border-radius:10px; padding:1.1rem 1.25rem;">
+            <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:10px;">開始時期の判断ツリー ── 7月末チェック</div>
+            <div style="display:flex; flex-direction:column; gap:7px;">
+              <div style="display:grid; grid-template-columns:72px 1fr; gap:8px; align-items:start; background:var(--teal-bg); border-radius:7px; padding:8px 10px; border-left:3px solid var(--teal);">
+                <div style="font-family:var(--mono); font-size:10px; font-weight:700; color:var(--teal); padding-top:1px;">例外①</div>
+                <div style="font-size:12px; color:var(--ink2); line-height:1.6;">ATH比 <strong>−60%到達</strong>（$50,400以下）→ 到達月から即開始</div>
+              </div>
+              <div style="display:grid; grid-template-columns:72px 1fr; gap:8px; align-items:start; background:var(--gold-bg); border-radius:7px; padding:8px 10px; border-left:3px solid var(--gold);">
+                <div style="font-family:var(--mono); font-size:10px; font-weight:700; color:var(--gold); padding-top:1px;">例外②</div>
+                <div style="font-size:12px; color:var(--ink2); line-height:1.6;">CLARITY成立 <strong>かつ</strong> ホルムズ改善の同時発生 → 8月前倒し</div>
+              </div>
+              <div style="display:grid; grid-template-columns:72px 1fr; gap:8px; align-items:start; background:var(--surface2); border-radius:7px; padding:8px 10px; border-left:3px solid var(--border);">
+                <div style="font-family:var(--mono); font-size:10px; font-weight:700; color:var(--ink2); padding-top:1px;">通常</div>
+                <div style="font-size:12px; color:var(--ink2); line-height:1.6;"><strong>2026年9月15〜20日</strong>にスタート</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 倍増トリガー -->
+          <div style="background:var(--bg); border-radius:10px; padding:1.1rem 1.25rem;">
+            <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:10px;">倍増トリガー ── ATH $126,000基準</div>
+            <div style="display:flex; flex-direction:column; gap:7px;">
+              <div style="background:var(--surface2); border-radius:7px; padding:8px 10px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px;">
+                <div>
+                  <div style="font-family:var(--mono); font-size:10px; color:var(--muted); margin-bottom:3px;">通常DCA</div>
+                  <div style="font-family:var(--mono); font-size:15px; font-weight:700; color:var(--ink);">¥5,000,000 / 月</div>
+                </div>
+                <div style="font-family:var(--mono); font-size:11px; color:var(--muted); text-align:right;">−47%圏〜<br>（現在地）</div>
+              </div>
+              <div style="background:rgba(60,52,137,0.1); border:1px solid rgba(60,52,137,0.3); border-radius:7px; padding:8px 10px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px;">
+                <div>
+                  <div style="font-family:var(--mono); font-size:10px; color:var(--purple); margin-bottom:3px;">★ 倍増トリガー発動</div>
+                  <div style="font-family:var(--mono); font-size:15px; font-weight:700; color:var(--purple);">¥10,000,000 / 月</div>
+                </div>
+                <div style="text-align:right;">
+                  <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--purple);">ATH比 −60%</div>
+                  <div style="font-family:var(--mono); font-size:11px; color:var(--muted);">$50,400以下</div>
+                </div>
+              </div>
+              <div style="background:var(--rust-bg); border-radius:7px; padding:8px 10px;">
+                <div style="font-family:var(--mono); font-size:10px; color:var(--muted); margin-bottom:3px;">過去サイクル底値コンセンサス</div>
+                <div style="font-family:var(--mono); font-size:13px; font-weight:700; color:var(--rust);">$45,000 〜 $55,000</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div style="font-size:12px; color:var(--muted); line-height:1.65; padding:0 2px;">
+          📌 「−60%で確実に底」ではなく「過去サイクルとの比較で積極的に買い増す価値のある水準」という位置づけ。倍増は条件達成月から即適用。取引所：SBI VCトレード（積立機能あり）。入金はSBI新生銀行非対応のため住信SBIネット銀行経由で対応。
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 過去サイクル下落率分析 -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:1.25rem;">
+      <div style="background:var(--ink); padding:0.9rem 1.4rem; display:flex; align-items:baseline; gap:14px;">
+        <div style="font-size:16px; font-weight:700; color:#FFFFFF;">過去サイクル：ATH比下落率と底値実績</div>
+        <div style="font-family:var(--mono); font-size:12px; color:#FFD4B2;">現サイクルATH $126,000（2025年10月6日）基準</div>
+      </div>
+      <div style="padding:1.25rem 1.4rem;">
+
+        <!-- 過去3サイクル比較テーブル -->
+        <div style="overflow-x:auto; margin-bottom:1.25rem;">
+          <table style="width:100%; border-collapse:collapse; font-size:13px;">
+            <thead>
+              <tr style="background:var(--surface2);">
+                <th style="padding:8px 12px; text-align:left; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500; border-bottom:2px solid var(--border);">サイクル</th>
+                <th style="padding:8px 12px; text-align:right; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500; border-bottom:2px solid var(--border);">サイクルATH</th>
+                <th style="padding:8px 12px; text-align:right; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500; border-bottom:2px solid var(--border);">底値</th>
+                <th style="padding:8px 12px; text-align:right; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500; border-bottom:2px solid var(--border);">下落率</th>
+                <th style="padding:8px 12px; text-align:right; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500; border-bottom:2px solid var(--border);">底値時期</th>
+                <th style="padding:8px 12px; text-align:right; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500; border-bottom:2px solid var(--border);">ATH→底値 期間</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:10px 12px; font-weight:700; color:var(--ink);">2013サイクル</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--ink2);">$1,160</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--teal);">$150</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); font-weight:700; color:var(--rust);">−87%</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">2015年1月</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">約13ヶ月</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:10px 12px; font-weight:700; color:var(--ink);">2017サイクル</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--ink2);">$19,800</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--teal);">$3,200</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); font-weight:700; color:var(--rust);">−84%</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">2018年12月</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">約12ヶ月</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:10px 12px; font-weight:700; color:var(--ink);">2021サイクル</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--ink2);">$69,000</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--teal);">$15,500</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); font-weight:700; color:var(--rust);">−77%</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">2022年11月</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">約12ヶ月</td>
+              </tr>
+              <tr style="background:rgba(60,52,137,0.08); border-bottom:1px solid rgba(60,52,137,0.2);">
+                <td style="padding:10px 12px; font-weight:700; color:var(--purple);">2025サイクル（現在）</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--purple); font-weight:700;">$126,000</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--teal);">$64,000〜？</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); font-weight:700; color:var(--purple);">−49%〜 進行中</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">2026年9〜11月？</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">7ヶ月〜継続中</td>
+              </tr>
+              <tr style="background:var(--surface2);">
+                <td style="padding:10px 12px; font-weight:700; color:var(--muted);">過去3サイクル平均</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--muted);">—</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--muted);">—</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); font-weight:700; color:var(--ink2);">−83%</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">ATHから約12ヶ月</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">12〜13ヶ月</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 現サイクル下落率ごとの価格・確率 -->
+        <div style="font-size:14px; font-weight:700; color:var(--ink); margin-bottom:10px;">現サイクル：ATH比下落率ごとの価格水準と底値確率</div>
+        <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:1rem;">
+
+          <!-- バー表示 -->
+          <div style="display:grid; grid-template-columns:90px 80px 1fr 90px; gap:8px; align-items:center; background:var(--surface2); border-radius:8px; padding:8px 12px;">
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--muted);">−40%</div>
+            <div style="font-family:var(--mono); font-size:13px; font-weight:700; color:var(--ink);">$75,600</div>
+            <div style="background:var(--border); border-radius:4px; height:8px; overflow:hidden;"><div style="width:15%; height:100%; background:var(--muted); border-radius:4px;"></div></div>
+            <div style="font-size:12px; color:var(--muted); text-align:right;">通過済み</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:90px 80px 1fr 90px; gap:8px; align-items:center; background:rgba(154,96,8,0.1); border:1px solid rgba(154,96,8,0.25); border-radius:8px; padding:8px 12px;">
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--gold);">−47% 現在</div>
+            <div style="font-family:var(--mono); font-size:13px; font-weight:700; color:var(--gold);">$67,000</div>
+            <div style="background:var(--border); border-radius:4px; height:8px; overflow:hidden;"><div style="width:20%; height:100%; background:var(--gold); border-radius:4px;"></div></div>
+            <div style="font-size:12px; color:var(--gold); font-weight:700; text-align:right;">← 現在地</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:90px 80px 1fr 90px; gap:8px; align-items:center; background:var(--surface2); border-radius:8px; padding:8px 12px;">
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--ink2);">−50%</div>
+            <div style="font-family:var(--mono); font-size:13px; font-weight:700; color:var(--ink);">$63,000</div>
+            <div style="background:var(--border); border-radius:4px; height:8px; overflow:hidden;"><div style="width:30%; height:100%; background:#9A7030; border-radius:4px;"></div></div>
+            <div style="font-size:12px; color:var(--ink2); text-align:right;">底値可能性 低〜中</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:90px 80px 1fr 90px; gap:8px; align-items:center; background:rgba(60,52,137,0.1); border:1px solid rgba(60,52,137,0.3); border-radius:8px; padding:8px 12px;">
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--purple);">−56〜60%</div>
+            <div style="font-family:var(--mono); font-size:13px; font-weight:700; color:var(--purple);">$50,400〜$55,400</div>
+            <div style="background:var(--border); border-radius:4px; height:8px; overflow:hidden;"><div style="width:65%; height:100%; background:var(--purple); border-radius:4px;"></div></div>
+            <div style="font-size:12px; color:var(--purple); font-weight:700; text-align:right;">底値確率 高（主要コンセンサス）</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:90px 80px 1fr 90px; gap:8px; align-items:center; background:rgba(22,104,90,0.1); border:1px solid rgba(22,104,90,0.25); border-radius:8px; padding:8px 12px;">
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--teal);">−60%</div>
+            <div style="font-family:var(--mono); font-size:13px; font-weight:700; color:var(--teal);">$50,400</div>
+            <div style="background:var(--border); border-radius:4px; height:8px; overflow:hidden;"><div style="width:65%; height:100%; background:var(--teal); border-radius:4px;"></div></div>
+            <div style="font-size:12px; color:var(--teal); font-weight:700; text-align:right;">★ 倍増トリガー発動</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:90px 80px 1fr 90px; gap:8px; align-items:center; background:var(--surface2); border-radius:8px; padding:8px 12px;">
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--ink2);">−70%</div>
+            <div style="font-family:var(--mono); font-size:13px; font-weight:700; color:var(--ink);">$37,800</div>
+            <div style="background:var(--border); border-radius:4px; height:8px; overflow:hidden;"><div style="width:20%; height:100%; background:#8C2E0E; border-radius:4px;"></div></div>
+            <div style="font-size:12px; color:var(--muted); text-align:right;">2021サイクル相当・低確率</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:90px 80px 1fr 90px; gap:8px; align-items:center; background:rgba(140,26,26,0.08); border-radius:8px; padding:8px 12px;">
+            <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--rust);">−83%（平均）</div>
+            <div style="font-family:var(--mono); font-size:13px; font-weight:700; color:var(--rust);">$21,400</div>
+            <div style="background:var(--border); border-radius:4px; height:8px; overflow:hidden;"><div style="width:8%; height:100%; background:var(--rust); border-radius:4px;"></div></div>
+            <div style="font-size:12px; color:var(--rust); text-align:right;">過去平均・現実的には低確率</div>
+          </div>
+        </div>
+
+        <div style="background:var(--gold-bg); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:10px 14px; font-size:13px; color:var(--gold); line-height:1.7; margin-bottom:0;">
+          📌 サイクルが成熟するにつれ下落幅は縮小傾向（−87%→−84%→−77%）。今サイクルの主要コンセンサスは<strong>−56〜60%（$50,000〜$55,000）</strong>で2026年9〜11月が底値時期の最有力。ただし過去の傾向であり、今サイクルがETF・機関投資家主導で底値が浅くなる可能性もある。
+        </div>
+      </div>
+    </div>
+
+    <!-- 次サイクルATH価格と確率 -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:1.25rem;">
+      <div style="background:var(--ink); padding:0.9rem 1.4rem; display:flex; align-items:baseline; gap:14px;">
+        <div style="font-size:16px; font-weight:700; color:#FFFFFF;">次サイクルATH：価格予想と確率分布</div>
+        <div style="font-family:var(--mono); font-size:12px; color:#FFD4B2;">過去の倍率縮小トレンド × 機関投資家参入の影響</div>
+      </div>
+      <div style="padding:1.25rem 1.4rem;">
+
+        <!-- 過去ATH倍率推移 -->
+        <div style="margin-bottom:1.25rem;">
+          <div style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:8px;">過去サイクルATH倍率の推移（縮小トレンド）</div>
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px;">
+            <div style="background:var(--surface2); border-radius:8px; padding:0.85rem; text-align:center;">
+              <div style="font-family:var(--mono); font-size:10px; color:var(--muted); margin-bottom:4px;">2013→2017</div>
+              <div style="font-family:var(--serif); font-size:26px; font-weight:900; color:var(--ink);">17×</div>
+              <div style="font-size:11px; color:var(--muted);">$1,160→$19,800</div>
+            </div>
+            <div style="background:var(--surface2); border-radius:8px; padding:0.85rem; text-align:center;">
+              <div style="font-family:var(--mono); font-size:10px; color:var(--muted); margin-bottom:4px;">2017→2021</div>
+              <div style="font-family:var(--serif); font-size:26px; font-weight:900; color:var(--ink);">3.5×</div>
+              <div style="font-size:11px; color:var(--muted);">$19,800→$69,000</div>
+            </div>
+            <div style="background:var(--surface2); border-radius:8px; padding:0.85rem; text-align:center;">
+              <div style="font-family:var(--mono); font-size:10px; color:var(--muted); margin-bottom:4px;">2021→2025</div>
+              <div style="font-family:var(--serif); font-size:26px; font-weight:900; color:var(--ink);">1.8×</div>
+              <div style="font-size:11px; color:var(--muted);">$69,000→$126,000</div>
+            </div>
+            <div style="background:rgba(60,52,137,0.1); border:1px solid rgba(60,52,137,0.3); border-radius:8px; padding:0.85rem; text-align:center;">
+              <div style="font-family:var(--mono); font-size:10px; color:var(--purple); margin-bottom:4px;">2025→次（予測）</div>
+              <div style="font-family:var(--serif); font-size:26px; font-weight:900; color:var(--purple);">1.4〜2×</div>
+              <div style="font-size:11px; color:var(--muted);">縮小トレンド継続想定</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 次ATHシナリオ別テーブル -->
+        <div style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:10px;">次サイクルATHシナリオ別価格・時期・確率</div>
+        <div style="overflow-x:auto; margin-bottom:1rem;">
+          <table style="width:100%; border-collapse:collapse; font-size:13px;">
+            <thead>
+              <tr style="background:var(--surface2);">
+                <th style="padding:8px 12px; text-align:left; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500; border-bottom:2px solid var(--border);">シナリオ</th>
+                <th style="padding:8px 12px; text-align:right; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500; border-bottom:2px solid var(--border);">次ATH価格</th>
+                <th style="padding:8px 12px; text-align:right; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500; border-bottom:2px solid var(--border);">現ATH比</th>
+                <th style="padding:8px 12px; text-align:right; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500; border-bottom:2px solid var(--border);">$50,400取得比</th>
+                <th style="padding:8px 12px; text-align:right; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500; border-bottom:2px solid var(--border);">時期</th>
+                <th style="padding:8px 12px; text-align:right; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500; border-bottom:2px solid var(--border);">確率感</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:10px 12px; font-weight:700; color:var(--muted);">悲観（サイクル終焉）</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--muted);">$140,000〜$160,000</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--muted);">1.1〜1.3×</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--muted);">約2.8〜3.2倍</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">2028年後半</td>
+                <td style="padding:10px 12px; text-align:right;">
+                  <div style="display:flex; align-items:center; gap:6px; justify-content:flex-end;">
+                    <div style="background:var(--border); border-radius:3px; height:6px; width:60px; overflow:hidden;"><div style="width:15%; height:100%; background:var(--muted);"></div></div>
+                    <span style="font-family:var(--mono); font-size:12px; color:var(--muted);">15%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:10px 12px; font-weight:700; color:var(--ink2);">保守的</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--ink2);">$180,000</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--ink2);">1.4×</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--ink2);">約3.6倍</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">2028年末〜2029年前半</td>
+                <td style="padding:10px 12px; text-align:right;">
+                  <div style="display:flex; align-items:center; gap:6px; justify-content:flex-end;">
+                    <div style="background:var(--border); border-radius:3px; height:6px; width:60px; overflow:hidden;"><div style="width:25%; height:100%; background:var(--gold);"></div></div>
+                    <span style="font-family:var(--mono); font-size:12px; color:var(--gold);">25%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr style="background:rgba(60,52,137,0.08); border-bottom:1px solid rgba(60,52,137,0.2);">
+                <td style="padding:10px 12px; font-weight:700; color:var(--purple);">★ 中央値（メインシナリオ）</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); font-weight:700; color:var(--purple);">$250,000</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); font-weight:700; color:var(--purple);">2.0×</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); font-weight:700; color:var(--purple);">約5.0倍</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">2029年後半</td>
+                <td style="padding:10px 12px; text-align:right;">
+                  <div style="display:flex; align-items:center; gap:6px; justify-content:flex-end;">
+                    <div style="background:var(--border); border-radius:3px; height:6px; width:60px; overflow:hidden;"><div style="width:40%; height:100%; background:var(--purple);"></div></div>
+                    <span style="font-family:var(--mono); font-size:12px; color:var(--purple);">40%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:10px 12px; font-weight:700; color:var(--teal);">強気</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--teal);">$350,000</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--teal);">2.8×</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--teal);">約6.9倍</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">2029年後半〜2030年前半</td>
+                <td style="padding:10px 12px; text-align:right;">
+                  <div style="display:flex; align-items:center; gap:6px; justify-content:flex-end;">
+                    <div style="background:var(--border); border-radius:3px; height:6px; width:60px; overflow:hidden;"><div style="width:15%; height:100%; background:var(--teal);"></div></div>
+                    <span style="font-family:var(--mono); font-size:12px; color:var(--teal);">15%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:10px 12px; font-weight:700; color:var(--rust);">超強気（CLARITY+利下げ同時）</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--rust);">$500,000超</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--rust);">4.0×</td>
+                <td style="padding:10px 12px; text-align:right; font-family:var(--mono); color:var(--rust);">約10倍</td>
+                <td style="padding:10px 12px; text-align:right; font-size:12px; color:var(--muted);">2030年</td>
+                <td style="padding:10px 12px; text-align:right;">
+                  <div style="display:flex; align-items:center; gap:6px; justify-content:flex-end;">
+                    <div style="background:var(--border); border-radius:3px; height:6px; width:60px; overflow:hidden;"><div style="width:5%; height:100%; background:var(--rust);"></div></div>
+                    <span style="font-family:var(--mono); font-size:12px; color:var(--rust);">5%</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="background:var(--bg); border-radius:8px; padding:10px 14px; font-size:12px; color:var(--muted); line-height:1.7;">
+          📌 確率はあくまで過去サイクルのパターンと現在のマクロ環境を組み合わせた主観的な参考値。<strong style="color:var(--ink2);">「悲観シナリオ（$140,000〜）でも$50,400取得なら約3倍」</strong>という事実が最も重要。底値圏での仕込みはどのシナリオでも合理的。税引き後の手取りは2028〜29年の20%課税適用後の売却を前提。DCA平均取得単価が$60,000〜70,000になった場合は各倍率を0.8倍補正すること。
+        </div>
+      </div>
+    </div>
+
+    <!-- 出口戦略 -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:1.25rem;">
+      <div style="background:var(--ink); padding:0.9rem 1.4rem; display:flex; align-items:baseline; gap:14px;">
+        <div style="font-size:16px; font-weight:700; color:#FFFFFF;">出口戦略</div>
+        <div style="font-family:var(--mono); font-size:12px; color:#FFD4B2;">2028年税制適用後・取得平均比で判断</div>
+      </div>
+      <div style="padding:1.25rem 1.4rem;">
+
+        <!-- 売却開始条件 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:1rem;">
+          <div style="background:var(--teal-bg); border-radius:10px; padding:1.1rem 1.25rem; border-left:4px solid var(--teal);">
+            <div style="font-size:13px; font-weight:700; color:var(--teal); margin-bottom:8px;">✅ 売却開始条件（AND）</div>
+            <div style="font-size:13px; color:var(--ink2); line-height:1.8;">
+              ① <strong>2028年1月1日以降</strong>（分離課税20%適用後）<br>
+              ② <strong>取得平均比3倍以上</strong>（実際の取得単価確定後に水準設定）<br>
+              → 両条件を同時に満たした月から売却開始
+            </div>
+          </div>
+          <div style="background:var(--gold-bg); border-radius:10px; padding:1.1rem 1.25rem; border-left:4px solid var(--gold);">
+            <div style="font-size:13px; font-weight:700; color:var(--gold); margin-bottom:8px;">📅 売却フェーズの設計</div>
+            <div style="font-size:13px; color:var(--ink2); line-height:1.8;">
+              <strong>2029年6月〜</strong>　DCA売却開始（10ヶ月分割）<br>
+              <strong>2029年12月</strong>　目安期限（マクロ次第で延長判断）<br>
+              <strong>判断基準</strong>　2029年12月時点で取得平均比3倍未満なら延長検討
+            </div>
+          </div>
+        </div>
+
+        <!-- 税制タイムラインと例外ルール -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:1rem;">
+          <div style="background:var(--surface2); border-radius:10px; padding:1.1rem 1.25rem;">
+            <div style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:8px;">💴 税制タイムライン</div>
+            <div style="font-size:13px; color:var(--ink2); line-height:1.8;">
+              <strong>〜2027年末</strong>　総合課税・最大55%<br>
+              <strong>2028年1月1日〜</strong>　申告分離課税20%（最有力）<br>
+              <strong>2029年施行にずれた場合</strong>　出口が2029年H2のため問題なし。どちらに転んでも20%で売れる構造。
+            </div>
+          </div>
+          <div style="background:var(--rust-bg); border-radius:10px; padding:1.1rem 1.25rem; border-left:4px solid var(--rust);">
+            <div style="font-size:13px; font-weight:700; color:var(--rust-dark); margin-bottom:8px;">⚠️ 例外売却ルール</div>
+            <div style="font-size:13px; color:var(--ink2); line-height:1.8;">
+              <strong>2028年1月以前</strong>かつ<strong>取得平均比5倍未満</strong><br>
+              → <strong style="color:var(--rust-dark);">一切売却しない</strong><br>
+              サイクル的にも税制的に待つ方が合理的。<br>
+              5倍以上でも55%課税後の手取りが2.9倍にとどまる点に注意。
+            </div>
+          </div>
+        </div>
+
+        <!-- 次サイクルATH想定 -->
+        <div style="background:var(--bg); border-radius:8px; padding:1rem 1.1rem;">
+          <div style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:8px;">📊 次サイクルATH・リターン想定</div>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:8px;">
+            <div style="background:var(--surface2); border-radius:8px; padding:0.85rem; text-align:center;">
+              <div style="font-family:var(--mono); font-size:10px; color:var(--muted); margin-bottom:4px;">保守的シナリオ</div>
+              <div style="font-family:var(--mono); font-size:16px; font-weight:700; color:var(--ink);">$180,000</div>
+              <div style="font-size:11px; color:var(--muted);">取得平均比 約3.6倍（$50,400取得時）</div>
+            </div>
+            <div style="background:rgba(60,52,137,0.1); border:1px solid rgba(60,52,137,0.25); border-radius:8px; padding:0.85rem; text-align:center;">
+              <div style="font-family:var(--mono); font-size:10px; color:var(--purple); margin-bottom:4px;">中央値シナリオ ★</div>
+              <div style="font-family:var(--mono); font-size:16px; font-weight:700; color:var(--purple);">$250,000</div>
+              <div style="font-size:11px; color:var(--muted);">取得平均比 約5.0倍（$50,400取得時）</div>
+            </div>
+            <div style="background:var(--surface2); border-radius:8px; padding:0.85rem; text-align:center;">
+              <div style="font-family:var(--mono); font-size:10px; color:var(--muted); margin-bottom:4px;">強気シナリオ</div>
+              <div style="font-family:var(--mono); font-size:16px; font-weight:700; color:var(--ink);">$350,000</div>
+              <div style="font-size:11px; color:var(--muted);">取得平均比 約6.9倍（$50,400取得時）</div>
+            </div>
+          </div>
+          <div style="font-size:12px; color:var(--muted); line-height:1.65;">
+            📌 次サイクルATHのセンターは<strong style="color:var(--ink2);">2029年後半</strong>、2030年前半まで延長の可能性あり。DCA全体の平均取得単価は$60,000〜$70,000になる可能性が高く、ポートフォリオ全体では<strong style="color:var(--ink2);">3〜4倍が現実的な期待値</strong>。5,000万円投資・中央値シナリオ・20%課税で税引後約1.5〜2億円の試算。
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 出口条件分岐 -->
+    <div class="btc-grid">
+      <div class="btc-branch hot">
+        <div class="btc-head">🔥 2029年後半にATHが来た場合（メインシナリオ）</div>
+        <div class="btc-body">
+          <strong>売却ウィンドウ：2029年6月〜12月</strong><br>
+          ① 2028年1月〜分離課税20%適用済み<br>
+          ② 取得平均比3倍以上を確認して開始<br>
+          ③ 10ヶ月DCA売却・MVRV連動で加速<br><br>
+          <strong>MVRV 2.0超</strong>　→ 15%売却<br>
+          <strong>MVRV 2.5超</strong>　→ さらに20%売却<br>
+          <strong>MVRV 3.0超</strong>　→ さらに25%売却<br>
+          <strong>MVRV 3.5超 / NUPL 0.75超</strong>　→ 残り全売却検討
+        </div>
+      </div>
+      <div class="btc-branch cool">
+        <div class="btc-head">🧊 ATHが2030年に延長 / 株が暴落している場合</div>
+        <div class="btc-body">
+          2029年12月時点で取得平均比3倍未満なら売却を延期。<br>
+          マクロ環境（Fed利下げ進捗・AI相場）を確認して判断。<br><br>
+          <strong>2029年12月</strong>　取得平均比・MVRV・NUPLを確認<br>
+          <strong>3倍未満</strong>　→ 延期・2030年以降に持ち越し<br>
+          <strong>3倍以上</strong>　→ 通常通りDCA売却継続<br><br>
+          ※ 2030年以降も分離課税20%は適用済みのため税制リスクなし
+        </div>
+      </div>
+      <div class="btc-note-full">
+        📌 どちらのシナリオでも一括売却は行わない。MVRV連動の段階売却（15%→20%→25%）を徹底し、税務インパクトと相場リスクを同時に平準化する。2028年1月以前は取得平均比5倍未満なら売却しない鉄則を守る。
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="sec">
+    <div class="sec-hd"><span class="sec-num">07</span><h2 class="sec-title">実行スケジュール</h2></div>
+    <div class="tl-grid">
+      <div class="tl-item"><span class="tl-badge">2026.06〜</span><div class="tl-desc"><strong>S&amp;P500 DCA開始。</strong>月次分散積立。CAPE・バフェット指数を確認しながら慎重に。</div></div>
+      <div class="tl-item"><span class="tl-badge">2026.07〜11</span><div class="tl-desc"><strong>購入フェーズ実行。</strong>短期債・金ETF・中期国債をDCA開始。株は9〜10月に重点配分。</div></div>
+      <div class="tl-item"><span class="tl-badge">2026.07末</span><div class="tl-desc"><strong>BTC開始時期チェックポイント。</strong>CLARITYアクト成立状況・ホルムズ海峡情勢を確認。前倒し例外条件（ATH比−60%到達 or CLARITY+ホルムズ同時発生）を判断。条件なければ9月スタート確定。</div></div>
+      <div class="tl-item"><span class="tl-badge">2026.09〜10</span><div class="tl-desc"><strong>BTC DCA開始（月500万円×10ヶ月）。</strong>9月15〜20日目安でSBI VCトレード積立開始。ATH比−60%（$50,400）到達時は月1,000万円に倍増。9月アノマリー・株の調整も同時注視。</div></div>
+      <div class="tl-item"><span class="tl-badge">2026.11 中間選挙後</span><div class="tl-desc"><strong>第1回TAAリバランス実行。</strong>期待利回りフレームワークで各資産を評価・比率再調整。BTC DCA継続。</div></div>
+      <div class="tl-item"><span class="tl-badge">2026.12</span><div class="tl-desc"><strong>判断フェーズB（記録）。</strong>ERP・MVRV・FF金利を確認・記録。BTC DCA月4回目・底値形成プロセスを確認。</div></div>
+      <div class="tl-item"><span class="tl-badge">2027.06</span><div class="tl-desc"><strong>BTC DCA完了（10ヶ月目）。</strong>累計5,000万円（倍増発動時は追加）。取得平均単価を確定。出口の「取得平均比3倍」の絶対水準をこの時点で設定する。SBI VCトレードのアカウントセキュリティ最終確認。</div></div>
+      <div class="tl-item"><span class="tl-badge">2027 中間選挙後の強い年</span><div class="tl-desc"><strong>株式最強年（統計）。</strong>株保有継続・DCA継続。BTCはMVRV・NUPLを月次確認。売却はしない（2028年1月以前・例外ルール適用）。</div></div>
+      <div class="tl-item"><span class="tl-badge">2028.01〜</span><div class="tl-desc"><strong>★ 分離課税20%適用開始（最有力）。</strong>取得平均比3倍以上を確認次第、BTC段階売却の準備開始。ただし売却フェーズ本番は2029年6月〜を目安とし、2028年は状況観察・MVRV監視。</div></div>
+      <div class="tl-item"><span class="tl-badge">2028 大統領選後</span><div class="tl-desc"><strong>TAA観察（大統領選挙年）。</strong>ERPを計算・記録。株の売買はしない。BTC：MVRV・NUPLを確認。次サイクルATHの時期（2029後半 or 2030前半）を見極める準備。</div></div>
+      <div class="tl-item"><span class="tl-badge">2029.06〜</span><div class="tl-desc"><strong>★ BTC DCA売却開始。</strong>10ヶ月分割で段階売却。MVRV連動（2.0超→15%、2.5超→20%、3.0超→25%、3.5超→全売却検討）。2029年12月時点で取得平均比3倍未満なら延期判断。</div></div>
+      <div class="tl-item"><span class="tl-badge">2029.12</span><div class="tl-desc"><strong>BTC出口・目安期限。</strong>取得平均比・MVRV・NUPLを確認。3倍以上なら売却継続。3倍未満ならマクロ状況を踏まえ2030年延長を検討。いずれも20%課税適用済みのためリスクなし。</div></div>
+      <div class="tl-item full"><span class="tl-badge">2030〜</span><div class="tl-desc"><strong>不動産購入（〜1億円）。</strong>REIT縮小・最終ポートフォリオ設計。実物不動産がREITの代替となるため比重を再調整する。2030年中間選挙年が次の4年リバランスサイクル。</div></div>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section class="sec">
+    <div class="sec-hd"><span class="sec-num">08</span><h2 class="sec-title">定期監視指標</h2></div>
+    <div class="ind-table">
+      <div class="ind-group-row">
+        <div class="ind-group-label">株式</div>
+        <div class="ind-items">
+          <div class="ind-row"><div class="ind-name">CAPEレシオ</div><div class="ind-desc">過去10年実質利益平均でのPER。期待利回り計算（1÷CAPE）の主指標。</div><span class="ind-alert">30超→警戒 ／ 25以下→割安</span></div>
+          <div class="ind-row"><div class="ind-name">バフェット指数</div><div class="ind-desc">米国株時価総額÷GDP。CAPEと合わせて市場全体の過熱感を確認。</div><span class="ind-alert">180%超→割高 ／ 200%超→バブル</span></div>
+        </div>
+      </div>
+      <div class="ind-group-row">
+        <div class="ind-group-label gl-btc">BTC</div>
+        <div class="ind-items">
+          <div class="ind-row"><div class="ind-name">ATH比下落率 ★唯一の主指標</div><div class="ind-desc">現サイクルATH（$126,000）からの下落率。買い増しトリガー・底値判断の全てをこれ一本で管理。CoinGeckoで価格確認→電卓で計算するだけ。</div><span class="ind-alert">−60%以下（$50,400）→ 倍増トリガー発動</span></div>
+          <div class="ind-row"><div class="ind-name">ETFフロー（週次）</div><div class="ind-desc">スポットBTC ETFの週次資金流出入。機関投資家の需給動向を把握する補助情報。相場の転換点確認に使う。</div><span class="ind-alert">2週連続流入転換 → 底値シグナル補助</span></div>
+        </div>
+      </div>
+      <div class="ind-group-row">
+        <div class="ind-group-label gl-ai">AI</div>
+        <div class="ind-items">
+          <div class="ind-row"><div class="ind-name">NVIDIA PER（FWD）</div><div class="ind-desc">AIバブルの体温計。PER急収縮が崩壊の初期シグナル。売上維持でも株価は暴落しうる。</div><span class="ind-alert">40超→警戒 ／ 60超→バブル ／ 急収縮→崩壊</span></div>
+        </div>
+      </div>
+      <div class="ind-group-row">
+        <div class="ind-group-label gl-macro">マクロ</div>
+        <div class="ind-items">
+          <div class="ind-row"><div class="ind-name">CPI / PCE</div><div class="ind-desc">物価指標。購入フェーズ例外条件の判断基準。ピークアウト確認が購入再開シグナル。</div><span class="ind-alert">ピークアウト確認 → 購入再開</span></div>
+          <div class="ind-row"><div class="ind-name">FF金利</div><div class="ind-desc">ERPの計算に直接使用。外貨建てMMF・ドル建て債券の期待利回りに直結。利上げ停止シグナルが重要。</div><span class="ind-alert">常時把握</span></div>
+          <div class="ind-row"><div class="ind-name">米10年債利回り</div><div class="ind-desc">実質金利マイナスなら金・BTCに有利。ドル建て債券ラダーの利回り環境の把握に使用。</div><span class="ind-alert">常時把握</span></div>
+          <div class="ind-row"><div class="ind-name">日銀金利 / USD/JPY</div><div class="ind-desc">利上げ→円高→外貨建て資産の円換算が目減り。為替ヘッジ戦略の基準。</div><span class="ind-alert">常時把握</span></div>
+        </div>
+      </div>
+      <div class="ind-group-row">
+        <div class="ind-group-label gl-cycle">サイクル</div>
+        <div class="ind-items">
+          <div class="ind-row"><div class="ind-name">大統領選挙サイクル</div><div class="ind-desc">中間選挙年は株が弱い傾向。選挙年は景気刺激が入りやすい。TAAリバランスの根幹。</div><span class="ind-alert">4年ごと確認</span></div>
+          <div class="ind-row"><div class="ind-name">9月アノマリー</div><div class="ind-desc">月別リターンで統計的に最弱。機関投資家の決算・ポジション調整が集中。買い場の狙い目。</div><span class="ind-alert">毎年9月注視</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const pfColors = {
+  'コア':         '#B84018',
+  '金ETF':        '#16685A',
+  'ドル建て運用': '#185FA5',
+  '現金':         '#7A5838',
+  'BTC':          '#3C3489',
+};
+
+const pfByVerdict = {
+  buy:  { 'コア':75, '金ETF':5,  'ドル建て運用':10, '現金':5,  'BTC':5 },
+  tina: { 'コア':55, '金ETF':10, 'ドル建て運用':25, '現金':5,  'BTC':5 },
+  warn: { 'コア':35, '金ETF':10, 'ドル建て運用':40, '現金':10, 'BTC':5 },
+  hold: { 'コア':45, '金ETF':10, 'ドル建て運用':30, '現金':10, 'BTC':5 },
+};
+
+function updatePortfolioBar(key) {
+  const pf = pfByVerdict[key] || pfByVerdict.hold;
+  const bar = document.getElementById('pf-bar');
+  const leg = document.getElementById('pf-legend');
+  if (!bar || !leg) return;
+  bar.innerHTML = Object.entries(pf).map(([name, pct]) =>
+    '<div style="flex:' + pct + '; background:' + pfColors[name] + '; display:flex; align-items:center; justify-content:center; overflow:hidden; transition:flex 0.5s;">' +
+    '<span style="font-size:11px; font-weight:500; color:#fff; white-space:nowrap; padding:0 4px;">' + (pct >= 8 ? pct + '%' : '') + '</span></div>'
+  ).join('');
+  leg.innerHTML = Object.entries(pf).map(([name, pct]) =>
+    '<div style="display:flex; align-items:center; gap:5px; font-size:12px; color:var(--muted);">' +
+    '<div style="width:10px; height:10px; border-radius:2px; background:' + pfColors[name] + ';"></div>' +
+    '<span>' + name + ' <strong style="color:var(--ink2);">' + pct + '%</strong></span></div>'
+  ).join('');
+}
+
+const presets = {
+  now:      { cape: 42, ff: 4.5,  label:'2026年6月（判断フェーズA）',            year:'中間選挙年',
+    sp500: '約7,400', lesson:'ERPは−2.1%。CAPE42倍はドットコムバブルピーク（44倍）に次ぐ史上2位の水準。シラー本人の警戒水準（30倍）を40%超過。ドル建て運用（短期米国債ラダー）で4%台を確保しながらDCA継続。次の暴落に備え弾薬を蓄積する局面。' },
+  '2022mid':{ cape: 29, ff: 4.0,  label:'2022年6月（ベア市場入り）',             year:'中間選挙年',
+    sp500: '約3,666', lesson:'史上最速の利上げ。年初CAPE38倍・ゼロ金利から半年でFF金利4%へ急騰。株も長期債も同時下落。唯一の逃げ場はドル建て運用のみ。CPI前月比ピークアウトまで購入フェーズを後ろ倒し。例外条件発動の典型例。' },
+  '2018':   { cape: 29, ff: 2.25, label:'2018年12月（パウエル急落）',            year:'中間選挙年',
+    sp500: '約2,350', lesson:'FRBの利上げ継続発言で12月に急落。翌1月にパウエルが利上げ停止を示唆した瞬間から急反発。FRBのピボット発言が絶好の買い場シグナル。ERPがギリギリプラスの局面での正解はFRBを監視して待つこと。' },
+  '2008':   { cape: 27, ff: 2.0,  label:'2008年9月（リーマン破綻月）',          year:'大統領選挙年',
+    sp500: '約1,200', lesson:'CAPE27倍でも歴史的平均17倍の1.6倍。現在38倍は2008年より40%さらに割高。一括買いは厳禁・DCAで時間分散が正解。大統領選挙年は歴史的に最大の暴落リスクがある年。' },
+  '2000':   { cape: 44, ff: 6.0,  label:'2000年3月（ドットコムバブルピーク）',   year:'大統領選挙年',
+    sp500: '約1,527', lesson:'CAPE 44倍・史上最高値。ERPは−3.2%と大幅マイナス。この時点でERPを計算していた投資家は全員「売り」と判断できた。その後NASDAQは−78%・S&P500は−49%の大暴落。最も明確な割高シグナルの典型例。' },
+  '2009':   { cape: 13, ff: 0.25, label:'2009年3月（リーマン底値）',            year:'政権1年目',
+    sp500: '約666',   lesson:'ERPが8%超という歴史的最大の買い場。CAPE13倍は全期間平均17倍を大きく下回る。ゼロ金利で債券は不要・株を最大化する局面。恐怖に打ち克てた投資家だけが10年で5倍を手にした。' },
+};
+
+function setPreset(key) {
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('pb-' + key).classList.add('active');
+  const p = presets[key];
+  renderFW(p.cape, p.ff);
+  const lb = document.getElementById('lesson-box');
+  if (lb && p.lesson) {
+    const yearColor = p.year === '中間選挙年' ? 'var(--teal)' : p.year === '大統領選挙年' ? 'var(--rust)' : 'var(--gold)';
+    lb.innerHTML = `<div style="background:var(--surface2); border-left:4px solid ${yearColor}; border-radius:0 10px 10px 0; padding:0.9rem 1.25rem;">
+      <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:6px; flex-wrap:wrap;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:${yearColor};">${p.label}</div>
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted);">${p.year}</div>
+        ${p.sp500 ? `<div style="font-family:var(--mono); font-size:11px; color:var(--muted);">S&P500: ${p.sp500}</div>` : ''}
+      </div>
+      <div style="font-size:14px; color:var(--ink2); line-height:1.7;">📌 ${p.lesson}</div>
+    </div>`;
+  } else if (lb) { lb.innerHTML = ''; }
+}
+
+function renderFW(cape, ff) {
+  const stockRet = (1 / cape) * 100;
+  const erp = stockRet - ff;
+
+  const erpStr2 = (erp >= 0 ? '+' : '') + erp.toFixed(1) + '%';
+  const heroEl = document.getElementById('erp-num-hero');
+  if (heroEl) {
+    heroEl.textContent = erpStr2;
+    heroEl.style.color = erp > 3 ? '#085041' : erp > 1 ? '#633806' : erp > 0 ? '#4A3200' : '#8C2E0E';
+  }
+  const fEl = document.getElementById('erp-formula-hero');
+  if (fEl) fEl.textContent = '1÷' + cape.toFixed(0) + ' − ' + ff.toFixed(2) + '% = ' + erpStr2;
+  const aEl = document.getElementById('erp-annot-hero');
+  if (aEl) aEl.textContent = erp > 3 ? '株が大幅に割安。積極的に買える局面' : erp > 1 ? '株はやや有利だが慎重に' : erp > 0 ? 'ERPは正だが低水準（TINA）' : '株は割高。ドル建て運用・債券が相対的に有利';
+
+  // ERPバーのサム位置更新（範囲：-5%〜+6%、幅11%）
+  const erpThumb = document.getElementById('erp-thumb');
+  if (erpThumb) {
+    const erpPct = Math.min(Math.max((erp + 5) / 11, 0), 1);
+    erpThumb.style.left = (erpPct * 100) + '%';
+  }
+
+  const capePct = Math.min(Math.max((cape - 10) / 50, 0), 1);
+  const ffPct   = Math.min(Math.max(ff / 7, 0), 1);
+
+  document.getElementById('th-cape').style.left = (capePct * 100) + '%';
+  document.getElementById('th-ff').style.left   = (ffPct * 100)   + '%';
+
+  const capeColor = cape < 22 ? 'v-green' : cape < 30 ? 'v-amber' : 'v-red';
+  const ffColor   = ff > 3 ? 'v-green' : ff > 1 ? 'v-amber' : 'v-red';
+  document.getElementById('mv-cape').textContent = cape.toFixed(0) + '倍';
+  document.getElementById('mv-cape').className = 'meter-val ' + capeColor;
+  document.getElementById('mv-ff').textContent   = ff.toFixed(2) + '%';
+  document.getElementById('mv-ff').className   = 'meter-val ' + ffColor;
+
+  const capeZone = cape < 22 ? '割安圏（買い場）' : cape < 28 ? '中立圏' : cape < 33 ? '割高気味・警戒' : '割高圏';
+  const ffZone   = ff > 3 ? '正常（ドル建て運用で利回り確保可能）' : ff > 1 ? '低め' : 'ゼロ金利（逃げ場なし）';
+  document.getElementById('ms-cape').textContent = '目安：25以下=割安 / 30超=警戒　→　現在：' + capeZone;
+  document.getElementById('ms-ff').textContent   = 'ドル建て運用の期待利回りに直結　→　現在：' + ffZone;
+
+  document.getElementById('erp-formula').textContent = '1÷' + cape.toFixed(0) + ' − ' + ff.toFixed(2) + '% = ' + erpStr2;
+  const erpEl = document.getElementById('erp-num');
+  erpEl.textContent = erpStr2;
+  erpEl.style.color = erp > 3 ? '#5DCAA5' : erp > 1 ? '#FAC775' : erp > 0 ? '#FAD080' : '#FFB899';
+  document.getElementById('erp-annot').textContent = erp > 3 ? '株が大幅に割安。積極的に買える局面' : erp > 1 ? '株はやや有利だが慎重に' : erp > 0 ? 'ERPは正だが低水準（TINA気味）' : '株は割高。ドル建て運用・債券が相対的に有利';
+
+  const scaleIdx = erp > 3 ? 0 : erp > 1 ? 1 : erp > 0 ? 2 : erp > -2 ? 3 : 4;
+  const scaleBgs = ['#D5EDE8','#EAF3DE','#F5E9CC','#FAEBE3','#FCEBEB'];
+  const scaleBorders = ['#16685A','#3B6D11','#9A6008','#B84018','#8C2E0E'];
+  for (let i = 0; i < 5; i++) {
+    const el = document.getElementById('es' + i);
+    el.style.background = i === scaleIdx ? scaleBgs[i] : 'transparent';
+    el.style.borderColor = i === scaleIdx ? scaleBorders[i] : 'transparent';
+  }
+
+  let bg, icon, label, actions, pfKey;
+
+  if (cape < 24 && erp > 3) {
+    bg = '#085041'; icon = 'ti-trending-up'; label = '① 絶好の買い場 ── 株を最大化する'; pfKey = 'buy';
+    actions = [
+      { bg:'#D5EDE8', tc:'#085041', lbl:'株式',     txt:'米国株インデックスを最大化。既存ポジション全力維持。追加一括買いも検討。' },
+      { bg:'#D5EDE8', tc:'#085041', lbl:'BTC',       txt:'サイクルが合えば積み増しの好機。MVRV・NUPLで確認。' },
+      { bg:'#EFE2CC', tc:'#7A5838', lbl:'債券・現金', txt:'最小化。ERPが高い局面で現金保有は機会損失になる。' },
+      { bg:'#EFE2CC', tc:'#7A5838', lbl:'金',         txt:'ヘッジ枠として少量保持のみ。新規追加は不要。' },
+    ];
+  } else if (cape > 32 && ff < 1) {
+    bg = '#854F0B'; icon = 'ti-alert-triangle'; label = '② TINA局面 ── 現金待機・DCA継続のみ'; pfKey = 'tina';
+    actions = [
+      { bg:'#F5E9CC', tc:'#633806', lbl:'株式',     txt:'DCAは止めない。追加一括買いは抑制。利確で現金比率を上げる。' },
+      { bg:'#F5E9CC', tc:'#633806', lbl:'現金', txt:'ゼロ金利で利回りは取れないが弾薬として保有。逃げ場はここだけ。' },
+      { bg:'#FAEBE3', tc:'#8C2E0E', lbl:'金ETF', txt:'円建てヘッジ枠として常時保持。ゼロ金利局面で相対的に有利。少量追加も検討。' },
+      { bg:'#F5E9CC', tc:'#633806', lbl:'金',         txt:'ゼロ金利局面で相対的に有利。少量追加を検討。' },
+    ];
+  } else if (erp < 0 && ff > 3) {
+    bg = '#791F1F'; icon = 'ti-shield-off'; label = '③ 注意局面 ── ドル建て運用待機・購入フェーズ確認'; pfKey = 'warn';
+    actions = [
+      { bg:'#FCEBEB', tc:'#791F1F', lbl:'株式DCA',      txt:'DCAは継続。ただしCPI・FF金利の動向次第で例外条件発動に注意。' },
+      { bg:'#D5EDE8', tc:'#085041', lbl:'ドル建て運用', txt:'短期米国債ラダー（1〜2年）中心。7〜11月購入フェーズに合わせた満期設計。FF金利高止まりで4〜5%確保可能。' },
+      { bg:'#EFE2CC', tc:'#7A5838', lbl:'金ETF',        txt:'円建てヘッジ枠として常時保持。高金利局面でも金のヘッジ機能は変わらない。' },
+      { bg:'#FAEBE3', tc:'#8C2E0E', lbl:'例外条件',     txt:'CPI急上昇中なら購入フェーズを後ろ倒し。ピークアウト確認を待つ。' },
+    ];
+  } else {
+    bg = '#3C3489'; icon = 'ti-database'; label = '④ 現状維持・弾薬蓄積 ── DCA＋ドル建て運用待機'; pfKey = 'hold';
+    actions = [
+      { bg:'#EEEDFE', tc:'#3C3489', lbl:'株式DCA',      txt:'DCAで月次積立継続。9月アノマリーの調整を追加買いの好機として注視。' },
+      { bg:'#EEEDFE', tc:'#3C3489', lbl:'ドル建て運用', txt:'短期米国債ラダー中心。FF金利が高く4〜5%確保可能。弾薬を蓄積しながら暴落を待つ。' },
+      { bg:'#D5EDE8', tc:'#085041', lbl:'BTC DCA',      txt:'2026年9月からハービングサイクル後半の累積フェーズとして開始。' },
+      { bg:'#EFE2CC', tc:'#7A5838', lbl:'金ETF',        txt:'円建てヘッジ枠として常時保持。インフレ・地政学リスクの高まりで特に機能する。' },
+    ];
+  }
+
+  updatePortfolioBar(pfKey);
+  const lb2 = document.getElementById('lesson-box');
+  if (lb2 && !lb2.innerHTML) {
+    lb2.innerHTML = '<div style="background:var(--surface2); border-left:4px solid ' + bg + '; border-radius:0 10px 10px 0; padding:0.9rem 1.25rem;">' +
+      '<div style="font-size:14px; font-weight:500; color:var(--ink);">' + label + '</div>' +
+      '<div style="font-size:13px; color:var(--muted); margin-top:4px;">プリセットを選択すると各局面の教訓が表示されます。</div>' +
+      '</div>';
+  }
+  document.getElementById('v-head').style.background = bg;
+  document.getElementById('v-text').textContent = label;
+  document.getElementById('v-text').style.color = '#FFFFFF';
+
+  // verdict-grid非表示
+}
+
+renderFW(42, 4.5);
+setPreset('now');
+</script>
+</body>
+</html>
   --bg:        #F2E6D4;
   --surface:   #FBF5EC;
   --surface2:  #EFE2CC;
