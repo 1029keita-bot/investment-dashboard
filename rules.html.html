@@ -271,30 +271,141 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
 
   <!-- 01 -->
   <section class="sec">
-    <div class="sec-hd"><span class="sec-num">01</span><h2 class="sec-title">投資哲学 ── 3つの原則</h2></div>
+    <div class="sec-hd"><span class="sec-num">01</span><h2 class="sec-title">投資哲学と3つのルール</h2></div>
 
-    <div style="display:flex; flex-direction:column; gap:8px;">
-      <div style="background:var(--ink); border-radius:12px; padding:1rem 1.4rem; display:flex; gap:20px; align-items:flex-start;">
-        <div style="flex-shrink:0;">
-          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:4px;">Principle 01</div>
-          <div style="font-size:15px; font-weight:700; color:#FFFFFF; white-space:nowrap;">第一原則：損をしない</div>
-        </div>
-        <div style="font-size:12px; color:rgba(255,255,255,0.55); line-height:1.75; padding-top:18px;">第二原則：第一原則を忘れない。元本の毀損はいかなるリターンも無意味にする。含み損は過程に過ぎず、最終的に元本を毀損しないことが唯一の基準である。</div>
+    <!-- 唯一の哲学 -->
+    <div style="background:var(--ink); border-radius:12px; padding:1.5rem 1.75rem; margin-bottom:1rem; position:relative; overflow:hidden;">
+      <div style="position:absolute; right:-40px; top:-40px; width:180px; height:180px; border-radius:50%; background:rgba(184,64,24,0.12); pointer-events:none;"></div>
+      <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--rust); margin-bottom:10px;">The One &amp; Only Philosophy</div>
+      <div style="font-family:var(--serif); font-size:32px; font-weight:900; color:#FFFFFF; margin-bottom:10px; line-height:1.1;">損をしない</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; max-width:600px;">
+        第二原則：第一原則を忘れない。<br>
+        元本の毀損はいかなるリターンも無意味にする。含み損は過程に過ぎず、最終的に元本を毀損しないことが唯一の基準である。<br>
+        <span style="color:rgba(255,255,255,0.3); font-size:12px;">── Warren Buffett, Rule #1 &amp; Rule #2</span>
       </div>
-      <div style="background:var(--ink); border-radius:12px; padding:1rem 1.4rem; display:flex; gap:20px; align-items:flex-start;">
-        <div style="flex-shrink:0;">
-          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:4px;">Principle 02</div>
-          <div style="font-size:15px; font-weight:700; color:#FFFFFF; white-space:nowrap;">価値に対して適正な価格で、<br>長期保有できるものだけ買う</div>
-        </div>
-        <div style="font-size:12px; color:rgba(255,255,255,0.55); line-height:1.75; padding-top:18px;">"Our favorite holding period is forever." 最良の保有期間は永遠である。ERPがマイナスの株式・サイクル高値圏のBTCは買わない。その時点で相対的に割安な資産クラスにのみ資金を配分する。</div>
+      <div style="margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid rgba(255,255,255,0.1); font-size:12px; color:rgba(255,184,100,0.85); line-height:1.75;">
+        📌 この哲学を実現するために、以下の3つのルールが存在する。ルールはすべてこの哲学から導かれる。
       </div>
-      <div style="background:var(--ink); border-radius:12px; padding:1rem 1.4rem; display:flex; gap:20px; align-items:flex-start;">
-        <div style="flex-shrink:0;">
-          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:4px;">Principle 03</div>
-          <div style="font-size:15px; font-weight:700; color:#FFFFFF; white-space:nowrap;">市場のタイミングを計らず、<br>忍耐強く保有し続ける</div>
+    </div>
+
+    <!-- 3ルール -->
+    <div style="display:flex; flex-direction:column; gap:10px;">
+
+      <!-- Rule 01 -->
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+        <div style="background:var(--rust-dark); padding:0.9rem 1.4rem; display:flex; align-items:baseline; gap:14px;">
+          <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,200,160,0.75);">Rule 01</div>
+          <div style="font-size:16px; font-weight:700; color:#FFFFFF;">割安を確認してから買う</div>
+          <div style="font-family:var(--mono); font-size:12px; color:rgba(255,200,160,0.65); margin-left:auto;">複数指標フィルター ／ 単一指標への過信禁止</div>
         </div>
-        <div style="font-size:12px; color:rgba(255,255,255,0.55); line-height:1.75; padding-top:18px;">"The stock market is a device for transferring money from the impatient to the patient." 底値・高値を予測することは誰にも不可能。定期積立（DCA）で時間分散し、相場がどう動こうとも保有し続けることが唯一の合理的な解である。</div>
+        <div style="padding:1.25rem 1.4rem;">
+          <div style="font-size:14px; color:var(--ink2); line-height:1.85; margin-bottom:1rem;">
+            高値も安値も誰にも分からない。だからこそ「買ってもいい環境か」を客観指標で確認することが唯一の防衛線になる。指標は感情を排除するためのツールであり、相場のタイミングを予測するためのものではない。どれだけシグナルが揃っても「今すぐ買え」ではなく「買える状態になった」に過ぎない。
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:1rem;">
+            <div style="background:var(--rust-bg); border:1px solid rgba(184,64,24,0.18); border-radius:8px; padding:1rem;">
+              <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust); margin-bottom:6px;">主軸</div>
+              <div style="font-size:14px; font-weight:700; color:var(--ink); margin-bottom:4px;">ERP（株式リスクプレミアム）</div>
+              <div style="font-size:12px; color:var(--ink2); line-height:1.7;">1÷CAPE − FF金利。プラスが最低条件。ただし単体への過信は禁物。リーマン前は実際にマイナス〜ゼロ近辺で正しく機能したが、バランスシート不況型では遅行する可能性がある。</div>
+            </div>
+            <div style="background:var(--gold-bg); border:1px solid rgba(154,96,8,0.18); border-radius:8px; padding:1rem;">
+              <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:6px;">補助</div>
+              <div style="font-size:14px; font-weight:700; color:var(--ink); margin-bottom:4px;">バフェット指数（時価総額÷GDP）</div>
+              <div style="font-size:12px; color:var(--ink2); line-height:1.7;">ERPと別角度から絶対的な割高感を確認する。200%超は歴史的高値圏。ERPと逆行する場合（ERPプラスでも指数200%超）はより慎重に。2指標で十分。</div>
+            </div>
+          </div>
+          <div style="background:var(--surface2); border-radius:8px; padding:10px 14px; font-size:12px; color:var(--muted); line-height:1.7; margin-bottom:8px;">
+            📌 確認は6月・12月の年2回。ERP基準を満たさない局面ではDCAペースを落とすか停止する判断も含意する（現在のS&P500 DCA停止はこれに基づく）。
+          </div>
+          <div style="background:rgba(184,64,24,0.06); border-left:3px solid var(--rust); border-radius:0 6px 6px 0; padding:9px 12px; font-size:11px; color:var(--rust-dark); line-height:1.65;">
+            ⚠️ クレジットスプレッドを指標から除外した理由：ハイパースケーラーのAI関連債券大量発行（2025〜）により、従来「国債＝安全資産のベースライン」という前提が崩れ、スプレッドの読み方が構造的に変質した。指標が機能しない環境では使わない。
+          </div>
+        </div>
       </div>
+
+      <!-- Rule 02 -->
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+        <div style="background:var(--rust-dark); padding:0.9rem 1.4rem; display:flex; align-items:baseline; gap:14px;">
+          <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,200,160,0.75);">Rule 02</div>
+          <div style="font-size:16px; font-weight:700; color:#FFFFFF;">資産クラスのみ選択。個別株は不可。例外なし。</div>
+          <div style="font-family:var(--mono); font-size:12px; color:rgba(255,200,160,0.65); margin-left:auto;">確証バイアスを排除 ／ インデックスが既に内包している</div>
+        </div>
+        <div style="padding:1.25rem 1.4rem;">
+          <div style="font-size:14px; color:var(--ink2); line-height:1.85; margin-bottom:1rem;">
+            あらゆる資産クラスは長期的に上昇する。問いは「何を買うか」ではなく「どの資産クラスをどの価格で買うか」だ。S&P500は時価総額加重インデックスであり、個別株を保有することと実質的に同じで、監視コストも税コストもゼロ。ハイベータを求めるならBTCが担う。
+          </div>
+          <!-- 対象資産 -->
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:1rem;">
+            <div style="background:var(--teal-bg); border-radius:8px; padding:0.85rem; text-align:center;">
+              <div style="font-size:13px; font-weight:700; color:var(--teal); margin-bottom:3px;">株式インデックス</div>
+              <div style="font-size:11px; color:var(--muted);">S&P500・全世界</div>
+            </div>
+            <div style="background:var(--gold-bg); border-radius:8px; padding:0.85rem; text-align:center;">
+              <div style="font-size:13px; font-weight:700; color:var(--gold); margin-bottom:3px;">金ETF</div>
+              <div style="font-size:11px; color:var(--muted);">円建て・ヘッジ枠</div>
+            </div>
+            <div style="background:rgba(60,52,137,0.1); border-radius:8px; padding:0.85rem; text-align:center;">
+              <div style="font-size:13px; font-weight:700; color:var(--purple); margin-bottom:3px;">BTC</div>
+              <div style="font-size:11px; color:var(--muted);">サイクル管理・高リスク</div>
+            </div>
+            <div style="background:var(--blue-bg); border-radius:8px; padding:0.85rem; text-align:center;">
+              <div style="font-size:13px; font-weight:700; color:var(--blue); margin-bottom:3px;">債券ラダー</div>
+              <div style="font-size:11px; color:var(--muted);">ドル建て・利回り確保</div>
+            </div>
+          </div>
+          <!-- なぜ個別株が不可か -->
+          <div style="background:var(--ink); border-radius:10px; padding:1.1rem 1.4rem;">
+            <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,200,160,0.7); margin-bottom:10px;">なぜ個別株は「例外なし」で不可なのか</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+              <div style="display:flex; gap:10px; align-items:flex-start;">
+                <div style="font-family:var(--mono); font-size:13px; font-weight:700; color:var(--rust); flex-shrink:0;">01</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.65); line-height:1.75;">インデックスは時価総額加重で個別株を自動的に内包する。「この銘柄だけ別に持つ」行為はリスクを集中させるだけで期待値は変わらない。</div>
+              </div>
+              <div style="display:flex; gap:10px; align-items:flex-start;">
+                <div style="font-family:var(--mono); font-size:13px; font-weight:700; color:var(--rust); flex-shrink:0;">02</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.65); line-height:1.75;">「確信できる」と思った瞬間が確証バイアスの発動シグナル。確信が強い銘柄ほどすでに価格に織り込まれている。</div>
+              </div>
+              <div style="display:flex; gap:10px; align-items:flex-start;">
+                <div style="font-family:var(--mono); font-size:13px; font-weight:700; color:var(--rust); flex-shrink:0;">03</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.65); line-height:1.75;">歴史上、国家規模の覇権企業でさえ30年の支配を維持できなかった。Standard Oil・AT&T・IBM・GE・Nokia・Kodak。例外はゼロ。</div>
+              </div>
+              <div style="display:flex; gap:10px; align-items:flex-start;">
+                <div style="font-family:var(--mono); font-size:13px; font-weight:700; color:var(--rust); flex-shrink:0;">04</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.65); line-height:1.75;">ハイベータを求めるならBTCが担う。個別株をサテライトに加える必要はなく、複雑さだけが増える。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rule 03 -->
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+        <div style="background:var(--rust-dark); padding:0.9rem 1.4rem; display:flex; align-items:baseline; gap:14px;">
+          <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,200,160,0.75);">Rule 03</div>
+          <div style="font-size:16px; font-weight:700; color:#FFFFFF;">DCAで積み上げ、4年サイクルでリバランス</div>
+          <div style="font-family:var(--mono); font-size:12px; color:rgba(255,200,160,0.65); margin-left:auto;">機械的に動く ／ 過度に敏感にならない</div>
+        </div>
+        <div style="padding:1.25rem 1.4rem;">
+          <div style="font-size:14px; color:var(--ink2); line-height:1.85; margin-bottom:1rem;">
+            高値も安値も誰にも分からない。だから機械的に動く。タイミングを計ろうとすることが最大のリスクである。"The stock market is a device for transferring money from the impatient to the patient."
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;">
+            <div style="background:var(--teal-bg); border:1px solid rgba(22,104,90,0.18); border-radius:8px; padding:1rem;">
+              <div style="font-size:13px; font-weight:700; color:var(--teal); margin-bottom:6px;">📈 買いはDCA</div>
+              <div style="font-size:12px; color:var(--ink2); line-height:1.7;">Rule 01のフィルターを通過した資産クラスへ、月次・定額で積み立てる。一括購入はしない。</div>
+            </div>
+            <div style="background:var(--rust-bg); border:1px solid rgba(184,64,24,0.18); border-radius:8px; padding:1rem;">
+              <div style="font-size:13px; font-weight:700; color:var(--rust-dark); margin-bottom:6px;">🔁 リバランスは4年ごと</div>
+              <div style="font-size:12px; color:var(--ink2); line-height:1.7;">大統領選挙サイクルに連動。売却・購入フェーズを機械的に決定し、感情で動かない。</div>
+            </div>
+            <div style="background:var(--gold-bg); border:1px solid rgba(154,96,8,0.18); border-radius:8px; padding:1rem;">
+              <div style="font-size:13px; font-weight:700; color:var(--gold); margin-bottom:6px;">📋 確認は半年ごと</div>
+              <div style="font-size:12px; color:var(--ink2); line-height:1.7;">6月・12月に投資環境を確認する。「理解するため」であり「行動するため」ではない。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -965,6 +1076,33 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
   <section class="sec">
     <div class="sec-hd"><span class="sec-num">06</span><h2 class="sec-title">BTC戦略 ── DCAルール・出口戦略・リスク明示</h2></div>
 
+    <!-- BTCとは何か：正直な資産定義 -->
+    <div style="background:var(--ink); border-radius:12px; padding:1.4rem 1.75rem; margin-bottom:1.25rem; overflow:hidden; position:relative;">
+      <div style="position:absolute; right:-30px; bottom:-30px; width:160px; height:160px; border-radius:50%; background:rgba(60,52,137,0.15); pointer-events:none;"></div>
+      <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(60,52,137,0.9); margin-bottom:10px;">BTCとは何か ── 正直な資産定義</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.75); line-height:1.9; margin-bottom:1.25rem; max-width:700px;">
+        ハービングサイクルによる人工的な供給ショックと、ナラティブ主導の需要サイクルによって4年ごとに高ボラティリティの価格サイクルを形成する、<strong style="color:#FFFFFF;">長期的な資産クラスの地位がまだ確定していない高ベータ投機資産。</strong><br><br>
+        「デジタルゴールド」は将来の可能性であり、現在の実態ではない。実際の価格相関はナスダック・リスク資産に近く、金とは構造的に異なる。リスクオフ局面では金と逆方向に動くことが多い。
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px;">
+        <div style="background:rgba(255,255,255,0.06); border-radius:8px; padding:1rem;">
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,200,160,0.7); margin-bottom:6px;">現在の実態</div>
+          <div style="font-size:13px; font-weight:700; color:#FFFFFF; margin-bottom:5px;">高ベータ投機資産</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.55); line-height:1.7;">ハービングサイクルが機能している間は4年ごとの価格サイクルを利用できる。現在〜2029年はこのフェーズ。</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06); border-radius:8px; padding:1rem;">
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,200,160,0.7); margin-bottom:6px;">ハイベータ喪失の目安</div>
+          <div style="font-size:13px; font-weight:700; color:#FFFFFF; margin-bottom:5px;">2035〜2040年以降</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.55); line-height:1.7;">現在BTCは金の約4〜5%の規模。金と同規模になるには現在比23倍が必要で、保有者構造の機関化が進んで初めて安定する。</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06); border-radius:8px; padding:1rem;">
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,200,160,0.7); margin-bottom:6px;">長期的な可能性</div>
+          <div style="font-size:13px; font-weight:700; color:#FFFFFF; margin-bottom:5px;">デジタル準備資産（未確定）</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.55); line-height:1.7;">国家の準備資産化が進んだ場合に金に近い性格へ移行する可能性がある。ただし確証はなく、これへの小さなヘッジとして現物を永久保有する。</div>
+        </div>
+      </div>
+    </div>
+
     <!-- 仮定とリスクの明示 -->
     <div style="background:#3A1A08; border-radius:12px; overflow:hidden; margin-bottom:1.25rem;">
       <div style="padding:0.9rem 1.4rem; background:#5A2A0A; display:flex; align-items:center; gap:10px;">
@@ -995,6 +1133,95 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
       </div>
       <div style="padding:0 1.4rem 1.25rem; font-size:13px; color:rgba(255,200,150,0.85); line-height:1.7;">
         📌 仮定が5つ以上連鎖している。投資額はすべて失っても許容できる金額に限定すること。BTCはあくまで「サテライト・高リスク枠」であり、コアポートフォリオには影響しない規模に抑える。
+      </div>
+    </div>
+
+    <!-- BTC割安判断の3軸 -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:1.25rem;">
+      <div style="background:var(--ink); padding:0.9rem 1.4rem; display:flex; align-items:baseline; gap:14px;">
+        <div style="font-size:16px; font-weight:700; color:#FFFFFF;">BTC割安を判断する3つの軸</div>
+        <div style="font-family:var(--mono); font-size:12px; color:#FFD4B2;">3軸すべてが「割安」を示す局面が最良の仕込み期</div>
+      </div>
+      <div style="padding:1.25rem 1.4rem;">
+        <div style="font-size:13px; color:var(--ink2); line-height:1.75; margin-bottom:1.25rem;">
+          BTCは株式のERP基準とは独立した判断軸で管理する。以下の3軸を組み合わせて割安圏を判定する。いずれか1軸のみで動かない。
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:1rem;">
+
+          <!-- 軸1 ATH下落率 -->
+          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border);">
+            <div style="background:var(--rust); padding:0.85rem 1.1rem;">
+              <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:4px;">軸① 主軸</div>
+              <div style="font-size:15px; font-weight:700; color:#FFFFFF;">ATH比下落率</div>
+            </div>
+            <div style="background:var(--surface); padding:1rem 1.1rem;">
+              <div style="font-size:13px; color:var(--ink2); line-height:1.75; margin-bottom:10px;">
+                過去3サイクル平均の下落率（−83%）を基準に割安圏を判定する定量的な主軸。感情を排除できる最も客観的な指標。
+              </div>
+              <div style="display:flex; flex-direction:column; gap:5px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg); border-radius:6px; padding:6px 10px;">
+                  <div style="font-family:var(--mono); font-size:12px; color:var(--ink2);">ATH−60%未満</div>
+                  <div style="font-family:var(--mono); font-size:12px; color:var(--muted);">通常ペース</div>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(60,52,137,0.1); border-radius:6px; padding:6px 10px;">
+                  <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--purple);">ATH−60%以下 ★</div>
+                  <div style="font-family:var(--mono); font-size:12px; color:var(--purple);">前倒し開始</div>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(154,96,8,0.1); border-radius:6px; padding:6px 10px;">
+                  <div style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--gold);">ATH−70〜80% ★★</div>
+                  <div style="font-family:var(--mono); font-size:12px; color:var(--gold);">レバレッジ引き上げ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 軸2 ハービングサイクル -->
+          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border);">
+            <div style="background:#1A4A3A; padding:0.85rem 1.1rem;">
+              <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:4px;">軸② 構造的タイミング</div>
+              <div style="font-size:15px; font-weight:700; color:#FFFFFF;">ハービングサイクル</div>
+            </div>
+            <div style="background:var(--surface); padding:1rem 1.1rem;">
+              <div style="font-size:13px; color:var(--ink2); line-height:1.75; margin-bottom:10px;">
+                ハービング（半減期）はBTCの新規供給量を半減させる。需要が一定なら構造的に価格上昇圧力が生じる。
+              </div>
+              <div style="background:var(--teal-bg); border-radius:8px; padding:0.85rem; margin-bottom:8px;">
+                <div style="font-size:12px; font-weight:700; color:var(--teal); margin-bottom:4px;">過去3回のパターン</div>
+                <div style="font-size:12px; color:var(--ink2); line-height:1.7;">
+                  ハービング翌年（中間選挙年）に底値をつける傾向が3/3で一致。ATH→底値まで約12〜13ヶ月。DCA開始タイミングの構造的根拠はここにある。
+                </div>
+              </div>
+              <div style="font-size:11px; color:var(--muted); line-height:1.6;">現在は2024年4月ハービング後のサイクル。底値コンセンサスは2026年9〜11月。</div>
+            </div>
+          </div>
+
+          <!-- 軸3 金利トレンド -->
+          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border);">
+            <div style="background:#3A2A10; padding:0.85rem 1.1rem;">
+              <div style="font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:4px;">軸③ マクロ環境・補助軸</div>
+              <div style="font-size:15px; font-weight:700; color:#FFFFFF;">金利トレンド</div>
+            </div>
+            <div style="background:var(--surface); padding:1rem 1.1rem;">
+              <div style="font-size:13px; color:var(--ink2); line-height:1.75; margin-bottom:10px;">
+                金利はリスク資産全般の割引率に直結する。BTCも例外ではない。
+              </div>
+              <div style="display:flex; flex-direction:column; gap:6px;">
+                <div style="background:var(--teal-bg); border-radius:6px; padding:8px 10px;">
+                  <div style="font-size:11px; font-weight:700; color:var(--teal); margin-bottom:3px;">✅ 金利ピークアウト・下落トレンド確認</div>
+                  <div style="font-size:11px; color:var(--ink2); line-height:1.6;">DCA前倒しの追加根拠になる。リスク資産への資金流入が構造的に起きやすい。</div>
+                </div>
+                <div style="background:var(--rust-bg); border-radius:6px; padding:8px 10px;">
+                  <div style="font-size:11px; font-weight:700; color:var(--rust-dark); margin-bottom:3px;">⚠️ 金利上昇継続中</div>
+                  <div style="font-size:11px; color:var(--ink2); line-height:1.6;">焦らない。軸①②が揃っていても投入ペースを抑える理由になる。</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div style="background:var(--gold-bg); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:10px 14px; font-size:13px; color:var(--gold); font-weight:500; line-height:1.65;">
+          📌 3軸すべてが「割安」を指す局面が最良の仕込み期。1軸だけでは動かない。また、BTCの割安判断は株式のERP基準とは完全に別軸で管理し、相互に干渉させない。
+        </div>
       </div>
     </div>
 
@@ -1542,6 +1769,50 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
       </div>
       <div class="btc-note-full">
         📌 どちらのシナリオでも一括売却は行わない。MVRV連動の段階売却（15%→20%→25%）を徹底し、税務インパクトと相場リスクを同時に平準化する。2028年1月以前は取得平均比5倍未満なら売却しない鉄則を守る。
+      </div>
+    </div>
+
+    <!-- 2029年以降の保有方針 -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-top:1.25rem;">
+      <div style="background:#1A4A3A; padding:0.9rem 1.4rem; display:flex; align-items:baseline; gap:14px;">
+        <div style="font-size:16px; font-weight:700; color:#FFFFFF;">2029年以降の保有方針</div>
+        <div style="font-family:var(--mono); font-size:12px; color:rgba(255,255,255,0.6);">サイクル出口後 ── ハイベータ枠は空席に</div>
+      </div>
+      <div style="padding:1.25rem 1.4rem;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:1rem;">
+          <div style="background:var(--teal-bg); border-radius:10px; padding:1.1rem 1.25rem; border-left:4px solid var(--teal);">
+            <div style="font-size:13px; font-weight:700; color:var(--teal); margin-bottom:8px;">🔒 BTC現物：リバランスのみ・売り切らない</div>
+            <div style="font-size:13px; color:var(--ink2); line-height:1.8;">
+              全売却は行わない。CFD段階売却で利益を確定しつつ、現物の一定割合は永続保有として残す。デジタル準備資産化シナリオへの小さなヘッジとして機能させる。次のサイクル底値でCFDを再設定し、複利効果を継続させる。
+            </div>
+          </div>
+          <div style="background:var(--surface2); border-radius:10px; padding:1.1rem 1.25rem; border-left:4px solid var(--border);">
+            <div style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:8px;">📭 ハイベータ枠：空席のまま維持</div>
+            <div style="font-size:13px; color:var(--ink2); line-height:1.8;">
+              BTCに代わる明確なハイベータ資産は現時点では存在しない。「次のBTC」を予測して参入することは確証バイアスであり、Rule 02違反になる。高リターンはS&P500の長期複利に委ねる。空席は弱点ではない。
+            </div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:1rem;">
+          <div style="background:var(--bg); border-radius:8px; padding:0.9rem; text-align:center;">
+            <div style="font-size:11px; color:var(--muted); margin-bottom:4px;">コア（継続）</div>
+            <div style="font-size:13px; font-weight:700; color:var(--teal);">S&P500インデックス</div>
+            <div style="font-size:11px; color:var(--muted); margin-top:3px;">ERP基準でDCA継続</div>
+          </div>
+          <div style="background:var(--bg); border-radius:8px; padding:0.9rem; text-align:center;">
+            <div style="font-size:11px; color:var(--muted); margin-bottom:4px;">ヘッジ（継続）</div>
+            <div style="font-size:13px; font-weight:700; color:var(--gold);">金ETF</div>
+            <div style="font-size:11px; color:var(--muted); margin-top:3px;">固定ヘッジ枠維持</div>
+          </div>
+          <div style="background:var(--bg); border-radius:8px; padding:0.9rem; text-align:center;">
+            <div style="font-size:11px; color:var(--muted); margin-bottom:4px;">ハイベータ（空席）</div>
+            <div style="font-size:13px; font-weight:700; color:var(--muted);">——</div>
+            <div style="font-size:11px; color:var(--muted); margin-top:3px;">予測しない・待たない</div>
+          </div>
+        </div>
+        <div style="background:var(--gold-bg); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:10px 14px; font-size:13px; color:var(--gold); font-weight:500; line-height:1.65;">
+          📌 BTCのハイベータ性が失われるのは2035〜2040年以降の見込み。2029年の出口時点ではまだ十分なボラティリティが残っており、次サイクルのCFD活用は引き続き検討できる。ただし「ハイベータ枠を埋めなければならない」という強迫観念を持たないことが重要。
+        </div>
       </div>
     </div>
   </section>
