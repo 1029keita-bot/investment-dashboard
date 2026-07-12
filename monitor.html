@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>半期経済モニター ── 日米比較・定点観測</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f2ede4; --surface: #ffffff; --panel: #f8f5ef;
+  --border: #b8b0a0; --border2: #d0c8b8;
+  --ink: #16140d; --dim: #38342a; --muted: #6a6050;
+  --red: #aa2518; --red-bg: #fdf0ee; --red-bd: #d89088;
+  --amber: #9a5000; --amber-bg: #fdf4e6; --amber-bd: #d4a040;
+  --green: #175828; --green-bg: #ebf5ef; --green-bd: #78be94;
+  --blue: #183c6e; --blue-bg: #eaf0f8; --blue-bd: #80aad0;
+  --teal: #0d5c5c; --teal-bg: #e6f5f5; --teal-bd: #5aaeae;
+  --purple: #4a2c7a; --purple-bg: #f0eafa;
+  --gold: #8a6410; --gold-bg: #fbf3e0;
+  --serif: 'Noto Serif JP', serif; --sans: 'Noto Sans JP', sans-serif; --mono: 'DM Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.8; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+
+/* ヘッダ */
+.hero { margin-bottom: 1.75rem; }
+.hero-kicker { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.hero-title { font-family: var(--serif); font-size: 30px; font-weight: 900; line-height: 1.2; margin-bottom: 10px; }
+.hero-meta { display: flex; gap: 1.25rem; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.hero-meta b { color: var(--ink); font-weight: 500; }
+
+/* 免責帯 */
+.disclaimer { background: var(--ink); color: #f0e8d8; border-radius: 10px; padding: 1rem 1.4rem; margin-bottom: 1.75rem; font-size: 14px; line-height: 1.75; }
+.disclaimer b { color: #FFD4B2; }
+
+/* サマリー */
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1.25rem; }
+.sum-card { border-radius: 12px; padding: 1.25rem 1.4rem; border: 1px solid var(--border); background: var(--surface); }
+.sum-flag { font-size: 22px; margin-bottom: 4px; }
+.sum-country { font-family: var(--serif); font-size: 20px; font-weight: 900; margin-bottom: 6px; }
+.sum-shape { display: inline-block; font-family: var(--mono); font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 5px; margin-bottom: 10px; }
+.sum-line { font-size: 14px; color: var(--dim); line-height: 1.7; }
+
+/* 温度バッジ */
+.temp { display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 5px; letter-spacing: 0.03em; }
+.t-red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-bd); }
+.t-amber { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-bd); }
+.t-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-bd); }
+.t-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-bd); }
+.t-neutral { background: var(--panel); color: var(--muted); border: 1px solid var(--border2); }
+
+/* 資産スナップショット行 */
+.asset-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 1.75rem; }
+.asset-cell { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem 1rem; text-align: center; }
+.asset-cell .a-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.asset-cell .a-state { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+
+/* セクション */
+.sec { margin-bottom: 1.25rem; }
+.sec-head { display: flex; align-items: center; gap: 12px; padding: 0.9rem 1.3rem; background: var(--ink); border-radius: 10px 10px 0 0; cursor: pointer; user-select: none; }
+.sec-num { font-family: var(--mono); font-size: 12px; color: rgba(255,200,160,0.8); }
+.sec-title { font-size: 16px; font-weight: 700; color: #fff; flex: 1; }
+.sec-toggle { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.6); }
+.sec-body { border: 1px solid var(--border); border-top: none; border-radius: 0 0 10px 10px; background: var(--surface); padding: 1.3rem; display: none; }
+.sec-body.open { display: block; }
+
+/* 比較テーブル */
+.cmp { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 0.5rem; }
+.cmp th { text-align: left; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding: 8px 12px; border-bottom: 2px solid var(--border); }
+.cmp th.us-col { color: var(--blue); }
+.cmp th.jp-col { color: var(--red); }
+.cmp td { padding: 9px 12px; border-bottom: 1px solid var(--border2); vertical-align: top; line-height: 1.6; }
+.cmp td.metric { font-weight: 700; color: var(--dim); white-space: nowrap; }
+.cmp td .now { font-weight: 700; }
+.cmp td .fcast { display:block; font-size: 12px; color: var(--dim); margin-top: 2px; }
+.cmp td .prev { display:block; font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 2px; }
+.cmp td .desc { display:block; font-size: 12.5px; color: var(--muted); line-height:1.6; margin-top: 3px; }
+
+/* セクションまとめ 3点セット */
+.cmp-summary { margin-top: 14px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border2); }
+.cmp-summary .row { display: flex; gap: 10px; padding: 10px 14px; font-size: 13.5px; line-height: 1.65; border-bottom: 1px solid var(--border2); }
+.cmp-summary .row:last-child { border-bottom: none; }
+.cmp-summary .row .lbl { flex-shrink: 0; font-weight: 700; width: 68px; }
+.cmp-summary .row.us { background: var(--blue-bg); }
+.cmp-summary .row.us .lbl { color: var(--blue); }
+.cmp-summary .row.jp { background: var(--red-bg); }
+.cmp-summary .row.jp .lbl { color: var(--red); }
+.cmp-summary .row.imp { background: var(--gold-bg); }
+.cmp-summary .row.imp .lbl { color: var(--gold); }
+.arrow-up { color: var(--red); } .arrow-down { color: var(--green); } .arrow-flat { color: var(--muted); }
+
+/* コメントボックス */
+.note { background: var(--gold-bg); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 13px; color: var(--gold); line-height: 1.7; margin-top: 12px; }
+.note.warn { background: var(--red-bg); border-left-color: var(--red); color: var(--red); }
+.note.info { background: var(--blue-bg); border-left-color: var(--blue); color: var(--blue); }
+
+/* 小見出し */
+.subhead { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); font-weight: 500; margin: 1rem 0 0.6rem; padding-bottom: 3px; border-bottom: 1px solid var(--border2); }
+.bullet { font-size: 14px; color: var(--dim); line-height: 1.85; margin-left: 1.1em; }
+.bullet li { margin-bottom: 3px; }
+
+@media (max-width: 720px) {
+  .summary-grid { grid-template-columns: 1fr; }
+  .asset-strip { grid-template-columns: repeat(2, 1fr); }
+  .hero-title { font-size: 24px; }
+  .cmp { font-size: 13px; }
+  .cmp td, .cmp th { padding: 7px 8px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ヘッダ -->
+  <div class="hero">
+    <div class="hero-kicker">Semi-Annual Economic Monitor / 日米比較・定点観測</div>
+    <div class="hero-title">半期経済モニター</div>
+    <div class="hero-meta">
+      <span>版：<b>2026年 上半期</b></span>
+      <span>前回：<b>——</b></span>
+      <span>次回更新：<b>2026年12月</b></span>
+      <span>用途：<b>4年リバランスの配分参考のみ</b></span>
+    </div>
+  </div>
+
+  <!-- 免責 -->
+  <div class="disclaimer">
+    ⚠️ <b>この資料は投資判断（売買トリガー）には使わない。</b>4年ごとのリバランスで資産配分の比率を考える際の「背景理解」としてのみ用いる。個別の指標が悪化しても、それを理由に機械的DCAや保有方針を変えない。基本はインデックス投資であり、セクター情報は知識として知っておくだけ。<b>「知っている」と「行動する」は分ける。</b>
+  </div>
+
+  <!-- サマリー：日米の状態 -->
+  <div class="summary-grid">
+    <div class="sum-card">
+      <div class="sum-flag">🇺🇸</div>
+      <div class="sum-country">米国</div>
+      <span class="sum-shape t-red">K字型 ── 格差拡大・下層崩壊の初期</span>
+      <div class="sum-line">平均値（失業率4.3%・S&amp;P500高値圏）が実態を覆い隠す。下層家計の信用劣化・財政利払い急増・AIバブル膨張が同時進行。インフレ再燃でFRBはタカ派化し年内利上げへ。<b>総合判定：防衛的ポジション継続。</b></div>
+    </div>
+    <div class="sum-card">
+      <div class="sum-flag">🇯🇵</div>
+      <div class="sum-country">日本</div>
+      <span class="sum-shape t-amber">L字型 ── 低水準での停滞・静かな衰退</span>
+      <div class="sum-line">「崩れる」ではなく「上がらない」構造。春闘5%超・実質賃金3ヶ月連続プラスの明るさの一方、6月に31年ぶり1.0%へ利上げし「金利のある世界」へ本格突入。利払い急増と構造円安が並走。<b>総合判定：円建て現金の実質価値は目減り継続。対外・実物資産への分散が合理的。</b></div>
+    </div>
+  </div>
+
+  <!-- 資産スナップショット -->
+  <div class="asset-strip">
+    <div class="asset-cell">
+      <div class="a-label">米国株</div>
+      <div class="a-state" style="color:var(--red);">割高</div>
+      <span class="temp t-red">上値余地ほぼ無</span>
+    </div>
+    <div class="asset-cell">
+      <div class="a-label">債券</div>
+      <div class="a-state" style="color:var(--amber);">日米とも利上げ</div>
+      <span class="temp t-amber">短中期で利回り確保</span>
+    </div>
+    <div class="asset-cell">
+      <div class="a-label">BTC</div>
+      <div class="a-state" style="color:var(--green);">割安・恐怖圏</div>
+      <span class="temp t-green">MVRV低位</span>
+    </div>
+    <div class="asset-cell">
+      <div class="a-label">金</div>
+      <div class="a-state" style="color:var(--amber);">高値圏</div>
+      <span class="temp t-amber">分散・ヘッジ枠</span>
+    </div>
+    <div class="asset-cell">
+      <div class="a-label">AI・半導体</div>
+      <div class="a-state" style="color:var(--red);">過熱・集中</div>
+      <span class="temp t-red">知識として注視</span>
+    </div>
+  </div>
+
+  <!-- ① マクロ経済 -->
+  <div class="sec">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <span class="sec-num">01</span>
+      <span class="sec-title">マクロ経済（成長・インフレ・消費）</span>
+      <span class="sec-toggle">＋ 開く</span>
+    </div>
+    <div class="sec-body">
+      <table class="cmp">
+        <thead><tr><th>指標（統一定義）</th><th class="us-col">🇺🇸 米国</th><th class="jp-col">🇯🇵 日本</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="metric">経済の型</td>
+            <td><span class="now">K字型</span>
+              <span class="desc">上下格差の拡大。上位10%が株式の約93%を保有し、資産効果が消費を支える。</span></td>
+            <td><span class="now">L字型</span>
+              <span class="desc">低水準での停滞。低債務・高貯蓄の逆構造で、将来不安から消費が伸びにくい。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">GDP成長率<br>（見通し）</td>
+            <td><span class="now">+2.2%</span>
+              <span class="fcast">2026年・FRB見通し</span>
+              <span class="prev">前回：+2.4%（3月）→ 小幅下方修正</span>
+              <span class="desc">拡大は続くがペースは鈍化方向。</span></td>
+            <td><span class="now">+0.6%前後</span>
+              <span class="fcast">2026年度・緩やかな成長（BOJ見通し）</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">所得→支出の循環が徐々に強まるとの想定。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">コアインフレ<br>（前年比）</td>
+            <td><span class="now">約3.1%</span>
+              <span class="fcast">時点値（コアPCE・直近）／ 年末見通し 3.3%</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">2%目標を大きく上回り再燃。見通しは上方修正が続く。</span></td>
+            <td><span class="now">約2.7%</span>
+              <span class="fcast">時点値（コアCPI・2025年度）／ 2026年度見通し +1.9%</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">高止まりだが来年度は鈍化見通し。円安が上振れ要因。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">実質賃金<br>（前年比）</td>
+            <td><span class="now">マイナス圏</span>
+              <span class="fcast">名目は上昇もガソリン高で実質は目減り</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">下層ほど購買力の低下が深刻。</span></td>
+            <td><span class="now">+1.0%</span>
+              <span class="fcast">2026年3月・3ヶ月連続プラス</span>
+              <span class="prev">前回：4年連続マイナス圏 <span class="arrow-down">▲改善</span></span>
+              <span class="desc">春闘5%超が寄与も、物価次第で再マイナスの綱渡り。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">インフレの<br>性質</td>
+            <td><span class="now">スタグフレーション型</span>
+              <span class="desc">成長鈍化とインフレ再燃の同時進行。ホルムズ由来のエネルギー高が主因。</span></td>
+            <td><span class="now">コストプッシュ型</span>
+              <span class="desc">円安＋エネルギー高による輸入インフレ。補助金終了で再上昇リスク。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">消費の<br>持続性</td>
+            <td><span class="now">条件付き（脆い）</span>
+              <span class="desc">上層の株高頼み。S&amp;P500が30〜40%調整すると上層消費も急収縮。下層は既に信用劣化。</span></td>
+            <td><span class="now">低位で安定</span>
+              <span class="desc">過剰貯蓄で崩れにくいが伸びない。実質賃金の定着が回復の前提。</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cmp-summary">
+        <div class="row us"><span class="lbl">🇺🇸 米国</span><span>成長は鈍化しつつインフレが再燃するスタグフレーション型。表面の堅調さは上層の資産効果に依存し、下層の信用劣化で足元は脆い。</span></div>
+        <div class="row jp"><span class="lbl">🇯🇵 日本</span><span>「崩れない代わりに上がらない」L字型。実質賃金がようやくプラス転換したが定着は物価次第で、消費は低位安定にとどまる。</span></div>
+        <div class="row imp"><span class="lbl">📊 含意</span><span>両国とも実質購買力の劣化という点で共通。エネルギー価格（ホルムズ）が共通変数。配分面では、円偏重を避け対外・実物資産へ分散する背景を補強する。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ② 雇用・労働 -->
+  <div class="sec">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <span class="sec-num">02</span>
+      <span class="sec-title">雇用・労働市場</span>
+      <span class="sec-toggle">＋ 開く</span>
+    </div>
+    <div class="sec-body">
+      <table class="cmp">
+        <thead><tr><th>指標（統一定義）</th><th class="us-col">🇺🇸 米国</th><th class="jp-col">🇯🇵 日本</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="metric">公式失業率<br>（U-3）</td>
+            <td><span class="now">4.3%</span>
+              <span class="fcast">広義U-6は8.2%（前月8.0%から悪化）</span>
+              <span class="prev">前回：—— <span class="arrow-up">▲悪化方向</span></span>
+              <span class="desc">数字は横ばいだが、失業者の絶対数は増加。年内4.5〜4.8%への上昇シナリオも。</span></td>
+            <td><span class="now">2.5%</span>
+              <span class="fcast">前年同率／失業者176万人</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">歴史的低水準。量は充足しており、問題は雇用の「質」。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">労働参加率<br>／就業の質</td>
+            <td><span class="now">参加率61.8%</span>
+              <span class="fcast">2021年来の最低水準</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">フルタイム就業者が減少＝労働市場からの「退出」が増加。</span></td>
+            <td><span class="now">就業率62.2%</span>
+              <span class="fcast">非正規比率36.7%（前年比▲0.4pt）</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">非正規比率の固定化が構造課題。量は充足も質が上がらない。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">賃上げ</td>
+            <td><span class="now">名目 約4% / 実質マイナス</span>
+              <span class="fcast">名目賃金は伸びるが実質は目減り</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">ガソリン高が実質購買力を追撃。下層ほど深刻。</span></td>
+            <td><span class="now">春闘5.26%</span>
+              <span class="fcast">3年連続5%超（連合集計）</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">手取り増は推計+1.3%（物価・保険料・支援金が吸収）。名目の勝利が実質の敗北を隠す。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">構造課題</td>
+            <td><span class="now">質の劣化</span>
+              <span class="desc">採用抑制が進めば失業率が上昇。表面の良好さの下で内実が悪化。</span></td>
+            <td><span class="now">大企業5%と中小の壁</span>
+              <span class="desc">中小の48.4%が最賃1500円「不可能」。人件費高騰で中小倒産+77.2%。</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cmp-summary">
+        <div class="row us"><span class="lbl">🇺🇸 米国</span><span>失業率4.3%と数字は良好だが、参加率低下・フルタイム減少で内実は悪化。「質の劣化」が進む。</span></div>
+        <div class="row jp"><span class="lbl">🇯🇵 日本</span><span>失業率2.5%と量は充足。春闘5%超も手取り増はわずかで、非正規固定化など質が課題。</span></div>
+        <div class="row imp"><span class="lbl">📊 含意</span><span>両国とも「表面の失業率だけを見ず、その下の質を疑う」のが読み方。雇用の質は消費の持続性に直結し、株式比率を考える背景になる。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ 財政・金融政策・為替 -->
+  <div class="sec">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <span class="sec-num">03</span>
+      <span class="sec-title">金融政策・金利（共通規格で比較）</span>
+      <span class="sec-toggle">＋ 開く</span>
+    </div>
+    <div class="sec-body">
+      <div class="note info" style="margin-top:0; margin-bottom:12px;">📌 <b>両中央銀行とも「利上げ方向」に転換。</b>米国はパウエル退任・ウォーシュ新議長でタカ派化、日本は6月に31年ぶり1.0%へ利上げ。円安・インフレが両国共通の利上げ圧力。（前回資料の「FRB利下げ困難／BOJ封じ込め」は誤りだったため訂正）</div>
+      <table class="cmp">
+        <thead><tr><th>指標（統一定義）</th><th class="us-col">🇺🇸 米国（FRB）</th><th class="jp-col">🇯🇵 日本（BOJ）</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="metric">政策金利<br>（現行）</td>
+            <td><span class="now">3.50〜3.75%</span>
+              <span class="fcast">6/17会合は据置・タカ派声明</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">ウォーシュ新議長のもと据置だが利上げ準備。</span></td>
+            <td><span class="now">1.00%</span>
+              <span class="fcast">6/16に0.75→1.00%へ利上げ（31年ぶり高水準）</span>
+              <span class="prev">前回：0.75% <span class="arrow-up">▲利上げ</span></span>
+              <span class="desc">「金利のある世界」へ本格突入。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">年内の<br>見通し</td>
+            <td><span class="now">1〜3回の利上げ</span>
+              <span class="fcast">9月利上げが有力、12月までに市場が織り込み</span>
+              <span class="prev">前回：——</span>
+              <span class="desc">利上げ回数・幅は不確実だが方向は上。</span></td>
+            <td><span class="now">追加利上げ</span>
+              <span class="fcast">年内（10月・12月）が大勢。到達点1.5〜2.0%</span>
+              <span class="prev">前回：——</span>
+              <span class="desc">円安・インフレでビハインドザカーブ警戒。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">政策<br>スタンス</td>
+            <td><span class="temp t-red">引き締め（タカ派）</span>
+              <span class="desc">ウォーシュ新議長が物価安定を最優先。フォワードガイダンス廃止。</span></td>
+            <td><span class="temp t-red">引き締め（利上げ継続）</span>
+              <span class="desc">利上げ志向だが高市政権は慎重で軋轢。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">コアインフレ<br>（前年比）</td>
+            <td><span class="now">約3.1%</span>
+              <span class="fcast">時点値（コアPCE）／ 年末見通し 3.3%</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">2%目標を大きく上回り、見通しは上方修正が続く。</span></td>
+            <td><span class="now">約2.7%</span>
+              <span class="fcast">時点値（コアCPI・2025年度）／ 2026年度見通し +1.9%</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">高止まりだが来年度は鈍化見通し。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">10年国債<br>利回り</td>
+            <td><span class="now">約4.56%</span>
+              <span class="fcast">7月時点。財政・インフレ・エネルギー高で高止まり</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">利下げ観測後退で低下しにくい。30年債は5%超。</span></td>
+            <td><span class="now">約2.4%</span>
+              <span class="fcast">27年ぶりの高水準</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">利上げ＋国債買入減額で緩やかに上昇。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">利上げの<br>主因</td>
+            <td><span class="now">インフレ再燃</span>
+              <span class="desc">PCE3%超＋堅調な雇用＋ホルムズ由来のエネルギー高。</span></td>
+            <td><span class="now">賃金定着＋円安</span>
+              <span class="desc">春闘5%超の定着＋円安是正＋エネルギー高。</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cmp-summary">
+        <div class="row us"><span class="lbl">🇺🇸 米国</span><span>パウエル退任・ウォーシュ新議長でタカ派化。据置中だが9月にも利上げ、年内1〜3回を市場が織り込む。</span></div>
+        <div class="row jp"><span class="lbl">🇯🇵 日本</span><span>6月に31年ぶり1.0%へ利上げ済み。年内追加が大勢で到達点1.5〜2.0%。政府との軋轢が変数。</span></div>
+        <div class="row imp"><span class="lbl">📊 含意</span><span>両国同時の利上げはリスク資産に逆風の「土壌」。ただし引き金にはしない。日本の利上げは円安是正に働き、円建て資産の目減りをやや和らげる方向。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③b 財政・為替 -->
+  <div class="sec">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <span class="sec-num">03b</span>
+      <span class="sec-title">財政・為替</span>
+      <span class="sec-toggle">＋ 開く</span>
+    </div>
+    <div class="sec-body">
+      <table class="cmp">
+        <thead><tr><th>指標（統一定義）</th><th class="us-col">🇺🇸 米国</th><th class="jp-col">🇯🇵 日本</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="metric">政府債務<br>の対GDP比</td>
+            <td><span class="now">約126%</span>
+              <span class="fcast">一般政府ベース（IMF 2026年4月）</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">公的債務は101%で戦後最高水準を更新中。2031年に142%へ上昇見通し。</span></td>
+            <td><span class="now">約204%</span>
+              <span class="fcast">一般政府ベース・世界最高（IMF 2026年4月）</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">大半が円建て・国内保有（BOJ46%等）で当面は管理可能だが、金利上昇で負担増。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">財政赤字<br>の対GDP比</td>
+            <td><span class="now">5.8%</span>
+              <span class="fcast">2026年・CBO見通し（過去50年平均3.8%）</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">赤字は1.9兆ドル。歴史的に大きく、2036年に6.7%へ拡大見通し。</span></td>
+            <td><span class="now">4.6%</span>
+              <span class="fcast">2026年3月期（前年の7.1%から改善）</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">改善傾向だが依然赤字。国債費31.3兆円が財政を圧迫。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">利払い費<br>の対GDP比</td>
+            <td><span class="now">約3.5%</span>
+              <span class="fcast">2026年。国防費とほぼ同額に</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">利払いが歳出第2位。対歳入比18.5%と過去最高。</span></td>
+            <td><span class="now">利払い13兆円</span>
+              <span class="fcast">国債費31.3兆円（初の30兆超）・想定金利3%</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">金利1%上昇で将来利払い+8.7兆円。利上げが直撃する局面。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">為替<br>（USD/JPY）</td>
+            <td><span class="now">ドル信認が論点</span>
+              <span class="desc">双子の赤字・債務拡大でドルの基軸性に揺らぎ。</span></td>
+            <td><span class="now">157円付近</span>
+              <span class="fcast">3つの赤字（貿易・デジタル・所得）が構造円売り</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">日本の利上げは円高方向に作用し、目減りをやや緩和。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">通貨の割安度<br>（ビッグマック指数）</td>
+            <td><span class="now">基準（0%）</span>
+              <span class="fcast">米国$6.12を基準とする</span>
+              <span class="desc">購買力平価の基準点。</span></td>
+            <td><span class="now">−50.5%</span>
+              <span class="fcast">円は約50%過小評価（2026年1月・The Economist）</span>
+              <span class="prev">前回：——（初回）</span>
+              <span class="desc">円¥480≒$3.03 vs 米$6.12。円の実力は市場レートより大幅に強く、構造円安の異常さを客観的に示す。</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cmp-summary">
+        <div class="row us"><span class="lbl">🇺🇸 米国</span><span>債務126%・赤字5.8%・利払い3.5%（国防費並み）。数字は日本より低いが、赤字が拡大方向でドル信認が長期の論点。</span></div>
+        <div class="row jp"><span class="lbl">🇯🇵 日本</span><span>債務204%と世界最高だが国内保有で管理可能。赤字は4.6%へ改善も、利上げで利払いが急増し財政余地が縮小。</span></div>
+        <div class="row imp"><span class="lbl">📊 含意</span><span>債務比率は日本が突出するが、赤字の拡大方向は米国が深刻。両国とも「金利のある世界」で財政の限界に直面。長期の通貨・資産分散＝円偏重を避け対外・実物資産へ、を補強する。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ 政治・サイクル -->
+  <div class="sec">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <span class="sec-num">04</span>
+      <span class="sec-title">政治・選挙サイクル</span>
+      <span class="sec-toggle">＋ 開く</span>
+    </div>
+    <div class="sec-body">
+      <table class="cmp">
+        <thead><tr><th>項目（統一定義）</th><th class="us-col">🇺🇸 米国</th><th class="jp-col">🇯🇵 日本</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="metric">次の主要<br>選挙</td>
+            <td><span class="now">2026年11月</span>
+              <span class="fcast">中間選挙／次の大統領選は2028年11月</span>
+              <span class="desc">中間選挙年は統計的に株が弱い（高値からの下落率が大きい）。</span></td>
+            <td><span class="now">任期満了2028年10月</span>
+              <span class="fcast">衆院・参院。解散で前倒しの可能性</span>
+              <span class="desc">政局は流動的。解散時期が変数。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">現政権の<br>特徴</td>
+            <td><span class="now">トランプ政権（共和）</span>
+              <span class="desc">関税・地政学のヘッドライン相場。政権自身がインフレ的サプライズの供給源にもなる。株価を成績表と見る傾向。</span></td>
+            <td><span class="now">高市政権</span>
+              <span class="desc">利上げには慎重（積極財政・緩和寄り）。政府とBOJの方向性に軋轢。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">中央銀行<br>との関係</td>
+            <td><span class="now">FRBへ利下げ圧力</span>
+              <span class="desc">政権は利下げを望むが、ウォーシュ新議長はタカ派で独立的。むしろ利上げ方向。</span></td>
+            <td><span class="now">BOJと綱引き</span>
+              <span class="desc">BOJは6月に1.0%へ利上げ済み・年内追加が焦点だが、政権は慎重で軋轢。</span></td>
+          </tr>
+          <tr>
+            <td class="metric">注目の<br>政策</td>
+            <td><span class="now">関税・移民・減税</span>
+              <span class="desc">関税は財政改善とインフレ押上げの両面。地政学（ホルムズ）対応も変数。</span></td>
+            <td><span class="now">暗号資産税制</span>
+              <span class="desc">2028年前後に分離課税20%・ETF解禁予定（金商法改正が前提）。為替介入・補助金継続も焦点。</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cmp-summary">
+        <div class="row us"><span class="lbl">🇺🇸 米国</span><span>2026年11月中間選挙（株が弱い年）→2028年11月大統領選。トランプ政権のヘッドライン相場で変動大。FRBはタカ派で独立的。</span></div>
+        <div class="row jp"><span class="lbl">🇯🇵 日本</span><span>高市政権は緩和寄りでBOJと軋轢。2028年前後に暗号資産の分離課税20%・ETF解禁が予定。</span></div>
+        <div class="row imp"><span class="lbl">📊 含意</span><span>4年リバランスの根幹は米大統領選サイクル。政治情報は配分タイミングの目安であり、個別ニュースで売買しない。日本の暗号資産税制はBTC出口（2028年）の前提。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ 資産クラス別スナップショット -->
+  <div class="sec">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <span class="sec-num">05</span>
+      <span class="sec-title">資産クラス別スナップショット（株式・債券・BTC・金）</span>
+      <span class="sec-toggle">＋ 開く</span>
+    </div>
+    <div class="sec-body">
+      <div class="note info" style="margin-top:0; margin-bottom:12px;">📌 割高・割安は主観評価を避け、客観指標の数値で判断する。温度は指標から機械的に導いた結果であり、その根拠を「判断指標」列に明示する。</div>
+      <table class="cmp">
+        <thead><tr><th>資産</th><th>判断指標（客観データ）</th><th>温度</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="metric">米国株</td>
+            <td><span class="now">CAPE 約38 ／ バフェット指数 約200%超 ／ ERP 負</span>
+              <span class="desc">CAPEは歴史的高値圏（長期平均17前後）。ERP（1÷CAPE−FF金利）が負でDCA停止中。</span></td>
+            <td><span class="temp t-red">割高</span></td>
+          </tr>
+          <tr>
+            <td class="metric">日本株</td>
+            <td><span class="now">予想PER 約15〜16倍 ／ PBR 約1.4倍</span>
+              <span class="desc">米国株ほど割高ではないが、BOJ利上げ・円高転換が上値抑制要因。コアには入れない。</span></td>
+            <td><span class="temp t-amber">中立〜やや高</span></td>
+          </tr>
+          <tr>
+            <td class="metric">米国債</td>
+            <td><span class="now">10年利回り 約4.56% ／ 実質利回りプラス</span>
+              <span class="desc">利上げ局面で高止まり。短中期のドル建てでインカム確保。</span></td>
+            <td><span class="temp t-amber">利回り確保</span></td>
+          </tr>
+          <tr>
+            <td class="metric">BTC</td>
+            <td><span class="now">MVRV Z-Score 0.25 ／ NUPL 0.15 ／ ATHから約−50%</span>
+              <span class="desc">オンチェーン指標が歴史的割安・恐怖圏。株との相関0.96でヘッジにはならない。</span></td>
+            <td><span class="temp t-green">割安・蓄積期</span></td>
+          </tr>
+          <tr>
+            <td class="metric">金</td>
+            <td><span class="now">実質金利プラスでも高値維持 ／ 中銀買い継続</span>
+              <span class="desc">通常は実質金利上昇で下落するが、中銀需要・地政学で高値圏。株・BTCと低相関。</span></td>
+            <td><span class="temp t-amber">高値・分散枠</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cmp-summary">
+        <div class="row imp"><span class="lbl">📊 含意</span><span>米国株は指標上ほぼ全て割高（CAPE高・ERP負）でコア維持だが増やさない。BTCはオンチェーン指標が割安でサイクルに沿った蓄積期（サテライト枠内）。債券・金は分散枠。すべて「今すぐ売買」ではなく4年リバランスの比率調整の材料。数値は次回更新で「前回」と比較する。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑥ AI・半導体（知識として） -->
+  <div class="sec">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <span class="sec-num">06</span>
+      <span class="sec-title">AI・半導体セクター（知識として知っておくだけ）</span>
+      <span class="sec-toggle">＋ 開く</span>
+    </div>
+    <div class="sec-body">
+      <div class="note warn" style="margin-top:0; margin-bottom:12px;">⚠️ 個別株・セクターには投資しない（インデックスに内包済み）。以下はバブルの温度を理解し、4年リバランスで株式比率を考えるための背景知識。</div>
+      <div class="subhead">AIバブルの構造</div>
+      <ul class="bullet">
+        <li>設備投資が収益より約50%速く伸び、乖離率46%は2000年通信バブル（32%）を超過。</li>
+        <li>ハイパースケーラーのFCFが枯渇し、負債（社債）依存に転換。資金調達の物語に変質。</li>
+        <li>循環取引（NVIDIA→OpenAI→NVIDIA）で売上が相互に膨張。OpenAIは2029年まで累積赤字見込み。</li>
+      </ul>
+      <div class="subhead">崩壊の順序（川上→川下）</div>
+      <ul class="bullet">
+        <li>AIラボ（赤字）→ ハイパースケーラー（負債依存）→ 最後に半導体メモリ（実需で好調）。</li>
+        <li>メモリ需給は2028年まで逼迫＝「バブルは本物」の錯覚を最後まで支える。</li>
+        <li>カナリア銘柄：SK Hynix・Samsung・キオクシア。韓国はレバレッジ個人の清算連鎖リスク。</li>
+      </ul>
+      <div class="subhead">最重要の先行指標</div>
+      <ul class="bullet">
+        <li>HY OAS（ハイイールド債スプレッド）＝唯一、構造的に株より先行。急拡大が崩壊のサイン。</li>
+        <li>AI関連企業のCDS（Oracle等）、四半期の設備投資ガイダンス。</li>
+      </ul>
+      <div class="cmp-summary">
+        <div class="row imp"><span class="lbl">📊 含意</span><span>崩壊の「引き金」は予測不可能（なんでもない小さなニュース）。読めるのは「土壌の乾き具合」＝金利・バリュエーション・レバレッジ、特にクレジットスプレッド。個別株には投資せず、バブルの温度は株式比率の判断材料にとどめる。</span></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div style="text-align:center; font-family:var(--mono); font-size:11px; color:var(--muted); margin-top:2rem; line-height:1.8;">
+    半期経済モニター ／ 次回更新：2026年12月<br>
+    投資判断には使わない — 4年リバランスの配分参考のみ
+  </div>
+
+</div>
+
+<script>
+function toggleSec(head){
+  const body = head.nextElementSibling;
+  const toggle = head.querySelector('.sec-toggle');
+  const open = body.classList.toggle('open');
+  toggle.textContent = open ? '− 閉じる' : '＋ 開く';
+}
+</script>
+</body>
+</html>
