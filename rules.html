@@ -254,7 +254,7 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
   <div class="meta-bar">
     <div class="meta-cell"><div class="meta-label">制定日</div><div class="meta-val">2026.05.11</div></div>
     <div class="meta-cell"><div class="meta-label">最終改定日</div><div class="meta-val">2026.07.10</div></div>
-    <div class="meta-cell"><div class="meta-label">改定理由</div><div class="meta-val reason">v19：投資哲学を3本柱に再整理（損をしない／ルールを守る／感情で判断しない）、ルールを長期・分散・積立に対応、高配当ETFをSCHDへ変更、暴落時緊急買いルール削除、BTC戦略を全面刷新（月300万×12ヶ月・総額3600万・ダブリング/レバレッジ廃止・出口はモードX/Y分岐）。</div></div>
+    <div class="meta-cell"><div class="meta-label">改定理由</div><div class="meta-val reason">v20：BTC買いルールを確定（総額3,000万／月250万×12回／7月は手動・8月からゼロつみたて自動）。前倒しDCA（ATH比−60%で翌月分を同時購入・回数無制限・総額は増やさない）を新設。追加資金型のダブリングは不採用を明記。サイクル観に「サイクルも株の右肩上がりも経験則にすぎない」認識を追記。</div></div>
   </div>
 
   <div class="hero">
@@ -857,28 +857,31 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
           <div class="ac-name" style="margin-bottom:0; color:var(--purple);">上昇 → 出口</div>
         </div>
       </div>
-      <div style="background:var(--gold-bg); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:10px 14px; font-size:14px; color:var(--gold); line-height:1.7;">
+      <div style="background:var(--gold-bg); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:10px 14px; font-size:14px; color:var(--gold); line-height:1.7; margin-bottom:8px;">
         📌 2026年7月時点：ATH（$126,198・2025年10月6日）から約50%下落。MVRV Z-Score 0.25・NUPL 0.15の割安・恐怖圏。専門家の底コンセンサスは2026年9〜11月・$50,000〜$55,000圏。ただしETF以降は下落が浅くなる傾向もあり、サイクル通りに動く保証はない。
+      </div>
+      <div style="background:rgba(184,64,24,0.06); border-left:3px solid var(--rust); border-radius:0 6px 6px 0; padding:9px 12px; font-size:13px; color:var(--rust-dark); line-height:1.7;">
+        ⚠️ サイクルが機能する保証はない。ただし「株が永遠に右肩上がり」も同じく過去の経験則にすぎず、未来の保証ではない。どちらも当てにいかない。<strong>予測が外れても壊れない構造にすることが唯一の防御</strong>であり、分散・機械的DCA・数値で固定した出口ルールは、すべてこの一点から導かれる。
       </div>
     </div>
 
     <!-- 買いルール -->
-    <div style="font-size:13px; font-family:var(--mono); letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); font-weight:700; margin-bottom:8px; padding-bottom:4px; border-bottom:2px solid var(--surface2);">買いルール ── シンプルな機械的DCA（BITPOINT ゼロつみたて・全自動）</div>
+    <div style="font-size:13px; font-family:var(--mono); letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); font-weight:700; margin-bottom:8px; padding-bottom:4px; border-bottom:2px solid var(--surface2);">買いルール ── 機械的DCA（BITPOINT ゼロつみたて）</div>
     <div class="asset-grid" style="grid-template-columns:repeat(4,1fr); margin-bottom:10px;">
       <div class="ac" style="border-top-color:var(--purple);">
         <div class="ac-cat">開始</div>
         <div class="ac-name" style="font-family:var(--mono); margin-bottom:2px;">2026年7月</div>
-        <div style="font-size:12px; color:var(--muted);">毎月10日・自動</div>
+        <div style="font-size:12px; color:var(--muted);">7月は手動／8月から自動</div>
       </div>
       <div class="ac" style="border-top-color:var(--purple);">
-        <div class="ac-cat">期間</div>
-        <div class="ac-name" style="font-family:var(--mono); margin-bottom:2px;">12ヶ月</div>
-        <div style="font-size:12px; color:var(--muted);">〜2027年6月</div>
+        <div class="ac-cat">回数 / 期間</div>
+        <div class="ac-name" style="font-family:var(--mono); margin-bottom:2px;">12回</div>
+        <div style="font-size:12px; color:var(--muted);">〜2027年6月（前倒し時は短縮）</div>
       </div>
       <div class="ac" style="border-top-color:var(--purple);">
         <div class="ac-cat">月額 / 総額</div>
-        <div class="ac-name" style="font-family:var(--mono); margin-bottom:2px;">¥300万</div>
-        <div style="font-size:12px; color:var(--muted);">総額 ¥3,600万</div>
+        <div class="ac-name" style="font-family:var(--mono); margin-bottom:2px;">¥250万</div>
+        <div style="font-size:12px; color:var(--muted);">総額 ¥3,000万（固定）</div>
       </div>
       <div class="ac" style="border-top-color:var(--purple);">
         <div class="ac-cat">経路</div>
@@ -886,18 +889,32 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
         <div style="font-size:12px; color:var(--muted);">口座振替・スプレッド0</div>
       </div>
     </div>
-    <div class="asset-grid" style="grid-template-columns:1fr 1fr; margin-bottom:10px;">
-      <div class="ac" style="border-top-color:var(--teal);">
-        <div class="ac-cat" style="color:var(--teal);">✅ 採用した理由</div>
-        <div style="font-size:14px; color:var(--ink2); line-height:1.75;">判断・操作は一切不要の全自動。悩む余地をゼロにする。「時間が経つほど不確実性が増す」認識に沿い、早く仕込みを終える12ヶ月。現在すでに割安圏。</div>
-      </div>
-      <div class="ac" style="border-top-color:var(--rust);">
-        <div class="ac-cat" style="color:var(--rust);">🚫 ダブリング・レバレッジは不採用</div>
-        <div style="font-size:14px; color:var(--ink2); line-height:1.75;">急落時の買い増しは「今買うか」の判断を毎回迫り、感情排除の原則と矛盾する。ETF以降は下落が浅く発動機会も少ない。レバレッジ商品は不変ルールで禁止。</div>
+
+    <!-- 前倒しDCA -->
+    <div class="risk-item" style="margin-bottom:10px; border-left:4px solid var(--purple);">
+      <span class="risk-tag" style="background:var(--purple);">前倒しDCA</span>
+      <div class="risk-text">
+        <strong>毎月10日、サイクルATH（$126,198）からの下落率のみを確認する。−60%以下（$50,400以下）なら、その月は翌月分も同時に購入する（250万→500万）。</strong>回数制限なし。総額3,000万は増やさない（追加資金の投入＝ダブリングではなく、購入順序の前倒しに過ぎない）。前倒しした分だけ最終月が早まる。<br>
+        引き金は「急落したと感じたら」ではなく<strong>「ATHから60%」という数字のみ</strong>。判断の余地をゼロにするための数値固定であり、感情が入る隙をなくす。
       </div>
     </div>
+
+    <div class="asset-grid" style="grid-template-columns:1fr 1fr; margin-bottom:10px;">
+      <div class="ac" style="border-top-color:var(--teal);">
+        <div class="ac-cat" style="color:var(--teal);">✅ 前倒しを採用した理由</div>
+        <div style="font-size:14px; color:var(--ink2); line-height:1.75;">−60%はBTCにとって「稀な大底」ではなくサイクル内の現実的な下落帯。そこで買えるなら底帯を捉えられる。数値固定なので判断は生じない。<strong>来れば得し、来なくても損しない</strong>片側だけのオプション。</div>
+      </div>
+      <div class="ac" style="border-top-color:var(--rust);">
+        <div class="ac-cat" style="color:var(--rust);">🚫 追加資金・レバレッジは不採用</div>
+        <div style="font-size:14px; color:var(--ink2); line-height:1.75;">総額を増やす予備資金は持たない（「今入れるか」の判断を生み、地政学イベントのたびに感情の入口になるため）。レバレッジ商品は不変ルールで禁止。</div>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2); border-radius:8px; padding:10px 14px; font-size:13px; color:var(--muted); line-height:1.7; margin-bottom:8px;">
+      📌 前倒しが続いて3,000万を早期に使い切った場合、それは「割安圏で仕込み切れた」という最良の結果として受け入れる。弾を残そうとしない（＝底を当てにいかない）ことが規律。
+    </div>
     <div style="background:var(--surface2); border-radius:8px; padding:10px 14px; font-size:13px; color:var(--muted); line-height:1.7; margin-bottom:1.25rem;">
-      📌 危険な情報は日々の相場観察で自然に入る。入ってきても機械的DCAゆえ行動は変わらない。よって指標の定常監視はしない。確認は6月・12月と2028年1月1日の判定時のみ。
+      📌 毎月10日のATH比確認は「監視」ではなく<strong>計算</strong>（Yes/Noの判定のみ）。これ以外の指標の定常監視はしない。確認は6月・12月と2028年1月1日の判定時のみ。
     </div>
 
     <!-- 税務の絶対制約 -->
@@ -1011,11 +1028,12 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
   <section class="sec">
     <div class="sec-hd"><span class="sec-num">07</span><h2 class="sec-title">実行スケジュール</h2></div>
     <div class="tl-grid">
-      <div class="tl-item"><span class="tl-badge">2026.07〜</span><div class="tl-desc"><strong>BTC DCA開始（月300万円×12ヶ月）。</strong>BITPOINTゼロつみたて、毎月10日、全自動。三井住友銀行から口座振替。判断・操作は一切不要。</div></div>
+      <div class="tl-item"><span class="tl-badge">2026.07</span><div class="tl-desc"><strong>BTC DCA開始・1回目のみ手動（250万円）。</strong>タイミングは計らず、気づいた時点で即実行する。迷う時間そのものが規律を崩すコスト。</div></div>
+      <div class="tl-item"><span class="tl-badge">2026.08〜</span><div class="tl-desc"><strong>BTCゼロつみたて自動開始（月250万円・残り11回）。</strong>毎月10日、全自動。三井住友銀行から口座振替。毎月ATH比のみ確認し、−60%以下なら翌月分も前倒し購入。</div></div>
       <div class="tl-item"><span class="tl-badge">2026.07〜11</span><div class="tl-desc"><strong>株式以外の購入フェーズ。</strong>短期債・金ETF・中期国債をDCA。S&amp;P500はERPが負のため停止中（再開はERP回復を確認して判断）。</div></div>
       <div class="tl-item"><span class="tl-badge">2026.11 中間選挙後</span><div class="tl-desc"><strong>第1回TAAリバランス。</strong>ERP・各資産を評価して比率を再調整。BTC DCAは淡々と継続。</div></div>
       <div class="tl-item"><span class="tl-badge">2026.12</span><div class="tl-desc"><strong>半年ごとの確認（記録）。</strong>ERP・主要指標を確認・記録。理解のためであり行動のためではない。</div></div>
-      <div class="tl-item"><span class="tl-badge">2027.06</span><div class="tl-desc"><strong>BTC DCA完了（12ヶ月目・累計3,600万円）。</strong>平均取得単価を確定。出口の利益率（200%・300%）の絶対水準をこの単価から算出しておく。</div></div>
+      <div class="tl-item"><span class="tl-badge">2027.06<br>（前倒し時は早まる）</span><div class="tl-desc"><strong>BTC DCA完了（12回・累計3,000万円）。</strong>平均取得単価を確定。出口の利益率（200%・300%）の絶対水準をこの単価から算出しておく。前倒しが発動していれば完了は前倒し回数分だけ早まる。</div></div>
       <div class="tl-item"><span class="tl-badge">2027 中間選挙後の強い年</span><div class="tl-desc"><strong>株式最強年（統計）。</strong>保有継続。BTC現物は売却しない（税務の絶対制約）。半年ごとの確認のみ。</div></div>
       <div class="tl-item"><span class="tl-badge">★ 2028.01.01</span><div class="tl-desc"><strong>分離課税20%適用開始 ＆ 出口モード判定。</strong>①株式調整 ②インフレ低下 ③利下げ開始 を確認し、モードX（10ヶ月DCA）／モードY（6ヶ月DCA＋早期利確）を決定。トレーリングストップ（−35%・保有の70%）を設定開始。</div></div>
       <div class="tl-item"><span class="tl-badge">2028 大統領選後</span><div class="tl-desc"><strong>TAA観察（大統領選挙年）。</strong>ERPを記録。BTCはMVRV・NUPLを確認。判定済みモードに沿って準備。現物売却はまだしない。</div></div>
@@ -1042,6 +1060,7 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
       <div class="ind-group-row">
         <div class="ind-group-label gl-btc">BTC</div>
         <div class="ind-items">
+          <div class="ind-row"><div class="ind-name">ATH比下落率 ★毎月10日に確認</div><div class="ind-desc">サイクルATH（$126,198）からの下落率。前倒しDCAの唯一の引き金。CoinGeckoで価格を見て計算するだけの機械的判定で、これは「監視」ではなく「計算」。</div><span class="ind-alert">−60%以下（$50,400以下）→翌月分を前倒し購入</span></div>
           <div class="ind-row"><div class="ind-name">MVRV / MVRV Z-Score</div><div class="ind-desc">出口の下限セーフティネット（1.0以下は売却スキップ）と過熱判定に使う主指標。Bitboで確認。</div><span class="ind-alert">1.0以下→売却スキップ ／ 高値圏で過熱</span></div>
           <div class="ind-row"><div class="ind-name">NUPL</div><div class="ind-desc">未実現の含み損益比率。恐怖・強欲の度合い。出口の過熱確認の補助に使う。</div><span class="ind-alert">0.75超→強欲・天井圏の目安</span></div>
           <div class="ind-row"><div class="ind-name">平均取得単価に対する倍率</div><div class="ind-desc">DCA平均単価に対するBTC価格の倍率。出口の利益率トリガーの根幹。</div><span class="ind-alert">200%→モードYで利確 ／ 300%→全売却キャップ</span></div>
